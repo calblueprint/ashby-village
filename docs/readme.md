@@ -1,8 +1,4 @@
-# Welcome to Quad!
-
-### Introduction to Quad Engineering
-
-`TODO(Shimmy)`
+# Welcome to Blueprint's Ashby-Village app!
 
 ### Setup
 
