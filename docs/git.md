@@ -1,4 +1,4 @@
-de
+# Git Style Guide
 
 
 ## Branch Names
@@ -7,7 +7,7 @@ de
 
     your-name/what-you-are-doing
 
-    * Make sure everything is lower case and uses dashes where spaces would normally be.
+* Make sure everything is lower case and uses dashes where spaces would normally be.
 
 
 ## Issues
@@ -17,7 +17,7 @@ de
 * If you're referencing other issues in the issue that you are creating, tag them using the (#<number>) syntax.
 
     # Example:
-        This issue depends on (#4) being finished, etc.
+    This issue depends on (#4) being finished, etc.
 
 
 ## Pull Requests
@@ -26,15 +26,14 @@ de
 * In the description of the pull request, make sure to include any issues that you complete. You must tag them separately:
 
     // Good
-        Fix #1
-            Fix #2
+    Fix #1
+    Fix #2
 
-                // Bad / won't work
-                    Fix #1 and #2
+    // Bad / won't work
+    Fix #1 and #2
 
 
 ## Libraries
 
 * Never commit libraries. Always check your diff's size using `git stat` and `git status` to make sure you aren't committing anything that you didn't write.
 * Generated files are different and you can for sure commit them.
-
