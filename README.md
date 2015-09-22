@@ -1,7 +1,7 @@
 # Ashby Village
 ================
 
-This application allows partners to help BizWorld educators manage their classes and administer their student assessments!
+This application...
 
 Who We Are
 ----------
