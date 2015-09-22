@@ -20,7 +20,7 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 Getting Started
 ---------------
-1. Clone the repo by running `git clone https://github.com/calblueprint/bizworld.git`
+1. Clone the repo by running `git clone https://github.com/calblueprint/ashby-village.git`
 8. Visit `localhost:3000` and checkout the app!
 
 Documentation and Support
