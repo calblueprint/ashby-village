@@ -21,7 +21,7 @@ The general workflow is as follows:
     git pull
     ```
 
-2. Checkout a new branch off of master. Name it according to the [style guide](/docs/style_guides/git.md).
+2. Checkout a new branch off of master. Name it according to the [style guide](/docs/git.md).
 
     ```
     git checkout -b shimmy/new-feature
