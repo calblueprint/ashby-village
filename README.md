@@ -9,10 +9,9 @@ What is Ashby Village?
 
 What We Are Doing
 ----
-The purpose of this project is to support the increased community growth. Ashby village currently supports a total of more than 300 members. The number of events rose from 140 in 2013 to 242 in 2014, and participation in those events more than doubled from 946 to 1915. Ever since the village foundation, community building and allowing active communication has been one of the core missions, but unfortunately the village has never been able to offer a comprehensive technology platform for online communication.
+The purpose of this project is to support increased community growth. Ashby Village currently supports a total of more than 300 members. The number of events rose from 140 in 2013 to 242 in 2014, and participation in those events more than doubled from 946 to 1915. Ever since the creation of the village foundation, community building and allowing active communication has been one of the core missions. Unfortunately, the village has never been able to offer a comprehensive technology platform for online communication.
 
-It is an opportune time to develop something creative to address the problem of communication primarily because there is a specific and time-sensitive problem that needs to be addressed, and will be able to integrate other modules to lay down a unified platform for Ashby Village. In the future, other villages will use this platform to replace their community building applications. 
-
+It is an opportune time to develop a web application to address the problem of group communication primarily because there is a specific and time-sensitive problem that needs to be addressed, and will integrate with other modules to form a unified platform for Ashby Village. In the future, other villages will use this platform to replace their community building applications.
 
 Who We Are
 ----------
