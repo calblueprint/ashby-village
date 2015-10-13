@@ -2,7 +2,7 @@
 
 ### Setup
 
-* [Web applications setup](/docs/setup/web.md)
+* [Web applications setup](/docs/web.md)
 
 ### Style Guides
 
