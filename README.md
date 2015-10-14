@@ -1,5 +1,8 @@
 # Ashby Village
 
+New Engineer?
+----
+Read the [onboarding instructions](https://github.com/calblueprint/ashby-village/tree/master/docs) to get started!
 
 What is Ashby Village?
 ----
