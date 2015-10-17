@@ -22,6 +22,6 @@ module AshbyVillage
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.secret_key_base = Figaro.env.av_dev_key_base
+    config.secret_key_base = ENV["AV_DEV_KEY_BASE"]
   end
 end
