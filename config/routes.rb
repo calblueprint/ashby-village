@@ -55,3 +55,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+get "neighborhoods", to: "neighborhoods/index"
