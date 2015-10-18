@@ -36,7 +36,7 @@ The general workflow is as follows:
     Fix #105
     ```
 
-5. Submit your pull request, another engineer will review your code and discuss with you on the pull request if any changes are necessary.
+5. Push your code: `git push origin head`. Submit your pull request, another engineer will review your code and discuss with you on the pull request if any changes are necessary.
 
 6. When merging in a pull request, the issues indicated in the description are automatically closed. If you are the one merging in the pull request, make sure to delete the branch! (you can do this on the pull request itself).
 
