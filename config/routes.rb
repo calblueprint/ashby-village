@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "neighborhoods", to: "neighborhoods#index"
+  get "neighborhoods/new", to: "neighborhoods#new"
+  post "neighborhoods", to: "neighborhoods#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,4 +60,3 @@ Rails.application.routes.draw do
   #   end
 end
 
-get "neighborhoods", to: "neighborhoods/index"
