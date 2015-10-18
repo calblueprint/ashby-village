@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AshbyVillage</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
   <header class="navbar navbar-fixed-top navbar-inverse">
   	<div class="container">
@@ -22,5 +24,6 @@
   </header>
 
   <%= yield %>
+
 </body>
 </html>
