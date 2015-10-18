@@ -4,13 +4,13 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the database config and secret file 
-config/database.yml
-config/secrets.yml
+# Ignore the database config and secret file
+/config/database.yml
+/config/secrets.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 
-# Ignore application env variables
-config/application.yml
+# Ignore application configuration
+/config/application.yml
