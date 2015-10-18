@@ -7,16 +7,12 @@ class NeighborhoodsController < ApplicationController
 		@neighborhood = Neighborhood.new
 	end
 
-	def show
-		 
-	end
-
 	def create
 		@neighborhood = Neighborhood.create(neighhorhood_params)
 
 		if @neighborhood.save
-		    @neighborhood.group.create(name: params[:name])
-			# redirect_to @user 
+		   @neighborhood.group.create(name: params[:name])
+			redirect_to index
 		else
 			render "new"
 		end 
