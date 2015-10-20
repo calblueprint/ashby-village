@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'groups/create'
 
-  get 'pages/groups'
+  get 'groups/new'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

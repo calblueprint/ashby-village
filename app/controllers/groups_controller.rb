@@ -1,7 +1,5 @@
 class GroupsController < ApplicationController
   def index
-  	# @groups = Group.paginate(:page => params[:page])
-  	# @title = "All groups"
   	@groups = Group.all
   end
 
@@ -11,19 +9,19 @@ class GroupsController < ApplicationController
   	# @user = Group.find(params[:id])
   end
 
-  # def new
-  #   @group = Group.new
-  # end
+  def new
+    @group = Group.new
+  end
 
   def create
-  	# @group = Group.new(group_params)
-   #  respond_to do |format|
-   #    if @group.save
-   #      format.html { redirect_to @group, notice: "User was successfully created." }
-   #    else
-   #      format.html { render :new }
-   #    end
-   #  end
+  	@group = Group.new(group_params)
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to @group, notice: "User was successfully created." }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def group_params
