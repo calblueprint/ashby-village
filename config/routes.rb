@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+
+  get 'groups/show'
+
+  get 'groups/create'
+
   get 'pages/groups'
 
   devise_for :users
