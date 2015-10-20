@@ -4,9 +4,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-  	# @group = Group.third
+  	# @group = Group.first
   	# @title = @group.name
-  	# @user = Group.find(params[:id])
+  	@group = Group.find(params[:id])
+  	# debugger
   end
 
   def new
@@ -17,7 +18,7 @@ class GroupsController < ApplicationController
   	@group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: "User was successfully created." }
+        format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
       end
