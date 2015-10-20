@@ -1,5 +1,5 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<!-- <h1>Groups#index</h1>
+<p>Find me in app/views/groups/index.html.erb</p> -->
 <h1>All groups</h1>
 
 <table>
@@ -12,6 +12,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
+        <td><%= group.name %></td>
         <td><%= group.id %></td>
       </tr>
     <% end %>

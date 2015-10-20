@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def show
   	# @group = Group.third
   	# @title = @group.name
-  	@user = Group.find(params[:id])
+  	# @user = Group.find(params[:id])
   end
 
   # def new
