@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018203903) do
+ActiveRecord::Schema.define(version: 20151020033930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "neighborhood_id"
   end
+
+  add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "title"
@@ -28,7 +31,11 @@ ActiveRecord::Schema.define(version: 20151018203903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "location"
+    t.string   "user"
+    t.integer  "group_id"
   end
+
+  add_index "neighborhoods", ["group_id"], name: "index_neighborhoods_on_group_id", using: :btree
 
   create_table "user_groups", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -67,6 +74,7 @@ ActiveRecord::Schema.define(version: 20151018203903) do
     t.date     "date_of_birth"
     t.string   "phone"
     t.string   "cell_phone"
+    t.string   "neighborhood"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
