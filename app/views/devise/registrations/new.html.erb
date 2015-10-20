@@ -4,17 +4,17 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name %>*<br />
     <%= f.email_field :first_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>*<br />
     <%= f.email_field :last_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>*<br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -24,7 +24,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password %>*
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -32,9 +32,26 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>*<br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+
+  <div class="field">Please select your neighborhood assignment:* <br />
+    <%= radio_button_tag(:neighborhood, "Emeryville") %>
+    <%= label_tag(:neighborhood, "Emeryville") %><br />
+    <%= radio_button_tag(:neighborhood, "Claremont-Elmwood") %>
+    <%= label_tag(:neighborhood, "Claremont-Elmwood") %><br />
+    <%= radio_button_tag(:neighborhood, "Kensington Kaleidoscope") %>
+    <%= label_tag(:neighborhood, "Kensington Kaleidoscope") %><br />
+    <%= radio_button_tag(:neighborhood, "Midlandish") %>
+    <%= label_tag(:neighborhood, "Midlandish") %><br />    
+    <%= radio_button_tag(:neighborhood, "North Berkeley Hills") %>
+    <%= label_tag(:neighborhood, "North Berkeley Hills") %><br />
+    <%= radio_button_tag(:neighborhood, "Outlandish") %>
+    <%= label_tag(:neighborhood, "Outlandish") %><br />
+    <%= radio_button_tag(:neighborhood, "Thousand Oaks Hamlet") %>
+    <%= label_tag(:neighborhood, "Thousand Oaks Hamlet") %><br />
+  </div> 
 
   <div class="field">
     <%= f.label :photo %>
