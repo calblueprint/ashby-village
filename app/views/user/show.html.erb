@@ -1,0 +1,14 @@
+<h1>User#show</h1>
+<h2><%= @header %></h2>
+
+<% if @user.photo %>
+  <%= image_tag @user.photo(:thumb) %>
+<% end %>
+
+<h2><%= @user.first_name + ' ' + @user.last_name %> </h2>
+<h4>Email: <%= @user.email %> </h4> 
+<h4>Phone: <%= @user.phone %> </h4>
+
+<% if @user == current_user %>
+	<!-- edit profile button? -->
+<% end %>
