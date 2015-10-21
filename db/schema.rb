@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20151021031314) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "neighborhood_id"
-    t.string   "description"
+    t.text     "description"
   end
 
   add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
@@ -29,10 +29,9 @@ ActiveRecord::Schema.define(version: 20151021031314) do
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "location"
-    t.string   "user"
     t.integer  "group_id"
   end
 
@@ -75,11 +74,6 @@ ActiveRecord::Schema.define(version: 20151021031314) do
     t.date     "date_of_birth"
     t.string   "phone"
     t.string   "cell_phone"
-    t.string   "neighborhood"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
