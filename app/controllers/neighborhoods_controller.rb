@@ -1,7 +1,6 @@
 class NeighborhoodsController < ApplicationController
 	def index
 		@neighborhoods = Neighborhood.all
-
 	end
 
 	def new
@@ -26,13 +25,13 @@ class NeighborhoodsController < ApplicationController
 
 		else 
 		   @neighborhood = Neighborhood.create(neighhorhood_params)
-		   @neighborhood.groups.create(name:  @neighborhood.title + " Announcements")
+		   @neighborhood.groups.create(name:  @neighborhood.title + " Announcements") #ADD A GENERIC DESCRIPTION ONCE MERGED W NIKITA'S FILES
 		   redirect_to action: "index"
 		end 
 	end 
 
 	def neighhorhood_params
-		params.require(:neighborhood).permit(:title, :text, :location)
+		params.require(:neighborhood).permit(:title, :description, :location)
 	end
 
 	def nh_titles

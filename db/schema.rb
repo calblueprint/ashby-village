@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20151020033930) do
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "location"
     t.integer  "group_id"
   end
