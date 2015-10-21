@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'groups/new'
 
+  get "groups/new", to: 'groups#new', as:'new_group'
+
   resources :groups
 
   devise_for :users
