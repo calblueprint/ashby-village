@@ -12,8 +12,9 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.name %></td>
         <td><%= group.id %></td>
+        <td><%= group.name %></td>
+        <td><%= group.text %></td>
       </tr>
     <% end %>
   </tbody>
