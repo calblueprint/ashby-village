@@ -8,14 +8,26 @@ class NeighborhoodsController < ApplicationController
 		@neighborhood = Neighborhood.new
 	end
 
-	def create
-		@neighborhood = Neighborhood.create(neighhorhood_params)
+	def contains_title?(title)
+		@neighborhoods = Neighborhood.all
+		@neighborhoods.each do |item|
+			if item.title == title
+				return true
+			end
+		end
+		return false	
+	end
 
-		if @neighborhood.save
-		   @neighborhood.groups.create(name: "Announcements for " + @neighborhood.title)
-			redirect_to action: "index"
-		else
-			render "new"
+	def create
+		@neighborhood = Neighborhood.new
+		@repeat_error = contains_title?(neighhorhood_params[:title])
+		if @repeat_error
+		   render "new"
+
+		else 
+		   @neighborhood = Neighborhood.create(neighhorhood_params)
+		   @neighborhood.groups.create(name:  @neighborhood.title + " Announcements")
+		   redirect_to action: "index"
 		end 
 	end 
 
@@ -23,7 +35,7 @@ class NeighborhoodsController < ApplicationController
 		params.require(:neighborhood).permit(:title, :text, :location)
 	end
 
-	def nh_announcements
+	def nh_titles
 		params.require(:neighborhood).permit(:title)
 	end
 

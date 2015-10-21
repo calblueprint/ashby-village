@@ -1,4 +1,7 @@
 <h1>Create New</h1>
+  <% if @repeat_error %>
+  	<p> This neighborhood already exists! <p>
+  <% end %>
   <%= form_for @neighborhood do |f| %> 
     Name: <%= f.text_field :title %> 
     Description: <%= f.text_field :text %>
