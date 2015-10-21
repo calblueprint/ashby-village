@@ -1,8 +1,10 @@
 <h1>Create New</h1>
-  <%= form_for @neighborhood do |f| %> <!-- Create form for user object -->
-    Name: <%= f.text_field :name %> <!-- Create a text field that sends its value under the key name-->
-    <!-- Create a text field that sends its value under the key email -->
-    <%= f.submit %> <!-- Create submit button-->
+  <%= form_for @neighborhood do |f| %> 
+    Name: <%= f.text_field :title %> 
+    Description: <%= f.text_field :text %>
+    Location: <%= f.text_field :location %>
+
+    <%= f.submit %> 
   <% end %>
 
 
