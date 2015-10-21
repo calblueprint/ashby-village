@@ -1,6 +1,7 @@
 class NeighborhoodsController < ApplicationController
 	def index
 		@neighborhoods = Neighborhood.all
+
 	end
 
 	def new
@@ -11,7 +12,7 @@ class NeighborhoodsController < ApplicationController
 		@neighborhood = Neighborhood.create(neighhorhood_params)
 
 		if @neighborhood.save
-		   # @neighborhood.group.create(neighborhood_params)
+		   @neighborhood.groups.create(name: "Announcements for " + @neighborhood.title)
 			redirect_to action: "index"
 		else
 			render "new"
@@ -20,6 +21,10 @@ class NeighborhoodsController < ApplicationController
 
 	def neighhorhood_params
 		params.require(:neighborhood).permit(:title, :text, :location)
+	end
+
+	def nh_announcements
+		params.require(:neighborhood).permit(:title)
 	end
 
 end
