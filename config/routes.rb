@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+
+  get 'groups/show'
+
+  get 'groups/create'
+
+  get 'groups/new'
+
+  get "groups/new", to: 'groups#new', as:'new_group'
+
+  resources :groups
+
   devise_for :users
   get "neighborhoods", to: "neighborhoods#index"
   get "neighborhoods/new", to: "neighborhoods#new"

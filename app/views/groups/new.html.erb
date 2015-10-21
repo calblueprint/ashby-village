@@ -1,0 +1,7 @@
+<h1>New group</h1>
+
+	<%= form_for @group do |f| %>
+		Name: <%= f.text_field :name %>
+		Description: <%= f.text_field :description %>
+		<%= f.submit %>
+	<% end %>
