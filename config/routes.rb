@@ -11,6 +11,18 @@ Rails.application.routes.draw do
   get 'user/show'
   get 'user/:id', to: "user#show", as: 'user'  
 
+  get 'groups/index'
+
+  get 'groups/show'
+
+  get 'groups/create'
+
+  get 'groups/new'
+
+  get "groups/new", to: 'groups#new', as:'new_group'
+
+  resources :groups
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
