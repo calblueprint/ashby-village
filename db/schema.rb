@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 20151021031314) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "neighborhood_id"
-    t.text     "description"
+    t.string   "text"
+    t.string   "description"
   end
 
   add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "location"
     t.integer  "group_id"
   end
