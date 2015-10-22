@@ -1,13 +1,10 @@
 class GroupsController < ApplicationController
   def index
-  	@groups = Group.all
+    @groups = Group.all
   end
 
   def show
-  	# @group = Group.first
-  	# @title = @group.name
-  	@group = Group.find(params[:id])
-  	# debugger
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -15,7 +12,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-  	@group = Group.new(group_params)
+    @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: "Group was successfully created." }
@@ -29,5 +26,3 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, :description)
   end
 end
-
-
