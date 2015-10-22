@@ -18,14 +18,15 @@ class NeighborhoodsController < ApplicationController
 	end
 
 	def create
-		@neighborhood = Neighborhood.new
-		@repeat_error = contains_title?(neighhorhood_params[:title])
-		if @repeat_error
-		   render "new"
+		# @neighborhood = Neighborhood.new
+		# @repeat_error = contains_title?(neighhorhood_params[:title])
+		# if @repeat_error
+		#    render "new"
 
-		else 
+		# else 
+		if true
 		   @neighborhood = Neighborhood.create(neighhorhood_params)
-		   @neighborhood.groups.create(name:  @neighborhood.title + " Announcements") #ADD A GENERIC DESCRIPTION ONCE MERGED W NIKITA'S FILES
+		   # @neighborhood.groups.create(name:  @neighborhood.title + " Announcements") #ADD A GENERIC DESCRIPTION ONCE MERGED W NIKITA'S FILES
 		   redirect_to action: "index"
 		end 
 	end 
