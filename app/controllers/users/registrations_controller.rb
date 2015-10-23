@@ -3,15 +3,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
 
-before_filter :configure_permitted_parameters, :only => [:create]
+# before_filter :configure_permitted_parameters, :only => [:create]
+before_filter :configure_permitted_parameters, if: :devise_controller?
 
 protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
-  end
+def registration_params
+  params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
 end
 
+def account_update_params
+  params.require(:user).permit(:first_name, :last_name, :email, :phone)
+end
+
+def configure_permitted_parameters
+  devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
+  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
+end
 
 #   GET /resource/sign_up
 #   def new
@@ -21,7 +29,7 @@ end
   def create
     @user = User.new
     @user.save
-    redirect_to @user
+    redirect_to groups_show_path
   end
 
 #   GET /resource/edit
@@ -30,9 +38,17 @@ end
 #   end
 
 #   PUT /resource
-#   def update
-#     super
-#   end
+  def update
+    @user = current_user
+    puts @user
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Profile updated!"
+      redirect_to @user
+    else
+      flash[:notice] = "Edit failed."
+      redirect to user_path
+    end
+  end
 
 #   DELETE /resource
 #   def destroy

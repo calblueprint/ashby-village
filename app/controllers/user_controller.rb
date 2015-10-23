@@ -1,16 +1,11 @@
 class UserController < ApplicationController
   def show
-  	@user = User.find(params[:id])
-  	@first_name = @user.first_name
-  	@last_name = @user.last_name
-  	@email = @user.email
-  	@phone = @user.phone
+    @user = User.find(params[:id])
+    @header = "My Profile"
 
-  	@header = "My Profile"
-
-  	if @user != current_user
-  		@header = @user.first_name + "'s Profile"
-  	end
+    if @user != current_user
+      @header = @user.first_name + "'s Profile"
+    end
   end
 
   def index
@@ -18,5 +13,4 @@ class UserController < ApplicationController
       redirect_to user_path
     end
   end
-
 end

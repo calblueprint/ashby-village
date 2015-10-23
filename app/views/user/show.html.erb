@@ -10,5 +10,5 @@
 <h4>Phone: <%= @user.phone %> </h4>
 
 <% if @user == current_user %>
-	<!-- edit profile button? -->
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>

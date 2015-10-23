@@ -10,14 +10,22 @@
 
 <body>
   <header class="navbar navbar-fixed-top navbar-inverse">
-  	<div class="container">
-  		<%= link_to "Ashby Village", root_path, id: "logo" %>
-  		<nav>
-  			<ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Help",   '#' %></li>
-          <li><%= link_to "About",  '#' %></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <li><%= link_to "Register", new_user_registration_path %></li>
+    <div class="container">
+      <%= link_to "Ashby Village", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "My Groups",   '#' %></li>
+            <li><%= link_to "Neighborhoods",  '#' %></li>
+            <!-- if user signed in, show profile, account settings, and sign out button -->
+            <% if user_signed_in? %>
+              <li><%= link_to "My Profile", current_user %></li>
+              <li><%= link_to "Account Settings", '#' %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path %></li>
+            <% else %>
+              <!-- if user not signed in, show these links -->
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+            <% end %>
         </ul>
       </nav>
     </div>

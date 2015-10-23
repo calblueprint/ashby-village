@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}
-  # devise_for :users, :controllers => { :registrations => "users/registrations_controller" }  
-  
+
   get 'static_pages/help'
   get 'static_pages/about'
 
