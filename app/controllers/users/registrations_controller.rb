@@ -8,13 +8,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end
 
-  def update_resource(resource, params)
-    resource.update_without_password(params)
+  def registration_params
+    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
   end
-
-# def registration_params
-#   params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
-# end
 
 # def configure_permitted_parameters
 #   devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
@@ -33,9 +29,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 #   GET /resource/edit
-#   def edit
-#     super
-#   end
+  def edit
+    super
+  end
 
 #   PUT /resource
   def update

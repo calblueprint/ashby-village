@@ -1,6 +1,6 @@
 <h2>Please fill out your information below.</h2> <h4>* Fields marked with an asterisk are required</h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { multipart: true }) do |f| %>
   <%= devise_error_messages! %>
   
   <div class="field">

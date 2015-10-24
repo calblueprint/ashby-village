@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}
 
   get 'static_pages/help'
+
   get 'static_pages/about'
 
   get 'user/show'
+
   get 'user/:id', to: "user#show", as: 'user'  
 
   get 'groups/index'
