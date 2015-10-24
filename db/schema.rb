@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151021031314) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "neighborhood_id"
+    t.string   "text"
     t.string   "description"
   end
 
