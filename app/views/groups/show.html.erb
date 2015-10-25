@@ -6,10 +6,6 @@
   <%= @group.description %>
 </h1>
 
-<% @gr.each do |user| %>
-      <li><%= user.name %></li>
-    <% end %>
-
 <% @users.each do |user| %>
-	<p>  <%= link_to user.name, user %> </p><td>
-<% end %>
+      <li><%= user.first_name %></li>
+    <% end %>

@@ -27,4 +27,25 @@ def make_groups
   Group.create! name: 'Television', description: 'yo'
 end
 
+def make_users
+  User.create! first_name: 'Laila', last_name: 'Rowe', email: 'blah@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Mark', last_name: 'Rowe', email: 'blah1@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Jenny', last_name: 'Rowe', email: 'blah2@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Sandra', last_name: 'Rowe', email: 'blah3@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'John', last_name: 'Rowe', email: 'blah4@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Eric', last_name: 'Rowe', email: 'blah5@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Laila', last_name: 'Rowe', email: 'blah6@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Laila', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+
+
+end
+
+def make_user_groups
+  UserGroup.create! user_id: 1, group_id: 1
+  UserGroup.create! user_id: 2, group_id: 1
+  UserGroup.create! user_id: 3, group_id: 1
+end
+
 make_groups
+make_users
+make_user_groups
