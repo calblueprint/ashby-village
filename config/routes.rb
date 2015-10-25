@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'user/show'
 
-  get 'user/:id', to: "user#show", as: 'user'  
+  get 'user/:id', to: "user#show", as: 'user'
 
   get 'groups/index'
 
@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get "groups/new", to: 'groups#new', as:'new_group'
 
   resources :groups
+
+  get "neighborhoods", to: "neighborhoods#index"
+  get "neighborhoods/new", to: "neighborhoods#new"
+  post "neighborhoods", to: "neighborhoods#create"
+  get "neighborhoods/new", to: "neighborhoods#new", as: "new_neighborhood"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

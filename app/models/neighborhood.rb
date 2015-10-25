@@ -3,4 +3,5 @@ class Neighborhood < ActiveRecord::Base
   has_many :users, through: :user_neighborhoods
 
   has_many :groups
+  validates_uniqueness_of :title, :message => '%{value} already exists as a neighborhood!'
 end

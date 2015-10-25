@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20151024050327) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "neighborhood_id"
-    t.text     "description"
+    t.string   "description"
   end
 
   add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
