@@ -12,15 +12,15 @@ Rails.application.routes.draw do
 
   get 'user/:id', to: "user#show", as: 'user'
 
-  get 'groups/index'
+  # get 'groups/index'
 
-  get 'groups/show'
+  # get 'groups/show'
 
-  get 'groups/create'
+  # get 'groups/create'
 
-  get 'groups/new'
+  # get 'groups/new'
 
-  get 'groups/member'
+  # get 'groups/member'
 
   get "groups/new", to: 'groups#new', as:'new_group'
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
-  devise_for :users
+  # devise_for :users
 
   get "neighborhoods", to: "neighborhoods#index"
   get "neighborhoods/new", to: "neighborhoods#new"
