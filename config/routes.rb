@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  root 'static_pages#home'
+
+  devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}
+
+  get 'static_pages/help'
+
+  get 'static_pages/about'
+
+  get 'user/show'
+
+  get 'user/:id', to: "user#show", as: 'user'
+
   get 'groups/index'
 
   get 'groups/show'
@@ -15,8 +28,8 @@ Rails.application.routes.draw do
 
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
-
   devise_for :users
+
   get "neighborhoods", to: "neighborhoods#index"
   get "neighborhoods/new", to: "neighborhoods#new"
   post "neighborhoods", to: "neighborhoods#create"
@@ -77,4 +90,3 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
-
