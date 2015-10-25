@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
-
   protected
 
   def account_update_params
@@ -17,15 +16,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
 # end
 
-#   GET /resource/sign_up
-#   def new
-#   end
-
-#   POST /resource
-  def create
+  # GET /resource/sign_up
+  def new
     @user = User.new
-    @user.save
-    redirect_to groups_show_path
+    render :template => '/registrations/new'
   end
 
 #   GET /resource/edit
@@ -40,12 +34,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     puts @user
     if @user.update_attributes(user_params)
       flash[:notice] = "Profile updated!"
-      redirect_to @user
+      # redirect_to @user
     else
       flash[:notice] = "Edit failed."
-      redirect to user_path
+      # redirect to user_path
     end
+
   end
+
+
+
 
 #   DELETE /resource
 #   def destroy
@@ -64,19 +62,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   protected
 
 #   If you have extra params to permit, append them to the sanitizer.
-#   def configure_sign_up_params
-#     devise_parameter_sanitizer.for(:sign_up) << :attribute
-#   end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.for(:sign_up) << :attribute
+  end
 
 #   If you have extra params to permit, append them to the sanitizer.
 #   def configure_account_update_params
 #     devise_parameter_sanitizer.for(:account_update) << :attribute
 #   end
 
-#   The path used after sign up.
-#   def after_sign_up_path_for(resource)
-#     super(resource)
-#   end
+  # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    user_path(resource)
+  end
 
 #   The path used after sign up for inactive accounts.
 #   def after_inactive_sign_up_path_for(resource)
