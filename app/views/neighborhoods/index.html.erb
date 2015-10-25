@@ -1,0 +1,25 @@
+<p> Neighborhood Listing </p>
+
+<table>
+ <thead>
+   <tr>
+     <th colspan="5"></th>
+   </tr>
+ </thead>
+
+ <tbody>
+   <% @neighborhoods.each do |neighborhood| %>
+     <tr>
+       <td><%= neighborhood.title %></td>
+       <td><%= neighborhood.description %></td>
+       <td><%= neighborhood.location %><td>
+       <td><%= neighborhood.groups.size %>
+
+     </tr>
+   <% end %>
+ </tbody>
+</table>
+
+<%= link_to "Create new neighborhood", new_neighborhood_path %>
+
+<br>
