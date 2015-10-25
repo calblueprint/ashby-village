@@ -1,6 +1,36 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
+
+
+# def configure_permitted_parameters
+#   devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
+#   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
+# end
+
+  # # GET /resource/sign_up
+  # def new
+  #   @user = User.new
+  #   render :template => '/registrations/new'
+  # end
+
+#   GET /resource/edit
+  def edit
+    render :template => '/registrations/edit'
+  end
+
+#   PUT /resource
+  def update
+    account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
+    @user = current_user
+    # puts @user
+    if @user.update_without_password(account_update_params)
+      flash[:notice] = "Profile updated!"
+    else
+      flash[:notice] = "Edit failed."
+    end
+  end
+
   protected
 
   def account_update_params
@@ -11,37 +41,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
   end
 
-# def configure_permitted_parameters
-#   devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
-#   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
-# end
-
-  # GET /resource/sign_up
-  def new
-    @user = User.new
-    render :template => '/registrations/new'
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
-
-#   GET /resource/edit
-  def edit
-    super
-  end
-
-#   PUT /resource
-  def update
-    account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
-    @user = current_user
-    puts @user
-    if @user.update_attributes(user_params)
-      flash[:notice] = "Profile updated!"
-      # redirect_to @user
-    else
-      flash[:notice] = "Edit failed."
-      # redirect to user_path
-    end
-
-  end
-
 
 
 
@@ -66,10 +68,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.for(:sign_up) << :attribute
   end
 
-#   If you have extra params to permit, append them to the sanitizer.
-#   def configure_account_update_params
-#     devise_parameter_sanitizer.for(:account_update) << :attribute
-#   end
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_account_update_params
+    devise_parameter_sanitizer.for(:account_update) << :attribute
+  end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
