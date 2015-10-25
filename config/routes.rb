@@ -1,21 +1,11 @@
 Rails.application.routes.draw do
-  get 'groups/index'
 
-  get 'groups/show'
 
-  get 'groups/create'
-
-  get 'groups/new'
-
-  get "groups/new", to: 'groups#new', as:'new_group'
-
-  resources :groups
+  resources :neighborhoods, only: [:index, :show, :new, :create] do
+    resources :groups, only: [:new, :show, :create]
+  end
 
   devise_for :users
-  get "neighborhoods", to: "neighborhoods#index"
-  get "neighborhoods/new", to: "neighborhoods#new"
-  post "neighborhoods", to: "neighborhoods#create"
-  get "neighborhoods/new", to: "neighborhoods#new", as: "new_neighborhood"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
