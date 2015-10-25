@@ -23,7 +23,14 @@ class GroupsController < ApplicationController
     end
   end
 
+  def member_listing
+  	@group = Group.find(params[:id])
+  	@members = @group.users
+  end
+
   def group_params
     params.require(:group).permit(:name, :description)
   end
+
+  
 end

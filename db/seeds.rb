@@ -34,8 +34,8 @@ def make_users
   User.create! first_name: 'Sandra', last_name: 'Rowe', email: 'blah3@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
   User.create! first_name: 'John', last_name: 'Rowe', email: 'blah4@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
   User.create! first_name: 'Eric', last_name: 'Rowe', email: 'blah5@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
-  User.create! first_name: 'Laila', last_name: 'Rowe', email: 'blah6@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
-  User.create! first_name: 'Laila', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Dennis', last_name: 'Rowe', email: 'blah6@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
+  User.create! first_name: 'Ajay', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
 
 
 end
@@ -44,6 +44,12 @@ def make_user_groups
   UserGroup.create! user_id: 1, group_id: 1
   UserGroup.create! user_id: 2, group_id: 1
   UserGroup.create! user_id: 3, group_id: 1
+  UserGroup.create! user_id: 4, group_id: 2
+  UserGroup.create! user_id: 5, group_id: 3
+  UserGroup.create! user_id: 6, group_id: 3
+  UserGroup.create! user_id: 7, group_id: 4
+  UserGroup.create! user_id: 8, group_id: 4
+  UserGroup.create! user_id: 9, group_id: 5
 end
 
 make_groups

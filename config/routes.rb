@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 
   get 'groups/new'
 
+  get 'groups/member'
+
   get "groups/new", to: 'groups#new', as:'new_group'
 
   resources :groups
+
+  get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
+
 
   devise_for :users
   get "neighborhoods", to: "neighborhoods#index"
