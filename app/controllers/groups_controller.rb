@@ -12,13 +12,10 @@ class GroupsController < ApplicationController
   def create
     @neighborhood = Neighborhood.find params[:neighborhood_id]
     @group = @neighborhood.groups.build group_params
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: "Group was successfully created." }
-      else
-        format.html { render :new }
-      end
+    if @group.save
+      redirect_to neighborhood_group_path @neighborhood, @group, notice: "Group was successfully created."
+    else
+      render :new
     end
   end
 
