@@ -28,24 +28,6 @@
     <%= f.file_field :photo %>
   </div>
 
-  <!-- currently whats happening is that in order to update your profile,
-  you need to provide your password in order to save your changes.
-  How do we turn this off?? Or do we want to turn this authentification off? -->
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

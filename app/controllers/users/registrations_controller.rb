@@ -3,49 +3,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_account_update_params, only: [:update]
 
 
-# def configure_permitted_parameters
-#   devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo ) }
-#   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
-# end
-
-  # # GET /resource/sign_up
-  # def new
-  #   @user = User.new
-  #   render :template => '/registrations/new'
-  # end
-
-#   GET /resource/edit
-  def edit
-    render :template => '/registrations/edit'
+  # Allows for updating without requiring current password
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
 #   PUT /resource
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
     @user = current_user
-    # puts @user
-    if @user.update_without_password(account_update_params)
+    if update_resource(@user,account_update_params)
       flash[:notice] = "Profile updated!"
+      redirect_to user_path(@user)
     else
       flash[:notice] = "Edit failed."
+      render :template => "users/registrations/edit"
     end
   end
-
-  protected
-
-  def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
-  end
-
-  def registration_params
-    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
-  end
-
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
-
-
 
 #   DELETE /resource
 #   def destroy
@@ -61,7 +35,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #     super
 #   end
 
-#   protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
+  end
 
 #   If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -70,12 +48,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :attribute
+    devise_parameter_sanitizer.for(:account_update) << [:first_name, :last_name, :email, :phone, :photo]
   end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     user_path(resource)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
+  end
+
+  def registration_params
+    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
   end
 
 #   The path used after sign up for inactive accounts.
