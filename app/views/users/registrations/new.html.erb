@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { multipart: true }) do |f| %>
   <%= devise_error_messages! %>
-  
+
   <div class="field">
     <%= f.label :first_name %>*<br />
     <%= f.text_field :first_name, autofocus: true %>
@@ -44,20 +44,19 @@
     <%= radio_button_tag(:neighborhood, "Kensington Kaleidoscope") %>
     <%= label_tag(:neighborhood, "Kensington Kaleidoscope") %><br />
     <%= radio_button_tag(:neighborhood, "Midlandish") %>
-    <%= label_tag(:neighborhood, "Midlandish") %><br />    
+    <%= label_tag(:neighborhood, "Midlandish") %><br />
     <%= radio_button_tag(:neighborhood, "North Berkeley Hills") %>
     <%= label_tag(:neighborhood, "North Berkeley Hills") %><br />
     <%= radio_button_tag(:neighborhood, "Outlandish") %>
     <%= label_tag(:neighborhood, "Outlandish") %><br />
     <%= radio_button_tag(:neighborhood, "Thousand Oaks Hamlet") %>
     <%= label_tag(:neighborhood, "Thousand Oaks Hamlet") %><br />
-  </div> 
+  </div>
 
   <div class="field">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
-  </div> 
-
+  </div>
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
