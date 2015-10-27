@@ -1,6 +1,6 @@
 <!-- <h1>Groups#index</h1>
 <p>Find me in app/views/groups/index.html.erb</p> -->
-<h1>All groups</h1>
+<h1>All groups in <%= @neighborhood.title %></h1>
 
 <table>
   <thead>
@@ -10,12 +10,12 @@
   </thead>
 
   <tbody>
-    <% @groups.each do |group| %>
+    <% @neighborhood.groups.each do |group| %>
       <tr>
         <td><%= group.id %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
-        <td><button>  <%=link_to 'Learn more', group %> </button><td>
+        <td><button>  <%=link_to 'Learn more', neighborhood_group_path(@neighborhood, group) %> </button><td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to "Create new group", new_group_path %>
+<%= link_to "Create new group", new_neighborhood_group_path(@neighborhood) %>

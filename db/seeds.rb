@@ -31,4 +31,3 @@ def make_groups
 end
 
 make_groups
-

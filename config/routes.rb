@@ -1,33 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
+  resources :neighborhoods, only: [:index, :show, :new, :create] do
+    resources :groups, only: [:new, :show, :create]
+  end
 
   devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
-
-  get 'static_pages/help'
-
-  get 'static_pages/about'
-
+  root 'static_pages#home'
   get 'user/show'
-
   get 'user/:id', to: "user#show", as: 'user'
-
-  get 'groups/index'
-
-  get 'groups/show'
-
-  get 'groups/create'
-
-  get 'groups/new'
-
-  get "groups/new", to: 'groups#new', as:'new_group'
-
-  resources :groups
-
-  get "neighborhoods", to: "neighborhoods#index"
-  get "neighborhoods/new", to: "neighborhoods#new"
-  post "neighborhoods", to: "neighborhoods#create"
-  get "neighborhoods/new", to: "neighborhoods#new", as: "new_neighborhood"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
