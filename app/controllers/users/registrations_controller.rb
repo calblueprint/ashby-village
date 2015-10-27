@@ -37,8 +37,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :phone) }
+    devise_parameter_sanitizer.for(:registration) { |u| u.permit(:name, :email, :password, :phone, :neighborhood, :photo) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :phone) }
   end
 
 #   If you have extra params to permit, append them to the sanitizer.
@@ -48,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << [:first_name, :last_name, :email, :phone, :photo]
+    devise_parameter_sanitizer.for(:account_update) << [:name, :email, :phone, :photo]
   end
 
   # The path used after sign up.
@@ -57,11 +57,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
+    params.require(:user).permit(:name, :email, :phone, :photo)
   end
 
   def registration_params
-    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :neighborhood, :password, :password_confirmation)
   end
 
 #   The path used after sign up for inactive accounts.
