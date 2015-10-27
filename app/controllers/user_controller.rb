@@ -4,7 +4,7 @@ class UserController < ApplicationController
     @header = "My Profile"
 
     if @user != current_user
-      @header = @user.first_name + "'s Profile"
+      @header = @user.name + "'s Profile"
     end
   end
 
