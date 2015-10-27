@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-
-
   resources :neighborhoods, only: [:index, :show, :new, :create] do
     resources :groups, only: [:new, :show, :create]
   end
 
-  devise_for :users
-
+  devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
+  root 'static_pages#home'
+  get 'user/show'
+  get 'user/:id', to: "user#show", as: 'user'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -20,8 +20,7 @@ class NeighborhoodsController < ApplicationController
 		else
 			render 'new'
 		end
-	end 
-
+	end
 
 	def neighhorhood_params
 		params.require(:neighborhood).permit(:title, :description, :location)
