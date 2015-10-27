@@ -15,7 +15,7 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "My Groups",   '#' %></li>
-            <li><%= link_to "Neighborhoods",  '#' %></li>
+            <li><%= link_to "Neighborhoods",  neighborhoods_path %></li>
             <!-- if user signed in, show profile, account settings, and sign out button -->
             <% if user_signed_in? %>
               <li><%= link_to "My Profile", current_user %></li>
