@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
+  resources :neighborhoods, only: [:index, :show, :new, :create] do
+    resources :groups, only: [:new, :show, :create]
+  end
 
   devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
-
-  get 'static_pages/help'
-
-  get 'static_pages/about'
-
+  root 'static_pages#home'
   get 'user/show'
-
   get 'user/:id', to: "user#show", as: 'user'
 
   get "groups/new", to: 'groups#new', as:'new_group'
