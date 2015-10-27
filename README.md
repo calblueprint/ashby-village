@@ -6,7 +6,7 @@ Read the [onboarding instructions](https://github.com/calblueprint/ashby-village
 
 What is Ashby Village?
 ----
-![Ashby Village](http://s3.amazonaws.com/ClubExpressClubFiles/748044/graphics/AVlogocolor-web.png "Ashby Village Banner" )
+![Ashby Village](http://s3.amazonaws.com/ClubExpressClubFiles/748044/graphics/AVlogocolor-web.png "Ashby Village Banner")
 
 **[Ashby Village](http://www.ashbyvillage.org/)** is a community of people over age 50 united by the desire to remain in the culturally rich, multigenerational neighborhoods that they know and love. Ashby Village connects members with each other and with the resources they need to remain active and independent.
 
