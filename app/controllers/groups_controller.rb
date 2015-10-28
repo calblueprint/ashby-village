@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  def index
+    @group = Group.all
+  end
 
   def show
     @group = Group.find(params[:id])
@@ -6,15 +9,15 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @neighborhood = Neighborhood.find params[:neighborhood_id]
+    ####### @neighborhood = Neighborhood.find params[:neighborhood_id]
     @group = @neighborhood.groups.build
   end
 
   def create
-    @neighborhood = Neighborhood.find params[:neighborhood_id]
+    ####### @neighborhood = Neighborhood.find params[:neighborhood_id]
     @group = @neighborhood.groups.build group_params
     if @group.save
-      redirect_to neighborhood_group_path @neighborhood, @group, notice: "Group was successfully created."
+      ####### redirect_to neighborhood_group_path @neighborhood, @group, notice: "Group was successfully created."
     else
       render :new
     end
