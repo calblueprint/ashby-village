@@ -1,20 +1,19 @@
 source 'https://rubygems.org'
 
+
 gem "paperclip", "~> 4.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
 # Use Pg as the database for Active Record
 gem 'pg'
-
 
 #Figaro was written to make it easy to securely configure Rails applications.
 gem 'figaro'
 
 # Devise is a flexible authentication solution for Rails
 gem 'devise'
-
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
