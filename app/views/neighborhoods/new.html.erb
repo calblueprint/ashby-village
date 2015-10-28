@@ -1,9 +1,0 @@
-<h1>Create New</h1>
-  <%= render 'shared/error_messages'%>
-  <%= form_for @neighborhood do |f| %>
-    Name:<%= f.text_field :title %>
-    Description: <%= f.text_field :description %>
-    Location: <%= f.text_field :location %>
-
-    <%= f.submit %>
-  <% end %>
