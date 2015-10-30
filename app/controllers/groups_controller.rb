@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @neighborhoods = Neighborhood.all.map{|u| [ u.title, u.id ] }
   end
 
   def create
@@ -24,7 +25,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group).permit(:name, :description, :neighborhood)
   end
 end
 

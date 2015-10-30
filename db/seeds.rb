@@ -53,6 +53,15 @@ def make_user_groups
   UserGroup.create! user_id: 9, group_id: 5
 end
 
+def make_neighborhoods
+  Neighborhood.create! title:'a', description:'a'
+  Neighborhood.create! title:'b', description:'a'
+  Neighborhood.create! title:'e', description:'a'
+  Neighborhood.create! title:'c', description:'a'
+  Neighborhood.create! title:'d', description:'a'
+end
+
 make_groups
 make_users
 make_user_groups
+make_neighborhoods
