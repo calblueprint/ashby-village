@@ -4,6 +4,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   # Allows for updating without requiring current password
+  def new
+    @neighborhoods = Neighborhood.all.map{|u| [ u.title, u.id ] }
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
@@ -43,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 #   If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << :attribute
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :neighborhood, :password, :password_confirmation, :phone, :photo]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -61,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def registration_params
-    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation)
+    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation, :phone, :photo)
   end
 
 #   The path used after sign up for inactive accounts.
