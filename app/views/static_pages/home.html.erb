@@ -1,3 +1,10 @@
+<%= render "users/registrations/new" %>
+
 <h1>Know what's happening</h1>
-<h2> Ashby Village Square powers group communication.
-<%= link_to "Create An Account", new_user_registration_path %>
+<h2> Ashby Village Square powers group communication.</h2>
+
+
+
+<%= link_to 'Register', "#",  data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"register"},
+		class: 'button successs radius small'
+%>
