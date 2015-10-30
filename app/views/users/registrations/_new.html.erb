@@ -31,7 +31,7 @@
               <div class="field">
                 <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
+                <% end %>
                 <h6 class=''>I would like my password to be</h6>
                 <%= f.password_field :password, autocomplete: "off", required: true, :placeholder => 'something memorable' %>
               </div>
@@ -39,12 +39,6 @@
               <div class="field">
                 <h6 class=''>Just to be sure, my password once again is</h6>
                 <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => 'something memorable' %>
-              </div>
-
-              <div class="field">
-                <h6 class=''>I currently reside in the </h6>
-                <%= f.select(:neighborhood, options_for_select(@neighborhoods)) %>
-                <h6 class=''>neighborhood</h6>
               </div>
 
               <div class="field">
@@ -63,7 +57,7 @@
             <%= f.file_field :photo %>
           </div>
           <div class="actions">
-            <%= f.submit "Submit" %>
+            <%= f.submit "Submit", class: 'button successs radius small' %>
           </div>
             </div>
         <% end %>

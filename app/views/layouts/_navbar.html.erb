@@ -1,3 +1,5 @@
+<%= render "users/sessions/new" %>
+
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="home">
@@ -18,7 +20,7 @@
         <% else %>
           <!-- if user not signed in, show these links -->
           <li><%= link_to "About", '#' %></li>
-          <li><%= link_to "Member Login", new_user_session_path %></li>
+          <li><%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %></li>
         <% end %>
       </ul>
     </ul>

@@ -2,15 +2,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
-
   # Allows for updating without requiring current password
-  def new
-    @neighborhoods = Neighborhood.all.map{|u| [ u.title, u.id ] }
-  end
-
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
+
+  def new
+    super
+    @neighborhoods = Neighborhood.all()
+    @neighborhood = Neighborhood.new(params[:neighborhood])
+  end
+
+  def create
+    super
+    @neighborhoods = Neighborhood.all()
+    @neighborhood = Neighborhood.new(params[:neighborhood])
+  end
+
+#   @neighborhoods = ['Emeryville', 'Kensington Kaleidoscope', 'Midlandish', 'Outlandish', 'North Berkeley Hills', 'Thousand Oaks Hamlet', 'Claremont-Elmwood']
 
 #   PUT /resource
   def update
