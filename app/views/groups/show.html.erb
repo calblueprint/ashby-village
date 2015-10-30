@@ -4,7 +4,7 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
-  <%= @group.neighborhood %>
+  <%= @neighborhood_name%>
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
   <% end %>

@@ -6,6 +6,10 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @users = @group.users
+
+    @nh_id = @group.neighborhood_id
+    @neighborhood = Neighborhood.find(@nh_id)
+    @neighborhood_name = @neighborhood.title
   end
 
   def new
@@ -25,7 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood)
+    params.require(:group).permit(:name, :description, :neighborhood_id)
   end
 end
 
