@@ -2,19 +2,41 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    $.ajax({
+      type: 'GET',
+      url: 'groups/',
+      success: function(data){
+          alert(data);
+          console.log(data);
+      },
+      dataType: 'json'
+    });
+
+
+
     $('#mySel').change(function(){
       var value = $(this).val();
-      $.get(neighborhoods)
       console.log(value);
-      $('label').text(value);
+      $('label').text(typeof value);
+      $.ajax({
+        type: 'GET',
+        url: 'groups/',
+        data: {ide: value},
+        success: function(data){
+            alert(data);
+            console.log(data);
+        },
+        dataType: 'json'
+      });
     });
   });
 
 </script>
 
 <select id="mySel">
+  <option selected="selected" value="all"> All </option>
   <%= @neighborhoods.each do |nh| %>
-    <option value="<%= nh.id %>"><%= nh.title %></option>
+    <option value=<%= nh.id %>><%= nh.title %></option>
   <% end %>
 </select>
 

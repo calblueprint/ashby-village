@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
+  get "groups/json/:id", to: 'groups#json'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,7 +1,22 @@
 class GroupsController < ApplicationController
+
   def index
     @groups = Group.all
     @neighborhoods = Neighborhood.all
+    # render json: @groups
+
+    if params[:ide] == nil || params[:ide] === "all"
+      groups = @groups
+    else
+      id = params[:ide].to_i
+      neighborhood = Neighborhood.find(id)
+      groups = neighborhood.groups
+    end
+
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => groups }
+    end
   end
 
   def show
@@ -11,10 +26,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-  end
-
-  def json
-    @neighborhood = Neighborhood.find(params[:id]);
   end
 
   def create
