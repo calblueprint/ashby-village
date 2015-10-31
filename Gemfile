@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Style me up, Shimmy
 gem 'foundation-rails'
 
+# Decorators
+gem 'draper'
+
 gem 'paperclip', '~> 4.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

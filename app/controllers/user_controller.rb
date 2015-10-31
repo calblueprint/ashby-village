@@ -1,6 +1,16 @@
 class UserController < ApplicationController
+
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.all.decorate
+  end
+
+  # GET /users/1
+  # GET /users/1.json
+
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).decorate
     @header = "My Profile"
 
     if @user != current_user

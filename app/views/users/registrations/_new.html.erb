@@ -42,21 +42,9 @@
               </div>
 
               <div class="field">
-                <h6 class=''>I currently reside in the </h6>
-                <%= f.select( :neighborhood, ['Kensington Kaleidoscope', 'North Berkeley Hills', 'Outlandish', 'Emeryville', 'Claremont-Elmwood', 'Midlandish', 'Thousand Oaks Hamlet'], required: true, :prompt => 'ex. Midlandish' ) %>
-                <h6 class=''>neighborhood</h6>
-              </div>
-
-              <!-- options_for_select(@neighborhoods.map { |u| [u.title, u.group_id ]})-->
-
-              <div class="field">
                 <h6 class=''>and my phone number is</h6>
                 <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567' %>
               </div>
-
-             <div class="form-inputs">
-             </div>
-
       </div>
       <div class="modal-footer">
         <div class="form-actions">

@@ -7,20 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  def new
-    super
-    @neighborhoods = Neighborhood.all()
-    @neighborhood = Neighborhood.new(params[:neighborhood])
-  end
-
-  def create
-    super
-    @neighborhoods = Neighborhood.all()
-    @neighborhood = Neighborhood.new(params[:neighborhood])
-  end
-
-#   @neighborhoods = ['Emeryville', 'Kensington Kaleidoscope', 'Midlandish', 'Outlandish', 'North Berkeley Hills', 'Thousand Oaks Hamlet', 'Claremont-Elmwood']
-
 #   PUT /resource
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
