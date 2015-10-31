@@ -1,5 +1,27 @@
 <h1>All groups</h1>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#mySel').change(function(){
+      var value = $(this).val();
+      $.get(neighborhoods)
+      console.log(value);
+      $('label').text(value);
+    });
+  });
+
+</script>
+
+<select id="mySel">
+  <%= @neighborhoods.each do |nh| %>
+    <option value="<%= nh.id %>"><%= nh.title %></option>
+  <% end %>
+</select>
+
+
+<label for="mySel">Default</label>
+
+
 <table>
   <thead>
     <tr>

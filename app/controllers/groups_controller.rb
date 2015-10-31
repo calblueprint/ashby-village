@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
+    @neighborhoods = Neighborhood.all
   end
 
   def show
@@ -10,6 +11,10 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+  end
+
+  def json
+    @neighborhood = Neighborhood.find(params[:id]);
   end
 
   def create
