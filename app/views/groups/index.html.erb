@@ -1,24 +1,31 @@
 <h1>All groups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.id %></td>
-        <td><%= group.name %></td>
-        <td><%= group.description %></td>
-        <td><button>  <%=link_to 'Learn more', group %> </button><td>
-      </tr>
+<select name="groups">
+    <% Group.all.each do |group| %>
+        <option value="<%= group.name %>"><%= group.name %></option>
     <% end %>
-  </tbody>
-</table>
+</select>
 
-<br>
+
+<button> hello </button>
+
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({
+        type: 'GET',
+        url: 'groups/',
+        success: function(data){
+            alert(data);
+        },
+        dataType: 'json'
+        });
+    });
+});
+
+</script>
+
 
 <%= link_to "Create new group", new_group_path %>
