@@ -6,9 +6,6 @@ class UserController < ApplicationController
     @users = User.all.decorate
   end
 
-  # GET /users/1
-  # GET /users/1.json
-
   def show
     @user = User.find(params[:id]).decorate
     @header = "My Profile"
