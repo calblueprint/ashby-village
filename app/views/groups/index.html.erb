@@ -12,8 +12,6 @@
       dataType: 'json'
     });
 
-
-
     $('#mySel').change(function(){
       var value = $(this).val();
       console.log(value);
@@ -23,8 +21,11 @@
         url: 'groups/',
         data: {ide: value},
         success: function(data){
-            alert(data);
+
             console.log(data);
+            for (var i = 0; i < data.length; i++) {
+              var group = data[i];
+            }
         },
         dataType: 'json'
       });
@@ -42,6 +43,10 @@
 
 
 <label for="mySel">Default</label>
+
+<body>
+<ul></ul>
+</body>
 
 
 <table>
