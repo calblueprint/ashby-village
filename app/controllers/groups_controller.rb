@@ -15,6 +15,12 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @neighborhoods = Neighborhood.all.map{|u| [ u.title, u.id ] }
+
+    if current_user
+     @user = current_user
+    else
+     redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end
   end
 
   def create
@@ -26,6 +32,11 @@ class GroupsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def member_listing
+    @group = Group.find(params[:id])
+    @members = @group.users
   end
 
   def group_params
