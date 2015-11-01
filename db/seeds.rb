@@ -53,15 +53,12 @@ def make_user_groups
   UserGroup.create! user_id: 9, group_id: 5
 end
 
-def make_neighborhoods
-  Neighborhood.create! title:'a', description:'a'
-  Neighborhood.create! title:'b', description:'a'
-  Neighborhood.create! title:'e', description:'a'
-  Neighborhood.create! title:'c', description:'a'
-  Neighborhood.create! title:'d', description:'a'
+def make_neighborhood
+  Neighborhood.create! title: 'Kensington Kaleidoscope', description: '#', group_id: 1
+  Neighborhood.create! title: 'Ashby Village', description: '#', group_id: 2
 end
 
 make_groups
 make_users
 make_user_groups
-make_neighborhoods
+make_neighborhood

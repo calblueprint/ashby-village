@@ -1,11 +1,10 @@
-<h1>User#show</h1>
 <h2><%= @header %></h2>
 
 <% if @user.photo %>
   <%= image_tag @user.photo(:thumb) %>
 <% end %>
 
-
+<h4>Name: <%= @user.full_name %> </h4>
 <h4>Email: <%= @user.email %> </h4>
 <h4>Phone: <%= @user.phone %> </h4>
 
