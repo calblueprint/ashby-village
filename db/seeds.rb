@@ -12,22 +12,22 @@ user = User.create! :first_name => 'Oprah', :last_name => 'Winfrey', :email => '
 user = User.create! :first_name => 'Ronald', :last_name => 'Swanson', :email => 'ron@test.com', :phone => '5105551234', :password => '11111111', :password_confirmation => '11111111', :neighborhood => 'Thousand Oaks Hamlet'
 
 def make_groups
-  Group.create! name: 'Movies', description: 'yo'
-  Group.create! name: 'Knitting', description: 'yo'
-  Group.create! name: 'Computer', description: 'yo'
-  Group.create! name: 'Poker', description: 'yo'
-  Group.create! name: 'Bingo', description: 'yo'
-  Group.create! name: 'Music', description: 'yo'
-  Group.create! name: 'Reading', description: 'yo'
-  Group.create! name: 'Politics', description: 'yo'
-  Group.create! name: 'Education', description: 'yo'
-  Group.create! name: 'Kites', description: 'yo'
-  Group.create! name: 'Pool', description: 'yo'
-  Group.create! name: 'Checkers', description: 'yo'
-  Group.create! name: 'Chess', description: 'yo'
-  Group.create! name: 'Frisbee', description: 'yo'
-  Group.create! name: 'Travel', description: 'yo'
-  Group.create! name: 'Television', description: 'yo'
+  Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Education', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Kites', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Pool', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Television', description: 'yo', neighborhood_id: 3
 end
 
 def make_users
