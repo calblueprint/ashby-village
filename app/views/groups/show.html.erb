@@ -4,6 +4,11 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
+  <%= @neighborhood_name%>
+  <!-- TODO: Add photo functionality -->
+  <% if @group.photo %>
+    <%= image_tag @group.photo(:medium) %>
+  <% end %>
 </h1>
 
 <%= link_to "View member listing", member_listing_path(@group) %>
