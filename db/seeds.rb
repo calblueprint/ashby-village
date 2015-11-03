@@ -56,6 +56,7 @@ end
 def make_neighborhood
   Neighborhood.create! title: 'Kensington Kaleidoscope', description: '#', group_id: 1
   Neighborhood.create! title: 'Ashby Village', description: '#', group_id: 2
+  Neighborhood.create! title: 'Outlandish', description: '#', group_id: 3
 end
 
 make_groups

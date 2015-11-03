@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Allows for human-friendly strings
+gem 'friendly_id', '~> 5.1.0'
+
 # Style me up, Shimmy
 gem 'foundation-rails'
 
