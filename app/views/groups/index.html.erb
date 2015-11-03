@@ -2,36 +2,14 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $.ajax({
-      type: 'GET',
-      url: 'groups/',
-      success: function(data){
-          alert(data);
-          console.log(data);
-      },
-      dataType: 'json'
-    });
-
     $('#mySel').change(function(){
       var value = $(this).val();
-      console.log(value);
-      $('label').text(typeof value);
-      $.ajax({
-        type: 'GET',
-        url: 'groups/',
-        data: {ide: value},
-        success: function(data){
-
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-              var group = data[i];
-            }
-        },
-        dataType: 'json'
-      });
+      $('tr').show();
+      if (value != 'all') {
+        $('tr').not('.' + value).hide();
+      }
     });
   });
-
 </script>
 
 <select id="mySel">
@@ -40,14 +18,6 @@
     <option value=<%= nh.id %>><%= nh.title %></option>
   <% end %>
 </select>
-
-
-<label for="mySel">Default</label>
-
-<body>
-<ul></ul>
-</body>
-
 
 <table>
   <thead>
@@ -58,8 +28,9 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr>
+      <tr class='<%= group.neighborhood.id %>'>
         <td><%= group.id %></td>
+        <td><%= group.neighborhood.title %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
         <td><button>  <%=link_to 'Learn more', group %> </button><td>
