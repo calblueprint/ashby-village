@@ -14,8 +14,8 @@
 
 <select id="mySel">
   <option selected="selected" value="all"> All </option>
-  <%= @neighborhoods.each do |nh| %>
-    <option value=<%= nh.id %>><%= nh.title %></option>
+  <%= @neighborhoods.each do |neighborhood| %>
+    <option value=<%= neighborhood.id %>><%= neighborhood.title %></option>
   <% end %>
 </select>
 
