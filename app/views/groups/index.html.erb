@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#mySel').change(function(){
+    $('.mySel').change(function(){
       var value = $(this).val();
       $('tr').show();
       if (value != 'all') {
@@ -12,7 +12,7 @@
   });
 </script>
 
-<select id="mySel">
+<select class="mySel">
   <option selected="selected" value="all"> All </option>
   <%= @neighborhoods.each do |neighborhood| %>
     <option value=<%= neighborhood.id %>><%= neighborhood.title %></option>
