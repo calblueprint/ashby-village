@@ -1,7 +1,13 @@
 source 'https://rubygems.org'
 
+# Allows for human-friendly strings
+gem 'friendly_id', '~> 5.1.0'
+
 # Style me up, Shimmy
 gem 'foundation-rails'
+
+# Decorators
+gem 'draper'
 
 gem 'paperclip', '~> 4.3'
 
@@ -23,11 +29,11 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Use React to build UI components
+gem 'react-rails', '~> 1.4.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

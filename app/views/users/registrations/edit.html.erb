@@ -4,22 +4,22 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %>*<br />
+    <%= f.label :first_name %>
     <%= f.text_field :first_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %>*<br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label :phone %>
     <%= f.text_field :phone, autofocus: true %>
   </div>
 
@@ -31,7 +31,9 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+
 <% end %>
+
 
 <h3>Cancel my account</h3>
 

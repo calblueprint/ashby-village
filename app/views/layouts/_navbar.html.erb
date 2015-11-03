@@ -1,3 +1,5 @@
+<%= render "users/sessions/new" %>
+
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="home">
@@ -13,12 +15,12 @@
           <li><%= link_to "My Groups",   '#' %></li>
           <li><%= link_to "Neighborhoods",  '#' %></li>
           <li><%= link_to "My Profile", current_user %></li>
-          <li><%= link_to "Account Settings", '#' %></li>
+          <li><%= link_to "Account Settings", edit_user_password_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <!-- if user not signed in, show these links -->
           <li><%= link_to "About", '#' %></li>
-          <li><%= link_to "Member Login", new_user_session_path %></li>
+          <li><%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %></li>
         <% end %>
       </ul>
     </ul>

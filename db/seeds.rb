@@ -24,19 +24,19 @@ def make_groups
   Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1
   Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1
   Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1
-  Group.create! name: 'Poker', description: 'yo', neighborhood_id: 3
-  Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 4
-  Group.create! name: 'Music', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1
   Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1
-  Group.create! name: 'Politics', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2
   Group.create! name: 'Education', description: 'yo', neighborhood_id: 2
-  Group.create! name: 'Kites', description: 'yo', neighborhood_id: 1
-  Group.create! name: 'Pool', description: 'yo', neighborhood_id: 3
-  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 5
-  Group.create! name: 'Chess', description: 'yo', neighborhood_id: 6
-  Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 4
-  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 5
-  Group.create! name: 'Television', description: 'yo', neighborhood_id: 6
+  Group.create! name: 'Kites', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Pool', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2
+  Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Television', description: 'yo', neighborhood_id: 3
 end
 
 def make_users
@@ -62,7 +62,13 @@ def make_user_groups
   UserGroup.create! user_id: 9, group_id: 5
 end
 
+def make_neighborhood
+  Neighborhood.create! title: 'Kensington Kaleidoscope', description: '#', group_id: 1
+  Neighborhood.create! title: 'Ashby Village', description: '#', group_id: 2
+  Neighborhood.create! title: 'Outlandish', description: '#', group_id: 3
+end
+
 make_groups
 make_users
 make_user_groups
-make_neighborhoods
+make_neighborhood
