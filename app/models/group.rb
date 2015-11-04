@@ -1,7 +1,8 @@
 class Group < ActiveRecord::Base
-	enum kind: [:social, :neighborhood, :committee]
   extend FriendlyId
   friendly_id :name, :use => :slugged
+
+	enum kind: [:social, :neighborhood, :committee]
 
 	belongs_to :neighborhood
 
