@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  enum kind: [:Social, :Neighborhood, :Committee]
+
   extend FriendlyId
   friendly_id :name, :use => :slugged
 

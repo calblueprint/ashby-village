@@ -21,7 +21,7 @@ def make_neighborhoods
 end
 
 def make_groups
-  Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1
+  Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1
   Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1
   Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1
   Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1
@@ -37,6 +37,7 @@ def make_groups
   Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3
   Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3
   Group.create! name: 'Television', description: 'yo', neighborhood_id: 3
+  Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2
 end
 
 def make_users
