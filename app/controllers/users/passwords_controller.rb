@@ -10,7 +10,7 @@ class Users::PasswordsController < Devise::PasswordsController
   end
 
   def update
-    self.resource = resource_class.reset_password_by_token(params[resource_name])
+    # self.resource = resource_class.reset_password_by_token(params[resource_name])
     if resource.errors.empty?
       sign_out(resource_name)
       sign_in(resource_name, resource)
