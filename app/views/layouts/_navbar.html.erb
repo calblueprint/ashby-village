@@ -1,9 +1,9 @@
 <%= render "users/sessions/new" %>
 
-<nav class="top-bar" data-topbar role="navigation">
+<nav class="sticky top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="home">
-      <%= link_to "Ashby Village", root_path %>
+      <%= link_to image_tag("ashby_village_icon.png"), root_path %>
     </li>
   </ul>
   <section class="top-bar-section">
@@ -13,7 +13,6 @@
         <!-- if user signed in, show profile, account settings, and sign out button -->
         <% if user_signed_in? %>
           <li><%= link_to "My Groups",   '#' %></li>
-          <li><%= link_to "Neighborhoods",  '#' %></li>
           <li><%= link_to "My Profile", current_user %></li>
           <li><%= link_to "Account Settings", edit_user_password_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
