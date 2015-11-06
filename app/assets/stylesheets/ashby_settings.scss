@@ -8,4 +8,18 @@ $ashby-gray: #7F8C8D;
 $ashby-green: #27AE60;
 $ashby-tan: #F7F5F2;
 
-$white: #FFFFFF;
+// FONT SIZES
+$h1-heading-size: 64px;
+$h2-heading-size: 48px;
+$h3-heading-size: 32px;
+$body-font-size: 16px;
+
+// GLOBAL FONT
+* {
+	font-family: 'Lato', sans-serif;
+}
+
+// BACKGROUND COLOR
+body {
+	background-color: $ashby-tan;
+}
