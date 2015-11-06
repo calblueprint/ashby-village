@@ -21,7 +21,7 @@ class UserController < ApplicationController
     end
   end
 
-  def edit_password
-    render :template => "users/registrations/edit_password"
+  def edit_profile
+    render :template => "users/registrations/edit_profile"
   end
 end

@@ -1,0 +1,37 @@
+<!-- NOT WORKING! What to do next: So we currently render the view to edit password. Next need to change this to the edit profile page instead of edit_password.  And in the original devise registrations edit page, have people change their password there.  Then figure out the controller stuffs. -->
+
+<h2>Edit Profile</h2>
+
+<%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: 'button successs radius small' %>
+  </div>
+
+<% end %>

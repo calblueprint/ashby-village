@@ -15,7 +15,7 @@
           <li><%= link_to "My Groups",   '#' %></li>
           <li><%= link_to "Neighborhoods",  '#' %></li>
           <li><%= link_to "My Profile", current_user %></li>
-          <li><%= link_to "Account Settings", user_edit_password_path %></li>
+          <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <!-- if user not signed in, show these links -->

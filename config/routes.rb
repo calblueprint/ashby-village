@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
 
-  get 'user/edit_password', to: "user#edit_password"
+  get 'user/edit_profile', to: "user#edit_profile"
 
   get 'user/show'
 
