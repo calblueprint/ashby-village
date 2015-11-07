@@ -2,29 +2,29 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    var selectedKind = $('.selectKind').val();
-    var selectedNeighborhood = $('.selectNeighborhoods').val();
+    var selectKind = $('.selectKind').val();
+    var selectNeighborhood = $('.selectNeighborhoods').val();
 
     function groupList(selKind, selNeighborhood) {
       $('tr').show();
       if (selKind != 'all' && selNeighborhood != 'all') {
-        $('tr').not('.' + selectedNeighborhood).hide();
-        $('tr').not('.' + selectKind).hide();
-      } else if (selKind == 'all' && selNeighborhood != 'all') {
-        $('tr').not('.' + selectedNeighborhood).hide();
+        $('tr').not('.' + selNeighborhood).hide();
+        $('tr').not('.' + selKind).hide();
+      } else if (selectKind == 'all' && selNeighborhood != 'all') {
+        $('tr').not('.' + selNeighborhood).hide();
       } else if (selNeighborhood == 'all' && selKind != 'all') {
         $('tr').not('.' + selectKind).hide();
       }
     }
 
     $('.selectKind').change(function(){
-      selectedKind = $(this).val();
-      groupList(selectedKind, selectedNeighborhood);
+      selectKind = $(this).val();
+      groupList(selectKind, selectNeighborhood);
     });
 
     $('.selectNeighborhoods').change(function(){
-      selectedNeighborhood = $(this).val();
-      groupList(selectedKind, selectedNeighborhood);
+      selectNeighborhood = $(this).val();
+      groupList(selectKind, selectNeighborhood);
     });
   });
 </script>
@@ -33,15 +33,15 @@
 
 <select class="selectKind">
   <option selected="selected" value="all"> All </option>
-    <option value='0'> Social </option>
-    <option value='1'> Neighborhood </option>
-    <option value='2'> Committee </option>
+    <option value="social"> Social </option>
+    <option value="neighborhood"> Neighborhood </option>
+    <option value="committee"> Committee </option>
 </select>
 
 <select class="selectNeighborhoods">
   <option selected="selected" value="all"> All </option>
   <%= @neighborhoods.each do |neighborhood| %>
-    <option value=<%= neighborhood.id %>><%= neighborhood.title %></option>
+    <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
   <% end %>
 </select>
 
@@ -54,11 +54,12 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr class='<%= group.neighborhood.id %> <%= group.kind %>'>
+      <tr class="<%= group.neighborhood.id %> <%= group.kind %>">
         <td><%= group.id %></td>
-        <td><%= group.neighborhood.title %></td>
+        <td><%= group.neighborhood.name %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
+        <td><%= group.kind %></td>
         <td><button>  <%=link_to 'Learn more', group %> </button><td>
       </tr>
     <% end %>
