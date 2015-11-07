@@ -7,19 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-user = User.create! :first_name => 'Betty', :last_name => 'White', :email => 'betty@test.com', :phone => '5105551234', :password => '11111111', :password_confirmation => '11111111', :neighborhood => 'Outlandish'
-user = User.create! :first_name => 'Oprah', :last_name => 'Winfrey', :email => 'oprah@test.com', :phone => '5105551234', :password => '11111111', :password_confirmation => '11111111', :neighborhood => 'Midlandish'
-user = User.create! :first_name => 'Ronald', :last_name => 'Swanson', :email => 'ron@test.com', :phone => '5105551234', :password => '11111111', :password_confirmation => '11111111', :neighborhood => 'Thousand Oaks Hamlet'
-
-def make_neighborhoods
-  Neighborhood.create! title: 'Kensington'
-  Neighborhood.create! title: 'Emeryville'
-  Neighborhood.create! title: 'Claremont'
-  Neighborhood.create! title: 'Berkeley'
-  Neighborhood.create! title: 'El Cerrito'
-  Neighborhood.create! title: 'Ashby Village'
-end
-
 def make_groups
   Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1
   Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1
@@ -64,9 +51,9 @@ def make_user_groups
 end
 
 def make_neighborhood
-  Neighborhood.create! title: 'Kensington Kaleidoscope', description: '#', group_id: 1
-  Neighborhood.create! title: 'Ashby Village', description: '#', group_id: 2
-  Neighborhood.create! title: 'Outlandish', description: '#', group_id: 3
+  Neighborhood.create! name: 'Kensington Kaleidoscope', description: '#'
+  Neighborhood.create! name: 'Ashby Village', description: '#'
+  Neighborhood.create! name: 'Outlandish', description: '#'
 end
 
 make_groups

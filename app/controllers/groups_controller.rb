@@ -8,15 +8,13 @@ class GroupsController < ApplicationController
   def show
     @group = Group.friendly.find(params[:id])
     @users = @group.users
-
-    @nh_id = @group.neighborhood_id
-    @neighborhood = Neighborhood.find(@nh_id)
-    @neighborhood_name = @neighborhood.title
+    @neighborhood = Neighborhood.find(@group.neighborhood_id)
+    @neighborhood_name = @neighborhood.name
   end
 
   def new
     @group = Group.new
-    @neighborhoods = Neighborhood.all.map{|u| [ u.title, u.id ] }
+    @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
 
     if current_user
      @user = current_user
@@ -37,7 +35,7 @@ class GroupsController < ApplicationController
   end
 
   def member_listing
-    @group = Group.find(params[:id])
+    @group = Group.friendly.find(params[:id])
     @members = @group.users
   end
 
