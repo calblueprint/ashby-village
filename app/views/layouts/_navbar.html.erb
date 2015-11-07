@@ -17,7 +17,7 @@
             <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
           </li>
           <li class="my-profile has-dropdown hover">
-            <%= link_to image_tag("temp_profile_picture.jpg") + "My Profile", current_user %>
+            <%= link_to image_tag("temp_profile_picture.jpg") + current_user.first_name + " " + current_user.last_name, current_user %>
             <ul class="dropdown">
               <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
               <li><a href="#"><%= link_to "Account Settings", edit_user_password_path %></a></li>
