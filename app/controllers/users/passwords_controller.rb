@@ -1,23 +1,15 @@
 class Users::PasswordsController < Devise::PasswordsController
-  skip_before_filter :require_no_authentication, :only => [:edit, :update]
+  # skip_before_filter :require_no_authentication, :only => [:edit, :update]
 
-  # def new
-  #   super
+  # def update
+  #   if current_account.update_with_password(params[:account])
+  #     sign_in(current_account, :bypass => true)
+  #     flash[:notice] = 'Password updated.'
+  #     redirect_to account_path
+  #   else
+  #     render :action => :show
+  #   end
   # end
-
-  # def edit
-  #   super
-  # end
-
-  def update
-    if current_account.update_with_password(params[:account])
-      sign_in(current_account, :bypass => true)
-      flash[:notice] = 'Password updated.'
-      redirect_to account_path
-    else
-      render :action => :show
-    end
-  end
 
   # GET /resource/password/new
   # def new
