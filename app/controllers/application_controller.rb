@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :email << :phone << :photo << :password << :password_confirmation << :current_password
   end
 
+  # Devise proides a current_user helper.
+  # However, this helper returns an instance of User - without your decorators.
+  # This enable decorators.
+  def current_user
+    UserDecorator.decorate(super) unless super.nil?
+  end
+
 end
