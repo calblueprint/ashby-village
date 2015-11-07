@@ -20,4 +20,8 @@ class UserController < ApplicationController
       redirect_to user_path
     end
   end
+
+  def edit_profile
+    render :template => "users/registrations/edit_profile"
+  end
 end
