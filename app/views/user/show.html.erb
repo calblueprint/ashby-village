@@ -1,7 +1,7 @@
 <h2><%= @header %></h2>
 
 <% if @user.photo %>
-  <%= image_tag @user.photo(:thumb) %>
+  <%= image_tag @user.photo.url(:thumb) %>
 <% end %>
 
 <h4>Name: <%= @user.full_name %> </h4>
