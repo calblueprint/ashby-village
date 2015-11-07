@@ -11,21 +11,28 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <ul class="nav navbar-nav navbar-right">
-        <!-- if user signed in, show profile, account settings, and sign out button -->
+
         <% if user_signed_in? %>
 
+          <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-groups">
             <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
           </li>
-          <li class="my-profile"><%= link_to "My Profile", current_user %></li>
+          <li class="my-profile has-dropdown hover">
+            <%= link_to image_tag("temp_profile_picture.jpg") + "My Profile", current_user %>
+            <ul class="dropdown">
+              <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
+              <li><a href="#"><%= link_to "Account Settings", edit_user_password_path %></a></li>
+              <li><a href="#"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></a></li>
+            </ul>
+          </li>
 
-
-          <li><%= link_to "Account Settings", edit_user_password_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% else %>
+
           <!-- if user not signed in, show these links -->
           <li><%= link_to "About", '#' %></li>
           <li><%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %></li>
+
         <% end %>
       </ul>
     </ul>
