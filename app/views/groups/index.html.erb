@@ -5,23 +5,26 @@
     var selectedKind = $('.selectKind').val();
     var selectedNeighborhood = $('.selectNeighborhoods').val();
 
-    function groupList(selKind, selNeighborhood)
+    function groupList(selKind, selNeighborhood) {
+      $('tr').show();
+      if (selKind != 'all' && selNeighborhood != 'all') {
+        $('tr').not('.' + selectedNeighborhood).hide();
+        $('tr').not('.' + selectKind).hide();
+      } else if (selKind == 'all' && selNeighborhood != 'all') {
+        $('tr').not('.' + selectedNeighborhood).hide();
+      } else if (selNeighborhood == 'all' && selKind != 'all') {
+        $('tr').not('.' + selectKind).hide();
+      }
+    }
 
     $('.selectKind').change(function(){
-      selectKind = $(this).val();
-      $('table').show()
-      if (selectKind != 'all' && selectedNeighborhood != 'all') {
-        $('tr').not('.' + selectedNeighborhood, '.' + selectKind).hide()
-      }
-      else if (selectKind == 'all') {
-
-      }
+      selectedKind = $(this).val();
+      groupList(selectedKind, selectedNeighborhood);
     });
 
-    $('.selNeighborhoods').change(function(){
+    $('.selectNeighborhoods').change(function(){
       selectedNeighborhood = $(this).val();
-      $('table').show()
-      $('tr').not('.' + selectedNeighborhood, '.' + selectKind).hide()
+      groupList(selectedKind, selectedNeighborhood);
     });
   });
 </script>
@@ -38,7 +41,7 @@
 <select class="selectNeighborhoods">
   <option selected="selected" value="all"> All </option>
   <%= @neighborhoods.each do |neighborhood| %>
-    <option value=<%= neighborhood %>><%= neighborhood.title %></option>
+    <option value=<%= neighborhood.id %>><%= neighborhood.title %></option>
   <% end %>
 </select>
 
@@ -51,7 +54,7 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr class='<%= group.neighborhood %> <%= group.kind %>'>
+      <tr class='<%= group.neighborhood.id %> <%= group.kind %>'>
         <td><%= group.id %></td>
         <td><%= group.neighborhood.title %></td>
         <td><%= group.name %></td>
