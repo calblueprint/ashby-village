@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
     <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Lato:400,400italic,900", media: "all" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
