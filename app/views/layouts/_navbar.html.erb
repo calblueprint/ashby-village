@@ -12,13 +12,12 @@
     <ul class="right">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-<<<<<<< HEAD
           <li><%= link_to "My Groups",   '#' %></li>
           <li><%= link_to "Neighborhoods",  '#' %></li>
           <li><%= link_to "My Profile", current_user %></li>
           <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-=======
+
           <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-groups">
             <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
@@ -31,7 +30,7 @@
               <li><a href="#"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></a></li>
             </ul>
           </li>
->>>>>>> master
+
         <% else %>
           <!-- if user not signed in, show these links -->
           <li><%= link_to "About", '#' %></li>
