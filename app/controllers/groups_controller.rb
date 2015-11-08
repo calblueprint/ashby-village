@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
+
   def index
     @groups = Group.all
+    @neighborhoods = Neighborhood.all
   end
 
   def show

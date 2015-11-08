@@ -1,5 +1,19 @@
 <h1>All groups</h1>
-
+<h5> Show me
+  <select class="selectKind">
+    <option selected="selected" value="all"> All </option>
+      <option value="social"> Social </option>
+      <option value="neighborhood"> Neighborhood </option>
+      <option value="committee"> Committee </option>
+  </select>
+  groups in <select class="selectNeighborhoods">
+    <option selected="selected" value="all"> All </option>
+    <%= @neighborhoods.each do |neighborhood| %>
+      <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
+    <% end %>
+  </select>
+.
+</h5>
 <table>
   <thead>
     <tr>
@@ -9,10 +23,23 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.id %></td>
+      <tr class="<%= group.neighborhood.id %> <%= group.kind %>">
+        <td><% if group.photo %>
+          <%= image_tag group.photo(:thumb) %>
+        <% end %></td>
+        <td><%= group.neighborhood.name %></td>
         <td><%= group.name %></td>
-        <td><%= group.description %></td>
+        <td>
+          members: <% group.users.last(4).each do |user|%>
+            <% if user.photo %>
+              <%= image_tag user.photo(:thumb) %>
+            <% end %>
+          <% end %>
+          <% if group.users.count > 4 %>
+            <%= '+' + group.users.count %>
+          <% end %>
+        </td>
+        <td><%= group.kind %></td>
         <td><button>  <%=link_to 'Learn more', group %> </button><td>
       </tr>
     <% end %>

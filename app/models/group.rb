@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
