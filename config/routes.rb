@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   ##################################################
   resources :groups
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
+
   # get 'groups/:id', to: 'users#show'
+
 end
