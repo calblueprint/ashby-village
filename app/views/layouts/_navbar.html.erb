@@ -1,7 +1,7 @@
 <%= render "users/sessions/new" %>
 
-<div class="nav-container fixed">
-<nav class="sticky top-bar" data-topbar role="navigation">
+<div class="fixed contain-to-grid">
+<nav class="fixed top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="home left">
       <%= link_to image_tag("ashby_village_icon.png"), root_path %>
@@ -17,7 +17,7 @@
             <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
           </li>
           <li class="my-profile has-dropdown hover">
-            <%= link_to image_tag(current_user.photo) + current_user.full_name, current_user %>
+            <%= link_to image_tag(current_user.photo(:thumb)) + current_user.full_name, current_user %>
             <ul class="dropdown">
               <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
               <li><a href="#"><%= link_to "Account Settings", edit_user_password_path %></a></li>
