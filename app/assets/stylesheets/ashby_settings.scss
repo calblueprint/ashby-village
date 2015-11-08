@@ -1,0 +1,26 @@
+// Global styles for Ashby Village Square
+
+// COLOR PALETTE
+$ashby-dark-blue: #34495E;
+$ashby-light-blue: #4A90E2;
+$ashby-black: #2D3339;
+$ashby-gray: #7F8C8D;
+$ashby-green: #27AE60;
+$ashby-tan: #F7F5F2;
+
+// FONT SIZES
+$h1-heading-size: 64px;
+$h2-heading-size: 48px;
+$h3-heading-size: 32px;
+$body-font-size: 16px;
+$subtext-font-size: 14px;
+
+// GLOBAL FONT
+* {
+	font-family: 'Lato', sans-serif;
+}
+
+// BACKGROUND COLOR
+body {
+	background-color: $ashby-tan;
+}
