@@ -9,7 +9,7 @@ $(document).ready(function(){
       $('tr').not('.' + selKind).hide();
     } else if (selKind == 'all' && selNeighborhood != 'all') {
       $('tr').not('.' + selNeighborhood).hide();
-    } else if (selKind == 'all' && selNeighborhood != 'all') {
+    } else if (selKind != 'all' && selNeighborhood == 'all') {
       $('tr').not('.' + selKind).hide();
     }
   }
