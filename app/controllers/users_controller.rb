@@ -33,21 +33,19 @@ class UsersController < ApplicationController
   # end
 
   def update
-  @user = User.find(params[:id])
-  respond_to do |format|
-    if @user.update_without_password(params[:user])
-      format.html { redirect_to root_url, flash[:notice] = SUCCESSFUL_REGISTRATION_UPDATE_MSG }
-      format.json { head :no_content }
+    @user = User.find(params[:id])
+    if @user.save
+      @user.update_attributes(user_params)
+      flash[:notice] = "Profile updated!"
+      redirect_to user_path
     else
-      format.html { render action: "edit" }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+      render action: "edit"
     end
-   end
-end
+  end
 
-  private
+  # private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone)
+    params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end
 
 end
