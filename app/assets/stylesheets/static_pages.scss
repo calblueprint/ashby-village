@@ -3,3 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "ashby_settings.scss";
+
+
+.full-modal
+{
+  max-width:initial;
+  max-height: initial;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: fixed;
+  top:0;
+  right:0;
+  overflow-y: scroll;
+}
