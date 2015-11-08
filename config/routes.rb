@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :groups
-  # resources :profile
 
   authenticated :user do
     root :to => "groups#index", :as => "authenticated_root"
@@ -9,13 +8,11 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
+  devise_for :users, :path => '',
+  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'},
+  :controllers => { :registrations => 'users/registrations' }
 
-  get 'user/edit_profile', to: 'user#edit_profile'
-
-  get 'user/show'
-
-  get 'user/:id', to: "user#show", as: 'user'
+  resources :users, :only => [:show, :edit, :update]
 
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
