@@ -3,5 +3,6 @@
 .group-tile {
 	background-color: white;
 	border-radius: 8px;
+	margin-bottom: 8px !important; // To override foundation's row class
 	padding: 24px;
 }

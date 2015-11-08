@@ -27,7 +27,8 @@
       <%= react_component('GroupTile', {
         name: group.name,
         kind: group.kind,
-        neighborhood: group.neighborhood.name
+        neighborhood: group.neighborhood.name,
+        member_count: group.users.count
       }) %>
 
       <tr>
