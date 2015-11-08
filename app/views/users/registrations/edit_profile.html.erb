@@ -4,7 +4,6 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= user_path(@user) %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name, autofocus: true, :value => @user.first_name %>
   </div>
