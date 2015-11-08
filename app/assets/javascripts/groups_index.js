@@ -1,26 +1,26 @@
 $(document).ready(function(){
   var selectKind = $('.selectKind').val();
-  var selectNeighborhood = $('.selectNeighborhoods').val();
+  var selectNeighborhoods = $('.selectNeighborhoods').val();
 
   function groupList(selKind, selNeighborhood) {
     $('tr').show();
     if (selKind != 'all' && selNeighborhood != 'all') {
       $('tr').not('.' + selNeighborhood).hide();
       $('tr').not('.' + selKind).hide();
-    } else if (selectKind == 'all' && selNeighborhood != 'all') {
+    } else if (selKind == 'all' && selNeighborhood != 'all') {
       $('tr').not('.' + selNeighborhood).hide();
-    } else if (selNeighborhood == 'all' && selKind != 'all') {
-      $('tr').not('.' + selectKind).hide();
+    } else if (selKind == 'all' && selNeighborhood != 'all') {
+      $('tr').not('.' + selKind).hide();
     }
   }
 
   $('.selectKind').change(function(){
     selectKind = $(this).val();
-    groupList(selectKind, selectNeighborhood);
+    groupList(selectKind, selectNeighborhoods);
   });
 
   $('.selectNeighborhoods').change(function(){
-    selectNeighborhood = $(this).val();
-    groupList(selectKind, selectNeighborhood);
+    selectNeighborhoods = $(this).val();
+    groupList(selectKind, selectNeighborhoods);
   });
 });
