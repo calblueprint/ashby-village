@@ -11,7 +11,7 @@ $ashby-tan: #F7F5F2;
 // FONT SIZES
 $h1-heading-size: 64px;
 $h2-heading-size: 48px;
-$h3-heading-size: 32px;
+$h3-heading-size: 24px;
 $body-font-size: 16px;
 $subtext-font-size: 14px;
 
@@ -29,6 +29,11 @@ h3 {
 
 p {
 	font-size: $body-font-size;
+}
+
+h6 {
+	font-size: $subtext-font-size;
+	color: $ashby-gray;
 }
 
 // GLOBAL FONT

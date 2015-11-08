@@ -5,7 +5,7 @@ var GroupTile = React.createClass({
 		return (
 			<div className="group-tile row">
 				<h3>{this.props.name}</h3>
-				<p>{this.props.kind.toUpperCase()} GROUP IN {this.props.neighborhood.toUpperCase()}</p>
+				<h6>{this.props.kind.toUpperCase()} GROUP IN {this.props.neighborhood.toUpperCase()}</h6>
 			</div>
 		)
 	}
