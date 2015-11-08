@@ -4,9 +4,7 @@
 
 @import "ashby_settings.scss";
 
-
-.full-modal
-{
+.full-modal {
   max-width:initial;
   max-height: initial;
   width:100%;
@@ -17,4 +15,10 @@
   top:0;
   right:0;
   overflow-y: scroll;
+}
+
+.input-form {
+  border-top: 0;
+  border-bottom: 0;
+  background: transparent;
 }
