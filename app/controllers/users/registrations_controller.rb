@@ -2,11 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
-# Allows for updating without requiring current password
-  # def update_resource(resource, params)
-  #   resource.update_without_password(params)
-  # end
-
 #   PUT /resource
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
