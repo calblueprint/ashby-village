@@ -16,7 +16,7 @@
           <li class="my-groups">
             <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
           </li>
-          <li class="my-profile hover has-dropdown">
+          <li class="my-profile has-dropdown not-click">
             <%= link_to image_tag(current_user.photo(:thumb)) + current_user.full_name, current_user %>
             <ul class="dropdown">
               <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
