@@ -2,12 +2,12 @@
 
 <% if @user.photo %>
   <%= image_tag @user.photo.url(:thumb) %>
-<% end %>
+<% end %><br />
 
 <h4>Name: <%= @user.full_name %> </h4>
 <h4>Email: <%= @user.email %> </h4>
 <h4>Phone: <%= @user.phone %> </h4>
 
 <% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
+  <%= link_to 'Edit Profile', edit_user_path %>
 <% end %>

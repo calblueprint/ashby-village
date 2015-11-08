@@ -45,13 +45,14 @@
                 <h6 class=''>and my phone number is</h6>
                 <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567' %>
               </div>
+
+              <div class="field">
+                <h6 class=''>So others can recognize me, here is a photo of me:</h6>
+                <%= f.file_field :photo %>
+              </div>
       </div>
       <div class="modal-footer">
         <div class="form-actions">
-          <div class="field">
-            <h6 class=''>So others can recognize me, here is a photo of me:</h6>
-            <%= f.file_field :photo %>
-          </div>
           <div class="actions">
             <%= f.submit "Submit", class: 'button successs radius small' %>
           </div>
