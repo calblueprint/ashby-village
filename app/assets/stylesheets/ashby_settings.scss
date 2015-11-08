@@ -32,6 +32,7 @@ p {
 }
 
 h6 {
+	box-sizing: border-box;
 	font-size: $subtext-font-size;
 	color: $ashby-gray;
 }
