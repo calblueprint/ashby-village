@@ -2,10 +2,11 @@
 
 <h2>Edit Profile</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= user_path(@user) %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name, autofocus: true %>
   </div>
