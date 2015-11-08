@@ -9,6 +9,13 @@
 
   <tbody>
     <% @groups.each do |group| %>
+
+      <%= react_component('GroupTile', {
+        name: group.name,
+        kind: group.kind,
+        neighborhood: group.neighborhood.name
+      }) %>
+
       <tr>
         <td><%= group.id %></td>
         <td><%= group.name %></td>

@@ -15,6 +15,22 @@ $h3-heading-size: 32px;
 $body-font-size: 16px;
 $subtext-font-size: 14px;
 
+h1 {
+	font-size: $h1-heading-size;
+}
+
+h2 {
+	font-size: $h2-heading-size;
+}
+
+h3 {
+	font-size: $h3-heading-size;
+}
+
+p {
+	font-size: $body-font-size;
+}
+
 // GLOBAL FONT
 * {
 	font-family: 'Lato', sans-serif;
