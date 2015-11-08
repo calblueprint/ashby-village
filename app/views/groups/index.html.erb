@@ -2,6 +2,7 @@
 <h5> Show me
   <select class="selectKind">
     <option selected="selected" value="all"> All </option>
+      <option value="true"> My </option>
       <option value="social"> Social </option>
       <option value="neighborhood"> Neighborhood </option>
       <option value="committee"> Committee </option>
@@ -23,7 +24,7 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr class="<%= group.neighborhood.id %> <%= group.kind %>">
+      <tr class="<%= group.neighborhood.id %> <%= group.kind %> <%= group.users.exists?(current_user.id)%>">
         <td><% if group.photo %>
           <%= image_tag group.photo(:thumb) %>
         <% end %></td>
