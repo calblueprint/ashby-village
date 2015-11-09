@@ -4,7 +4,8 @@
 
 .banner_text {
   font-style: bold;
-  color: #ffffff;
+  font-color: #FFFFFF;
+  padding-bottom: 150px;
 }
 
 .landing {
@@ -16,6 +17,28 @@
 
 .footer {
   font-style: strong;
+}
+
+.columns{
+
+}
+
+.communications{
+  background: url("communications.jpg") transparent center center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.groups{
+  background: url("groups.jpg") transparent center center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.events{
+  background: url("events.jpg") transparent center center no-repeat;
+  width: 100%;
+  height: 100%;
 }
 
 @import "ashby_settings.scss";
