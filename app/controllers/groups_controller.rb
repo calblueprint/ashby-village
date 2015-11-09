@@ -17,7 +17,8 @@ class GroupsController < ApplicationController
     @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
 
     if current_user
-     @user = current_user
+     @newGroupID = @group.id
+     current_user.user-groups.find(@newGroupID).is_leader? = true
     else
      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
