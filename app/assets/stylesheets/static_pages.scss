@@ -2,16 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "ashby_settings.scss";
-
-#landing {
+.banner_text {
+  font-style: bold;
   color: #ffffff;
-  background: url("bg_main.jpg") transparent center center no-repeat;
-  background-size: cover;
+}
+
+.landing {
   text-align: center;
+  background: url("bg_main.jpg") transparent no-repeat;
+  background-size: contain;
   padding: 200px;
 }
 
-#footer {
-
+.footer {
+  font-style: strong;
 }
+
+@import "ashby_settings.scss";
