@@ -19,7 +19,7 @@
 
 .landing {
   text-align: center;
-  background: url(bg_main.jpg) transparent no-repeat;
+  background: image-url("bg_main.jpg") transparent no-repeat;
   background-size: contain;
   background-position: 0% -50%;
   padding: 200px;
@@ -30,19 +30,19 @@
 }
 
 .communications{
-  background: url("communications.jpg") transparent center center no-repeat;
+  background: image-url("communications.jpg") transparent center center no-repeat;
   width: 100%;
   height: 100%;
 }
 
 .groups{
-  background: url("groups.jpg") transparent center center no-repeat;
+  background: image-url("groups.jpg") transparent center center no-repeat;
   width: 100%;
   height: 100%;
 }
 
 .events{
-  background: url("events.jpg") transparent center center no-repeat;
+  background: image-url("events.jpg") transparent center center no-repeat;
   width: 100%;
   height: 100%;
 }
