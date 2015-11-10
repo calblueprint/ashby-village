@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @neighborhood_name = @neighborhood.name
   end
 
-def new
+  def new
     if current_user
       @group = Group.new
       @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
