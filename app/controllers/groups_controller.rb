@@ -41,8 +41,9 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    # TODO (Nikita): Find all members that have this Group's correponding UserGroups and that have is_member: true
-    end
+    user_ids = @group.user_groups.where(is_member: true).pluck(:user_id)
+    @members = User.find_by(id: user_ids)
+  end
 
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id)
