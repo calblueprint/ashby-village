@@ -38,17 +38,6 @@ def make_users
   User.create! first_name: 'Ajay', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
 end
 
-def make_users_groups
-  UserGroup.create! user_id: 1, group_id: 1
-  UserGroup.create! user_id: 2, group_id: 1
-  UserGroup.create! user_id: 3, group_id: 1
-  UserGroup.create! user_id: 4, group_id: 2
-  UserGroup.create! user_id: 5, group_id: 3
-  UserGroup.create! user_id: 6, group_id: 3
-  UserGroup.create! user_id: 7, group_id: 4
-  UserGroup.create! user_id: 8, group_id: 4
-  UserGroup.create! user_id: 9, group_id: 5
-end
 
 def make_neighborhood
   Neighborhood.create! name: 'Kensington Kaleidoscope', description: '#'
@@ -58,5 +47,4 @@ end
 
 make_groups
 make_users
-make_users_groups
 make_neighborhood
