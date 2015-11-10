@@ -41,7 +41,6 @@ def new
   def member_listing
     @group = Group.friendly.find(params[:id])
     user_ids = @group.user_groups.pluck(:user_id)
-    byebug
     @members = User.where(id: user_ids)
   end
 
