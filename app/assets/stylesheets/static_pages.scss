@@ -2,25 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "ashby_settings.scss";
+
 .banner_text {
   font-style: bold;
-  font-color: #FFFFFF;
   padding-bottom: 150px;
+}
+
+.banner_text h1, h4 {
+  color: white;
+}
+
+.columns p {
+  color: $ashby-gray;
 }
 
 .landing {
   text-align: center;
   background: url("bg_main.jpg") transparent no-repeat;
   background-size: contain;
+  background-position: 0% -50%;
   padding: 200px;
 }
 
 .footer {
   font-style: strong;
-}
-
-.columns{
-
 }
 
 .communications{
@@ -40,5 +46,3 @@
   width: 100%;
   height: 100%;
 }
-
-@import "ashby_settings.scss";
