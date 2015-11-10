@@ -1,8 +1,22 @@
 // The React file defining each group tile.
+
+var JoinButton = React.createClass({
+	render: function() {
+		return (
+			<button>
+				Join Group
+			</button>
+		);
+	}
+});
+
 var MemberSection = React.createClass({
 	render: function() {
 		return (
-			<h6>{this.props.member_count} MEMBERS</h6>
+			<div className="member-section">
+				<img src={"<%= asset_path	('member_count.png') %>"} />
+				<h6>{this.props.member_count} MEMBERS</h6>
+			</div>
 		);
 	}
 });
@@ -14,6 +28,7 @@ var GroupTile = React.createClass({
 				<h3>{this.props.name}</h3>
 				<h6>{this.props.kind.toUpperCase()} GROUP IN {this.props.neighborhood.toUpperCase()}</h6>
 				<MemberSection member_count={this.props.member_count} />
+				<JoinButton></JoinButton>
 			</div>
 		);
 	}
