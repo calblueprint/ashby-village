@@ -27,9 +27,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        user_group = UserGroup.new(user: current_user, group: @group)
-        user_group.update(is_leader: true)
-        user_group.save
+        user_group = UserGroup.create(user: current_user, group: @group, is_leader: true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
