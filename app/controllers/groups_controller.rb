@@ -18,7 +18,9 @@ class GroupsController < ApplicationController
 
     if current_user
      @newGroupID = @group.id
-     current_user.user-groups.find(@newGroupID).is_leader? = true
+     @join_table = current_user.user_groups.where("group_id = ?", @newGroupID)
+     @join_table.update_column(:is_member, "true")
+     @join_table.update_column(:is_leader, "true")
     else
      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
