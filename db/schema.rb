@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20151110215603) do
 
   add_index "neighborhoods", ["group_id"], name: "index_neighborhoods_on_group_id", using: :btree
 
+  create_table "user_groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.boolean  "is_leader"
+  end
+
+  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
+  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+
   create_table "user_neighborhoods", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -90,16 +101,5 @@ ActiveRecord::Schema.define(version: 20151110215603) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_groups", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.boolean  "is_leader"
-  end
-
-  add_index "users_groups", ["group_id"], name: "index_users_groups_on_group_id", using: :btree
-  add_index "users_groups", ["user_id"], name: "index_users_groups_on_user_id", using: :btree
 
 end

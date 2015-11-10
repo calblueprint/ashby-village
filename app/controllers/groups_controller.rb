@@ -27,7 +27,7 @@ def new
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        user_group = UserGroup.new(user: user, group: @group)
+        user_group = UserGroup.new(user: current_user, group: @group)
         user_group.update(is_leader: true)
         user_group.save
         format.html { redirect_to @group, notice: "Group was successfully created." }
@@ -39,9 +39,10 @@ def new
 
 
   def member_listing
-    # @group = Group.friendly.find(params[:id])
-    # user_ids = @group.users_groups.where(is_member: true).pluck(:user_id)
-    # @members = User.find_by(id: user_ids)
+    @group = Group.friendly.find(params[:id])
+    user_ids = @group.user_groups.pluck(:user_id)
+    byebug
+    @members = User.where(id: user_ids)
   end
 
   def group_params
