@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   # Devise
   ##################################################
   devise_for :users, :path => '',
-  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'},
-  :controllers => { :registrations => 'users/registrations' }
+  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'account_settings'},
+  :controllers => {:registrations => 'users/registrations'}
+  devise_scope :users do
+    get "/account_settings" => "users/registrations#edit"
+  end
 
   ##################################################
   # Sessions
