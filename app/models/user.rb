@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   has_many :user_neighborhoods
   has_many :neighborhoods, through: :user_neighborhoodss
 
-  has_many :user_groups
-  has_many :groups, through: :user_groups
+  has_many :users_groups
+  has_many :groups, through: :users_groups
 
   validates :email, presence: true
 

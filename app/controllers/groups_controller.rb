@@ -12,12 +12,10 @@ class GroupsController < ApplicationController
     @neighborhood_name = @neighborhood.name
   end
 
-  def new
-    @group = Group.new
-    @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
-
+def new
     if current_user
-     @user = current_user
+      @group = Group.new
+      @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
     else
      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
@@ -27,6 +25,13 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
+        User.all.each do |user|
+          user_group = UserGroup.new(user: user, group: @group)
+          if user == current_user
+            user_group.update(is_member: true, is_leader: true)
+          end
+          user_group.save
+        end
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -36,11 +41,11 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    @members = @group.users
+    user_ids = @group.users_groups.where(is_member: true).pluck(:user_id)
+    @members = User.find_by(id: user_ids)
   end
 
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id)
   end
 end
-

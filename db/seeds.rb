@@ -38,7 +38,7 @@ def make_users
   User.create! first_name: 'Ajay', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', cell_phone: '917', date_of_birth: 'date', password: 'okokokokok'
 end
 
-def make_user_groups
+def make_users_groups
   UserGroup.create! user_id: 1, group_id: 1
   UserGroup.create! user_id: 2, group_id: 1
   UserGroup.create! user_id: 3, group_id: 1
@@ -58,5 +58,5 @@ end
 
 make_groups
 make_users
-make_user_groups
+make_users_groups
 make_neighborhood
