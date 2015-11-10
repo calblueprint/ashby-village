@@ -21,17 +21,15 @@ def new
     end
   end
 
+
+  # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        User.all.each do |user|
-          user_group = UserGroup.new(user: user, group: @group)
-          if user == current_user
-            user_group.update(is_member: true, is_leader: true)
-          end
-          user_group.save
-        end
+        user_group = UserGroup.new(user: user, group: @group)
+        user_group.update(is_leader: true)
+        user_group.save
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -39,10 +37,11 @@ def new
     end
   end
 
+
   def member_listing
-    @group = Group.friendly.find(params[:id])
-    user_ids = @group.users_groups.where(is_member: true).pluck(:user_id)
-    @members = User.find_by(id: user_ids)
+    # @group = Group.friendly.find(params[:id])
+    # user_ids = @group.users_groups.where(is_member: true).pluck(:user_id)
+    # @members = User.find_by(id: user_ids)
   end
 
   def group_params
