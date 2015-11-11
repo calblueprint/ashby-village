@@ -4,6 +4,9 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
+  <% @leaders.each do |leader| %>
+    <li><%= leader.first_name %></li>
+  <% end %>
   <%= @neighborhood_name%>
   <!-- TODO: Add photo functionality -->
   <% if @group.photo %>

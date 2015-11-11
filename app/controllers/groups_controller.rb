@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.friendly.find(params[:id])
     @users = @group.users
+    @leaders = @users.leaders
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
     @neighborhood_name = @neighborhood.name
   end
