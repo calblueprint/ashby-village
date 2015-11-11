@@ -1,13 +1,28 @@
-<h2><%= @header %></h2>
+<div class="profile">
+  <div class="row">
+    <div class="header small-3 small-centered column">
+      <% if @user.photo %>
+        <div class="user-photo"> <%= image_tag(current_user.photo(:medium)) %> </div>
+      <% end %><br />
+      <h2><%= @user.full_name %></h2></br>
+    </div>
+  </div>
 
-<% if @user.photo %>
-  <%= image_tag @user.photo.url(:thumb) %>
-<% end %><br />
+  <div class="nav">
+    <h6>Your Information</h6>
+    <h6>Groups You Lead</h6>
+  </div>
 
-<h4>Name: <%= @user.full_name %> </h4>
-<h4>Email: <%= @user.email %> </h4>
-<h4>Phone: <%= @user.phone %> </h4>
+  <div class="user-info">
+    <h6>NAME:</h6> <h4><%= @user.full_name %> </h4>
+    <h6>EMAIL:</h6> <h4><%= @user.email %> </h4>
+    <h6>PHONE NUMBER:</h6> <h4><%= @user.phone %> </h4>
+  </div>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_path %>
-<% end %>
+  <div class="user-groups">
+  </div>
+
+  <% if @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path, class: 'button success radius small' %>
+  <% end %>
+</div>
