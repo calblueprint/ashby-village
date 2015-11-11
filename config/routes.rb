@@ -1,3 +1,47 @@
+# == Route Map
+#
+#                   Prefix Verb   URI Pattern                          Controller#Action
+#       authenticated_root GET    /                                    groups#index
+#                     root GET    /                                    static_pages#home
+#         new_user_session GET    /login(.:format)                     devise/sessions#new
+#             user_session POST   /login(.:format)                     devise/sessions#create
+#     destroy_user_session DELETE /logout(.:format)                    devise/sessions#destroy
+#            user_password POST   /password(.:format)                  devise/passwords#create
+#        new_user_password GET    /password/new(.:format)              devise/passwords#new
+#       edit_user_password GET    /password/edit(.:format)             devise/passwords#edit
+#                          PATCH  /password(.:format)                  devise/passwords#update
+#                          PUT    /password(.:format)                  devise/passwords#update
+# cancel_user_registration GET    /cancel(.:format)                    users/registrations#cancel
+#        user_registration POST   /                                    users/registrations#create
+#    new_user_registration GET    /register(.:format)                  users/registrations#new
+#   edit_user_registration GET    /account_settings(.:format)          users/registrations#edit
+#                          PATCH  /                                    users/registrations#update
+#                          PUT    /                                    users/registrations#update
+#                          DELETE /                                    users/registrations#destroy
+#         account_settings GET    /account_settings(.:format)          users/registrations#edit
+#             logout_index GET    /exit(.:format)                      sessions#destroy
+#                          POST   /exit(.:format)                      sessions#destroy
+#               new_logout GET    /exit/new(.:format)                  sessions#destroy
+#              edit_logout GET    /exit/:id/edit(.:format)             sessions#destroy
+#                   logout GET    /exit/:id(.:format)                  sessions#destroy
+#                          PATCH  /exit/:id(.:format)                  sessions#destroy
+#                          PUT    /exit/:id(.:format)                  sessions#destroy
+#                          DELETE /exit/:id(.:format)                  sessions#destroy
+#                edit_user GET    /users/:id/edit(.:format)            users#edit
+#                     user GET    /users/:id(.:format)                 users#show
+#                          PATCH  /users/:id(.:format)                 users#update
+#                          PUT    /users/:id(.:format)                 users#update
+#                   groups GET    /groups(.:format)                    groups#index
+#                          POST   /groups(.:format)                    groups#create
+#                new_group GET    /groups/new(.:format)                groups#new
+#               edit_group GET    /groups/:id/edit(.:format)           groups#edit
+#                    group GET    /groups/:id(.:format)                groups#show
+#                          PATCH  /groups/:id(.:format)                groups#update
+#                          PUT    /groups/:id(.:format)                groups#update
+#                          DELETE /groups/:id(.:format)                groups#destroy
+#           member_listing GET    /groups/:id/member_listing(.:format) groups#member_listing
+#
+
 Rails.application.routes.draw do
   ##################################################
   # General

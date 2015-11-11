@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'annotate'
+
 # Allows for human-friendly strings
 gem 'friendly_id', '~> 5.1.0'
 
