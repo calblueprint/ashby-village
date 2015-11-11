@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :user_groups
   has_many :groups, through: :user_groups do
-    def leading
+    def leader_of
       where("user_groups.is_leader = ?", true)
     end
   end
