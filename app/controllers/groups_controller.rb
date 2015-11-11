@@ -21,7 +21,6 @@ class GroupsController < ApplicationController
     end
   end
 
-
   # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
@@ -34,7 +33,6 @@ class GroupsController < ApplicationController
       end
     end
   end
-
 
   def member_listing
     @group = Group.friendly.find(params[:id])
