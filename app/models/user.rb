@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
   has_many :neighborhoods, through: :user_neighborhoodss
 
   has_many :user_groups
-  has_many :groups, through: :user_groups
+  has_many :groups, through: :user_groups do
+    def leader_of
+      where("user_groups.is_leader = ?", true)
+    end
+  end
 
   validates :email, presence: true
 

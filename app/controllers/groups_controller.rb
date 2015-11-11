@@ -21,17 +21,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        User.all.each do |user|
-          user_group = UserGroup.new(user: user, group: @group)
-          if user == current_user
-            user_group.update(is_member: true, is_leader: true)
-          end
-          user_group.save
-        end
+        user_group = UserGroup.create(user: current_user, group: @group, is_leader: true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -41,12 +36,11 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    user_ids = @group.user_groups.where(is_member: true).pluck(:user_id)
-    @members = User.find_by(id: user_ids)
+    user_ids = @group.user_groups.pluck(:user_id)
+    @members = User.where(id: user_ids)
   end
 
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id)
   end
 end
-
