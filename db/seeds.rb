@@ -6,19 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-
-def craete_groups
-  puts "Creating groups"
-  10.times do |n|
-    Group.create name: "Group#{n}",
-                  lat: 37.8670800,
-                  lng: -122.2556760
-    puts "Created school #{n}"
-  end
-end
-
-
 def make_groups
   Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1
   Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1, kind: 0
