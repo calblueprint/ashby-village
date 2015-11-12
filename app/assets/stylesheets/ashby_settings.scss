@@ -68,3 +68,10 @@ button:active {
 	-moz-box-shadow: 0px 0px 0px 0px rgba(65,117,0,1);
 	box-shadow: 0px 0px 0px 0px rgba(65,117,0,1);
 }
+
+// DROPDOWNS
+select {
+	height: $h2-heading-size;
+	font-size: $h3-heading-size;
+	border-radius: 4px;
+}

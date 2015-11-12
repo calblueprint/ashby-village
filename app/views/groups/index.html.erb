@@ -3,14 +3,14 @@
 
   <h3> Show me
     <select class="selectKind large-3">
-      <option selected="selected" value="all"> All </option>
-        <option value="social"> Social </option>
-        <option value="neighborhood"> Neighborhood </option>
-        <option value="committee"> Committee </option>
+      <option selected="selected" value="all"> all </option>
+        <option value="social"> social </option>
+        <option value="neighborhood"> neighborhood </option>
+        <option value="committee"> committee </option>
     </select>
     groups in
     <select class="selectNeighborhoods large-3">
-      <option selected="selected" value="all"> All </option>
+      <option selected="selected" value="all"> all </option>
       <%= @neighborhoods.each do |neighborhood| %>
         <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
       <% end %>
