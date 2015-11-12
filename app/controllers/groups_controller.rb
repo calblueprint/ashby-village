@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
       @group = Group.new
       @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
     else
-     redirect_to new_user_session_path, notice: 'You are not logged in.'
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
   end
 
@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         user_group = UserGroup.create(user: current_user, group: @group, is_leader: true)
+        @group.add_user(current_user, make_leader=true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -36,8 +37,7 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    user_ids = @group.user_groups.pluck(:user_id)
-    @members = User.where(id: user_ids)
+    @members = @group.users
   end
 
   def group_params
