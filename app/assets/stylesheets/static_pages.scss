@@ -4,51 +4,49 @@
 
 @import "ashby_settings.scss";
 
-.banner_text {
-  font-style: bold;
-  padding-bottom: 150px;
-}
-
-.banner_text h1, h4 {
-  color: white;
-}
-
-.column {
-  float: left;
-  margin: 0;
-  width: 33%;
-}
-
-.columns p {
-  color: $ashby-gray;
-}
-
 .landing {
   text-align: center;
   background: url("bg_main.jpg") transparent no-repeat;
   background-size: contain;
   background-position: 0% -50%;
   padding: 150px;
+
+  .banner_text {
+    font-style: bold;
+    padding-bottom: 30px;
+  }
+
+  .banner_text h1, h4 {
+    color: white;
+  }
 }
 
 .footer {
-  font-style: strong;
-}
+  font-style: bold;
 
-.communications{
-  background: url("communications.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
-}
+  .footer h3, h4 {
+    color: $ashby-black;
+  }
 
-.groups{
-  background: url("groups.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
-}
+  .row p {
+    color: $ashby-gray;
+  }
 
-.events{
-  background: url("events.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
+  .communications{
+    background: url("communications.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  .groups{
+    background: url("groups.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  .events{
+    background: url("events.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
 }
