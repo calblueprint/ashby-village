@@ -19,4 +19,4 @@
 /public/system/*
 
 # Ignore seed data files
-*/seed/*
+/app/assets/images/seed/*
