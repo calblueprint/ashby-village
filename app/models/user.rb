@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
+#  date_of_birth          :date
+#  phone                  :string
+#  cell_phone             :string
+#  photo_file_name        :string
+#  photo_content_type     :string
+#  photo_file_size        :integer
+#  photo_updated_at       :datetime
+#  neighborhood           :string
+#
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,7 +35,11 @@ class User < ActiveRecord::Base
   has_many :neighborhoods, through: :user_neighborhoodss
 
   has_many :user_groups
-  has_many :groups, through: :user_groups
+  has_many :groups, through: :user_groups do
+    def leader_of
+      where("user_groups.is_leader = ?", true)
+    end
+  end
 
   validates :email, presence: true
 

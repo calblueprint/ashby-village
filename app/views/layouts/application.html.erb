@@ -4,18 +4,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Lato:400,400italic,900", media: "all" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
+      <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+      <%= stylesheet_link_tag "application" %>
+      <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Lato:400,400italic,900", media: "all" %>
+      <%= javascript_include_tag "vendor/modernizr" %>
+      <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
   </head>
 
   <body>
     <%= render 'layouts/messages' %>
-    <%= render "layouts/navbar" %>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div id=''>
+      <%= yield %>
+    </div>
   </body>
-
 </html>

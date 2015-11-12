@@ -13,20 +13,20 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new
-    @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
-
     if current_user
-     @user = current_user
+      @group = Group.new
+      @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
     else
-     redirect_to new_user_session_path, notice: 'You are not logged in.'
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
   end
 
+  # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
+        @group.add_user(current_user, make_leader=true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -43,4 +43,3 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, :description, :neighborhood_id)
   end
 end
-
