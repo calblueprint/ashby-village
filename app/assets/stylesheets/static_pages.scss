@@ -8,12 +8,12 @@
   text-align: center;
   background: image-url("bg_main.jpg") transparent no-repeat;
   background-size: contain;
-  background-position: 0% -50%;
-  padding: 150px;
+  background-position: 100% -50%;
 
   .banner_text {
     font-style: bold;
-    padding-bottom: 30px;
+    padding-top:130px;
+    padding-bottom: 80px;
   }
 
   .banner_text h1, h4 {
@@ -48,4 +48,5 @@
     background: image-url("events.jpg") transparent center center no-repeat;
     width: 100%;
     height: 100%;
+  }
 }
