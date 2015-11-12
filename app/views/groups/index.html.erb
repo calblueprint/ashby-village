@@ -23,13 +23,30 @@
 
   <tbody>
     <% @groups.each do |group| %>
+      <div class="group-tile row">
+        <h3><%= group.name %></h3>
+        <h6><%= group.kind.upcase %> GROUP IN <%= group.neighborhood.name.upcase %></h6>
+        <%= image_tag("member_count_icon.png") %>
 
-      <%= react_component('GroupTile', {
+        <% if group.users.count == 1 %>
+          <h6><%= group.users.count %> MEMBER</h6>
+        <% else %>
+          <h6><%= group.users.count %> MEMBERS</h6>
+        <% end %>
+
+        <% group.users.last(3).each do |user| %>
+          <%= image_tag user.photo(:thumb) %>
+        <% end %>
+        <button>Join Group</button>
+      </div>
+
+<!--       <%= react_component('GroupTile', {
         name: group.name,
         kind: group.kind,
         neighborhood: group.neighborhood.name,
-        member_count: group.users.count
-      }) %>
+        member_count: group.users.count,
+        members: group.users.last(4)
+      }) %> -->
 
       <tr>
         <td><%= group.id %></td>

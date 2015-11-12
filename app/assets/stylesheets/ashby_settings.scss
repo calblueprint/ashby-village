@@ -52,4 +52,19 @@ button {
 	height: 48px;
 	background-color: $ashby-green;
 	border-radius: 8px;
+	-webkit-box-shadow: 0px 4px 0px 0px rgba(65,117,0,1);
+	-moz-box-shadow: 0px 4px 0px 0px rgba(65,117,0,1);
+	box-shadow: 0px 4px 0px 0px rgba(65,117,0,1);
+}
+
+button:hover {
+	background-color: $ashby-green;
+}
+
+button:active {
+	background-color: rgba(65,117,0,1);
+	margin-top: 4px;
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(65,117,0,1);
+	-moz-box-shadow: 0px 0px 0px 0px rgba(65,117,0,1);
+	box-shadow: 0px 0px 0px 0px rgba(65,117,0,1);
 }
