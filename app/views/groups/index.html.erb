@@ -21,67 +21,34 @@
   <h6 class="group-count large-6">displaying TEMP groups</h6>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+<% @groups.each do |group| %>
+  <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
 
-    <% @groups.each do |group| %>
-      <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
+    <div class="large-3">
+      <%= image_tag group.photo, :class => "group-photo large-2 columns" %>
+    </div>
 
-        <div class="large-3">
-          <%= image_tag group.photo, :class => "group-photo large-2 columns" %>
-        </div>
+    <div class="large-6 columns">
+      <h3><%= group.name %></h3>
+      <h6><%= group.kind.upcase %> group in <%= group.neighborhood.name.upcase %></h6>
+      <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
 
-        <div class="large-6 columns">
-          <h3><%= group.name %></h3>
-          <h6><%= group.kind.upcase %> group in <%= group.neighborhood.name.upcase %></h6>
-          <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
-
-          <% if group.users.count == 1 %>
-            <h6><%= group.users.count %> member</h6>
-          <% else %>
-            <h6><%= group.users.count %> members</h6>
-          <% end %>
-          
-          <div class="member-display">
-            <% group.users.last(3).each do |user| %>
-              <span data-tooltip aria-haspopup="true" class="has-tip" title=<%= user.first_name + "&nbsp;" + user.last_name %>><%= image_tag(user.photo(:thumb)) %></span>
-                <!-- TODO (Shimmy): Add user.full_name decorator -->
-            <% end %>
-          </div>
-        </div>
-
-        <button class="large-2 right">Join Group</button>
-
+      <% if group.users.count == 1 %>
+        <h6><%= group.users.count %> member</h6>
+      <% else %>
+        <h6><%= group.users.count %> members</h6>
+      <% end %>
+      
+      <div class="member-display">
+        <% group.users.last(3).each do |user| %>
+          <span data-tooltip aria-haspopup="true" class="has-tip" title=<%= user.first_name + "&nbsp;" + user.last_name %>><%= image_tag(user.photo(:thumb)) %></span>
+            <!-- TODO (Shimmy): Add user.full_name decorator -->
+        <% end %>
       </div>
+    </div>
 
-  <tbody>
-      <tr>
-        <td><%= group.id %></td>
-      <tr class="<%= group.neighborhood.id %> <%= group.kind %>">
-        <td><% if group.photo %>
-          <%= image_tag group.photo(:thumb) %>
-        <% end %></td>
-        <td><%= group.neighborhood.name %></td>
-        <td><%= group.name %></td>
-        <td>
-          members: <% group.users.last(4).each do |user|%>
-            <% if user.photo %>
-              <%= image_tag user.photo(:thumb) %>
-            <% end %>
-          <% end %>
-          <% if group.users.count > 4 %>
-            <%= '+' + group.users.count %>
-          <% end %>
-        </td>
-        <td><%= group.kind %></td>
-        <td><button>  <%=link_to 'Learn more', group %> </button><td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <button class="large-2 right">Join Group</button>
 
-<br>
+  </div>
+<% end %>
+

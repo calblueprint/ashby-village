@@ -1,6 +1,4 @@
 $(function() {
-  // var kind = $(".group-dropdown").val();
-  // var neighborhood = $(".neighborhood-dropdown").val();
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     var kind = $(".group-dropdown").val();
@@ -13,7 +11,6 @@ $(function() {
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).hide();
     }
-
   });
 
 });
