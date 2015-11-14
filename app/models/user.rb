@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :email, presence: true
 
