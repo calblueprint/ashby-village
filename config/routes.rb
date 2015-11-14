@@ -77,4 +77,9 @@ Rails.application.routes.draw do
   resources :groups
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
+  ##################################################
+  # Posts
+  ##################################################
+  resources :posts,          only: [:create, :destroy]
+
 end
