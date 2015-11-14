@@ -1,6 +1,6 @@
 @import "ashby_settings.scss";
 
-.group-tile {
+.dropdowns-tile, .group-tile {
 	background-color: white;
 	border: 2px solid transparent;
 	border-radius: 8px;
@@ -14,14 +14,14 @@
 	cursor: pointer;
 }
 
-.group-tile img {
+.group-tile .group-photo {
 	object-fit: cover;
 	width: 240px;
 }
 
-.member-count-icon {
-	height: 16px !important;
-	width: 24px !important;
+.group-tile .member-count-icon {
+	height: 16px;
+	width: 24px;
 	float: left;
 	margin-right: 8px;
 }

@@ -1,15 +1,15 @@
-<div class="group-tile row">
+<div class="dropdowns-tile row">
   <h6>groups</h6>
 
   <h3> Show me
-    <select class="selectKind large-3">
+    <select class="group-dropdown large-3">
       <option selected="selected" value="all"> all </option>
         <option value="social"> social </option>
         <option value="neighborhood"> neighborhood </option>
         <option value="committee"> committee </option>
     </select>
     groups in
-    <select class="selectNeighborhoods large-3">
+    <select class="neighborhood-dropdown large-3">
       <option selected="selected" value="all"> all </option>
       <%= @neighborhoods.each do |neighborhood| %>
         <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
@@ -18,7 +18,7 @@
     neighborhoods.
   </h3>
 
-  <h6>displaying blah groups </h6>
+  <h6 class="group-count large-6">displaying TEMP groups</h6>
 </div>
 
 <table>
@@ -29,7 +29,7 @@
   </thead>
 
     <% @groups.each do |group| %>
-      <div class="group-tile row">
+      <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
 
         <div class="large-3">
           <%= image_tag group.photo, :class => "group-photo large-2 columns" %>
@@ -85,5 +85,3 @@
 </table>
 
 <br>
-
-<%= link_to "Create new group", new_group_path %>
