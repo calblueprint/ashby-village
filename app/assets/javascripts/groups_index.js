@@ -1,5 +1,7 @@
 $(function() {
 
+  updateGroupCount();
+
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     var kind = $(".group-dropdown").val();
     var neighborhood = $(".neighborhood-dropdown").val();
@@ -11,37 +13,20 @@ $(function() {
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).hide();
     }
+
+    updateGroupCount();
+
   });
 
+  function updateGroupCount() {
+    var groupCount = $(".group-tile").filter(function() {
+      return $(this).css('display') !== 'none';
+    }).length;
+    if (groupCount === 1) {
+      $(".group-count").text("Displaying " + groupCount + " group");
+    } else {
+      $(".group-count").text("Displaying " + groupCount + " groups");
+    }
+  }
+
 });
-
-
-// $(document).ready(function(){
-//   var selectKind = $('.selectKind').val();
-//   var selectNeighborhoods = $('.selectNeighborhoods').val();
-
-//   function groupList(selKind, selNeighborhood) {
-//     $('tr').show();
-//     if (selKind != 'all' && selNeighborhood != 'all') {
-//       $('tr').not('.' + selNeighborhood).hide();
-//       $('tr').not('.' + selKind).hide();
-//     } else if (selKind == 'all' && selNeighborhood != 'all') {
-//       $('tr').not('.' + selNeighborhood).hide();
-//     } else if (selKind != 'all' && selNeighborhood == 'all') {
-//       $('tr').not('.' + selKind).hide();
-//     }
-//   }
-
-//   $('.selectKind').change(function(){
-//     selectKind = $(this).val();
-//     groupList(selectKind, selectNeighborhoods);
-//   });
-
-//   $('.selectNeighborhoods').change(function(){
-//     selectNeighborhoods = $(this).val();
-//     groupList(selectKind, selectNeighborhoods);
-//   });
-// });
-
-
-
