@@ -17,10 +17,32 @@
   overflow-y: scroll;
 }
 
+.instructions h6 {
+  color: ashby-gray;
+}
+
+.modal-header {
+  padding-top: 100px;
+}
+
+.question {
+  margin-right: 10px;
+  float: left;
+}
+
 .input-form {
-  border-top: 0;
-  border-bottom: 0;
+  float: left;
+  width: 200px;
+  border-bottom: 3 px solid ashby-gray;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   background: transparent;
+}
+
+.actions {
+  float: right;
+}
 
 .banner_text {
   font-style: bold;
