@@ -12,6 +12,9 @@ $(function() {
     }
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).hide();
+      $(".dropdowns-tile span").fadeOut("fast"); 
+    } else {
+      $(".dropdowns-tile span").fadeIn("fast");
     }
 
     updateGroupCount();

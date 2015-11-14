@@ -8,13 +8,13 @@
         <option value="committee"> committee </option>
     </select>
     groups in
-    <select class="neighborhood-dropdown large-3">
+    <select class="neighborhood-dropdown large-4">
       <option selected="selected" value="all"> all </option>
       <%= @neighborhoods.each do |neighborhood| %>
         <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
       <% end %>
     </select>
-    neighborhoods.
+    <span>neighborhoods</span>
   </h3>
   <h6 class="group-count large-6"></h6>
 </div>
