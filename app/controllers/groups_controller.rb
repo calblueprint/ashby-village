@@ -41,7 +41,12 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
+  def settings
+    @group = Group.all
+  end
+
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id)
   end
+
 end

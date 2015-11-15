@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     resources :posts,          only: [:create, :destroy]
   end
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
+  get "groups/:id/settings", to: 'groups#settings', as: 'settings'
 
   ##################################################
   # Posts
