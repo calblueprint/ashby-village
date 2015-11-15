@@ -17,7 +17,7 @@
   <% if @group.posts.any? %>
     <h3>Posts (<%= @group.posts.count %>)</h3>
     <ol class="posts">
-      <%= @posts.each do |post| %>
+      <%= @group.posts.each do |post| %>
       <!-- TODO (Shimmy): Consider pagination! -->
         <%= render 'posts/post', post: post %>
       <% end %>
