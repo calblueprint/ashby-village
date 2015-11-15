@@ -1,6 +1,7 @@
 <li id="post-<%= post.id %>">
   <!-- TODO (Shimmy): Picture link -->
   <span class="user"><%= link_to post.user.decorate.full_name, post.user %></span>
+  <span class="title"><%= post.title %></span>
   <span class="content"><%= post.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
