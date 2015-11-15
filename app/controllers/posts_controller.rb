@@ -16,12 +16,11 @@ class PostsController < ApplicationController
 
 
   private
-
     # TODO (Shimmy): Add picture support
     def post_params
       params.require(:post).permit(:content, :user_id, :group_id)
     end
-
+    # TODO (Shimmy): Use CanCanCan instead.
     def correct_user
       @post = current_user.post.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
