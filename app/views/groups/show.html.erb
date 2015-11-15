@@ -4,7 +4,7 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
-  <%= @neighborhood_name%>
+  <%= @neighborhood.name%>
   <!-- TODO (Shimmy): Add photo functionality -->
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>

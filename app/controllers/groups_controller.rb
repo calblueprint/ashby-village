@@ -11,7 +11,6 @@ class GroupsController < ApplicationController
     @posts = @group.posts
     @users = @group.users
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
-    @neighborhood_name = @neighborhood.name
   end
 
   def new
