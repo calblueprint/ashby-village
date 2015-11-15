@@ -204,12 +204,9 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-<<<<<<< HEAD
+  aws-sdk
   better_errors
   binding_of_caller
-=======
-  aws-sdk
->>>>>>> master
   byebug
   devise
   draper
