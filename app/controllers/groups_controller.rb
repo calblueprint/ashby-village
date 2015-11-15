@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
     @posts = @group.posts
     @users = @group.users
+    @leaders = @users.leaders
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
     @neighborhood_name = @neighborhood.name
   end
@@ -38,8 +39,6 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    user_ids = @group.user_groups.where(is_member: true).pluck(:user_id)
-    @members = User.find_by(id: user_ids)
   end
 
   def group_params
