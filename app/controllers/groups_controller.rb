@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
 
+  # TODO (Shimmy): Only display this page if the user is logged in
   def index
     @groups = Group.all
     @neighborhoods = Neighborhood.all
@@ -7,8 +8,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.friendly.find(params[:id])
+    @posts = @group.posts
     @users = @group.users
-    @leaders = @users.leaders
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
     @neighborhood_name = @neighborhood.name
   end
@@ -37,10 +38,11 @@ class GroupsController < ApplicationController
 
   def member_listing
     @group = Group.friendly.find(params[:id])
-    @members = @group.users
+    user_ids = @group.user_groups.where(is_member: true).pluck(:user_id)
+    @members = User.find_by(id: user_ids)
   end
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood_id, :user_id)
+    params.require(:group).permit(:name, :description, :neighborhood_id)
   end
 end

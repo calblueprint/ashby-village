@@ -61,7 +61,17 @@ def make_neighborhood
   Neighborhood.create! name: 'Outlandish', description: '#'
 end
 
+
+def make_posts
+  users = User.order(:created_at).take(6)
+  50.times do
+    content = "I am soooooooooooo"
+    users.each { |user| user.posts.create!(content: content, group: Group.first) }
+  end
+end
+
 make_groups
 make_users
 make_user_groups
 make_neighborhood
+make_posts
