@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   # before_action :logged_in_user, only: [:create, :destroy]
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = @group.posts.build(post_params)
+    @post.user_id = current_user.id
     if @post.save
       flash[:success] = "Post created!"
       redirect_to 'static_pages/home'
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
 
     # TODO (Shimmy): Add picture support
     def post_params
-      params.require(:post).permit(:content, :)
+      params.require(:post).permit(:content, :user_id, :group_id)
     end
 
     def correct_user
