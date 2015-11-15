@@ -65,8 +65,9 @@ end
 def make_posts
   users = User.order(:created_at).take(6)
   50.times do
+    title = "PSA!!!!"
     content = "I am soooooooooooo"
-    users.each { |user| user.posts.create!(content: content, group: Group.first) }
+    users.each { |user| user.posts.create!(title: title, content: content, group: Group.first) }
   end
 end
 
