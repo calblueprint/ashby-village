@@ -33,4 +33,8 @@ class Group < ActiveRecord::Base
 
   has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
+  def add_user(current_user, make_leader=false)
+    UserGroup.create(user: current_user, group: self, is_leader: make_leader)
+  end
 end
