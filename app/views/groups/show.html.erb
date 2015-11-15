@@ -5,10 +5,24 @@
   <%= @group.name %>
   <%= @group.description %>
   <%= @neighborhood_name%>
-  <!-- TODO: Add photo functionality -->
+  <!-- TODO (Shimmy): Add photo functionality -->
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
   <% end %>
 </h1>
 
 <%= link_to "View member listing", member_listing_path(@group) %>
+
+<div class="col-md-8">
+  <% if @group.posts.any? %>
+    <h3>Posts (<%= @group.posts.count %>)</h3>
+    <ol class="posts">
+      <%= @posts.each do |post| %>
+      <!-- TODO (Shimmy): Consider pagination! -->
+        <%= render 'posts/post', post: post %>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
+
+
