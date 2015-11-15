@@ -12,63 +12,63 @@
              html: { multipart: true }) do |f| %>
             <%= devise_error_messages! %>
               <div class='row'>
-                <div class='instructions small-12 small-centered large-8 column'>
+                <div class='instructions small-12 small-centered medium-10 large-8 column'>
                   <h6>Type in the blanks to complete your registration for Ashby Village Square. </br>
                   No information will be shared without your consent.</h6>
                 </div>
               </div></br>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>My name is </h5>
-                  <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, autofocus: true, required: true, :placeholder => 'First Name' %> </div>
+                  <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, autofocus: true, required: true, :placeholder => 'First Name', :class => 'input' %> </div>
 
-                  <div class='input-form'> <%= f.text_field :last_name, autofocus: true, required: true, :placeholder => 'Last Name' %> </div>
+                  <div class='input-form'> <%= f.text_field :last_name, autofocus: true, required: true, :placeholder => 'Last Name', :class => 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>and my email address is </h5>
-                  <div class='input-form'> <%= f.email_field :email, autofocus: true, required: true, :placeholder => 'email@address.com' %> </div>
+                  <div class='input-form'> <%= f.email_field :email, autofocus: true, required: true, :placeholder => 'email@address.com', :class => 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %>
                   <h5 class='question'>I would like my password to be</h5>
-                  <div class='input-form'> <%= f.password_field :password, autocomplete: "off", required: true, :placeholder => 'something memorable' %> </div>
+                  <div class='input-form'> <%= f.password_field :password, autocomplete: "off", required: true, :placeholder => 'something memorable', :class => 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>Just to be sure, my password once again is</h5>
-                  <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => 'something memorable' %> </div>
+                  <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => 'something memorable', :class => 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>and my phone number is</h5>
-                  <div class='input-form'> <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567' %> </div>
+                  <div class='input-form'> <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567', :class => 'input', :type => tel %> </div>
                 </div>
               </div>
 
               <div class='row'>
-                <div class='field small-12 small-centered large-8 column'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>So others can recognize me, here is a photo of me:</h5>
                   <%= f.file_field :photo %>
                 </div>
               </div>
       </div>
       <div class="row modal-footer">
-        <div class="form-actions small-12 small-centered large-6 column">
+        <div class="form-actions small-10 small-centered medium-8 large-6 column">
           <div class="actions">
-            <%= f.submit "Submit", class: 'button success radius small' %>
+            <%= f.submit "Complete Registration", class: 'button success radius large' %>
           </div>
         </div>
         <% end %>

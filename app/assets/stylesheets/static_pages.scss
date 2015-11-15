@@ -19,6 +19,10 @@
   right:0;
   overflow-y: scroll;
 
+  .modal-title {
+    align: left;
+  }
+
   .modal-header {
     padding-top: 45px;
   }
@@ -29,11 +33,11 @@
   }
 
   .modal-header h3 {
-    color: ashby-gray;
+    color: $ashby-gray;
   }
 
   .instructions h6 {
-    color: ashby-gray;
+    color: $ashby-gray;
   }
 
   .question {
@@ -41,13 +45,14 @@
     float: left;
   }
 
-  .input-form {
+  .input {
+    font-size: 18px;
     float: left;
     width: 200px;
-    border-bottom: 3 px solid ashby-gray;
+    border-bottom: 3px $ashby-gray solid;
     border-top: none;
-    border-left: none;
     border-right: none;
+    border-left: none;
     background: transparent;
   }
 
