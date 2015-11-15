@@ -31,7 +31,8 @@
         <td><%= group.neighborhood.name %></td>
         <td><%= group.name %></td>
         <td>
-          members: <% group.users.last(4).each do |user|%>
+          members: <% group.users.decorate.last(4).each do |user|%>
+            <%= user.full_name %>
             <% if user.photo %>
               <%= image_tag user.photo(:thumb) %>
             <% end %>
