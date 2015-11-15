@@ -7,10 +7,7 @@ class PostsController < ApplicationController
     @post = @group.posts.build(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:success] = "Post created!"
-      redirect_to '/'
-    else
-      flash[:error] = "Nope"
+      redirect_to group_path(@group), notice: "Post has been saved successfully."
     end
   end
 
