@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   def destroy
   end
 
-
   private
     # TODO (Shimmy): Add picture support
     def post_params
