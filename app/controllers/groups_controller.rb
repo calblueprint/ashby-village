@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @post = Post.new
     @group = Group.friendly.find(params[:id])
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
   end
