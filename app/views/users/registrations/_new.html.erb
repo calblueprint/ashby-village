@@ -2,9 +2,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <a class="close-reveal-modal" aria-label="Close">Cancel Registration &#215;</a>
+        <a class="close-reveal-modal" aria-label="Close">&#215; <h3 class='cancel'>Cancel Registration</h3></a>
         <div class='row'>
-          <h2 class="modal-title small-12 small-centered large-8 column" id="myModalLabel">Create an Account</h2>
+          <h2 class="modal-title small-12 small-centered medium-10 large-8 column" id="myModalLabel">Create an Account</h2>
         </div>
       </div>
       <div class="modal-body">
@@ -12,10 +12,10 @@
              html: { multipart: true }) do |f| %>
             <%= devise_error_messages! %>
               <div class='row'>
-                <h6 class='instructions small-12 small-centered large-8 column'>
-                  Type in the blanks to complete your registration for Ashby Village Square. </br>
-                  No information will be shared without your consent.
-                </h6>
+                <div class='instructions small-12 small-centered large-8 column'>
+                  <h6>Type in the blanks to complete your registration for Ashby Village Square. </br>
+                  No information will be shared without your consent.</h6>
+                </div>
               </div></br>
 
               <div class='row'>
@@ -65,12 +65,12 @@
                 </div>
               </div>
       </div>
-      <div class="modal-footer">
-        <div class="form-actions">
+      <div class="row modal-footer">
+        <div class="form-actions small-12 small-centered large-6 column">
           <div class="actions">
             <%= f.submit "Submit", class: 'button success radius small' %>
           </div>
-            </div>
+        </div>
         <% end %>
       </div>
     </div>

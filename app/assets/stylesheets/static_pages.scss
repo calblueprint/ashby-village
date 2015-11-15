@@ -4,6 +4,10 @@
 
 @import "ashby_settings.scss";
 
+////////////////////////
+// REGISTRATION MODAL //
+////////////////////////
+
 .full-modal {
   max-width:initial;
   max-height: initial;
@@ -11,38 +15,50 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  position: fixed;
   top:0;
   right:0;
   overflow-y: scroll;
+
+  .modal-header {
+    padding-top: 45px;
+  }
+
+  .cancel {
+    float: right;
+    margin-left: 8px;
+  }
+
+  .modal-header h3 {
+    color: ashby-gray;
+  }
+
+  .instructions h6 {
+    color: ashby-gray;
+  }
+
+  .question {
+    margin-right: 10px;
+    float: left;
+  }
+
+  .input-form {
+    float: left;
+    width: 200px;
+    border-bottom: 3 px solid ashby-gray;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+  }
+
+  .actions {
+    float: right;
+  }
 }
 
-.instructions h6 {
-  color: ashby-gray;
-}
-
-.modal-header {
-  padding-top: 100px;
-}
-
-.question {
-  margin-right: 10px;
-  float: left;
-}
-
-.input-form {
-  float: left;
-  width: 200px;
-  border-bottom: 3 px solid ashby-gray;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background: transparent;
-}
-
-.actions {
-  float: right;
-}
+//////////////////
+// LANDING PAGE //
+//////////////////
 
 .banner_text {
   font-style: bold;
