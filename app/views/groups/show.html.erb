@@ -4,6 +4,7 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
+  <%= @group.kind %>
   <% @leaders.each do |leader| %>
     <li><%= leader.first_name %></li>
   <% end %>

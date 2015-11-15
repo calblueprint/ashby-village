@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
+      @kinds = Group.kinds
       @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
