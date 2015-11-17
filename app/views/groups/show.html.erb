@@ -4,7 +4,12 @@
 <h1>
   <%= @group.name %>
   <%= @group.description %>
+  <%= @group.kind %>
+  <% @group.users.leaders.each do |leader| %>
+    <li><%= leader.decorate.full_name %></li>
+  <% end %>
   <%= @neighborhood.name%>
+
   <!-- TODO (Shimmy): Add photo functionality -->
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
@@ -16,6 +21,7 @@
 <section class="post-form" >
   <%= render 'posts/post_form', post: @post %>
 </section>
+<%= render 'groups/settings' %>
 
 <div class="col-md-8">
   <% if @group.posts.any? %>
