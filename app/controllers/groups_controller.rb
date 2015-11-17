@@ -9,8 +9,6 @@ class GroupsController < ApplicationController
   def show
     @post = Post.new
     @group = Group.friendly.find(params[:id])
-    @users = @group.users
-    @leaders = @users.leaders
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
   end
 
@@ -41,12 +39,15 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
-  def settings
-    @group = Group.all
+  def leave_group
+    #if you're leader - alert - can't leave if there are no other leaders
+    #if you're a member or one leader amongst many others you can leave
+    @group = Group.friendly.find(params[:id])
+    @group.current_user.delete
   end
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood_id)
+    params.require(:group).permit(:name, :description, :neighborhood_id, :kind)
   end
 
 end

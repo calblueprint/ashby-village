@@ -5,8 +5,8 @@
   <%= @group.name %>
   <%= @group.description %>
   <%= @group.kind %>
-  <% @leaders.each do |leader| %>
-    <li><%= leader.first_name %></li>
+  <% @group.users.leaders.each do |leader| %>
+    <li><%= leader.decorate.full_name %></li>
   <% end %>
   <%= @neighborhood.name%>
 
@@ -16,13 +16,12 @@
   <% end %>
 </h1>
 
-<td><button>  <%=link_to 'Settings', settings_path %> </button><td>
-
 <%= link_to "View member listing", member_listing_path(@group) %>
 
 <section class="post-form" >
   <%= render 'posts/post_form', post: @post %>
 </section>
+<%= render 'groups/settings' %>
 
 <div class="col-md-8">
   <% if @group.posts.any? %>
