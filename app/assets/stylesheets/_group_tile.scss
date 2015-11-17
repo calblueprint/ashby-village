@@ -1,0 +1,48 @@
+@import "ashby_settings.scss";
+
+.dropdowns-tile, .group-tile {
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 24px;
+  @include ease-transition(0.5s);
+}
+
+.group-tile:hover {
+  border: 2px solid $ashby-light-blue;
+  cursor: pointer;
+}
+
+.group-tile .group-photo {
+  object-fit: cover;
+  width: 240px;
+}
+
+.group-tile .member-count-icon {
+  height: 16px;
+  width: 24px;
+  float: left;
+  margin-right: 8px;
+}
+
+.group-tile .is-member {
+  background: $ashby-light-blue;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.group-tile .remove-member {
+  background: $ashby-red;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+}
+
+.member-display img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
