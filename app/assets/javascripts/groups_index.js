@@ -1,4 +1,4 @@
-$(function() {
+var ready = function() {
 
   updateGroupCount();
 
@@ -60,4 +60,7 @@ $(function() {
     }
   });
 
-});
+};
+
+$(document).ready(ready);
+$(document).on("page:load", ready);
