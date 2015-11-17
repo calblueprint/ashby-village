@@ -19,25 +19,25 @@ $body-font-size: 16px;
 $subtext-font-size: 14px;
 
 h1 {
-	font-size: $h1-heading-size;
+  font-size: $h1-heading-size;
 }
 
 h2 {
-	font-size: $h2-heading-size;
+  font-size: $h2-heading-size;
 }
 
 h3 {
-	font-size: $h3-heading-size;
+  font-size: $h3-heading-size;
 }
 
 p {
-	font-size: $body-font-size;
+  font-size: $body-font-size;
 }
 
 h6 {
-	text-transform: uppercase;
-	font-size: $subtext-font-size;
-	color: $ashby-gray;
+  text-transform: uppercase;
+  font-size: $subtext-font-size;
+  color: $ashby-gray;
 }
 
 // GLOBAL FONT
@@ -47,42 +47,42 @@ h6 {
 
 // BACKGROUND COLOR
 body {
-	background-color: $ashby-tan;
+  background-color: $ashby-tan;
 }
 
 // BUTTONS
 button {
-	height: 48px;
-	background-color: $ashby-green;
-	border-radius: 8px;
-	-webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
-	-moz-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
-	box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  height: 48px;
+  background-color: $ashby-green;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-green;
 }
 
 button:hover, button:focus {
-	background-color: $ashby-green;
+  background-color: $ashby-green;
 }
 
 button:active {
-	background-color: $ashby-dark-green;
-	margin-top: 4px;
-	-webkit-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
-	-moz-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
-	box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+  background-color: $ashby-dark-green;
+  margin-top: 4px;
+  -webkit-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+  -moz-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+  box-shadow: 0px 0px 0px 0px $ashby-dark-green;
 }
 
 // DROPDOWNS
 select {
-	height: $h2-heading-size;
-	font-size: $h3-heading-size;
-	border-radius: 4px;
+  height: $h2-heading-size;
+  font-size: $h3-heading-size;
+  border-radius: 4px;
 }
 
 // TRANSITIONS
 @mixin ease-transition($duration) {
-	-webkit-transition: all $duration ease;
-	-moz-transition: all $duration ease;
-	-ms-transition: all $duration ease;
-	transition: all $duration ease;
+  -webkit-transition: all $duration ease;
+  -moz-transition: all $duration ease;
+  -ms-transition: all $duration ease;
+  transition: all $duration ease;
 }
