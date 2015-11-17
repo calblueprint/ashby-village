@@ -1,0 +1,37 @@
+<h2>Edit Profile</h2>
+
+<%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, :value => @user.first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true, :value => @user.last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, :value => @user.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, autofocus: true, :value => @user.phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: 'button success radius small' %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', :back %>

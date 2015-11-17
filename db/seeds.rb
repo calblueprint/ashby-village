@@ -42,15 +42,21 @@ def make_users
 end
 
 def make_user_groups
-  UserGroup.create! user_id: 1, group_id: 1
-  UserGroup.create! user_id: 2, group_id: 1
-  UserGroup.create! user_id: 3, group_id: 1
-  UserGroup.create! user_id: 4, group_id: 2
-  UserGroup.create! user_id: 5, group_id: 3
-  UserGroup.create! user_id: 6, group_id: 3
-  UserGroup.create! user_id: 7, group_id: 4
-  UserGroup.create! user_id: 8, group_id: 4
-  UserGroup.create! user_id: 9, group_id: 5
+  UserGroup.create! user_id: 1, group_id: 1, is_leader: true
+  UserGroup.create! user_id: 1, group_id: 2, is_leader: true
+  UserGroup.create! user_id: 1, group_id: 3, is_leader: true
+  UserGroup.create! user_id: 1, group_id: 4, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 5, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 6, is_leader: false
+
+  UserGroup.create! user_id: 2, group_id: 1, is_leader: false
+  UserGroup.create! user_id: 3, group_id: 1, is_leader: false
+  UserGroup.create! user_id: 4, group_id: 2, is_leader: true
+  UserGroup.create! user_id: 5, group_id: 3, is_leader: true
+  UserGroup.create! user_id: 6, group_id: 3, is_leader: false
+  UserGroup.create! user_id: 7, group_id: 4, is_leader: true
+  UserGroup.create! user_id: 8, group_id: 4, is_leader: false
+  UserGroup.create! user_id: 9, group_id: 5, is_leader: true
 end
 
 def make_neighborhood
@@ -59,7 +65,18 @@ def make_neighborhood
   Neighborhood.create! name: 'Outlandish', description: '#'
 end
 
+
+def make_posts
+  users = User.order(:created_at).take(6)
+  50.times do
+    title = "PSA!!!!"
+    content = "I am soooooooooooo"
+    users.each { |user| user.posts.create!(title: title, content: content, group: Group.first) }
+  end
+end
+
 make_groups
 make_users
 make_user_groups
 make_neighborhood
+make_posts

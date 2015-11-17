@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem "binding_of_caller"
+gem "better_errors"
+gem 'aws-sdk'
+gem 'annotate'
+
 # Allows for human-friendly strings
 gem 'friendly_id', '~> 5.1.0'
 

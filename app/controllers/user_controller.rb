@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-
   # GET /users
   # GET /users.json
   def index
@@ -19,5 +18,9 @@ class UserController < ApplicationController
     if user_signed_in?
       redirect_to user_path
     end
+  end
+
+  def edit_profile
+    render :template => "users/registrations/edit_profile"
   end
 end
