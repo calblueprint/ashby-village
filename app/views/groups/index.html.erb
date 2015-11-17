@@ -36,7 +36,7 @@
       <% else %>
         <h6><%= group.users.count %> members</h6>
       <% end %>
-      
+
       <div class="member-display">
         <% group.users.last(3).each do |user| %>
           <span data-tooltip aria-haspopup="true" class="has-tip" title=<%= user.first_name + "&nbsp;" + user.last_name %>><%= image_tag(user.photo(:thumb)) %></span>
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <button class="large-2 right">Join Group</button>
+    <button class="large-3 right">Join Group</button>
 
   </div>
 <% end %>

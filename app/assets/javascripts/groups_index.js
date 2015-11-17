@@ -23,7 +23,7 @@ $(function() {
 
   function updateGroupCount() {
     var groupCount = $(".group-tile").filter(function() {
-      return $(this).css('display') !== 'none';
+      return $(this).css("display") !== "none";
     }).length;
     if (groupCount === 1) {
       $(".group-count").text("Displaying " + groupCount + " group");
@@ -31,5 +31,33 @@ $(function() {
       $(".group-count").text("Displaying " + groupCount + " groups");
     }
   }
+
+  // Join group button logic
+  $(".group-tile button").click(function(event) {
+    event.preventDefault();
+    $button = $(this);
+    if ($button.hasClass("is-member")) {
+      $button.removeClass("is-member");
+      $button.removeClass("remove-member");
+      $button.text("Join Group")
+    } else {
+      $button.addClass("is-member");
+      $button.text("You Have Joined");
+    }
+  });
+
+  $(".group-tile button").hover(function() {
+    $button = $(this);
+    if ($button.hasClass("is-member")) {
+      $button.addClass("remove-member");
+      $button.text("Remove Membership");
+    }
+  }, 
+  function() {
+    if ($button.hasClass("is-member")) {
+      $button.removeClass("remove-member");
+      $button.text("You Have Joined");
+    }
+  });
 
 });
