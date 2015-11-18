@@ -1,77 +1,87 @@
-Rails.application.routes.draw do
+# == Route Map
+#
+#                   Prefix Verb   URI Pattern                          Controller#Action
+#       authenticated_root GET    /                                    groups#index
+#                     root GET    /                                    static_pages#home
+#         new_user_session GET    /login(.:format)                     devise/sessions#new
+#             user_session POST   /login(.:format)                     devise/sessions#create
+#     destroy_user_session DELETE /logout(.:format)                    devise/sessions#destroy
+#            user_password POST   /password(.:format)                  devise/passwords#create
+#        new_user_password GET    /password/new(.:format)              devise/passwords#new
+#       edit_user_password GET    /password/edit(.:format)             devise/passwords#edit
+#                          PATCH  /password(.:format)                  devise/passwords#update
+#                          PUT    /password(.:format)                  devise/passwords#update
+# cancel_user_registration GET    /cancel(.:format)                    users/registrations#cancel
+#        user_registration POST   /                                    users/registrations#create
+#    new_user_registration GET    /register(.:format)                  users/registrations#new
+#   edit_user_registration GET    /account_settings(.:format)          users/registrations#edit
+#                          PATCH  /                                    users/registrations#update
+#                          PUT    /                                    users/registrations#update
+#                          DELETE /                                    users/registrations#destroy
+#         account_settings GET    /account_settings(.:format)          users/registrations#edit
+#             logout_index GET    /exit(.:format)                      sessions#destroy
+#                          POST   /exit(.:format)                      sessions#destroy
+#               new_logout GET    /exit/new(.:format)                  sessions#destroy
+#              edit_logout GET    /exit/:id/edit(.:format)             sessions#destroy
+#                   logout GET    /exit/:id(.:format)                  sessions#destroy
+#                          PATCH  /exit/:id(.:format)                  sessions#destroy
+#                          PUT    /exit/:id(.:format)                  sessions#destroy
+#                          DELETE /exit/:id(.:format)                  sessions#destroy
+#                edit_user GET    /users/:id/edit(.:format)            users#edit
+#                     user GET    /users/:id(.:format)                 users#show
+#                          PATCH  /users/:id(.:format)                 users#update
+#                          PUT    /users/:id(.:format)                 users#update
+#                   groups GET    /groups(.:format)                    groups#index
+#                          POST   /groups(.:format)                    groups#create
+#                new_group GET    /groups/new(.:format)                groups#new
+#               edit_group GET    /groups/:id/edit(.:format)           groups#edit
+#                    group GET    /groups/:id(.:format)                groups#show
+#                          PATCH  /groups/:id(.:format)                groups#update
+#                          PUT    /groups/:id(.:format)                groups#update
+#                          DELETE /groups/:id(.:format)                groups#destroy
+#           member_listing GET    /groups/:id/member_listing(.:format) groups#member_listing
+#
 
-  resources :neighborhoods, only: [:index, :show, :new, :create] do
-    resources :groups, only: [:new, :show, :create]
+Rails.application.routes.draw do
+  ##################################################
+  # General
+  ##################################################
+  authenticated :user do
+    root :to => "groups#index", :as => "authenticated_root"
+  end
+  root 'static_pages#home'
+
+  ##################################################
+  # Devise
+  ##################################################
+  devise_for :users, :path => '',
+  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'account_settings'},
+  :controllers => {:registrations => 'users/registrations'}
+  devise_scope :users do
+    get "/account_settings" => "users/registrations#edit"
   end
 
-  devise_for :users, :path => '', :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => 'users/registrations' }
-  root 'static_pages#home'
-  get 'user/show'
-  get 'user/:id', to: "user#show", as: 'user'
+  ##################################################
+  # Sessions
+  ##################################################
+  resources 'exit', to: 'sessions#destroy', as: :logout
 
-  get "groups/new", to: 'groups#new', as:'new_group'
+  ##################################################
+  # Users
+  ##################################################
+  resources :users, :only => [:show, :edit, :update]
 
-  resources :groups
-
+  ##################################################
+  # Groups
+  ##################################################
+  resources :groups do
+    resources :posts,          only: [:create, :destroy]
+  end
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
-  # get "neighborhoods", to: "neighborhoods#index"
-  # get "neighborhoods/new", to: "neighborhoods#new"
-  # post "neighborhoods", to: "neighborhoods#create"
-  # get "neighborhoods/new", to: "neighborhoods#new", as: "new_neighborhood"
+  ##################################################
+  # Posts
+  ##################################################
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

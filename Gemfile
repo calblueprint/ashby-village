@@ -1,36 +1,51 @@
 source 'https://rubygems.org'
 
-gem "paperclip", "~> 4.3"
+gem 'binding_of_caller'
+gem 'better_errors'
+gem 'aws-sdk-v1' # If using paperclip <= v4.3.1
+gem 'annotate'
+
+# Allows for human-friendly strings
+gem 'friendly_id', '~> 5.1.0'
+
+# Style me up, Shimmy
+gem 'foundation-rails'
+
+# Decorators
+gem 'draper'
+
+gem 'paperclip', '~> 4.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
 # Use Pg as the database for Active Record
 gem 'pg'
 
-
-#Figaro was written to make it easy to securely configure Rails applications.
+# Figaro was written to make it easy to securely configure Rails applications.
 gem 'figaro'
 
 # Devise is a flexible authentication solution for Rails
 gem 'devise'
 
-
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Use React to build UI components
+gem 'react-rails', '~> 1.4.0'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

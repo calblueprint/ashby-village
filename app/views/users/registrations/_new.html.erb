@@ -1,0 +1,64 @@
+<div id="register" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close-reveal-modal" aria-label="Close">Cancel Registration &#215;</a>
+        <h2 class="modal-title" id="myModalLabel">Create an Account</h2>
+      </div>
+      <div class="modal-body">
+         <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name),
+             html: { multipart: true }) do |f| %>
+            <%= devise_error_messages! %>
+              <h5 class=''>
+                Type in the blanks to complete your registration for Ashby Village Square. </br>
+                No information will be shared without your consent.
+              </h5>
+
+              <div class="field">
+                <h6 class=''>My name is</h6>
+                <%= f.text_field :first_name, autofocus: true, required: true, :placeholder => 'First Name' %>
+              </div>
+
+              <div class="field">
+                <%= f.text_field :last_name, autofocus: true, required: true, :placeholder => 'Last Name' %>
+              </div>
+
+              <div class="field">
+                <h6 class=''>and my email address is</h6>
+                <%= f.email_field :email, autofocus: true, required: true, :placeholder => 'email@address.com' %>
+              </div>
+
+              <div class="field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <h6 class=''>I would like my password to be</h6>
+                <%= f.password_field :password, autocomplete: "off", required: true, :placeholder => 'something memorable' %>
+              </div>
+
+              <div class="field">
+                <h6 class=''>Just to be sure, my password once again is</h6>
+                <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => 'something memorable' %>
+              </div>
+
+              <div class="field">
+                <h6 class=''>and my phone number is</h6>
+                <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567' %>
+              </div>
+
+              <div class="field">
+                <h6 class=''>So others can recognize me, here is a photo of me:</h6>
+                <%= f.file_field :photo %>
+              </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-actions">
+          <div class="actions">
+            <%= f.submit "Submit", class: 'button success radius small' %>
+          </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

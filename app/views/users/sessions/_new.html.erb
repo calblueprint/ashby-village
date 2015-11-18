@@ -1,0 +1,42 @@
+<div id="login" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        <h2 class="modal-title" id="myModalLabel">Please log in to continue.</h2>
+      </div>
+          <div>
+            <h4>Don't have an account? <%= link_to "Click here to register", new_user_registration_path %> </h4>
+          </div>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Login", class: 'button success radius small' %>
+          </div>
+
+          <div>
+            <%= link_to "Forgot your password?", new_password_path(:user) %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

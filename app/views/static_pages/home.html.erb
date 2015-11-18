@@ -1,2 +1,29 @@
-<h1>StaticPages#home</h1>
-<p>Welcome to Ashby Village Square!</p>
+<%= render "users/registrations/new" %>
+<div class='landing'>
+  <div class='banner_text'>
+    <h1>Know what's happening.</h1>
+    <h4>Ashby Village Square powers group communication</h4></br>
+    <%= link_to 'Create an Account', "#",  data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"register"}, class: 'button success radius small' %>
+  </div>
+
+  <div class='footer'>
+    <h2>What you'll be able to do on Ashby Village Square</h2>
+    <div class='columns row' style="width:100%">
+      <div class="column1" style="float:left; margin:0; width:33%;">
+        <div class="communications" style="height:150px;"></div>
+        <h3>Stay Updated</h3>
+        <p>This website provides you a channel to talk with all fellow villagers.</p>
+      </div>
+      <div class="column2" style="float:left; margin:0; width:33%;">
+        <div class="groups" style="height:150px;"></div>
+        <h3>Form Groups</h3>
+        <p>All the interest groups you know and love are here.  But you can form them if any are missing.</p>
+      </div>
+      <div class="column3" style="float:left; margin:0; width:33%;">
+        <div class="events" style="height:150px;"></div>
+        <h3>Create Events</h3>
+        <p>You'll easily be able to coordinate large events among many members.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,3 +14,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore locally uploaded files
+/public/system/*
+
+# Ignore seed data files
+# /app/assets/images/seed/*
