@@ -30,6 +30,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  # TODO (Shannon): add phone number validation, length and integers
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
   has_many :user_neighborhoods
   has_many :neighborhoods, through: :user_neighborhoodss
@@ -43,6 +44,6 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
-  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "thumb/default.jpg"
+  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "thumb/default.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
 end
