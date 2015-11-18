@@ -3,3 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "ashby_settings.scss";
+
+.header {
+  padding-top: 20px;
+  text-align: center;
+  color: $ashby-black;
+}
+
+.header h3 {
+  font-style: bold;
+}
+
+.header img {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 4px solid $ashby-dark-blue;
+  object-fit: cover;
+}
+
+.user_info h4 {
+  color: $ashby-black;
+}

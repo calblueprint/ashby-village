@@ -1,13 +1,30 @@
-<h2><%= @header %></h2>
+<div class="row">
+  <div class="row">
+    <div class="header small-6 small-centered large-3 column">
+      <%= image_tag(current_user.photo(:thumb)) %>
+      <h3><%= @user.full_name %></h3>
+    </div>
+  </div>
 
-<% if @user.photo %>
-  <%= image_tag @user.photo.url(:thumb) %>
-<% end %><br />
+  <div class="row">
+    <div class="user_info small-12 large-8 columns">
+      <h6>NAME</h6>
+      <h4> <%= @user.full_name %> </h4>
 
-<h4>Name: <%= @user.full_name %> </h4>
-<h4>Email: <%= @user.email %> </h4>
-<h4>Phone: <%= @user.phone %> </h4>
+      <h6>EMAIL</h6>
+      <h4> <%= @user.email %> </h4>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_path %>
-<% end %>
+      <h6>PHONE</h6>
+      <h4> <%= @user.phone %> </h4>
+
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path %>
+      <% end %>
+    </div></br>
+
+    <div class="actions small-12 large-4 columns">
+      <h6>CREATE A GROUP</h6>
+        <%= link_to 'Create New Group', new_group_path, class: 'button success radius small' %>
+    </div>
+  </div>
+</div>

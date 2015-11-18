@@ -5,11 +5,6 @@ class UsersController < ApplicationController
   # GET /users
   def show
     @user = User.find(params[:id]).decorate
-    @header = "My Profile"
-
-    if @user != current_user
-      @header = @user.first_name + "'s Profile"
-    end
   end
 
   #   PUT /resource
