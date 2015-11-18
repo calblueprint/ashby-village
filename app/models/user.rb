@@ -30,7 +30,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  searchkick
+  searchkick autocomplete: ['first_name']
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
 

@@ -14,9 +14,9 @@ class GroupsController < ApplicationController
 
   def new
     if params[:query].present?
-      @all_users = User.search(params[:query])
+      @users = User.search(params[:query])
     else
-      @all_users = []
+      @users = []
     end
     if current_user
       @group = Group.new
@@ -24,6 +24,12 @@ class GroupsController < ApplicationController
       @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end
+  end
+
+  def autocomplete
+    render json: User.search(params[:query], autocomplete: false, limit: 10).map do |user|
+      { first_name: user.first_name, value: user.id }
     end
   end
 
