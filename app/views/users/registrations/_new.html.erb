@@ -21,16 +21,16 @@
               <div class='row'>
                 <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>My name is </h5>
-                  <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, autofocus: true, required: true, :placeholder => 'First Name', :class => 'input' %> </div>
+                  <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, autofocus: true, required: true, placeholder: 'First Name', class: 'input' %> </div>
 
-                  <div class='input-form'> <%= f.text_field :last_name, autofocus: true, required: true, :placeholder => 'Last Name', :class => 'input' %> </div>
+                  <div class='input-form'> <%= f.text_field :last_name, autofocus: true, required: true, placeholder: 'Last Name', class: 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
                 <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>and my email address is </h5>
-                  <div class='input-form'> <%= f.email_field :email, autofocus: true, required: true, :placeholder => 'email@address.com', :class => 'input' %> </div>
+                  <div class='input-form'> <%= f.email_field :email, autofocus: true, required: true, placeholder: 'email@address.com', class: 'input' %> </div>
                 </div>
               </div>
 
@@ -40,21 +40,22 @@
                   <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %>
                   <h5 class='question'>I would like my password to be</h5>
-                  <div class='input-form'> <%= f.password_field :password, autocomplete: "off", required: true, :placeholder => 'something memorable', :class => 'input' %> </div>
+                  <div class='input-form'> <%= f.password_field :password, autocomplete: "off", required: true, placeholder: 'something memorable', class: 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
                 <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>Just to be sure, my password once again is</h5>
-                  <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => 'something memorable', :class => 'input' %> </div>
+                  <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", required: true, placeholder: 'something memorable', class: 'input' %> </div>
                 </div>
               </div>
 
               <div class='row'>
                 <div class='field small-12 small-centered medium-10 large-8 column'>
                   <h5 class='question'>and my phone number is</h5>
-                  <div class='input-form'> <%= f.text_field :phone, autofocus: true, :placeholder => 'ex. (510) 123 - 4567', :class => 'input', :type => tel %> </div>
+                  <div class='input-form'>
+                    <%= f.text_field :phone, id: "phone", autofocus: true, placeholder: 'ex. (510) 123 - 4567', class: 'input' %> </div>
                 </div>
               </div>
 
