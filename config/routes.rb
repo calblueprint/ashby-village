@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   # Groups
   ##################################################
   resources :groups do
-    resources :posts,          only: [:create, :destroy]
+    resources :posts
   end
   get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
 
