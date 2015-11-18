@@ -13,6 +13,11 @@ class GroupsController < ApplicationController
   end
 
   def new
+    if params[:query].present?
+      @all_users = User.search(params[:query])
+    else
+      @all_users = []
+    end
     if current_user
       @group = Group.new
       @kinds = Group.kinds.keys
