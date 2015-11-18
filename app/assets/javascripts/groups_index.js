@@ -1,9 +1,26 @@
 var ready = function() {
 
   updateGroupCount();
+  var select;
+
+  $(".my-groups").click(function() {
+    select = "my";
+  });
+  $(".home").click(function() {
+    select = "all";
+  });
+
+  updateListing(select);
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
-    var kind = $(".group-dropdown").val();
+    updateListing($(".group-dropdown").val());
+  });
+
+
+  function updateListing(selected) {
+    selected = typeof selected !== 'undefined' ? selected : "all";
+
+    var kind = selected;
     var neighborhood = $(".neighborhood-dropdown").val();
 
     $(".group-tile").show();
@@ -16,10 +33,8 @@ var ready = function() {
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
-
     updateGroupCount();
-
-  });
+  }
 
   function updateGroupCount() {
     var groupCount = $(".group-tile").filter(function() {

@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
           <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-groups">
-            <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
+            <%= link_to image_tag("groups_icon.png") + "My Groups", root_path %>
           </li>
           <li class="my-profile has-dropdown not-click">
             <%= link_to image_tag(current_user.photo(:thumb)) + current_user.full_name, current_user %>
