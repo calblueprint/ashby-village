@@ -21,6 +21,7 @@
 </div>
 
 <% @groups.each do |group| %>
+  <%= link_to group do %>
   <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
 
     <div class="large-3">
@@ -48,4 +49,5 @@
     <button class="large-3 right">Join Group</button>
 
   </div>
+  <% end %>
 <% end %>
