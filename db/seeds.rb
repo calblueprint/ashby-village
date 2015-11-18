@@ -65,7 +65,6 @@ def make_neighborhood
   Neighborhood.create! name: 'Outlandish', description: '#'
 end
 
-
 def make_posts
   users = User.order(:created_at).take(6)
   50.times do
