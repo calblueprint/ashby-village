@@ -6,7 +6,6 @@
 
 .header {
   padding-top: 20px;
-  text-align: center;
 }
 
 .header h2 {
@@ -23,6 +22,7 @@
 }
 
 .user_info {
+  height: 250px;
   background-color: white;
   border-radius: 8px;
 }
@@ -37,10 +37,15 @@
 }
 
 .actions {
+  height: 250px;
   background-color: white;
   border-radius: 8px;
 }
 
 .actions h7 {
   color: $ashby-black;
+}
+
+.block-grid {
+
 }
