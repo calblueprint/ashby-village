@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   # TODO (Shimmy): Flash success notification on send
   # TODO (Shimmy): Make layout: false
   def create
-    byebug
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
     @post.user_id = current_user.id

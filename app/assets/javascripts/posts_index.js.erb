@@ -1,0 +1,20 @@
+// Instead of on ready, have this javascript run when you submit your post
+// TODO (Shimmy): Run this javascript when someone else posts too
+$(document).ready(function (){
+    var target_path = window.location.pathname + "/posts"
+    $.ajax({
+      method: "GET",
+      url: target_path,
+      dataType: "json",
+      success: function(data){
+        $.each(data, function(i, item){
+           $('#posts').html("escape_javascript<%=(render 'posts/post', post: data[i]) %>");
+          console.log(data[i]);
+          // console.log(data[i].content);
+        })
+      }
+    });
+});
+
+
+
