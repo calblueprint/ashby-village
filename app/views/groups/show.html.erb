@@ -19,7 +19,12 @@
 <%= link_to "View member listing", member_listing_path(@group) %>
 <%= render 'groups/settings' %>
 <%= render 'posts/new' %>
-<%= render 'posts/index', posts: @group.posts %>
+
+
+<!-- This renders the tasks -->
+<div id="posts">
+  <%= render 'posts/index', posts:@group.posts %>
+</div>
 
 
 
