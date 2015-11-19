@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   # before_action :logged_in_user, only: [:create, :destroy]
 
   # TODO (Shimmy): Watch out for duplicates
-  # TODO (Shimmy): Flash success notification on send
   def create
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
     @post.save
+  # TODO (Shimmy): Flash success notification on send
   end
 
   def destroy
