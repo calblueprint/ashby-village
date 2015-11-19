@@ -4,25 +4,22 @@ class PostsController < ApplicationController
 
   def index
     @group = Group.friendly.find(params[:group_id])
-    @post = @group.posts
-
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @posts = @group.posts
   end
 
   def new
     @post = Post.new
   end
 
+  # TODO (Shimmy): Watch out for duplicates
+  # TODO (Shimmy): Flash success notification on send
+  # TODO (Shimmy): Make layout: false
   def create
+    byebug
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to group_path(@group), notice: "Post has been saved successfully."
-    end
+    @post.save
   end
 
   def destroy
