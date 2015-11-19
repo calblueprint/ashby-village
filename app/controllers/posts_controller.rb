@@ -4,20 +4,10 @@ class PostsController < ApplicationController
 
   def index
     @group = Group.friendly.find(params[:group_id])
-    @posts = @group.posts
-    respond_to do |format|
-      format.html
-      format.json { render json: @posts }
-    end
   end
 
   def new
     @post = Post.new
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   # TODO (Shimmy): Watch out for duplicates
@@ -25,7 +15,6 @@ class PostsController < ApplicationController
   def create
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
-    @post.user_id = current_user.id
     @post.save
   end
 
@@ -36,7 +25,7 @@ class PostsController < ApplicationController
 
     # TODO (Shimmy): Add picture support
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :group_id)
+    params.require(:post).permit(:title, :content, :user_id, :group_id).merge(user_id: current_user.id)
   end
 
   # TODO (Shimmy): Use CanCanCan instead.
