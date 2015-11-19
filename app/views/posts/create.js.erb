@@ -1,1 +1,1 @@
-$('#posts').html("<%= escape_javascript(render 'posts/index', posts: @group.posts) %>")
+$('#posts').html("<%= escape_javascript(render 'posts/index', posts: @group.posts.newest_first) %>")

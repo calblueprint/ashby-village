@@ -20,7 +20,7 @@
 <%= render 'posts/new' %>
 <!-- TODO (Shimmy): Show the most recent post first -->
 <div id="posts">
-  <%= render @group.posts %>
+  <%= render @group.posts.newest_first %>
 </div>
 
 
