@@ -5,6 +5,10 @@ class PostsController < ApplicationController
   def index
     @group = Group.friendly.find(params[:group_id])
     @posts = @group.posts
+    respond_to do |format|
+      format.html
+      format.json {render json: @posts}
+    end
   end
 
   def new
