@@ -2,14 +2,6 @@ class PostsController < ApplicationController
   # TODO (Shimmy): Define logged_in_user
   # before_action :logged_in_user, only: [:create, :destroy]
 
-  def index
-    @group = Group.friendly.find(params[:group_id])
-  end
-
-  def new
-    @post = Post.new
-  end
-
   # TODO (Shimmy): Watch out for duplicates
   # TODO (Shimmy): Flash success notification on send
   def create

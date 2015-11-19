@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
   def show
     @post = Post.new
     @group = Group.friendly.find(params[:id])
+    @posts = @group.posts.newest_first
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
   end
 
