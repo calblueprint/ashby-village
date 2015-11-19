@@ -6,6 +6,19 @@
     </div>
   </div>
 
+  <div class="row menu">
+    <nav class="menu-bar" role="navigation">
+      <ul class="left">
+        <li class="user_info">
+          <%= link_to image_tag("user_info_icon.png") + "Your Information", '#', data: {toggle: "#", target: "#", :"reveal-id"=>""} %>
+        </li>
+        <li class="user_groups">
+          <%= link_to image_tag("group_leader_icon.png") + "Groups You Lead", '#', data: {toggle: "#", target: "#", :"reveal-id"=>""} %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="row">
     <div class="user_info small-12 large-8 columns">
       <h6>NAME</h6>
