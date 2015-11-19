@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @posts = @group.posts
     respond_to do |format|
       format.html
-      format.json {render json: @posts}
+      format.json { render json: @posts }
     end
   end
 
@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 
   # TODO (Shimmy): Watch out for duplicates
   # TODO (Shimmy): Flash success notification on send
-  # TODO (Shimmy): Make layout: false
   def create
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
@@ -39,8 +38,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content, :user_id, :group_id)
   end
-  # TODO (Shimmy): Use CanCanCan instead.
 
+  # TODO (Shimmy): Use CanCanCan instead.
   def correct_user
     @post = current_user.post.find_by(id: params[:id])
     redirect_to root_url if @post.nil?
