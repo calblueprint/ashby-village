@@ -13,9 +13,9 @@ class PostsController < ApplicationController
   # TODO (Shimmy): Watch out for duplicates
   # TODO (Shimmy): Flash success notification on send
   def create
+    # TODO (Shimmy): Get rid of the line below this using load_and_authorize_resource from cancancan
     @group = Group.friendly.find(params[:group_id])
-    @post = @group.posts.build(post_params)
-    @post.save
+    @post.create(post_params)
   end
 
   def destroy
