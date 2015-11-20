@@ -1,9 +1,11 @@
+
+
 <div class="dropdowns-tile row">
   <h6>groups</h6>
-  <h3> Show me
+  <h3> Show me <%= @format %>
     <select class="group-dropdown large-3">
-      <option value="all"> all </option>
-      <option value="my"> my </option>
+      <option <%= @all %> value="all"> all </option>
+      <option <%= @my %> value="my"> my </option>
       <option value="social"> social </option>
       <option value="neighborhood"> neighborhood </option>
       <option value="committee"> committee </option>

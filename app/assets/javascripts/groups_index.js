@@ -1,26 +1,14 @@
 var ready = function() {
 
   updateGroupCount();
-  var select;
-
-  $(".my-groups").click(function() {
-    select = "my";
-  });
-  $(".home").click(function() {
-    select = "all";
-  });
-
-  updateListing(select);
+  updateListing();
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
-    updateListing($(".group-dropdown").val());
+    updateListing();
   });
 
-
-  function updateListing(selected) {
-    selected = typeof selected !== 'undefined' ? selected : "all";
-
-    var kind = selected;
+  function updateListing() {
+    var kind = $(".group-dropdown").val();
     var neighborhood = $(".neighborhood-dropdown").val();
 
     $(".group-tile").show();

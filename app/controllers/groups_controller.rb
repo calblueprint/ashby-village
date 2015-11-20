@@ -4,6 +4,14 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @neighborhoods = Neighborhood.all
+    my = params[:format]
+    if my.nil?
+      @all = "selected = \"selected\"".html_safe
+      @my = "".html_safe
+    else
+      @my = "selected = \"selected\"".html_safe
+      @all = "".html_safe
+    end
   end
 
   def show
