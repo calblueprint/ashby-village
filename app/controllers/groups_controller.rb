@@ -39,6 +39,11 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
+  def join_group
+    @group = Group.friendly.find(params[:id])
+    @group.add_user(current_user)
+  end
+
   def leave_group
     #if you're leader - alert - can't leave if there are no other leaders
     #if you're a member or one leader amongst many others you can leave

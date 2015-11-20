@@ -35,14 +35,23 @@ var ready = function() {
   // Join group button logic
   $(".group-tile button").click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $button = $(this);
     if ($button.hasClass("is-member")) {
       $button.removeClass("is-member");
       $button.removeClass("remove-member");
       $button.text("Join Group")
+
+      // AJAX
+      $.ajax("/groups/leave_group");
+
     } else {
       $button.addClass("is-member");
       $button.text("You Have Joined");
+
+      // AJAX
+      $.ajax("/groups/join_group");
+
     }
   });
 
