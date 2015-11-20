@@ -24,8 +24,9 @@
 
   <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
     <%= link_to group do %>
-    <div class="large-3">
-      <%= image_tag group.photo, :class => "group-photo large-2 columns" %>
+    <div class="group-photo-container large-3">
+        <%= image_tag group.photo, :class => "group-photo large-3 columns" %>
+        <p>VISIT GROUP</p>
     </div>
 
     <div class="large-6 columns">

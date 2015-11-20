@@ -17,6 +17,30 @@
 .group-tile .group-photo {
   object-fit: cover;
   width: 240px;
+  @include ease-transition(0.5s);
+}
+
+.group-tile:hover .group-photo {
+   -webkit-filter: brightness(0.25);
+   filter: brightness(0.25);
+}
+
+.group-tile .group-photo + p {
+  color: white;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  top: 64px;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.group-tile:hover .group-photo + p {
+  visibility: visible;
+}
+
+.group-tile .group-photo-container {
+  position: relative;
 }
 
 .group-tile .member-count-icon {
