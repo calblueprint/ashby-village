@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
+  enum role: [:member, :admin]
+
 
   has_many :user_neighborhoods
   # TODO: Remove neighborhood model
