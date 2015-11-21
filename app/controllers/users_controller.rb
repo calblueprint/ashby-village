@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # TODO (Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
+  # TODO (Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
   def index

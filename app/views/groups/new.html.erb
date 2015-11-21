@@ -2,6 +2,7 @@
 
   <%= form_for @group do |f| %>
     Name: <%= f.text_field :name %>
+    Type: <%= f.select(:kind, @kinds)%>
     Description: <%= f.text_field :description %>
     Neighborhood: <%= f.select(:neighborhood_id, @neighborhoods)%>
 
