@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
   def leave
     @group = Group.friendly.find(params[:id])
     @group.remove_user(current_user)
-    redirect_to groups_path
+    redirect_to groups_path, notice: "You have successfully left the group"
   end
 
   def group_params
