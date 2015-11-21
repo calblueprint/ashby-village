@@ -3,10 +3,10 @@
     <%= image_tag(current_user.photo(:thumb)) %>
     <h2><%= @user.full_name %></h2>
   </div>
-</div></br>
+</div>
 
 <div class="grid">
   <%= render 'menu' %></br>
 
-  <%= render partial: 'profile', locals: { info: @info} %>
+  <%= render partial: 'profile', locals: { info: @info } %>
 </div>

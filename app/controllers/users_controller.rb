@@ -3,11 +3,14 @@ class UsersController < ApplicationController
   # TODO (Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
+  def index
+    @users = User.all.decorate
+  end
+
   def show
     @user = User.find(params[:id]).decorate
   end
 
-  #   PUT /resource
   def edit
     @user = User.find(params[:id]).decorate
     render :template => "users/registrations/edit_profile"
@@ -21,6 +24,9 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       render action: "edit"
+      # TODO (Shannon): Verification for edit profiles?
+      flash[:alert] = "Error!"
+
     end
   end
 
