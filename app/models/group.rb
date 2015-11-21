@@ -30,8 +30,6 @@ class Group < ActiveRecord::Base
     def leaders
       where("user_groups.is_leader = ?", true)
     end
-    # def has_many_leaders
-    #   where()
   end
 
   has_many :posts, dependent: :destroy
@@ -47,18 +45,11 @@ class Group < ActiveRecord::Base
     users.leaders.count == 1
   end
 
-# Case 1: They are a normal member and they want to remove themselves
-# => remove user
-# Case 2: They are a leader with NO other leaders
-# => make group inactive, remove user
-# Case 3: They are a leader with other leaders
-# => remove user
-
   def remove_user(current_user)
     # If the current user is the only leader, make the group inactive
-    if has_one_leader && current_user.is_leader(group)
-      @group.update_attribute :state, 0
+    if has_one_leader && current_user.is_leader(self)
+      self.update_attribute :state, 0
     end
-    @group.users.delete(current_user)
+    self.users.delete(current_user)
   end
 end

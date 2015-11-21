@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     group.users.leaders.exists?(id: id)
   end
 
+  def is_member(group)
+    group.users.exists?(id: id)
+  end
+
   has_many :posts, dependent: :destroy
 
   validates :email, presence: true
