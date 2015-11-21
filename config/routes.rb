@@ -77,7 +77,8 @@ Rails.application.routes.draw do
   resources :groups do
     resources :posts
   end
-  get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
+  get "groups/:id/member_listing", to: 'groups#member_listing', as: 'member_listing'
+  put "groups/:id/join_group", to: "groups#join_group", as: "join_group"
 
   ##################################################
   # Posts

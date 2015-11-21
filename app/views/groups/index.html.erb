@@ -50,7 +50,9 @@
       <% if group.users.include?(current_user) %>
         <button class="large-3 right is-member">You Have Joined</button>
       <% else %>
-        <button class="large-3 right">Join Group</button>
+        <%= link_to join_group_path(group), remote: true, method: :put do %>
+          <button class="large-3 right">Join Group</button>
+        <% end %>
       <% end %>
   </div>
   <% end %>
