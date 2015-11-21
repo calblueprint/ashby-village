@@ -5,33 +5,8 @@
   </div>
 </div></br>
 
-<div class="row menu">
-  <nav class="menu-bar small-8 small-centered large-8 large-uncentered columns" role="navigation">
-    <ul class="left">
-      <li class="info">
-        <%= link_to image_tag("profile.png") + "Your Information", '#', data: {toggle: "#", target: "#", :"reveal-id"=>""} %>
-      </li>
-      <li class="user_groups">
-        <%= link_to image_tag("groups_you_lead.png") + "Groups You Lead", '#', data: {toggle: "#", target: "#", :"reveal-id"=>""} %>
-      </li>
-    </ul>
-  </nav>
-</div></br>
+<div class="grid">
+  <%= render 'menu' %></br>
 
-<div class="row">
-  <div class="user_info small-8 small-centered large-8 large-uncentered columns">
-    <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
-    <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
-    <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
-
-    <% if @user == current_user %>
-      <%= link_to 'Edit Profile', edit_user_path %>
-    <% end %>
-  </div>
-
-  <div class="actions small-8 small-centered large-4 large-uncentered columns">
-    <h6>CREATE A GROUP</h6>
-      <%= link_to 'Create New Group', new_group_path, class: 'button success radius small' %></br>
-      <h7>Click the button above to make a new group!</h7>
-  </div>
+  <%= render partial: 'profile', locals: { info: @info} %>
 </div>
