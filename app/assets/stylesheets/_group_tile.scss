@@ -26,12 +26,12 @@
 }
 
 .group-tile .group-photo + p {
+  position: absolute;
   color: white;
   font-weight: 900;
-  position: absolute;
+  transform: translate(-50%, -50%);
   left: 50%;
   top: 64px;
-  transform: translate(-50%, -50%);
   visibility: hidden;
 }
 
