@@ -21,6 +21,7 @@ class Group < ActiveRecord::Base
   friendly_id :name, :use => :slugged
 
   enum kind: [:social, :neighborhood, :committee]
+  enum state: [:inactive, :active]
 
   belongs_to :neighborhood
 
@@ -39,4 +40,12 @@ class Group < ActiveRecord::Base
   def add_user(current_user, make_leader=false)
     UserGroup.create(user: current_user, group: self, is_leader: make_leader)
   end
+# Case 1: They are a normal member and they want to remove themselves
+# Case 2: They are a leader with NO other leaders
+# => make group "dead"
+# Case 3: They are a leader with other leaders
+# => They remove themselves
+  def remove_user(current_user)
+    UserGroup.find_
+
 end
