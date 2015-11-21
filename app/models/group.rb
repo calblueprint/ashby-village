@@ -39,4 +39,5 @@ class Group < ActiveRecord::Base
   def add_user(current_user, make_leader=false)
     UserGroup.create(user: current_user, group: self, is_leader: make_leader)
   end
+
 end

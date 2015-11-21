@@ -51,7 +51,9 @@ class GroupsController < ApplicationController
     #if you're leader - alert - can't leave if there are no other leaders
     #if you're a member or one leader amongst many others you can leave
     @group = Group.friendly.find(params[:id])
-    @group.current_user.delete
+    if @group.users.include?(current_user)
+      @group.current_user.delete
+    end
   end
 
   def group_params
