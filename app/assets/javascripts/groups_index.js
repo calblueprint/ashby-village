@@ -11,7 +11,7 @@ var ready = function() {
       $(".group-tile").not("." + kind).hide();
     }
     if (neighborhood != "all") {
-      $(".group-tile").not("." + neighborhood).hide();
+      $(".group-tile").not("." + neighborhood).fadeOut("fast");
       $(".dropdowns-tile span").fadeOut("fast"); 
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
