@@ -42,6 +42,11 @@ class Group < ActiveRecord::Base
   def add_user(current_user, make_leader = false)
     UserGroup.create(user: current_user, group: self, is_leader: make_leader)
   end
+
+  def has_one_leader
+    users.leaders.count == 1
+  end
+
 # Case 1: They are a normal member and they want to remove themselves
 # => remove user
 # Case 2: They are a leader with NO other leaders
@@ -51,7 +56,7 @@ class Group < ActiveRecord::Base
 
   def remove_user(current_user)
     # If the current user is the only leader, make the group inactive
-    if @group.users.leaders.count == 1 && @group.users.leaders.exists?(id: current_user.id)
+    if has_one_leader && current_user.is_leader(group)
       @group.update_attribute :state, 0
     end
     @group.users.delete(current_user)

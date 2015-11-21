@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_leader(group)
+    group.users.leaders.exists?(id: id)
+  end
+
   has_many :posts, dependent: :destroy
 
   validates :email, presence: true
