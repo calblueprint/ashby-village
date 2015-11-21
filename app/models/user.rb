@@ -30,15 +30,17 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  scope :is_admin, -> { where(role: 1) }
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
+  devise :database_authenticatable, :recoverable,
+         :rememberable, :trackable, :validatable, :registerable
+
   enum role: [:member, :admin]
 
-
-  has_many :user_neighborhoods
   # TODO: Remove neighborhood model
+  has_many :user_neighborhoods
+  has_many :posts, dependent: :destroy
   has_many :neighborhoods, through: :user_neighborhoods
-
   has_many :user_groups
   has_many :groups, through: :user_groups do
     def leader_of
@@ -46,10 +48,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :posts, dependent: :destroy
-
   validates :email, presence: true
-
   has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
 end
