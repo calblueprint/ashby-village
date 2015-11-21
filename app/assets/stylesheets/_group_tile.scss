@@ -29,8 +29,7 @@
   position: absolute;
   color: white;
   font-weight: 900;
-  transform: translate(-50%, -50%);
-  left: 50%;
+  left: 64px;
   top: 64px;
   visibility: hidden;
 }
@@ -45,7 +44,6 @@
 
 .group-tile .member-count-icon {
   height: 16px;
-  width: 24px;
   float: left;
   margin-right: 8px;
 }
