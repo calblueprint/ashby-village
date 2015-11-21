@@ -55,10 +55,11 @@ Rails.application.routes.draw do
   # Devise
   ##################################################
   devise_for :users, :path => '',
-  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'account_settings'},
+  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'users/:id/account_settings'},
   :controllers => {:registrations => 'users/registrations'}
   devise_scope :users do
-    get "/account_settings" => "users/registrations#edit"
+    get "users/:id/account_settings" => "users/registrations#edit", :as => "account_settings"
+    # TODO (Shannon): Refactor routes.
   end
 
   ##################################################
