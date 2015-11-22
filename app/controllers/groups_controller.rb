@@ -13,11 +13,6 @@ class GroupsController < ApplicationController
   end
 
   def new
-    if params[:query].present?
-      @users = User.search(params[:query])
-    else
-      @users = []
-    end
     if current_user
       @group = Group.new
       @kinds = Group.kinds.keys
@@ -28,9 +23,7 @@ class GroupsController < ApplicationController
   end
 
   def autocomplete
-    render json: User.search(params[:query], autocomplete: false, limit: 10).map do |user|
-      { first_name: user.first_name, value: user.id }
-    end
+    render json: User.search(params[:query], autocomplete: true, limit: 10).map(&:first_name)
   end
 
   # When User creates group, create a UserGroup with is_leader: true
