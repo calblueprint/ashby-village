@@ -1,8 +1,6 @@
 <h2>Edit Group</h2>
 
-<%= form_for(resource, as: resource_name, url: group_path(@group), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
+<%= form_for @group do |f| %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, :value => @group.name %>
@@ -15,7 +13,7 @@
 
   <div class="field">
     <%= f.label :kind %>
-    <%= f.email_field :kind, autofocus: true, :value => @group.kind %>
+    <%= f.text_field :kind, autofocus: true, :value => @group.kind %>
   </div>
 
   <div class="field">

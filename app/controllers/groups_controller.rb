@@ -56,13 +56,11 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.friendly.find(params[:id])
-    render :template => "groups/edit_group"
   end
 
   def update
     @group = Group.friendly.find(params[:id])
-    if @group.save
-      @group.update_attributes(group_params)
+    if @group.update_attributes(group_params)
       flash[:notice] = "Group updated!"
       redirect_to group_path
     else
