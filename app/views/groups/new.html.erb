@@ -1,15 +1,17 @@
 <h2>Create New Group</h2>
-<h4>Fill in the blanks below to create your new group. All fields are required</h4>
+<h4>Fill in the blanks below to create your new group. All fields are required.</h4>
   <%= form_for @group do |f| %>
-    Group Name <%= f.text_field :name, required: true %>
-    Group Description <%= f.text_field :description, required: true %>
+  <div class="create-section row">
+    Group Name <%= f.text_field :name, required: true, :placeholder => 'Example: Kensington Knitting Club' %>
+    Group Description <%= f.text_field :description, required: true, :placeholder => 'Example: This club is for...' %>
     Group Cover Photo
     <div class="field">
-      <%= f.label :photo %>
+      <%= image_tag :photo %>
+      <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
       <%= f.file_field :photo, required: true %>
     </div>
     Kind of Group <%= f.select(:kind, @kinds) %>
     Neighborhood of Group <%= f.select(:neighborhood_id, @neighborhoods) %>
-
     <%= f.submit %>
+    </div>
   <% end %>
