@@ -22,10 +22,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def autocomplete
-    render json: User.search(params[:query], autocomplete: true, limit: 10).map(&:first_name)
-  end
-
   # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
