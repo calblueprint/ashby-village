@@ -2,15 +2,17 @@
   <h6>MEMBERS (<%= @group.user_groups.count %>)</h6>
     <% @group.users.each do |user| %>
         <div class="large-6 columns">
-            <div class="listing-member-tile row">
-              <div class="listing-member-display large-3 columns"><% if user.photo %>
+          <div class="listing-member-tile row collapse">
+            <div class="listing-member-display large-3 column">
+              <% if user.photo %>
                 <%= image_tag(user.photo(:thumb)) %>
-              <% end %></div>
-              <div class="large-9 columns">
-                <h5><%= link_to user.decorate.full_name, user %></h5>
-                <h6><%= user.phone %></h6>
-              </div>
+              <% end %>
             </div>
+            <div class="large-9 left column">
+              <h5><%= link_to user.decorate.full_name, user %></h5>
+              <h6><%= user.phone %></h6>
+            </div>
+          </div>
         </div>
     <% end %>
 </div>
