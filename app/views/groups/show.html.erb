@@ -21,3 +21,8 @@
 <div id="posts">
   <%= render @posts %>
 </div>
+
+<% if current_user.is_leader(@group) %>
+    <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
+<% end %>
+
