@@ -50,6 +50,6 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
-  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "thumb/default.png"
+  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "default.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
 end
