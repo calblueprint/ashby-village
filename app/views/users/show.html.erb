@@ -1,6 +1,6 @@
 <div class="row text-center">
   <div class="header small-11 small-centered large-6 column">
-    <%= image_tag(current_user.photo(:thumb)) %>
+    <%= image_tag(@user.photo(:thumb)) %>
     <h2><%= @user.full_name %></h2>
   </div>
 </div>
@@ -8,10 +8,10 @@
 <div class="grid">
   <div class="row menu">
     <div class="click-info small-3 large-3 large-uncentered column">
-      <%= image_tag("your_info_icon.png") + "Your Information" %>
+      <p><%= image_tag("your_info_icon.png") + "Your Information" %></p>
     </div>
     <div class="click-groups small-3 large-3 large-uncentered column">
-      <%= image_tag("groups_you_lead_icon.png") + "Groups You Lead" %>
+      <p><%= image_tag("groups_you_lead_icon.png") + "Groups You Lead" %></p>
     </div>
   </div></br>
   <div class="info">

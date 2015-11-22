@@ -10,6 +10,10 @@
   height: 48px;
 }
 
+.menu p {
+  color: $ashby-gray;
+}
+
 .actions {
   height: 250px;
   background-color: white;
@@ -49,22 +53,14 @@
   text-align: center;
 }
 
-.nav h6 {
-  color: #2D3339;
-}
-
 .selected {
   border-bottom: 3px solid $ashby-green;
-}
-
-.leader-of {
-  background-color: white;
-  border-radius: 8px;
 }
 
 .click-info {
   padding: 10px;
   height: 48px;
+  width: 195px;
 }
 
 .click-info img {
@@ -78,8 +74,8 @@
 
 .click-groups {
   padding: 10px;
-  padding-left: 30px;
   height: 48px;
+  width: 195px;
 }
 
 .click-groups img {
