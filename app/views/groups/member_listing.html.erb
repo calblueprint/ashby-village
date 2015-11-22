@@ -1,8 +1,10 @@
+<div class="member-listing">
 <% @group.users.each do |user| %>
-  <li><%= user.decorate.full_name %></li>
-    <% if user.photo %>
-      <%= image_tag user.photo(:medium) %>
-    <% end %>
-
+	<div class="member-tile">
+  <% if user.photo %>
+    <%= image_tag user.photo(:medium) %>
+  <% end %>
+  <%= user.decorate.full_name %>
+	</div>
 <% end %>
-
+</div>
