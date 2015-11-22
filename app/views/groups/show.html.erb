@@ -18,6 +18,7 @@
 <%= link_to "View member listing", member_listing_group_path(@group) %>
 <%= render 'groups/settings' %>
 <%= render 'posts/new' %>
-<div id="posts">
+<div class="posts row">
+  <h6>MOST RECENT POSTS</h6>
   <%= render @posts %>
 </div>
