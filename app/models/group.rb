@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   # validates :name, uniqueness: true, on: :create
-  validates_uniqueness_of :name, message: 'This group name has already been taken', on: :create
+  validates_uniqueness_of :name
 
   enum kind: [:social, :neighborhood, :committee]
   enum state: [:inactive, :active]

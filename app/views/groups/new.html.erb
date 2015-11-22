@@ -1,7 +1,7 @@
 <h1>New group</h1>
   <%= form_for @group do |f| %>
     Name: <%= f.text_field :name, required: true %>
-    Type: <%= f.select(:kind, @kinds)%>
+    Type: <%= f.select(:kind, @kinds) %>
     Description: <%= f.text_field :description, required: true %>
     Neighborhood: <%= f.select(:neighborhood_id, @neighborhoods) %>
 
@@ -9,18 +9,6 @@
       <%= f.label :photo %>
       <%= f.file_field :photo, required: true %>
     </div>
-
-    <% if @group.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-        <ul>
-        <% @group.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <%= f.submit %>
   <% end %>
