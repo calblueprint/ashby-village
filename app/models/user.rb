@@ -34,10 +34,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   scope :is_admin, -> { where(role: 1) }
 
+  # TODO (Shannon): add phone number validation, length and integers
+
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable, :registerable
 
   enum role: [:member, :admin]
+
 
   # TODO: Remove neighborhood model
   has_many :user_neighborhoods
@@ -61,6 +64,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
 
   validates :email, presence: true
-  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
+
+  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "default.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
 end
