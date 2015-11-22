@@ -35,6 +35,14 @@ var ready = function() {
     }
   }
 
+  // Group tile logic
+  $(".group-tile").click(function() {
+      $tile = $(this)
+
+      var path = $tile.find("h3").text().toLowerCase();
+      location.replace("/groups/" + path)
+  });
+
   // Join group button logic
   $(".group-tile button").click(function(event) {
     event.preventDefault();
