@@ -17,7 +17,7 @@ var ready = function() {
     }
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).fadeOut("fast");
-      $(".dropdowns-tile span").fadeOut("fast"); 
+      $(".dropdowns-tile span").fadeOut("fast");
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
@@ -37,10 +37,9 @@ var ready = function() {
 
   // Group tile logic
   $(".group-tile").click(function() {
-      $tile = $(this)
-
+      $tile = $(this);
       var path = $tile.find("h3").text().toLowerCase();
-      location.replace("/groups/" + path)
+      location.replace("/groups/" + path);
   });
 
   // Join group button logic
