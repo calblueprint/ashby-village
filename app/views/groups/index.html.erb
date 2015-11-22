@@ -40,9 +40,9 @@
         <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
 
         <% if group.users.count == 1 %>
-          <h6><%= group.users.count %> member</h6>
+          <h6><%= group.users.count %> member </h6>
         <% else %>
-          <h6><%= group.users.count %> members</h6>
+          <h6><%= group.users.count %> members </h6>
         <% end %>
 
         <div class="member-display">
@@ -53,13 +53,9 @@
       </div>
 
       <% if group.users.include?(current_user) %>
-        <%= link_to leave_group_path(group), remote: true, method: :put do %>
-          <button class="large-3 right is-member">You Have Joined</button>
-        <% end %>
+          <button class="large-3 right is-member" value="<%= group.id %>">You Have Joined</button>
       <% else %>
-        <%= link_to join_group_path(group), remote: true, method: :put do %>
-          <button class="large-3 right">Join Group</button>
-        <% end %>
+          <button class="large-3 right" value="<%= group.id %>">Join Group</button>
       <% end %>
   </div>
   <% end %>

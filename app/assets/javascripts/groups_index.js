@@ -37,16 +37,26 @@ var ready = function() {
 
   // Join group button logic
   $(".group-tile button").click(function(event) {
-    // event.preventDefault();
-    // event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
     $button = $(this);
     if ($button.hasClass("is-member")) {
       $button.removeClass("is-member");
       $button.removeClass("remove-member");
       $button.text("Join Group");
+
+      var blahUrl = "/groups/" + $button.attr("value") + "/leave";
+      alert(blahUrl);
+
     } else {
       $button.addClass("is-member");
       $button.text("You Have Joined");
+
+      $.ajax({
+        type: "PUT",
+        url: "/groups/" + $button.attr("value") + "/join"
+      });
+
     }
   });
 
