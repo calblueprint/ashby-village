@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require users
 //= require react
 //= require react_ujs
 //= require components
