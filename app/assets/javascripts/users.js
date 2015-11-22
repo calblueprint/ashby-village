@@ -16,8 +16,8 @@ ready = function() {
     var promise = engine.initialize();
 
     promise
-        .done(function() { console.log('success })
-        .fail(function() { console.log('err });
+        .done(function() { console.log('success' )});
+        .fail(function() { console.log('err' )});
 
     $('.typeahead').typeahead(null, {
         name: 'engine',
