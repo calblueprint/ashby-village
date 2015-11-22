@@ -4,6 +4,14 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @neighborhoods = Neighborhood.all
+    my = params[:format]
+    if my.nil?
+      @all = "selected = \"selected\"".html_safe
+      @my = "".html_safe
+    else
+      @my = "selected = \"selected\"".html_safe
+      @all = "".html_safe
+    end
   end
 
   def show
@@ -17,9 +25,9 @@ class GroupsController < ApplicationController
     if current_user
       @group = Group.new
       @kinds = Group.kinds.keys
-      @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
+      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
-      redirect_to new_user_session_path, notice: 'You are not logged in.'
+      redirect_to new_user_session_path, notice: "You are not logged in."
     end
   end
 
@@ -28,7 +36,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        @group.add_user(current_user, make_leader=true)
+        @group.add_user(current_user, make_leader = true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -48,12 +56,9 @@ class GroupsController < ApplicationController
   end
 
   def leave_group
-    #if you're leader - alert - can't leave if there are no other leaders
-    #if you're a member or one leader amongst many others you can leave
     @group = Group.friendly.find(params[:id])
-    if @group.users.include?(current_user)
-      @group.current_user.delete
-    end
+    @group.remove_user(current_user)
+    redirect_to groups_path, notice: "You have successfully left the group"
   end
 
   def group_params

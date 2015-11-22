@@ -1,12 +1,14 @@
+
+
 <div class="dropdowns-tile row">
   <h6>groups</h6>
-  <h3> Show me
+  <h3> Show me <%= @format %>
     <select class="group-dropdown large-3">
-      <option selected="selected" value="all">all</option>
-      <option value="true">my</option>
-      <option value="social">social</option>
-      <option value="neighborhood">neighborhood</option>
-      <option value="committee">committee</option>
+      <option <%= @all %> value="all"> all </option>
+      <option <%= @my %> value="my"> my </option>
+      <option value="social"> social </option>
+      <option value="neighborhood"> neighborhood </option>
+      <option value="committee"> committee </option>
     </select>
     groups in
     <select class="neighborhood-dropdown large-4">
@@ -21,6 +23,11 @@
 </div>
 
 <% @groups.each do |group| %>
+  <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>
+    <% if group.users.exists?(current_user)%>
+      <%= "my" %>
+    <% end %>
+    ">
 
   <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
     <%= link_to group do %>

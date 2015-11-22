@@ -43,6 +43,7 @@
 #
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   ##################################################
   # General
   ##################################################
@@ -55,10 +56,11 @@ Rails.application.routes.draw do
   # Devise
   ##################################################
   devise_for :users, :path => '',
-  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'account_settings'},
+  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'users/:id/account_settings'},
   :controllers => {:registrations => 'users/registrations'}
   devise_scope :users do
-    get "/account_settings" => "users/registrations#edit"
+    get "users/:id/account_settings" => "users/registrations#edit", :as => "account_settings"
+    # TODO (Shannon): Refactor routes.
   end
 
   ##################################################
@@ -75,8 +77,13 @@ Rails.application.routes.draw do
   # Groups
   ##################################################
   resources :groups do
+    member do
+      get "member_listing"
+      put "leave"
+    end
     resources :posts
   end
+
   get "groups/:id/member_listing", to: 'groups#member_listing', as: 'member_listing'
   put "groups/:id/join_group", to: "groups#join_group", as: "join_group"
   put "groups/:id/leave_group", to: "groups#leave_group", as: "leave_group"
@@ -84,6 +91,5 @@ Rails.application.routes.draw do
   ##################################################
   # Posts
   ##################################################
-
 
 end
