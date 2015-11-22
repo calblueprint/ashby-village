@@ -17,9 +17,9 @@ class GroupsController < ApplicationController
     if current_user
       @group = Group.new
       @kinds = Group.kinds.keys
-      @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
+      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
-      redirect_to new_user_session_path, notice: 'You are not logged in.'
+      redirect_to new_user_session_path, notice: "You are not logged in."
     end
   end
 
@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        @group.add_user(current_user, make_leader=true)
+        @group.add_user(current_user, make_leader = true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
       else
         format.html { render :new }
@@ -40,11 +40,10 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
-  def leave_group
-    #if you're leader - alert - can't leave if there are no other leaders
-    #if you're a member or one leader amongst many others you can leave
+  def leave
     @group = Group.friendly.find(params[:id])
-    @group.current_user.delete
+    @group.remove_user(current_user)
+    redirect_to groups_path, notice: "You have successfully left the group"
   end
 
   def group_params

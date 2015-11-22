@@ -50,6 +50,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_leader(group)
+    group.users.leaders.exists?(id: id)
+  end
+
+  def is_member(group)
+    group.users.exists?(id: id)
+  end
+
+  has_many :posts, dependent: :destroy
+
   validates :email, presence: true
   has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
