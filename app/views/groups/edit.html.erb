@@ -3,22 +3,22 @@
 <%= form_for @group do |f| %>
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, :value => @group.name %>
+    <%= f.text_field :name, autofocus: true, value: @group.name %>
   </div>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_field :description, autofocus: true, :value => @group.description %>
+    <%= f.text_field :description, autofocus: true, value: @group.description %>
   </div>
 
   <div class="field">
     <%= f.label :kind %>
-    <%= f.text_field :kind, autofocus: true, :value => @group.kind %>
+    <%= f.text_field :kind, autofocus: true, value: @group.kind %>
   </div>
 
   <div class="field">
     <%= f.label :neighborhood_id %>
-    <%= f.text_field :neighborhood_id, autofocus: true, :value => @group.neighborhood_id %>
+    <%= f.text_field :neighborhood_id, autofocus: true, value: @group.neighborhood_id %>
   </div>
 
   <div class="actions">

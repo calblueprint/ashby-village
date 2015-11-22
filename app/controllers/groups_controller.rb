@@ -72,8 +72,9 @@ class GroupsController < ApplicationController
       flash[:notice] = "Group updated!"
       redirect_to group_path
     else
-      render action: "edit"
-      flash[:alert] = "Error!"
+      render :edit
+      #TODO: Fix error message
+      flash[:alert] = "Unable to update group."
     end
   end
 
