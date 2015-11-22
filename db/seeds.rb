@@ -11,23 +11,23 @@ def seed_image(file_name)
 end
 
 def make_groups
-  Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg")
-  Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("gaming.jpg")
-  Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("film_fanatics.jpg")
-  Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("skydiving.jpg")
-  Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg")
-  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("gaming.jpg")
-  Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("film_fanatics.jpg")
-  Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg")
-  Group.create! name: 'Education', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("jazzercise.jpg")
-  Group.create! name: 'Kites', description: 'yo', neighborhood_id: 2, kind: 0, photo: seed_image("gaming.jpg")
-  Group.create! name: 'Pool', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("film_fanatics.jpg")
-  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("skydiving.jpg")
-  Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("jazzercise.jpg")
-  Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3, kind: 1, photo: seed_image("gaming.jpg")
-  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3, kind: 2, photo: seed_image("film_fanatics.jpg")
-  Group.create! name: 'Television', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("skydiving.jpg")
-  Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("jazzercise.jpg")
+  Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Education', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Kites', description: 'yo', neighborhood_id: 2, kind: 0, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Pool', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3, kind: 1, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Television', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
 end
 
 def make_users
