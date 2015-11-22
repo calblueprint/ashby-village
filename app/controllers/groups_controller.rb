@@ -49,6 +49,13 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
+  def join
+    @group = Group.friendly.find(params[:id])
+    if not @group.users.include?(current_user)
+      @group.add_user(current_user)
+    end
+  end
+
   def leave
     @group = Group.friendly.find(params[:id])
     @group.remove_user(current_user)

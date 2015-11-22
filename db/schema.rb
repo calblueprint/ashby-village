@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20151121233857) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "neighborhood"
-    t.integer  "role"
+    t.integer  "role",                   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
