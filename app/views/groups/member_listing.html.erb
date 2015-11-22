@@ -8,7 +8,7 @@
                 <%= image_tag(user.photo(:thumb)) %>
               <% end %></div>
               <div class="large-9 columns">
-                <h5><%= user.decorate.full_name %></h5>
+                <h5><%= link_to user.decorate.full_name, user %></h5>
                 <h6><%= user.phone %></h6>
               </div>
             </div>
@@ -21,7 +21,7 @@
                 <%= image_tag(user.photo(:thumb)) %>
               <% end %></div>
               <div class="large-9 columns">
-                <h5><%= user.decorate.full_name %></h5>
+                <h5><%= link_to user.decorate.full_name, user %></h5>
                 <h6><%= user.phone %></h6>
               </div>
             </div>
