@@ -54,6 +54,23 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: "You have successfully left the group"
   end
 
+  def edit
+    @group = Group.friendly.find(params[:id])
+    render :template => "groups/edit_group"
+  end
+
+  def update
+    @group = Group.friendly.find(params[:id])
+    if @group.save
+      @group.update_attributes(group_params)
+      flash[:notice] = "Group updated!"
+      redirect_to group_path
+    else
+      render action: "edit"
+      flash[:alert] = "Error!"
+    end
+  end
+
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id, :kind)
   end
