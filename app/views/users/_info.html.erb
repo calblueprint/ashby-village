@@ -11,7 +11,10 @@
 
   <div class="actions small-8 small-centered large-4 large-uncentered columns">
     <h6>CREATE A GROUP</h6>
-      <%= link_to 'Create New Group', new_group_path, class: 'button success radius small' %></br>
+    <%= link_to new_group_path do %>
+      <button> Create New Group </button>
+    <% end %>
+      </br>
       <h7>Click the button above to make a new group!</h7>
   </div>
 </div>
