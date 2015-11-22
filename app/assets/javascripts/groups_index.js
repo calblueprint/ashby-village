@@ -12,7 +12,7 @@ var ready = function() {
     }
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).hide();
-      $(".dropdowns-tile span").fadeOut("fast"); 
+      $(".dropdowns-tile span").fadeOut("fast");
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
@@ -39,7 +39,7 @@ var ready = function() {
     if ($button.hasClass("is-member")) {
       $button.removeClass("is-member");
       $button.removeClass("remove-member");
-      $button.text("Join Group")
+      $button.text("Join Group");
     } else {
       $button.addClass("is-member");
       $button.text("You Have Joined");
@@ -52,7 +52,7 @@ var ready = function() {
       $button.addClass("remove-member");
       $button.text("Remove Membership");
     }
-  }, 
+  },
   function() {
     if ($button.hasClass("is-member")) {
       $button.removeClass("remove-member");

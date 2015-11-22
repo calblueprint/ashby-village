@@ -1,10 +1,32 @@
-<div class="member-listing large-6 columns">
-<% @group.users.each do |user| %>
-	<div class="member-tile">
-  <% if user.photo %>
-    <%= image_tag user.photo(:medium) %>
-  <% end %>
-  <%= user.decorate.full_name %>
-	</div>
-<% end %>
+<div class="listing-member row">
+  <% column = 1 %>
+    <% @group.users.each do |user| %>
+        <div class="large-6 columns">
+          <% if column%2==1 %>
+            <div class="listing-member-tile row">
+              <div class="listing-member-display large-3 columns"><% if user.photo %>
+                <%= image_tag(user.photo(:thumb)) %>
+              <% end %></div>
+              <div class="large-9 columns">
+                <h5><%= user.decorate.full_name %></h5>
+                <h6><%= user.phone %></h6>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="large-6 columns">
+          <% if column%2==0 %>
+            <div class="listing-member-tile row">
+              <div class="listing-member-display large-3 columns"><% if user.photo %>
+                <%= image_tag(user.photo(:thumb)) %>
+              <% end %></div>
+              <div class="large-9 columns">
+                <h5><%= user.decorate.full_name %></h5>
+                <h6><%= user.phone %></h6>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+
 </div>
