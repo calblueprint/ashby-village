@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
   def show
     @post = Post.new
     @group = Group.friendly.find(params[:id])
+    @posts = @group.posts.order_by_created_at
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
   end
 
