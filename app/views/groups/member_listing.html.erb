@@ -1,4 +1,4 @@
-<div class="listing-member row">
+<div class="listing-member large-8 columns">
   <h6>MEMBERS (<%= @group.user_groups.count %>)</h6>
     <% @group.users.each do |user| %>
         <div class="large-6 columns">
@@ -8,7 +8,7 @@
                 <%= image_tag(user.photo(:thumb)) %>
               <% end %>
             </div>
-            <div class="large-9 left column">
+            <div class="large-9 column">
               <h5><%= link_to user.decorate.full_name, user %></h5>
               <h6><%= user.phone %></h6>
             </div>
