@@ -27,6 +27,8 @@
 #  neighborhood           :string
 #
 
+
+# TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
