@@ -27,26 +27,31 @@
 #  neighborhood           :string
 #
 
+
+# TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  scope :is_admin, -> { where(role: 1) }
 
   # TODO (Shannon): add phone number validation, length and integers
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
+  devise :database_authenticatable, :recoverable,
+         :rememberable, :trackable, :validatable, :registerable
 
-  has_many :user_neighborhoods
+  enum role: [:member, :admin]
+
+
   # TODO: Remove neighborhood model
+  has_many :user_neighborhoods
+  has_many :posts, dependent: :destroy
   has_many :neighborhoods, through: :user_neighborhoods
-
   has_many :user_groups
   has_many :groups, through: :user_groups do
     def leader_of
       where("user_groups.is_leader = ?", true)
     end
   end
-
-  has_many :posts, dependent: :destroy
 
   validates :email, presence: true
 

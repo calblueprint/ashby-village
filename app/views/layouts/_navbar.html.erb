@@ -21,6 +21,9 @@
             <ul class="dropdown">
               <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
               <li><a href="#"><%= link_to "Account Settings", account_settings_path(current_user) %></a></li>
+              <% if current_user.admin? %>
+                <li><a href="#"><%= link_to "Administrator Dashboad", rails_admin_path %></a></li>
+              <% end %>
               <li><a href="#"><%= link_to "Logout", destroy_user_session_path, :method =>   :delete %></a></li>
             </ul>
           </li>
