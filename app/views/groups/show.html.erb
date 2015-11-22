@@ -15,24 +15,9 @@
     <%= image_tag @group.photo(:medium) %>
   <% end %>
 </h1>
-
-<%= link_to "View member listing", member_listing_path(@group) %>
-
-<section class="post-form" >
-  <%= render 'posts/post_form', post: @post %>
-</section>
+<%= link_to "View member listing", member_listing_group_path(@group) %>
 <%= render 'groups/settings' %>
-
-<div class="col-md-8">
-  <% if @group.posts.any? %>
-    <h3>Posts (<%= @group.posts.count %>)</h3>
-    <ol class="posts">
-      <% @group.posts.each do |post| %>
-      <!-- TODO (Shimmy): Consider pagination! -->
-        <%= render 'posts/post', post: post %>
-      <% end %>
-    </ol>
-  <% end %>
+<%= render 'posts/new' %>
+<div id="posts">
+  <%= render @posts %>
 </div>
-
-
