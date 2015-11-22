@@ -62,6 +62,22 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: "You have successfully left the group"
   end
 
+  def edit
+    @group = Group.friendly.find(params[:id])
+  end
+
+  def update
+    @group = Group.friendly.find(params[:id])
+    if @group.update_attributes(group_params)
+      flash[:notice] = "Group updated!"
+      redirect_to group_path
+    else
+      render :edit
+      #TODO: Fix error message
+      flash[:alert] = "Unable to update group."
+    end
+  end
+
   private
 
   def group_params
