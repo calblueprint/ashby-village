@@ -18,11 +18,33 @@
 .group-tile .group-photo {
   object-fit: cover;
   width: 240px;
+  @include ease-transition(0.5s);
+}
+
+.group-tile:hover .group-photo {
+   -webkit-filter: brightness(0.25);
+   filter: brightness(0.25);
+}
+
+.group-tile .group-photo + p {
+  position: absolute;
+  color: white;
+  font-weight: 900;
+  left: 64px;
+  top: 64px;
+  visibility: hidden;
+}
+
+.group-tile:hover .group-photo + p {
+  visibility: visible;
+}
+
+.group-tile .group-photo-container {
+  position: relative;
 }
 
 .group-tile .member-count-icon {
   height: 16px;
-  width: 24px;
   float: left;
   margin-right: 8px;
 }
