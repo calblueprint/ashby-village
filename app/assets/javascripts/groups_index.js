@@ -1,8 +1,13 @@
 var ready = function() {
 
   updateGroupCount();
+  updateListing();
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
+    updateListing();
+  });
+
+  function updateListing() {
     var kind = $(".group-dropdown").val();
     var neighborhood = $(".neighborhood-dropdown").val();
 
@@ -16,10 +21,8 @@ var ready = function() {
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
-
     updateGroupCount();
-
-  });
+  }
 
   function updateGroupCount() {
     var groupCount = $(".group-tile").filter(function() {
@@ -52,7 +55,7 @@ var ready = function() {
       $button.addClass("remove-member");
       $button.text("Remove Membership");
     }
-  }
+  },
   function() {
     if ($button.hasClass("is-member")) {
       $button.removeClass("remove-member");
