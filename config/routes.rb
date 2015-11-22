@@ -79,14 +79,11 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get "member_listing"
+      put "join"
       put "leave"
     end
     resources :posts
   end
-
-  get "groups/:id/member_listing", to: 'groups#member_listing', as: 'member_listing'
-  put "groups/:id/join_group", to: "groups#join_group", as: "join_group"
-  put "groups/:id/leave_group", to: "groups#leave_group", as: "leave_group"
 
   ##################################################
   # Posts
