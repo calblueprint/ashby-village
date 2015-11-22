@@ -18,9 +18,10 @@
 
 class Group < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => :slugged
+  friendly_id :name, use: :slugged
 
   enum kind: [:social, :neighborhood, :committee]
+  enum state: [:inactive, :active]
 
   belongs_to :neighborhood
 
@@ -31,10 +32,24 @@ class Group < ActiveRecord::Base
     end
   end
 
+  has_many :posts, dependent: :destroy
+
   has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
-  def add_user(current_user, make_leader=false)
+  def add_user(current_user, make_leader = false)
     UserGroup.create(user: current_user, group: self, is_leader: make_leader)
+  end
+
+  def has_one_leader
+    users.leaders.count == 1
+  end
+
+  def remove_user(current_user)
+    # If the current user is the only leader, make the group inactive
+    if has_one_leader && current_user.is_leader(self)
+      self.update_attribute :state, 0
+    end
+    self.users.delete(current_user)
   end
 end

@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'aws-sdk'
-
+gem 'rails_admin'
+gem 'binding_of_caller'
+gem 'better_errors'
+gem 'aws-sdk-v1' # If using paperclip <= v4.3.1
 gem 'annotate'
 
 # Allows for human-friendly strings
@@ -21,7 +23,7 @@ gem 'rails', '4.2.1'
 # Use Pg as the database for Active Record
 gem 'pg'
 
-#Figaro was written to make it easy to securely configure Rails applications.
+# Figaro was written to make it easy to securely configure Rails applications.
 gem 'figaro'
 
 # Devise is a flexible authentication solution for Rails

@@ -1,14 +1,23 @@
-<!-- <h1>Groups#show</h1>
+  <!-- <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p> -->
 <% provide(:title, @group.name) %>
 <h1>
   <%= @group.name %>
   <%= @group.description %>
-  <%= @neighborhood_name%>
-  <!-- TODO: Add photo functionality -->
+  <%= @group.kind %>
+  <% @group.users.leaders.each do |leader| %>
+    <li><%= leader.decorate.full_name %></li>
+  <% end %>
+  <%= @neighborhood.name%>
+
+  <!-- TODO (Shimmy): Add photo functionality -->
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
   <% end %>
 </h1>
-
-<%= link_to "View member listing", member_listing_path(@group) %>
+<%= link_to "View member listing", member_listing_group_path(@group) %>
+<%= render 'groups/settings' %>
+<%= render 'posts/new' %>
+<div id="posts">
+  <%= render @posts %>
+</div>

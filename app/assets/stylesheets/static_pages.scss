@@ -65,45 +65,49 @@
 // LANDING PAGE //
 //////////////////
 
-.banner_text {
-  font-style: bold;
-  padding-bottom: 150px;
-}
-
-.banner_text h1, h4 {
-  color: white;
-}
-
-.columns p {
-  color: $ashby-gray;
-}
-
 .landing {
   text-align: center;
   background: image-url("bg_main.jpg") transparent no-repeat;
   background-size: contain;
-  background-position: 0% -50%;
-  padding: 200px;
+  background-position: 100% -50%;
+
+  .banner_text {
+    font-style: bold;
+    padding-top:130px;
+    padding-bottom: 80px;
+  }
+
+  .banner_text h1, h4 {
+    color: white;
+  }
 }
 
 .footer {
-  font-style: strong;
-}
+  font-style: bold;
 
-.communications{
-  background: image-url("communications.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
-}
+  .footer h3, h4 {
+    color: $ashby-black;
+  }
 
-.groups{
-  background: image-url("groups.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
-}
+  .row p {
+    color: $ashby-gray;
+  }
 
-.events{
-  background: image-url("events.jpg") transparent center center no-repeat;
-  width: 100%;
-  height: 100%;
+  .communications{
+    background: image-url("communications.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  .groups{
+    background: image-url("groups.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  .events{
+    background: image-url("events.jpg") transparent center center no-repeat;
+    width: 100%;
+    height: 100%;
+  }
 }
