@@ -6,7 +6,12 @@
 </div>
 
 <div class="grid">
-  <%= render 'menu' %></br>
-
-  <%= render partial: 'profile', locals: { info: @info } %>
+  <div class="row menu">
+    <%= link_to image_tag("profile.png") + "Your Information", update: "user_profile", url: { action: "show_user_info", controller: "users" }, remote: true %>
+    <%= link_to image_tag("groups_you_lead.png") + "Groups You Lead", update: "user_groups", url: { action: "show_user_groups", controller: "users" }, remote: true %>
+  </div></br>
+    <div class="user_profile">
+    </div>
+    <div class="user_groups">
+  </div>
 </div>
