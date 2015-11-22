@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
 
   enum role: [:member, :admin]
 
-
   # TODO: Remove neighborhood model
   has_many :user_neighborhoods
   has_many :posts, dependent: :destroy
