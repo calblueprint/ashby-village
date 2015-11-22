@@ -34,13 +34,14 @@ class GroupsController < ApplicationController
   # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
-    respond_to do |format|
-      if @group.save
-        @group.add_user(current_user, make_leader = true)
-        format.html { redirect_to @group, notice: "Group was successfully created." }
-      else
-        format.html { render :new }
-      end
+    if @group.valid?
+    # if @group.save
+      @group.add_user(current_user, make_leader = true)
+      redirect_to @group, notice: "Group was successfully created."
+    else
+      byebug
+      render :new
+
     end
   end
 
