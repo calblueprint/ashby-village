@@ -43,6 +43,7 @@
 #
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   ##################################################
   # General
   ##################################################
@@ -76,9 +77,13 @@ Rails.application.routes.draw do
   # Groups
   ##################################################
   resources :groups do
+    member do
+      get "member_listing"
+      put "leave"
+    end
     resources :posts
   end
-  get "groups/:id/member_listing", to: 'groups#member_listing', as:'member_listing'
+
 
   ##################################################
   # Posts

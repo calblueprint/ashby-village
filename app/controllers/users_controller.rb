@@ -11,17 +11,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]).decorate
   end
 
-  def show_user_info
-    render partial: "users/profile"
-  end
-
-  def show_user_groups
-    render partial: "users/groups"
-  end
-
   def edit
     @user = User.find(params[:id]).decorate
-    render :template => "users/registrations/edit_profile"
+    render template: "users/registrations/edit_profile"
   end
 
   def update
@@ -38,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end

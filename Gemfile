@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails_admin'
 gem 'binding_of_caller'
 gem 'better_errors'
 gem 'aws-sdk-v1' # If using paperclip <= v4.3.1

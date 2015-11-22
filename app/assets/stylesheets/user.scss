@@ -7,6 +7,7 @@
 .menu {
   background-color: white;
   border-radius: 8px;
+  height: 48px;
 }
 
 .actions {
@@ -23,10 +24,11 @@
   color: #2D3339;
 }
 
-.user_info {
+.user-info {
   height: 250px;
   border-radius: 8px;
   background-color: white;
+  margin-right: 20px;
 }
 
 .header img {
@@ -49,4 +51,42 @@
 
 .nav h6 {
   color: #2D3339;
+}
+
+.selected {
+  border-bottom: 3px solid $ashby-green;
+}
+
+.leader-of {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.click-info {
+  padding: 10px;
+  height: 48px;
+}
+
+.click-info img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-info:hover {
+  background-color: #f2f2f2;
+}
+
+.click-groups {
+  padding: 10px;
+  padding-left: 30px;
+  height: 48px;
+}
+
+.click-groups img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-groups:hover {
+  background-color: #f2f2f2;
 }

@@ -7,11 +7,17 @@
 
 <div class="grid">
   <div class="row menu">
-    <%= link_to image_tag("profile.png") + "Your Information", update: "user_profile", url: { action: "show_user_info", controller: "users" }, remote: true %>
-    <%= link_to image_tag("groups_you_lead.png") + "Groups You Lead", update: "user_groups", url: { action: "show_user_groups", controller: "users" }, remote: true %>
-  </div></br>
-    <div class="user_profile">
+    <div class="click-info small-3 large-3 large-uncentered column">
+      <%= image_tag("your_info_icon.png") + "Your Information" %>
     </div>
-    <div class="user_groups">
+    <div class="click-groups small-3 large-3 large-uncentered column">
+      <%= image_tag("groups_you_lead_icon.png") + "Groups You Lead" %>
+    </div>
+  </div></br>
+  <div class="info">
+    <%= render "users/info" %>
+  </div>
+  <div class="groups">
+    <%= render "users/groups" %>
   </div>
 </div>
