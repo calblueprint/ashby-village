@@ -1,52 +1,51 @@
-<h1>All groups</h1>
-<h5> Show me
-  <select class="selectKind">
-    <option selected="selected" value="all"> All </option>
-      <option value="true"> My </option>
-      <option value="social"> Social </option>
-      <option value="neighborhood"> Neighborhood </option>
-      <option value="committee"> Committee </option>
-  </select>
-  groups in <select class="selectNeighborhoods">
-    <option selected="selected" value="all"> All </option>
-    <%= @neighborhoods.each do |neighborhood| %>
-      <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
-    <% end %>
-  </select>
+<div class="dropdowns-tile row">
+  <h6>groups</h6>
+  <h3> Show me
+    <select class="group-dropdown large-3">
+      <option selected="selected" value="all"> all </option>
+      <option value="true"> my </option>
+      <option value="social"> social </option>
+      <option value="neighborhood"> neighborhood </option>
+      <option value="committee"> committee </option>
+    </select>
+    groups in
+    <select class="neighborhood-dropdown large-4">
+      <option selected="selected" value="all"> all </option>
+      <%= @neighborhoods.each do |neighborhood| %>
+        <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
+      <% end %>
+    </select>
+    <span>neighborhoods</span>
+  </h3>
+  <h6 class="group-count large-6"></h6>
+</div>
 
-</h5>
-<table>
-  <thead>
-    <tr>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+<% @groups.each do |group| %>
+  <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>">
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr class="<%= group.neighborhood.id %> <%= group.kind %> <%= group.users.exists?(current_user.id)%>">
-        <td><% if group.photo %>
-          <%= image_tag group.photo(:thumb) %>
-        <% end %></td>
-        <td><%= group.neighborhood.name %></td>
-        <td><%= group.name %></td>
-        <td>
-          members: <% group.users.last(4).each do |user|%>
-            <% if user.photo %>
-              <%= image_tag user.photo(:thumb) %>
-            <% end %>
-          <% end %>
-          <% if group.users.count > 4 %>
-            <%= '+' + group.users.count %>
-          <% end %>
-        </td>
-        <td><%= group.kind %></td>
-        <td><button>  <%=link_to 'Learn more', group %> </button><td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="large-3">
+      <%= image_tag group.photo, :class => "group-photo large-2 columns" %>
+    </div>
 
-<br>
+    <div class="large-6 columns">
+      <h3><%= group.name %></h3>
+      <h6><%= group.kind.upcase %> group in <%= group.neighborhood.name.upcase %></h6>
+      <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
 
-<%= link_to "Create new group", new_group_path %>
+      <% if group.users.count == 1 %>
+        <h6><%= group.users.count %> member</h6>
+      <% else %>
+        <h6><%= group.users.count %> members</h6>
+      <% end %>
+
+      <div class="member-display">
+        <% group.users.last(3).each do |user| %>
+          <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= user.decorate.full_name %>"><%= image_tag(user.photo(:thumb)) %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <button class="large-3 right">Join Group</button>
+
+  </div>
+<% end %>

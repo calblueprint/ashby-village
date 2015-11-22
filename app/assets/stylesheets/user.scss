@@ -3,3 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "ashby_settings.scss";
+
+.user-info h4 {
+  color: #2D3339;
+}
+
+.user-photo img {
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 18px;
+}
+
+.header {
+  padding: 50px;
+  font-style: bold;
+}
+
+.header h2 {
+  text-align: center;
+}
+
+.nav h6 {
+  color: #2D3339;
+}

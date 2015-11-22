@@ -1,0 +1,85 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - /bin/*
+    - /db/schema.rb
+    - /db/migrate/**/*devise*.rb
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
+
+Metrics/ClassLength:
+  Max: 400
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Description: "Limit lines to 120 characters."
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/ModuleLength:
+  Max: 200
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/AlignHash:
+  EnforcedHashRocketStyle: key
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/GuardClause:
+  MinBodyLength: 2
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/PredicateName:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingComma:
+  EnforcedStyleForMultiline: comma

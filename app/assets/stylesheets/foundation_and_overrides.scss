@@ -1381,9 +1381,9 @@ $body-font-family: 'Lato', sans-serif;
 // $has-tip-font-color: $oil;
 // $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
 // $has-tip-font-color-hover: $primary-color;
-// $has-tip-cursor-type: help;
+$has-tip-cursor-type: auto;
 
-// $tooltip-padding: rem-calc(12);
+// $tooltip-padding: rem-calc(8);
 // $tooltip-bg: $oil;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: $font-weight-normal;
