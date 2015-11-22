@@ -1,3 +1,3 @@
 $(function() {
- return $("#phone").mask("(999) 999-9999");
+ return $(".phone").mask("(999) 999-9999");
 });
