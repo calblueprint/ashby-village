@@ -45,8 +45,10 @@ var ready = function() {
       $button.removeClass("remove-member");
       $button.text("Join Group");
 
-      var blahUrl = "/groups/" + $button.attr("value") + "/leave";
-      alert(blahUrl);
+      $.ajax({
+        type: "PUT",
+        url: "/groups/" + $button.attr("value") + "/leave"
+      });
 
     } else {
       $button.addClass("is-member");
