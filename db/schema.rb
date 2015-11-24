@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151121233857) do
     t.datetime "photo_updated_at"
     t.string   "slug"
     t.integer  "kind"
+    t.integer  "state"
   end
 
   add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
