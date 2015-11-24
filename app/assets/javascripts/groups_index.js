@@ -83,7 +83,6 @@ var ready = function() {
       $button.text("You Have Joined");
     }
   });
-
 };
 
 $(document).ready(ready);
