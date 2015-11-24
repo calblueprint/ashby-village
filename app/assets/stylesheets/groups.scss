@@ -4,6 +4,64 @@
 
 @import "ashby_settings.scss";
 
+.group-header {
+  position: relative;
+  margin-top: 16px;
+
+  img {
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  h2, h6 {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    margin-left: 16px;
+  }
+
+  h2 {
+    margin-bottom: 24px;
+  }
+}
+
+.image-shadow {
+  position: absolute;
+  bottom: 0;
+  height: 256px;
+  width: 100%;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(59%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
+}
+
+.info-box {
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 12px;
+
+  // TEMP TEMP TEMP
+  .listing-member-display {
+    img {
+      float: left;
+      margin-right: 16px;
+    }
+  }
+}
+
+// TEMP TEMP TEMP
+.large-5 {
+  width: 39.66667% !important;
+}
+
 .create-section {
   background-color: white;
   border: 2px solid transparent;
