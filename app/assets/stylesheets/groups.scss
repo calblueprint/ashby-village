@@ -39,3 +39,22 @@
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
 }
+
+.info-box {
+	background-color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 12px;
+
+  // TEMP
+  .listing-member-display {
+  	img {
+  		float: left;
+  		margin-right: 16px;
+  	}
+
+
+  }
+}

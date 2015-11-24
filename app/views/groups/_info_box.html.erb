@@ -1,0 +1,14 @@
+<div class="info-box large-5 columns">
+	<h6>Description</h6>
+	<p><%= @group.description %></p>
+	<h6>Leader</h6>
+	<div class="listing-member-display">
+	<% @group.users.leaders.each do |leader| %>
+    <% if leader.photo %>
+      <%= image_tag(leader.photo(:thumb)) %>
+    <% end %>
+		<%= leader.decorate.full_name %>
+		<h6><%= leader.phone %></h6>
+	<% end %>
+	</div>
+</div>
