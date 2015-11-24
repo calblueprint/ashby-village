@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121233857) do
+ActiveRecord::Schema.define(version: 20151124015329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20151121233857) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "neighborhood_id"
     t.string   "description"
     t.string   "photo_file_name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151121233857) do
     t.datetime "photo_updated_at"
     t.string   "slug"
     t.integer  "kind"
-    t.integer  "state"
+    t.integer  "state",              default: 1
   end
 
   add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
