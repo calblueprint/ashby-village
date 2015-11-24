@@ -1,5 +1,22 @@
-<div>
-  <% posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
-  <% end %>
-</div>
+  <div class="post-index" id="posts">
+    <% posts.each do |post| %>
+      <div class="post row collapse" id="post-<%= post.id %>">
+        <!-- TODO (Shimmy): Picture link -->
+
+        <div class="post-display-member large-2 columns">
+          <% if post.user.photo %>
+            <%= image_tag(post.user.photo(:thumb)) %>
+          <% end %>
+        </div>
+        <div class="large-10 columns">
+          <p><%= link_to post.user.decorate.full_name, post.user %></p>
+          <h6> Posted <%= time_ago_in_words(post.created_at) %> ago. </h6>
+        </div>
+
+        <div>
+          <h4><strong><%= post.title %></strong></h4>
+          <p><%= post.content %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
