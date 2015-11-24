@@ -1,4 +1,16 @@
 @import "ashby_settings.scss";
+
+
+.post{
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 8px !important; // To override foundation's row class
+  margin-bottom: 8px !important; // To override foundation's row class
+  padding: 8px;
+  @include ease-transition(0.5s);
+}
+
 .new-post {
   background-color: white;
   border: 2px solid transparent;
@@ -9,16 +21,12 @@
   @include ease-transition(0.5s);
 }
 
-.posts {
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 16px !important; // To override foundation's row class
-  padding: 24px;
-  @include ease-transition(0.5s);
+.post-display-member img {
+  object-fit: cover;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
 }
-
 .text-area {
   background-color: white !important;
   border-radius:8px !important;
