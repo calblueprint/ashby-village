@@ -1,10 +1,13 @@
-<%= form_for [@group,@post], remote: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :title, placeholder: "Title" %>
-  </div>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new post..." %>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+<div class="new-post large-7 columns">
+  <h3><strong>Write a Post</strong></h3>
+  <%= form_for [@group,@post], remote: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_field :title, placeholder: "Title" %>
+    </div>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Compose new post..." %>
+    </div>
+    <%= f.submit "Post New Topic", class: "button right" %>
+  <% end %>
+</div>
