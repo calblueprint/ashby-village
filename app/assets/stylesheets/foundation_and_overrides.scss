@@ -96,7 +96,7 @@ $column-gutter: rem-calc(30);
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
 
-// $white       : #FFFFFF;
+$white       : #FFFFFF;
 // $ghost       : #FAFAFA;
 // $snow        : #F9F9F9;
 // $vapor       : #F6F6F6;
@@ -1134,12 +1134,12 @@ $body-font-family: 'Lato', sans-serif;
 // $reveal-overlay-bg-old: $black;
 
 // We use these to control the style of the modal itself.
-// $reveal-modal-bg: $white;
-// $reveal-position-top: rem-calc(100);
-// $reveal-default-width: 80%;
-// $reveal-max-width: $row-width;
-// $reveal-modal-padding: rem-calc(20);
-// $reveal-box-shadow: 0 0 10px rgba($black,.4);
+$reveal-modal-bg: rgba($white, 0.9);
+// $reveal-position-top: 50px;
+// $reveal-default-width: 100%;
+// $reveal-modal-padding: em-calc(20);
+$reveal-box-shadow: 0 0 10px rgba(#000,.4);
+
 
 // We use these to style the reveal close button
 // $reveal-close-font-size: rem-calc(40);
