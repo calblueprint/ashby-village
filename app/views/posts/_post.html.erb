@@ -1,18 +1,18 @@
 <div class="post row collapse" id="post-<%= post.id %>">
   <!-- TODO (Shimmy): Picture link -->
-  <div class="row">
+  <div class="post-user row collapse">
     <div class="post-display-member large-2 columns">
       <% if post.user.photo %>
         <%= image_tag(post.user.photo(:thumb)) %>
       <% end %>
     </div>
     <div class="large-10 columns">
-      <h1><%= link_to post.user.decorate.full_name, post.user %></h1>
-      <h6> <%= time_ago_in_words(post.created_at) %> ago. </h6>
+      <p><%= link_to post.user.decorate.full_name, post.user %></p>
+      <h6 class="timestamp"><i> Posted <%= time_ago_in_words(post.created_at) %> ago. </i></h6>
     </div>
   </div>
   <div class="row collapse">
-    <h1><strong><%= post.title %></strong></h1>
+    <h4><strong><%= post.title %></strong></h4>
     <p><%= post.content %></p>
   </div>
 </div>

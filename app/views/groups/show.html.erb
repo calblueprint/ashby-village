@@ -1,7 +1,6 @@
   <!-- <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p> -->
 <% provide(:title, @group.name) %>
-<h1>WHAT IS HAPPENING</h1>
 <h6>
   <%= @group.name %>
   <%= @group.description %>
@@ -24,12 +23,7 @@
     <%= render 'posts/new' %>
 </div>
 <div class="row">
-  <h6 class="left large-7 column"> MOST RECENT POSTS </h6>
-  <div class="row">
-    <div class="left large-7 columns">
-      <%= render 'posts/index', posts: @posts %>
-    </div>
-  </div>
+    <%= render 'posts/index', posts: @posts %>
 </div>
 
 

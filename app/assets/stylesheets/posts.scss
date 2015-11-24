@@ -5,10 +5,23 @@
   background-color: white;
   border: 2px solid transparent;
   border-radius: 8px;
-  margin-top: 8px !important; // To override foundation's row class
-  margin-bottom: 8px !important; // To override foundation's row class
-  padding: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 12px;
   @include ease-transition(0.5s);
+  h6, h4, p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .post-user {
+    margin-bottom: 8px !important; // To override foundation's row class
+
+    .timestamp {
+      text-transform: lowercase;
+  }
+  }
+
+
 }
 
 .new-post {
@@ -23,8 +36,8 @@
 
 .post-display-member img {
   object-fit: cover;
-  height: 56px;
-  width: 56px;
+  height: 48px;
+  width: 48px;
   border-radius: 50%;
 }
 .text-area {
