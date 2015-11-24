@@ -3,12 +3,10 @@
 	<p><%= @group.description %></p>
 	<h6>Leader</h6>
 	<div class="listing-member-display">
-	<% @group.users.leaders.each do |leader| %>
-    <% if leader.photo %>
-      <%= image_tag(leader.photo(:thumb)) %>
-    <% end %>
-		<%= leader.decorate.full_name %>
-		<h6><%= leader.phone %></h6>
-	<% end %>
+  <% if @group.users.leaders.first.photo %>
+    <%= image_tag(@group.users.leaders.first.photo(:thumb)) %>
+  <% end %>
+	<%= @group.users.leaders.first.decorate.full_name %>
+	<h6><%= @group.users.leaders.first.phone %></h6>
 	</div>
 </div>
