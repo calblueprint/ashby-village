@@ -5,7 +5,7 @@
   <%= form_for @group do |f| %>
   <div class="create-section row">
     Group Name <%= f.text_field :name, required: true, :placeholder => 'Example: Kensington Knitting Club' %>
-    Group Description <%= f.text_field :description, required: true, :placeholder => 'Example: This club is for...' %>
+    Group Description <%= f.text_area :description, required: true, :placeholder => 'Example: This club is for...' %>
     Group Cover Photo
     <div class="field">
       <%= image_tag :photo %>
