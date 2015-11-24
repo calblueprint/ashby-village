@@ -8,8 +8,10 @@
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
   <% end %>
-  <h2><%= @group.name %></h2>
-  <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
+  <div class="image-shadow">
+    <h2><%= @group.name %></h2>
+    <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
+  </div>
 </div>
 
 <%= link_to "View member listing", member_listing_group_path(@group) %>
