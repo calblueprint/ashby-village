@@ -86,3 +86,15 @@ select {
   -ms-transition: all $duration ease;
   transition: all $duration ease;
 }
+
+// TEXT INPUTS
+input[type="text"] {
+  border-radius: 8px;
+}
+
+textarea {
+  resize: none;
+  height: 64px;
+  border-radius: 8px;
+}
+
