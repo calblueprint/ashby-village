@@ -14,13 +14,16 @@
         <% if user_signed_in? %>
           <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-groups">
-            <%= link_to image_tag("groups_icon.png") + "My Groups", '#' %>
+            <%= link_to image_tag("groups_icon.png") + "My Groups", groups_path(current_user.id) %>
           </li>
           <li class="my-profile has-dropdown not-click">
             <%= link_to image_tag(current_user.photo(:thumb)) + current_user.full_name, current_user %>
             <ul class="dropdown">
               <li><a href="#"><%= link_to "Your Profile", current_user %></a></li>
               <li><a href="#"><%= link_to "Account Settings", account_settings_path(current_user) %></a></li>
+              <% if current_user.admin? %>
+                <li><a href="#"><%= link_to "Administrator Dashboad", rails_admin_path %></a></li>
+              <% end %>
               <li><a href="#"><%= link_to "Logout", destroy_user_session_path, :method =>   :delete %></a></li>
             </ul>
           </li>

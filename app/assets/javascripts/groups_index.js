@@ -1,8 +1,13 @@
 var ready = function() {
 
   updateGroupCount();
+  updateListing();
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
+    updateListing();
+  });
+
+  function updateListing() {
     var kind = $(".group-dropdown").val();
     var neighborhood = $(".neighborhood-dropdown").val();
 
@@ -11,15 +16,13 @@ var ready = function() {
       $(".group-tile").not("." + kind).hide();
     }
     if (neighborhood != "all") {
-      $(".group-tile").not("." + neighborhood).hide();
-      $(".dropdowns-tile span").fadeOut("fast"); 
+      $(".group-tile").not("." + neighborhood).fadeOut("fast");
+      $(".dropdowns-tile span").fadeOut("fast");
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
-
     updateGroupCount();
-
-  });
+  }
 
   function updateGroupCount() {
     var groupCount = $(".group-tile").filter(function() {
@@ -32,17 +35,37 @@ var ready = function() {
     }
   }
 
+  // Group tile logic
+  $(".group-tile").click(function() {
+      $tile = $(this);
+      var path = $tile.find("h3").text().toLowerCase();
+      location.replace("/groups/" + path);
+  });
+
   // Join group button logic
   $(".group-tile button").click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $button = $(this);
     if ($button.hasClass("is-member")) {
       $button.removeClass("is-member");
       $button.removeClass("remove-member");
-      $button.text("Join Group")
+      $button.text("Join Group");
+
+      $.ajax({
+        type: "PUT",
+        url: "/groups/" + $button.attr("value") + "/leave"
+      });
+
     } else {
       $button.addClass("is-member");
       $button.text("You Have Joined");
+
+      $.ajax({
+        type: "PUT",
+        url: "/groups/" + $button.attr("value") + "/join"
+      });
+
     }
   });
 
@@ -52,14 +75,13 @@ var ready = function() {
       $button.addClass("remove-member");
       $button.text("Remove Membership");
     }
-  }, 
+  },
   function() {
     if ($button.hasClass("is-member")) {
       $button.removeClass("remove-member");
       $button.text("You Have Joined");
     }
   });
-
 };
 
 $(document).ready(ready);

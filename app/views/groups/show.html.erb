@@ -1,27 +1,35 @@
   <!-- <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p> -->
 <% provide(:title, @group.name) %>
-<h1>
-  <%= @group.name %>
-  <%= @group.description %>
-  <%= @group.kind %>
-  <% @group.users.leaders.each do |leader| %>
-    <li><%= leader.decorate.full_name %></li>
-  <% end %>
-  <%= @neighborhood.name%>
 
   <!-- TODO (Shimmy): Add photo functionality -->
+
+<div class="row group-header">
   <% if @group.photo %>
     <%= image_tag @group.photo(:medium) %>
   <% end %>
-</h1>
-<%= link_to "View member listing", member_listing_path(@group) %>
-<%= render 'groups/settings' %>
-<%= render 'posts/new' %>
-<div id="posts">
-  <%= render @posts %>
+  <div class="image-shadow">
+    <h2><%= @group.name %></h2>
+    <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
+  </div>
+</div>
+
+<!-- <%= link_to "View member listing", member_listing_group_path(@group) %> -->
+<!-- TEMP: Comment out before GM -->
+<!-- <%= render 'groups/settings' %> -->
+
+<div class="row">
+    <%= render 'posts/new' %>
+    <%= render 'groups/info_box' %>
+</div>
+<div class="row">
+  <div class="large-7 column">
+    <%= render 'posts/index', posts: @posts %>
+  </div>
 </div>
 
 
-
+<% if current_user.is_leader(@group) %>
+    <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
+<% end %>
 

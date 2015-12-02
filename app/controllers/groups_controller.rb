@@ -4,6 +4,14 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @neighborhoods = Neighborhood.all
+    my = params[:format]
+    if my.nil?
+      @all = "selected = \"selected\"".html_safe
+      @my = "".html_safe
+    else
+      @my = "selected = \"selected\"".html_safe
+      @all = "".html_safe
+    end
   end
 
   def show
@@ -17,22 +25,23 @@ class GroupsController < ApplicationController
     if current_user
       @group = Group.new
       @kinds = Group.kinds.keys
-      @neighborhoods = Neighborhood.all.map{|u| [ u.name, u.id ] }
+      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
-      redirect_to new_user_session_path, notice: 'You are not logged in.'
+      redirect_to new_user_session_path, notice: "You are not logged in."
     end
   end
 
   # When User creates group, create a UserGroup with is_leader: true
   def create
     @group = Group.new(group_params)
-    respond_to do |format|
-      if @group.save
-        @group.add_user(current_user, make_leader=true)
-        format.html { redirect_to @group, notice: "Group was successfully created." }
-      else
-        format.html { render :new }
-      end
+    if @group.save
+      @group.add_user(current_user, make_leader = true)
+      redirect_to @group, notice: "Group was successfully created."
+    else
+      @kinds = Group.kinds.keys
+      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
+      flash[:notice] = "Name has already been taken!"
+      render :new
     end
   end
 
@@ -40,12 +49,36 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
   end
 
-  def leave_group
-    #if you're leader - alert - can't leave if there are no other leaders
-    #if you're a member or one leader amongst many others you can leave
+  def join
     @group = Group.friendly.find(params[:id])
-    @group.current_user.delete
+    if not @group.users.include?(current_user)
+      @group.add_user(current_user)
+    end
   end
+
+  def leave
+    @group = Group.friendly.find(params[:id])
+    @group.remove_user(current_user)
+    redirect_to groups_path, notice: "You have successfully left the group"
+  end
+
+  def edit
+    @group = Group.friendly.find(params[:id])
+  end
+
+  def update
+    @group = Group.friendly.find(params[:id])
+    if @group.update_attributes(group_params)
+      flash[:notice] = "Group updated!"
+      redirect_to group_path
+    else
+      render :edit
+      #TODO: Fix error message
+      flash[:alert] = "Unable to update group."
+    end
+  end
+
+  private
 
   def group_params
     params.require(:group).permit(:name, :description, :neighborhood_id, :kind)
