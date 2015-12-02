@@ -1,7 +1,7 @@
 var ready = function() {
   $(".info").show();
   $(".click-info").addClass("selected");
-  $(".groups").hide();
+  // $(".groups").hide();
 
   $(".click-info").click(function() {
     $(".click-groups").removeClass("selected");

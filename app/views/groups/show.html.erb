@@ -14,22 +14,28 @@
   </div>
 </div>
 
-<!-- <%= link_to "View member listing", member_listing_group_path(@group) %> -->
-<!-- TEMP: Comment out before GM -->
-<!-- <%= render 'groups/settings' %> -->
+<div class="grid">
+  <div class="row group-menu">
+    <div class="click-bulletin small-3 large-3 large-uncentered column">
+      <p><%= image_tag("groups_bulletin.png") + "Bulletin Board" %></p>
+    </div>
+    <div class="click-member-listing small-3 large-3 large-uncentered column">
+      <p><%= image_tag("groups_members.png") + "Members" %> (<%= @group.user_groups.count %>)</p>
+    </div>
+    <div class="click-group-settings small-3 large-3 large-uncentered column">
+      <p><%= image_tag("groups_settings.png") + "Settings" %></p>
+    </div>
+  </div>
+</div>
 
 <div class="row">
-    <%= render 'posts/new' %>
-    <%= render 'groups/info_box' %>
+  <div class="group-bulletin"><%= render 'posts/new' %></div>
+  <div class="group-member-listing"><%= render 'groups/member_listing'%></div>
+  <div class="group-settings"><%= render 'groups/settings' %></div>
+  <%= render 'groups/info_box' %>
 </div>
-<div class="row">
+<div class="group-bulletin row">
   <div class="large-7 column">
     <%= render 'posts/index', posts: @posts %>
   </div>
 </div>
-
-
-<% if current_user.is_leader(@group) %>
-    <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
-<% end %>
-
