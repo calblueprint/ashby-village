@@ -75,3 +75,61 @@
 .create-title {
     text-align: center;
 }
+
+// MENU
+.group-menu {
+  background-color: white;
+  border-radius: 8px;
+  height: 48px;
+}
+
+.group-menu p {
+  color: $ashby-gray;
+}
+.click-bulletin {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-bulletin img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-bulletin:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-member-listing {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-member-listing img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-member-listing:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-group-settings {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-group-settings img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-group-settings:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}

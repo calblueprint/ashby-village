@@ -4,16 +4,44 @@
 
 @import "ashby_settings.scss";
 
+.menu {
+  background-color: white;
+  border-radius: 8px;
+  height: 48px;
+}
+
+.menu p {
+  color: $ashby-gray;
+}
+
+.actions {
+  height: 250px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.actions h6 {
+  color: $ashby-black;
+}
+
 .user-info h4 {
   color: #2D3339;
 }
 
-.user-photo img {
+.user-info {
+  height: 250px;
+  border-radius: 8px;
+  background-color: white;
+  // margin-right: 20px;
+}
+
+.header img {
   height: 180px;
   width: 180px;
   border-radius: 50%;
   object-fit: cover;
   margin-left: 18px;
+  border: 4px solid $ashby-dark-blue;
 }
 
 .header {
@@ -25,6 +53,38 @@
   text-align: center;
 }
 
-.nav h6 {
-  color: #2D3339;
+.selected {
+  border-bottom: 3px solid $ashby-green;
+}
+
+.click-info {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-info img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-info:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-groups {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-groups img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-groups:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
 }
