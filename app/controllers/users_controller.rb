@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     if @user != current_user
       @header = @user.first_name + "'s Profile"
     end
+    if params[:query].present?
+      @search_users = User.search(params[:query])
+    else
+      @search_users = []
+    end
   end
 
   def edit
@@ -31,7 +36,12 @@ class UsersController < ApplicationController
       render action: "edit"
       # TODO (Shannon): Verification for edit profiles?
       flash[:alert] = "Error!"
+    end
+  end
 
+  def autocomplete
+    render json: User.search(params[:query], autocomplete: true, limit: 5).map do |user|
+      { first_name: user.first_name }
     end
   end
 

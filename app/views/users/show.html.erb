@@ -1,4 +1,14 @@
 <div class="profile">
+<div class="users-search">
+  <h1>Search User</h1>
+  <%= form_tag groups_path, method: :get do %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], class: 'form-control typeahead' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
   <div class="row">
     <div class="header small-3 small-centered column">
       <% if @user.photo %>
