@@ -1,20 +1,20 @@
 var ready = function() {
   $(".info").show();
   $(".click-info").addClass("selected");
-  $(".groups").hide();
+  $(".groups-leading").hide();
 
   $(".click-info").click(function() {
     $(".click-groups").removeClass("selected");
     $(this).addClass("selected");
     $(".info").show();
-    $(".groups").hide();
+    $(".groups-leading").hide();
   });
 
   $(".click-groups").click(function() {
     $(".click-info").removeClass("selected");
     $(this).addClass("selected");
     $(".info").hide();
-    $(".groups").show();
+    $(".groups-leading").show();
   });
 };
 
