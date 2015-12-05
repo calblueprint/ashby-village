@@ -1,6 +1,6 @@
 var ready = function() {
 // TODO: Fix this condition so that it uses rails paths
-if (!top.location.pathname.includes("users")) { // also need to add for my groups page or just make if not on user profile
+if (!top.location.pathname.includes("users")) {
   updateGroupCount();
   updateListing();
 }
