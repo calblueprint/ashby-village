@@ -1,6 +1,6 @@
 var ready = function() {
-
-if (top.location.pathname === '/root') {
+// TODO: Fix this condition so that it uses rails paths
+if (!top.location.pathname.includes("users")) { // also need to add for my groups page or just make if not on user profile
   updateGroupCount();
   updateListing();
 }
