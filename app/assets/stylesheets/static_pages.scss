@@ -71,25 +71,41 @@
 .landing {
   text-align: center;
 
-  .banner_text {
-    font-style: bold;
-    padding-top: 130px;
-    padding-bottom: 80px;
+  .hero {
+    position: relative;
+    width: 100%;
   }
 
-  .banner_text h1, h4 {
+  img.bg {
+    display: overflow;
+    object-fit: cover;
+    height: 480px;
+    width: 100%;
+  }
+
+  .banner-text {
+    position: absolute;
+    top: 120px;
+    left: 0; 
+    right: 0;
+    font-style: bold;
+  }
+
+  .banner-text h1, h4 {
     color: white;
   }
 }
 
 .footer {
   font-style: bold;
+  margin-top: 32px;
 
   h3, h4 {
     color: $ashby-black;
   }
 
   img {
+    margin-top: 32px;
     height: 160px;
   }
 
