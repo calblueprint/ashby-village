@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   ##################################################
   # Users
   ##################################################
-  resources :users, :only => [:show, :edit, :update] do
+  resources :users, :only => [:index, :show, :edit, :update] do
     collection do
       get :autocomplete
     end

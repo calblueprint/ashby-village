@@ -1,0 +1,10 @@
+<!-- eventually must be moved to group creation page to search for additional leaders-->
+<div class="users-search">
+  <h1>Search User</h1>
+  <%= form_tag users_path, method: :get do %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "on" %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

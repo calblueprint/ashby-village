@@ -29,3 +29,9 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+// $(function() {
+//   return $('#user_search').typeahead({
+//     name: "user",
+//     remote: "/users/autocomplete?query=%QUERY"
+//   });
+// });

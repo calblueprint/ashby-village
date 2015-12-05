@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all.decorate
+
+    if params[:query].present?
+      @search_users = User.search(params[:query])
+    else
+      @search_users = []
+    end
   end
 
   def show
@@ -13,11 +19,6 @@ class UsersController < ApplicationController
 
     if @user != current_user
       @header = @user.first_name + "'s Profile"
-    end
-    if params[:query].present?
-      @search_users = User.search(params[:query])
-    else
-      @search_users = []
     end
   end
 
@@ -39,10 +40,14 @@ class UsersController < ApplicationController
     end
   end
 
+  # def autocomplete
+  #   render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
+  #     { first_name: user.first_name }
+  #   end
+  # end
+
   def autocomplete
-    render json: User.search(params[:query], autocomplete: true, limit: 5).map do |user|
-      { first_name: user.first_name }
-    end
+    render json: User.search(params[:query], autocomplete: true, limit: 10).map(&:first_name)
   end
 
   private
