@@ -40,7 +40,7 @@ if (top.location.pathname === '/root') {
   // Group tile logic
   $(".group-tile").click(function() {
       $tile = $(this);
-      var path = $tile.find("h3").text().toLowerCase();
+      var path = $tile.find("h3").text().replace(/\s+/g, '-').toLowerCase();
       location.replace("/groups/" + path);
   });
 
