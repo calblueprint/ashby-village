@@ -1,7 +1,9 @@
 var ready = function() {
 
+if (top.location.pathname === '/root') {
   updateGroupCount();
   updateListing();
+}
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
