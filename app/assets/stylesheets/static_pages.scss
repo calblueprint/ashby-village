@@ -101,13 +101,19 @@
   font-style: bold;
   margin-top: 32px;
 
+  .columns {
+    min-width: 320px; // iPhone 4 width
+  }
+
   h3, h4 {
     color: $ashby-black;
   }
 
   img {
     margin-top: 32px;
-    height: 160px;
+    max-height: 160px;
+    max-width: 160px;
+    object-fit: cover;
   }
 
   .row p {
