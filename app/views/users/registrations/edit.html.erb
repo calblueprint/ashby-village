@@ -1,29 +1,29 @@
-<div class="row edit-settings">
-
+<div class="edit-settings row">
 <h2>Edit Account Settings</h2>
+  <div class="small-12 small-centered medium-10 large-10 column">
+    <div class="change-password-form row">
+      <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+            <h3>Change my password</h3>
 
-    <div class="row change-password">
-      <h3 class="">Change my password</h3>
+            <div><%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "off" %></div>
 
-      <div class="settings-field column small-6 large-12"><%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "off" %></div>
+            <div><%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-      <div class="settings-field column small-6 large-12"><%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+            <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                <%= f.password_field :current_password, autocomplete: "off" %></div>
 
-      <div class="settings-field column small-6 large-12"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-          <%= f.password_field :current_password, autocomplete: "off" %></div>
-
-      <div class="update-settings column">
-        <%= f.submit "Update", class: 'button success radius small' %>
-      </div>
+            <div class="update-settings column">
+              <%= f.submit "Update", class: 'button success radius small' %>
+            </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
