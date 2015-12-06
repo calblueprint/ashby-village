@@ -16,7 +16,8 @@
 .create-group {
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
-  height: 140px;
+  padding: 20px;
+  height: 100%;
   background-color: white;
   border-radius: 8px;
 }
@@ -30,11 +31,12 @@
 }
 
 .user-info {
-  height: 240px;
+  height: 100%;
   border-radius: 8px;
   background-color: white;
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
+  padding: 20px;
   // margin-right: 20px;
 }
 
