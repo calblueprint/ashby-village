@@ -40,14 +40,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # def autocomplete
-  #   render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
-  #     { first_name: user.first_name }
-  #   end
-  # end
-
   def autocomplete
-    render json: User.search(params[:query], autocomplete: true, limit: 10).map(&:first_name)
+    # render json: User.search(params[:query], autocomplete: true, limit: 10).map(&:first_name)
+    render json: User.search(params[:query], autocomplete: true, limit: 10).map do |user|
+      { first_name: user.first_name, value: user.id }
+    end
   end
 
   private

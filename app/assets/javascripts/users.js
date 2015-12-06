@@ -7,7 +7,11 @@ ready = function() {
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: '../users/autocomplete?query=%QUERY'
+            replace: function(root_url) {
+                var query = $('#user_search')[0].value;
+                console.log(query);
+                return root_url + query;  },
+            url: '/users/autocomplete?query='
         }
     });
 
@@ -29,9 +33,4 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
-// $(function() {
-//   return $('#user_search').typeahead({
-//     name: "user",
-//     remote: "/users/autocomplete?query=%QUERY"
-//   });
-// });
+
