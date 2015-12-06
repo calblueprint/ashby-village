@@ -1,15 +1,20 @@
-<div id="login" class="reveal-modal login-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<div id="login" class="reveal-modal login-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
         <h2 class="modal-title" id="myModalLabel">Please log in to continue.</h2>
+        <div>
+          <h4>Don't have an account?
+            <span class="click-register">
+              <a>Click here to register</a>
+            </span>
+          </h4>
+        </div>
       </div>
-          <div>
-            <h4>Don't have an account?
-              <span class="click-register">
-                <a>Click here to register</a>
-              </span></h4></br>
+      </br>
+
+
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %>
@@ -35,9 +40,7 @@
           <div>
             <%= link_to "Forgot your password?", new_password_path(:user) %>
           </div>
-
         <% end %>
-      </div>
     </div>
   </div>
 </div>
