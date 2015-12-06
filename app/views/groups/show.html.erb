@@ -34,8 +34,15 @@
   <div class="group-settings"><%= render 'groups/settings' %></div>
   <%= render 'groups/info_box' %>
 </div>
-<div class="group-bulletin row">
-  <div class="large-7 column">
-    <%= render 'posts/index', posts: @posts %>
+
+<div class="row">
+  <div class="group-posts large-7 column">
+
+    <%= render 'posts/index', posts: @posts, reply: @reply%>
   </div>
 </div>
+
+
+<% if current_user.is_leader(@group) %>
+    <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
+<% end %>

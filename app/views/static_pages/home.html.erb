@@ -1,9 +1,12 @@
 <%= render "users/registrations/new" %>
 <div class='landing'>
-  <div class='banner_text'>
-    <h1>Know what's happening.</h1>
-    <h4>Ashby Village Square powers group communication</h4><br/>
-    <%= link_to 'Create an Account', "#",  data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"register"}, class: 'button success radius large' %>
+  <div class="hero">
+    <%= image_tag("bg_main.jpg", :class => "bg") %>
+    <div class='banner-text'>
+      <h1>Know what's happening.</h1>
+      <h4>Ashby Village Square powers group communication</h4><br/>
+      <%= link_to 'Create an Account', "#",  data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"register"}, class: 'button success radius large' %>
+    </div>
   </div>
 
   <div class='footer'>
@@ -12,17 +15,20 @@
     </div>
     <div class='row'>
       <div class="small-6 small-centered large-4 large-uncentered columns">
-        <div class="communications" style="height:150px;"></div>
+        <div class="communications"></div>
+         <%= image_tag("communications.png") %>
         <h4>Stay Updated</h4>
         <p>This website provides you a channel to talk with all fellow villagers.</p>
       </div>
       <div class="small-6 small-centered large-4 large-uncentered columns">
-        <div class="groups" style="height:150px;"></div>
+        <div class="groups"></div>
+        <%= image_tag("groups.png") %>
         <h4>Form Groups</h4>
         <p>All the interest groups you know and love are here.  But you can form them if any are missing.</p>
       </div>
       <div class="small-6 small-centered large-4 large-uncentered columns">
-        <div class="events" style="height:150px;"></div>
+        <div class="events"></div>
+         <%= image_tag("events.png") %>
         <h4>Create Events</h4>
         <p>You'll easily be able to coordinate large events among many members.</p>
       </div>
