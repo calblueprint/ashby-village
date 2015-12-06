@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
 
-  # TODO (Shimmy): Only display this page if the user is logged in
+  # TODO(Shimmy): Only display this page if the user is logged in
   def index
+    # TODO(Shimmy):Make scopes for these
     announcements = Group.alphabetized.where(kind:2)
     others = Group.alphabetized.where.not(kind:2)
     @groups = announcements + others
