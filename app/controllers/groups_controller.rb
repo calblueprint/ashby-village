@@ -2,7 +2,9 @@ class GroupsController < ApplicationController
 
   # TODO (Shimmy): Only display this page if the user is logged in
   def index
-    @groups = Group.all
+    announcements = Group.alphabetized.where(kind:2)
+    others = Group.alphabetized.where.not(kind:2)
+    @groups = announcements + others
     @neighborhoods = Neighborhood.all
     my = params[:format]
     if my.nil?
