@@ -6,10 +6,10 @@
         <h2 class="modal-title" id="myModalLabel">Please log in to continue.</h2>
       </div>
           <div>
-            <h4>Don't have an account?</h4>
-              <div class="click-register">
-                <h4>Click here to register</h4>
-              </div></br>
+            <h4>Don't have an account?
+              <span class="click-register">
+                <a>Click here to register</a>
+              </span></h4></br>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %>
