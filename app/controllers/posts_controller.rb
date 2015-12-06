@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   # TODO (Shimmy): Define logged_in_user
-  # before_action :logged_in_user, only: [:create, :destroy]
+   # before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   # TODO (Shimmy): Watch out for duplicates
   def create
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     @post.destroy
     flash[:info] = "Post deleted"
     redirect_to :back

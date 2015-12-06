@@ -7,7 +7,9 @@
       <% end %>
     </div>
     <div class="large-10 columns">
-      <%= link_to "Delete", group_post_path(@group.id,post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' } %>
+      <% if current_user.id == post.user.id %>
+        <%= link_to "Delete", group_post_path(@group.id,post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' } %>
+      <% end %>
       <p><%= link_to post.user.decorate.full_name, post.user %></p>
       <h6 class="timestamp"><i> Posted <%= time_ago_in_words(post.created_at) %> ago. </i></h6>
     </div>
