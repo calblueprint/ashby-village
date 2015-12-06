@@ -23,8 +23,9 @@
     <%= render 'groups/info_box' %>
 </div>
 <div class="row">
-  <div class="large-7 column">
-    <%= render 'posts/index', posts: @posts %>
+  <div class="group-posts large-7 column">
+
+    <%= render 'posts/index', posts: @posts, reply: @reply%>
   </div>
 </div>
 

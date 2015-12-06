@@ -16,3 +16,10 @@
     <p><%= post.content %></p>
   </div>
 </div>
+
+<div class="row">
+    <%= render 'replies/index', replies: post.replies %>
+</div>
+<div class="row">
+    <%= render 'replies/new', post: post, reply: reply %>
+</div>

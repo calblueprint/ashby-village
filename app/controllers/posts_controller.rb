@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   # TODO (Shimmy): Watch out for duplicates
   def create
+    @reply = Reply.new
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
     @post.save
