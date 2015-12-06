@@ -3,10 +3,10 @@
   <%= form_for [@group,@post], remote: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
-      <%= f.text_field :title, placeholder: "Title", required: true %>
+      <%= f.text_field :title, placeholder: "(optional) What's your post about?" %>
     </div>
     <div class="field">
-      <%= f.text_area :content, placeholder: "Compose new post...", required: true %>
+      <%= f.text_area :content, required: true, placeholder: "Compose new post..." %>
     </div>
     <%= f.submit "Post New Topic", class: "button right" %>
   <% end %>
