@@ -22,7 +22,9 @@ class Group < ActiveRecord::Base
   # validates :name, uniqueness: true, on: :create
   validates_uniqueness_of :name
 
-  enum kind: [:social, :neighborhood, :committee]
+  scope :alphabetized, -> { order(name: :asc) }
+
+  enum kind: [:social, :committee, :announcement]
   enum state: [:inactive, :active]
 
   belongs_to :neighborhood
