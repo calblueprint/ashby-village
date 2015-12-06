@@ -12,7 +12,7 @@
       <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
       <%= f.file_field :photo, required: true %>
     </div>
-    Kind of Group <%= f.select(:kind, @kinds, :include_blank => "What kind of group is it?") %>
+    Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'neighborhood' }, :include_blank => "What kind of group is it?") %>
     Neighborhood of Group <%= f.select(:neighborhood_id, @neighborhoods, :include_blank => "What neighborhood is this group in?") %>
     <%= f.submit %>
     </div>
