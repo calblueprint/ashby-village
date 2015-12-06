@@ -6,5 +6,8 @@
       <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "on" %>
       <%= submit_tag 'Search', class: 'btn btn-primary' %>
     </div>
+    <% @search_users.each do |user| %>
+      <%= link_to user.decorate.full_name, user %>
+    <% end%>
   <% end %>
 </div>

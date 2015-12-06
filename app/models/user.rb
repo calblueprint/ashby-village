@@ -30,7 +30,7 @@
 
 # TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
 class User < ActiveRecord::Base
-  searchkick autocomplete: ['first_name']
+  searchkick autocomplete: ['first_name', 'last_name']
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   scope :is_admin, -> { where(role: 1) }
