@@ -2,18 +2,6 @@ class UsersController < ApplicationController
   # TODO(Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
   # TODO(Shimmy): Get rid of the redundant controller for User.
 
-  def new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to root_path, notice: "Welcome to Ashby Village Square!"
-    else
-      flash[:notice] = "Please fix your errors!"
-    end
-  end
-
   # GET /users
   def index
     @users = User.all.decorate
