@@ -80,8 +80,8 @@ Rails.application.routes.draw do
       put "join"
       put "leave"
     end
-    resources :posts do
-      resources :replies, shallow: true
+    resources :posts, shallow: true do
+      resources :replies
     end
   end
 
