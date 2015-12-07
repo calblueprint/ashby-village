@@ -1,7 +1,7 @@
 var ready = function() {
 
   updateGroupCount();
-  // updateListing();
+  updateListing();
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
