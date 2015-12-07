@@ -28,8 +28,6 @@ var ready = function() {
     var groupCount = $(".group-tile").filter(function() {
       return $(this).css("display") !== "none";
     }).length;
-
-    alert(groupCount);
     if (groupCount === 1) {
       $(".group-count").text("Displaying " + groupCount + " group");
     } else {
