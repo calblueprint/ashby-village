@@ -13,21 +13,28 @@ end
 def make_groups
   Group.create! name: 'Movies', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
   Group.create! name: 'Knitting', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("gaming.jpg"), state: 1
-  Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Computer', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("film_fanatics.jpg"), state: 1
   Group.create! name: 'Poker', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
   Group.create! name: 'Bingo', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
-  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Music', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("gaming.jpg"), state: 1
   Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("film_fanatics.jpg"), state: 1
   Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg"), state: 1
-  Group.create! name: 'Education', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Education', description: 'yo', neighborhood_id: 2, kind: 0, photo: seed_image("jazzercise.jpg"), state: 1
   Group.create! name: 'Kites', description: 'yo', neighborhood_id: 2, kind: 0, photo: seed_image("gaming.jpg"), state: 1
   Group.create! name: 'Pool', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("film_fanatics.jpg"), state: 1
-  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg"), state: 1
   Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("jazzercise.jpg"), state: 1
   Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3, kind: 1, photo: seed_image("gaming.jpg"), state: 1
-  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Travel', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("film_fanatics.jpg"), state: 1
   Group.create! name: 'Television', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
-  Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Emeryville  Announcements', description: 'yo', neighborhood_id: 5, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Midlandish Announcements', description: 'yo', neighborhood_id: 6, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'North Berkeley Hills Announcements', description: 'yo', neighborhood_id: 7, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Thousand Oaks Hamlet Announcements', description: 'yo', neighborhood_id: 4, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Outlandish Announcements', description: 'yo', neighborhood_id: 3, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Kensignton Kaleidoscope Announcements', description: 'yo', neighborhood_id: 1, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Claremont-Elmwood Announcements', description: 'yo', neighborhood_id: 8, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1
 end
 
 def make_users
@@ -76,6 +83,11 @@ def make_neighborhood
   Neighborhood.create! name: 'Kensington Kaleidoscope', description: '#'
   Neighborhood.create! name: 'Ashby Village', description: '#'
   Neighborhood.create! name: 'Outlandish', description: '#'
+  Neighborhood.create! name: 'Thousand Oaks Hamlet', description: '#'
+  Neighborhood.create! name: 'Emeryville', description: '#'
+  Neighborhood.create! name: 'Midlandish', description: '#'
+  Neighborhood.create! name: 'North Berkeley Hills', description: '#'
+  Neighborhood.create! name: 'Claremont-Elmwood', description: '#'
 end
 
 def make_posts
