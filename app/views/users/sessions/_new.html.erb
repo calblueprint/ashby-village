@@ -8,16 +8,17 @@
             <span class="click-register"> <a>Click here to register</a> </span> </h4>
         </div>
       </div></br>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'login_form' }, remote: true, format: :json) do |f| %>
+          <%= devise_error_messages! %>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.email_field :email, autofocus: true, required: true %>
           </div>
 
           <div class="field">
             <%= f.label :password %>
-            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.password_field :password, autocomplete: "off", required: true %>
           </div>
 
           <% if devise_mapping.rememberable? -%>

@@ -24,3 +24,10 @@ var ready = (function(){ $(document).foundation(); });
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+$(document).on('submit', '#login_form', function(e) {
+  }).on('ajax:success', '#login_form', function(e, data, status, xhr) {
+    window.location.href = '/groups';
+  }).on('ajax:error', '#login_form', function(e, data, status, xhr) {
+    alert('Email or password is incorrect.');
+});
