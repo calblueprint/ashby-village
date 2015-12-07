@@ -11,14 +11,14 @@
 
             <h3>Change My Password</h3>
 
-            <div><%= f.label :new_password %>
-                <%= f.password_field :new_password, autocomplete: "off", placeholder: "What's your new password?" %></div>
-
-            <div><%= f.label :new_password_confirmation %>
-                <%= f.password_field :new_password_confirmation, autocomplete: "off", placeholder: "Please re-type your new password." %></div>
-
             <div><%= f.label :current_password %>
                 <%= f.password_field :current_password, autocomplete: "off", placeholder: "We need your current password to confirm your changes." %></div>
+
+            <div><%= f.label :new_password %>
+                <%= f.password_field :new_password, autocomplete: "off" %></div>
+
+            <div><%= f.label :new_password_confirmation, "Re-type your new password" %>
+                <%= f.password_field :new_password_confirmation, autocomplete: "off" %></div>
 
             <%= f.submit "Update", class: 'button success radius small' %>
       <% end %>
