@@ -28,3 +28,13 @@
 .nav h6 {
   color: #2D3339;
 }
+
+.imagePreview, .profilePreview{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid $ashby-dark-blue;
+  background-position: center center;
+  background-size: cover;
+  display: inline-block;
+}
