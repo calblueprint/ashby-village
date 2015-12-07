@@ -22,7 +22,9 @@ class Group < ActiveRecord::Base
   # validates :name, uniqueness: true, on: :create
   validates_uniqueness_of :name
 
-  enum kind: [:social, :neighborhood, :committee]
+  scope :alphabetized, -> { order(name: :asc) }
+
+  enum kind: [:social, :committee, :announcement]
   enum state: [:inactive, :active]
 
   belongs_to :neighborhood
@@ -35,6 +37,7 @@ class Group < ActiveRecord::Base
   end
 
   has_many :posts, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/

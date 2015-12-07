@@ -43,46 +43,46 @@
 #
 
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   ##################################################
   # General
   ##################################################
   authenticated :user do
-    root :to => "groups#index", :as => "authenticated_root"
+    root to: "groups#index", as: "authenticated_root"
   end
   root 'static_pages#home'
 
   ##################################################
   # Devise
   ##################################################
-  devise_for :users, :path => '',
-  :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout', :edit => 'users/:id/account_settings'},
-  :controllers => {:registrations => 'users/registrations'}
+  devise_for :users, path: "", path_names: { sign_up: "register", sign_in: "login", sign_out: "logout", edit: "users/:id/account_settings" }, controllers: { registrations: "users/registrations" }
   devise_scope :users do
-    get "users/:id/account_settings" => "users/registrations#edit", :as => "account_settings"
-    # TODO (Shannon): Refactor routes.
+    get "users/:id/account_settings" => "users/registrations#edit", as: "account_settings"
+    # TODO(Shannon): Refactor routes.
   end
 
   ##################################################
   # Sessions
   ##################################################
-  resources 'exit', to: 'sessions#destroy', as: :logout
+  resources "exit", to: 'sessions#destroy', as: :logout
 
   ##################################################
   # Users
   ##################################################
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
 
   ##################################################
   # Groups
   ##################################################
-  resources :groups do
+  resources :groups, shallow: true do
     member do
       get "member_listing"
       put "join"
       put "leave"
     end
-    resources :posts
+    resources :posts do
+      resources :replies
+    end
   end
 
   ##################################################

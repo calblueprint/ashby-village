@@ -1,6 +1,6 @@
   <div class="" id="posts">
   <h6> most recent posts </h6>
     <% posts.each do |post| %>
-      <%= render 'posts/post', post: post %>
+      <%= render 'posts/post', post: post, reply: reply %>
     <% end %>
   </div>
