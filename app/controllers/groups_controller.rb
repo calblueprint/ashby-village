@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
     else
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
-      flash[:notice] = "Name has already been taken!"
+      flash[:error] = "Name has already been taken!"
       render :new
     end
   end

@@ -12,13 +12,13 @@
             <h3>Change My Password</h3>
 
             <div><%= f.label :current_password %>
-                <%= f.password_field :current_password, autocomplete: "off", placeholder: "We need your current password to confirm your changes." %></div>
+                <%= f.password_field :current_password, required: true, autocomplete: "off", placeholder: "We need your current password to confirm your changes." %></div>
 
             <div><%= f.label :new_password %>
-                <%= f.password_field :new_password, autocomplete: "off" %></div>
+                <%= f.password_field :new_password,required: true, autocomplete: "off" %></div>
 
             <div><%= f.label :new_password_confirmation, "Re-type your new password" %>
-                <%= f.password_field :new_password_confirmation, autocomplete: "off" %></div>
+                <%= f.password_field :new_password_confirmation, required: true, autocomplete: "off" %></div>
 
             <%= f.submit "Update", class: 'button success radius small' %>
       <% end %>
