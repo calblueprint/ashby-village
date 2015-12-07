@@ -3,13 +3,17 @@
     <% if current_user.is_member(@group) %>
       <p>Click the button below to remove yourself from this group. This means you will no longer receive email notifications from this group. You may still join this group later.</p>
       <%= link_to leave_group_path(@group), method: :put do %>
-        <button class="remove-membership"> Remove Membership</button>
+        <button class="remove-membership">Remove Membership</button>
       <% end %>
     <% end %>
   </div>
+
+  <!-- TODO: add conditional for is leader of group for this chunk -->
   <div class="settings-edit row">
     <% if current_user.is_leader(@group) %>
-        <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
+        <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' do %>
+          <button>Edit Group</button>
+        <% end %>
     <% end %>
   </div>
 

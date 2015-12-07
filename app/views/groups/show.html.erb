@@ -22,9 +22,11 @@
   <div class="click-member-listing small-3 large-3 large-uncentered column">
     <p><%= image_tag("groups_members.png") + "Members" %> (<%= @group.user_groups.count %>)</p>
   </div>
-  <div class="click-group-settings small-3 large-3 large-uncentered column">
-    <p><%= image_tag("groups_settings.png") + "Settings" %></p>
-  </div>
+  <% if @group.users.include?(current_user) %>
+    <div class="click-group-settings small-3 large-3 large-uncentered column">
+      <p><%= image_tag("groups_settings.png") + "Settings" %></p>
+    </div>
+  <% end %>
 </div>
 
 
