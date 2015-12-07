@@ -8,7 +8,6 @@
     Group Description <%= f.text_area :description, required: true, :placeholder => 'What is your group about?' %>
     Group Cover Photo
     <div class="field">
-      <%= image_tag :photo %>
       <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
       <%= f.file_field :photo, required: true %>
     </div>
