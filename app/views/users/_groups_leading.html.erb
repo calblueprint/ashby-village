@@ -1,7 +1,6 @@
 <% if @user.groups.leader_of.count == 0 %>
   <h6>You are not a leader of any groups.</h6>
 <% else %>
-<!-- The problem seems to be the class name 'group-tile'.  When I change the class name and change the class names in the stylesheets, the tiles show up perfectly fine (I can't remember if they click through or not.) Seems to be a problem with the javascript. -->
   <% @user.groups.leader_of.each do |group| %>
     <div class="group-tile row">
 
