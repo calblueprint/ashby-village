@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # TODO (Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
-  # TODO (Shimmy): Get rid of the redundant controller for User.
+  # TODO(Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
+  # TODO(Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
   def index
@@ -9,16 +9,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]).decorate
-    @header = "My Profile"
-
-    if @user != current_user
-      @header = @user.first_name + "'s Profile"
-    end
   end
 
   def edit
     @user = User.find(params[:id]).decorate
-    render :template => "users/registrations/edit_profile"
+    render template: "users/registrations/edit_profile"
   end
 
   def update
@@ -29,13 +24,13 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       render action: "edit"
-      # TODO (Shannon): Verification for edit profiles?
+      # TODO(Shannon): Verification for edit profiles?
       flash[:alert] = "Error!"
-
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end

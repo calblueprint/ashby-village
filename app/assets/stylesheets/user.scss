@@ -4,20 +4,53 @@
 
 @import "ashby_settings.scss";
 
+.menu {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.menu p {
+  color: $ashby-gray;
+}
+
+.create-group {
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 20px;
+  height: 100%;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.create-group h6 {
+  color: $ashby-black;
+}
+
 .user-info h4 {
   color: #2D3339;
 }
 
-.user-photo img {
+.user-info {
+  height: 100%;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 20px;
+  // margin-right: 20px;
+}
+
+.header img {
   height: 180px;
   width: 180px;
   border-radius: 50%;
   object-fit: cover;
   margin-left: 18px;
+  border: 4px solid $ashby-dark-blue;
 }
 
 .header {
-  padding: 50px;
+  padding-top: 20px;
   font-style: bold;
 }
 
@@ -25,8 +58,57 @@
   text-align: center;
 }
 
-.nav h6 {
-  color: #2D3339;
+.selected {
+  border-bottom: 3px solid $ashby-green;
+}
+
+.selected:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.click-info {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-info img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-info:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-groups {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-groups img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-groups:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-register:hover {
+  cursor: pointer;
+  color: $ashby-dark-blue;
+}
+
+.click-register h4 {
+  color: $ashby-light-blue;
+}
+
+.no-account {
+  float: left;
 }
 
 .photoPreview {

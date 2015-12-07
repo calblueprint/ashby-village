@@ -1,38 +1,44 @@
+<div class="edit-profile row">
 <h2>Edit Profile</h2>
 
 <%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autofocus: true, :value => @user.first_name %>
+  <div class="small-12 small-centered medium-10 large-10 column">
+    <div class="edit-profile-form row">
+      <%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, autofocus: true, value: @user.first_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, autofocus: true, :value => @user.last_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, :value => @user.email %>
+        </div>
+
+        <div class="field">
+          <%= f.label :phone %>
+          <%= f.text_field :phone, autofocus: true, :value => @user.phone, class: 'phone' %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Upload an image of yourself so that others can recognize you:' %>
+          <img class="photoPreview" src="<%= @user.photo %>"></img>
+          <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Update", class: 'button success radius small' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, autofocus: true, :value => @user.last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, :value => @user.email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone, autofocus: true, :value => @user.phone, class: 'phone' %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Upload an image of yourself so that others can recognize you:' %>
-    <img class="photoPreview" src="<%= @user.photo %>"></img>
-    <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update", class: 'button success radius small' %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back', :back %>
+</div>

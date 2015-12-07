@@ -1,8 +1,11 @@
 class GroupsController < ApplicationController
 
-  # TODO (Shimmy): Only display this page if the user is logged in
+  # TODO(Shimmy): Only display this page if the user is logged in
   def index
-    @groups = Group.all
+    # TODO(Shimmy):Make scopes for these
+    announcements = Group.alphabetized.where(kind:2)
+    others = Group.alphabetized.where.not(kind:2)
+    @groups = announcements + others
     @neighborhoods = Neighborhood.all
     my = params[:format]
     if my.nil?
@@ -16,6 +19,7 @@ class GroupsController < ApplicationController
 
   def show
     @post = Post.new
+    @reply = Reply.new
     @group = Group.friendly.find(params[:id])
     @posts = @group.posts.order_by_created_at
     @neighborhood = Neighborhood.find(@group.neighborhood_id)
@@ -81,7 +85,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood_id, :kind)
+    params.require(:group).permit(:name, :description, :neighborhood_id, :kind, :photo)
   end
 
 end

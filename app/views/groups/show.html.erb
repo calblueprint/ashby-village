@@ -6,7 +6,7 @@
 
 <div class="row group-header">
   <% if @group.photo %>
-    <%= image_tag @group.photo(:medium) %>
+    <%= image_tag(@group.photo(:medium)) %>
   <% end %>
   <div class="image-shadow">
     <h2><%= @group.name %></h2>
@@ -23,8 +23,9 @@
     <%= render 'groups/info_box' %>
 </div>
 <div class="row">
-  <div class="large-7 column">
-    <%= render 'posts/index', posts: @posts %>
+  <div class="group-posts large-7 column">
+
+    <%= render 'posts/index', posts: @posts, reply: @reply%>
   </div>
 </div>
 
@@ -32,4 +33,3 @@
 <% if current_user.is_leader(@group) %>
     <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' %>
 <% end %>
-
