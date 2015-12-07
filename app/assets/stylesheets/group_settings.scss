@@ -17,3 +17,10 @@
   padding: 24px;
   @include ease-transition(0.5s);
 }
+
+.settings-group .remove-membership {
+  background: $ashby-red;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+}

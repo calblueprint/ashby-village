@@ -2,8 +2,10 @@
   <div class="settings-remove-membership row">
     <% if current_user.is_member(@group) %>
       <p>Click the button below to remove yourself from this group. This means you will no longer receive email notifications from this group. You may still join this group later.</p>
-      <button><%= link_to "Remove Membership", leave_group_path(@group), method: :put %>
-    <% end %></button>
+      <%= link_to leave_group_path(@group), method: :put do %>
+        <button class="remove-membership"> Remove Membership</button>
+      <% end %>
+    <% end %>
   </div>
   <div class="settings-edit row">
     <% if current_user.is_leader(@group) %>

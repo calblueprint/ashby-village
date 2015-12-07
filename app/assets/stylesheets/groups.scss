@@ -42,10 +42,11 @@
 
 .info-box {
   background-color: white;
-  border: 2px solid transparent;
+  float: right;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
+  margin-left: 16px !important;
   padding: 12px;
 
   // TEMP TEMP TEMP
@@ -72,18 +73,18 @@
 .group-menu p {
   color: $ashby-gray;
 }
-.click-bulletin {
+.click-new-post {
   padding: 10px;
   height: 48px;
   width: 195px;
 }
 
-.click-bulletin img {
+.click-new-post img {
   height: 25px;
   margin-right: 10px;
 }
 
-.click-bulletin:hover {
+.click-new-post:hover {
   cursor: pointer;
   background-color: #f2f2f2;
 }

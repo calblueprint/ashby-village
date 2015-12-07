@@ -3,12 +3,12 @@
     <% @group.users.each do |user| %>
         <div class="large-6 columns">
           <div class="listing-member-tile row collapse">
-            <div class="listing-member-display large-3 column">
+            <div class="listing-member-display large-4 column">
               <% if user.photo %>
                 <%= image_tag(user.photo(:thumb)) %>
               <% end %>
             </div>
-            <div class="large-9 column">
+            <div class="large-8 column">
               <h5><%= link_to user.decorate.full_name, user %></h5>
               <h6><%= user.phone %></h6>
             </div>
