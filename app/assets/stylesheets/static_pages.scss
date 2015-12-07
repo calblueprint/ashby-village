@@ -120,3 +120,19 @@
     color: $ashby-gray;
   }
 }
+
+// LOGIN MODAL
+.login-modal {
+  overflow: hidden;
+  position: fixed;
+
+  .modal-header {
+    text-align: center;
+  }
+}
+
+@media (max-width: 40em) {
+  .login-modal {
+    top: 0 !important;
+  }
+}

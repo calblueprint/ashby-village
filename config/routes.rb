@@ -76,13 +76,15 @@ Rails.application.routes.draw do
   ##################################################
   # Groups
   ##################################################
-  resources :groups do
+  resources :groups, shallow: true do
     member do
       get "member_listing"
       put "join"
       put "leave"
     end
-    resources :posts
+    resources :posts do
+      resources :replies
+    end
   end
 
   ##################################################
