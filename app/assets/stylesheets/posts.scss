@@ -27,6 +27,7 @@
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
   @include ease-transition(0.5s);
+  padding-top: 8px;
 }
 
 .post-display-member img {
