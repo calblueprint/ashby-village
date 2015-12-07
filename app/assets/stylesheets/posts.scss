@@ -4,7 +4,7 @@
   background-color: white;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 16px !important; // To override foundation's row class
+  margin-bottom: 2px !important; // To override foundation's row class
   padding: 12px;
   @include ease-transition(0.5s);
   h6, h4, p {
