@@ -1,9 +1,10 @@
 <div class="new-reply large-12 columns">
   <%= form_for [post, @reply], remote: true do |f| %>
     <div class="field">
-      <%= f.text_area :content, placeholder: "Write your response here", required: true %>
+      <%= f.text_area :content, placeholder: "Write your response here", required: true, class: "reply-content" %>
+
+      <%= f.hidden_field :post, value: post, required: true %>
+      <%= f.submit "Post Reply Here", class: "reply-button right" %>
     </div>
-    <%= f.hidden_field :post, value: post, required: true %>
-    <%= f.submit "Post Reply Here", class: "button right" %>
   <% end %>
 </div>
