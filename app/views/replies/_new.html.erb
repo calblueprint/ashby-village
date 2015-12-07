@@ -1,5 +1,7 @@
 <div class="new-reply large-12 columns">
-  <%= form_for [post, @reply], remote: true do |f| %>
+  <%= form_for [post, reply], remote: true do |f| %>
+  <%= post.user.decorate.full_name %>
+  <%= reply %>
     <div class="field">
       <%= f.text_area :content, placeholder: "Write your response here", required: true %>
     </div>
