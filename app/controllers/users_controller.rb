@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # TODO (Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
-  # TODO (Shimmy): Get rid of the redundant controller for User.
+  # TODO(Shimmy): before_action :logged_in_user, only: [:index, :update, :edit].
+  # TODO(Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
   def index
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       render action: "edit"
-      # TODO (Shannon): Verification for edit profiles?
+      # TODO(Shannon): Verification for edit profiles?
       flash[:alert] = "Error!"
     end
   end
