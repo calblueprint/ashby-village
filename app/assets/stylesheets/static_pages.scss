@@ -7,6 +7,7 @@
 ////////////////////////
 // REGISTRATION MODAL //
 ////////////////////////
+
 .full-modal {
   max-width: initial;
   max-height: initial;
@@ -18,7 +19,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
+  overflow: scroll;
   position: fixed;
 
   .modal-title {
@@ -69,47 +70,69 @@
 
 .landing {
   text-align: center;
-  background: image-url("bg_main.jpg") transparent no-repeat;
-  background-size: contain;
-  background-position: 100% -50%;
 
-  .banner_text {
-    font-style: bold;
-    padding-top:130px;
-    padding-bottom: 80px;
+  .hero {
+    position: relative;
+    width: 100%;
   }
 
-  .banner_text h1, h4 {
+  img.bg {
+    display: overflow;
+    object-fit: cover;
+    height: 480px;
+    width: 100%;
+  }
+
+  .banner-text {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-style: bold;
+  }
+
+  .banner-text h1, h4 {
     color: white;
   }
 }
 
 .footer {
   font-style: bold;
+  margin-top: 32px;
 
-  .footer h3, h4 {
+  .columns {
+    min-width: 320px; // iPhone 4 width
+  }
+
+  h3, h4 {
     color: $ashby-black;
+  }
+
+  img {
+    margin-top: 32px;
+    max-height: 160px;
+    max-width: 160px;
+    object-fit: cover;
   }
 
   .row p {
     color: $ashby-gray;
   }
+}
 
-  .communications{
-    background: image-url("communications.jpg") transparent center center no-repeat;
-    width: 100%;
-    height: 100%;
+// LOGIN MODAL
+.login-modal {
+  overflow: hidden;
+  position: fixed;
+
+  .modal-header {
+    text-align: center;
   }
+}
 
-  .groups{
-    background: image-url("groups.jpg") transparent center center no-repeat;
-    width: 100%;
-    height: 100%;
-  }
-
-  .events{
-    background: image-url("events.jpg") transparent center center no-repeat;
-    width: 100%;
-    height: 100%;
+@media (max-width: 40em) {
+  .login-modal {
+    top: 0 !important;
   }
 }

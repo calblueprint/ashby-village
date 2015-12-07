@@ -3,21 +3,20 @@
 <div class="dropdowns-tile row">
   <h6>groups</h6>
   <h3> Show me <%= @format %>
-    <select class="group-dropdown large-3">
-      <option <%= @all %> value="all"> all </option>
-      <option <%= @my %> value="my"> my </option>
-      <option value="social"> social </option>
-      <option value="neighborhood"> neighborhood </option>
-      <option value="committee"> committee </option>
+    <select class="group-dropdown large-4">
+      <option <%= @all %> value="all"> all groups </option>
+      <option <%= @my %> value="my"> my groups </option>
+      <option value="social"> social groups </option>
+      <option value="committee"> committees </option>
+      <option value="announcement"> announcement groups</option>
     </select>
-    groups in
+     in
     <select class="neighborhood-dropdown large-4">
-      <option selected="selected" value="all"> all </option>
+      <option selected="selected" value="all"> all neighborhoods</option>
       <%= @neighborhoods.each do |neighborhood| %>
         <option value=<%= neighborhood.id %>><%= neighborhood.name %></option>
       <% end %>
     </select>
-    <span>neighborhoods</span>
   </h3>
   <h6 class="group-count large-6"></h6>
 </div>

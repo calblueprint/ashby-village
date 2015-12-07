@@ -28,3 +28,16 @@
 .nav h6 {
   color: #2D3339;
 }
+
+.click-register:hover {
+  cursor: pointer;
+  color: $ashby-dark-blue;
+}
+
+.click-register h4 {
+  color: $ashby-light-blue;
+}
+
+.no-account {
+  float: left;
+}
