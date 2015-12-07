@@ -43,6 +43,12 @@ class User < ActiveRecord::Base
     }
   end
 
+  def as_json(options = { })
+   result = super(options)
+   result["full_name"] = full_name
+   result
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   scope :is_admin, -> { where(role: 1) }

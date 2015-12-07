@@ -3,7 +3,7 @@ ready = function() {
     var engine = new Bloodhound({
         datumTokenizer: function(d) {
             console.log(d);
-            return Bloodhound.tokenizers.whitespace(d.first_name);
+            return Bloodhound.tokenizers.whitespace(d.full_name);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
@@ -26,7 +26,7 @@ ready = function() {
 
     $('.typeahead').typeahead(null, {
         name: 'engine',
-        displayKey: 'first_name',
+        displayKey: 'full_name',
         source: engine.ttAdapter()
     });
 }

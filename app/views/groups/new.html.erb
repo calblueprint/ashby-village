@@ -9,11 +9,14 @@
 
     <div class="users-search">
       Additional Group Leaders
-      <%= form_tag groups_path, method: :get do %>
         <div class="form-group">
-          <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "on"%>
+          <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "off"%>
         </div>
-      <% end %>
+        <ul>
+        <% @search_users.each do |user| %>
+          <%= f.add_user(user, true) %>
+        <% end%>
+        </ul>
     </div>
 
     Group Cover Photo

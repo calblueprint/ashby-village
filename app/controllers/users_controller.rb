@@ -42,7 +42,8 @@ class UsersController < ApplicationController
 
   def autocomplete
     render json: User.search(params[:query], { fields: [{"full_name" => :text_middle, boost_by: [:first_name]}]}).map do |user|
-      { first_name: user.full_name, value: user.id }
+
+      { full_name: user.full_name, value: user.id }
     end
   end
 
