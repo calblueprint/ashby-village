@@ -10,7 +10,7 @@ var ready = function() {
 
       reader.onloadend = function(){ // set image data as background of div
         $(".photoPreview").css("background-image", "url("+this.result+")");
-        $(".photoPreview").attr("src", "+this.result+");
+        $(".photoPreview").attr("src", '');
       }
     }
   });
