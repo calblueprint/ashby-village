@@ -1,7 +1,9 @@
 var ready = function() {
-
+// TODO: Fix this condition so that it uses rails paths
+if (!top.location.pathname.includes("users")) {
   updateGroupCount();
-  // updateListing();
+  updateListing();
+}
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
@@ -38,7 +40,7 @@ var ready = function() {
   // Group tile logic
   $(".group-tile").click(function() {
       $tile = $(this);
-      var path = $tile.find("h3").text().toLowerCase();
+      var path = $tile.find("h3").text().replace(/\s+/g, '-').toLowerCase();
       location.replace("/groups/" + path);
   });
 
