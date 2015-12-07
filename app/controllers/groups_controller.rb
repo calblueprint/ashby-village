@@ -45,6 +45,9 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
+      @leaders.each do |leader|
+        @group.add_user(leader, true)
+      end
       redirect_to @group, notice: "Group was successfully created."
     else
       @kinds = Group.kinds.keys

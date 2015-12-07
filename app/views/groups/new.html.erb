@@ -12,11 +12,6 @@
         <div class="form-group">
           <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "off"%>
         </div>
-        <ul>
-        <% @search_users.each do |user| %>
-          <%= f.add_user(user, true) %>
-        <% end%>
-        </ul>
     </div>
 
     Group Cover Photo
