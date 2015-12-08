@@ -8,7 +8,8 @@ ready = function() {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
             replace: function(root_url) {
-                var query = $('#user_search')[0].value;
+                var query = [];
+                query.push($('#user_search')[0].value);
                 console.log(query);
                 return root_url + query;  },
             url: '/users/autocomplete?query='
@@ -17,22 +18,17 @@ ready = function() {
 
     var leaders = [];
     $('#user_search').on('typeahead:selected', function (e, datum) {
-        // console.log(datum);
-        leaders.push(datum);
+        leaders.push(datum.id);
     });
 
     $(".create-section input[type='submit']").click(function() {
-        console.log(leaders);
+        alert(JSON.stringify(leaders))
         $.ajax({
             type: "POST",
-            url: "/groups/create",
-            data: { leaders:leaders},
-              // success:(data) ->
-              //   alert data.id
-              //   return false
-              // error:(data) ->
-              //   return false
-          });
+            url: "/groups/",
+            data: JSON.stringify({json:leaders}),
+            dataType: 'json'
+    });
     });
 
 

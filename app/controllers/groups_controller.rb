@@ -46,8 +46,12 @@ class GroupsController < ApplicationController
     if @group.save
       @group.add_user(current_user, make_leader = true)
       # access leaders through ajax and convert from json to rails
+
+      @leaders =  ActiveSupport::JSON::decode(params[:data])
+      puts @leaders
       @leaders.each do |leader|
-        @group.add_user(leader, true)
+        puts leader
+        # @group.add_user(leader, true)
       end
       redirect_to @group, notice: "Group was successfully created."
     else
