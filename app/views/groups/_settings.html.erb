@@ -9,11 +9,13 @@
   </div>
 
   <!-- TODO: add conditional for is leader of group for this chunk -->
+  <% if current_user.is_leader(@group) %>
+    dfdsdsfsd
+  <% end %>
   <div class="settings-edit row">
-    <% if current_user.is_leader(@group) %>
-        <%= link_to 'Edit Group', edit_group_path, class: 'button success radius small' do %>
-          <button>Edit Group</button>
-        <% end %>
+    <p>Since you are a leader of <%= @group.name %>, you have permission to edit this group.</p>
+    <%= link_to edit_group_path(@group.id), class: 'success radius small' do %>
+      <button class="edit-group">Edit Group</button> <!-- Change button color to blue -->
     <% end %>
   </div>
 

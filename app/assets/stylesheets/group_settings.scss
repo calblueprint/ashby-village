@@ -8,6 +8,7 @@
   padding: 24px;
   @include ease-transition(0.5s);
 }
+
 .settings-edit {
   background-color: white;
   border: 2px solid transparent;
@@ -16,6 +17,17 @@
   margin-bottom: 16px !important; // To override foundation's row class
   padding: 24px;
   @include ease-transition(0.5s);
+
+  button {
+    background: $ashby-light-blue;
+    -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+    -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+    box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  }
+
+  button:hover {
+    background: $ashby-light-blue;
+  }
 }
 
 .settings-group .remove-membership {
