@@ -3,14 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "ashby_settings.scss";
 
-.reply{
+.reply {
   background-color: #E3E3E3;
   border: 1px solid $ashby-gray;
   border-radius: 8px;
-  margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 16px !important; // To override foundation's row class
+  margin-top: 2px !important; // To override foundation's row class
+  margin-bottom: 2px !important; // To override foundation's row class
   padding: 12px;
-  @include ease-transition(0.5s);
   h6, h4, p {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
@@ -25,12 +24,16 @@
 }
 
 .new-reply {
-  background-color: white;
-  border: 2px solid transparent;
+  background-color: #E3E3E3;
+  border: 1px solid $ashby-gray;
   border-radius: 8px;
-  margin-top: 16px !important; // To override foundation's row class
+  margin-top: 2px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
-  @include ease-transition(0.5s);
+  padding: 12px;
+  h6, h4, p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
 }
 
 .reply-display-member img {

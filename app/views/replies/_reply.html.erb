@@ -1,15 +1,12 @@
-<div class="reply row" id="reply-<%= reply.id %>">
-  <!-- TODO (Shimmy): Picture link -->
-  <div class="reply-user row collapse">
-    <div class="reply-display-member large-2 columns">
-      <% if reply.user.photo %>
-        <%= image_tag(reply.user.photo(:thumb)) %>
-      <% end %>
-    </div>
-    <div class="large-10 columns">
-      <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
-      <h6 class="timestamp"><i> Posted <%= time_ago_in_words(reply.created_at) %> ago. </i></h6>
-      <p><%= reply.content %></p>
-    </div>
+<div class="reply-user row collapse" id="reply-<%= reply.id %>">
+  <div class="reply-display-member large-2 columns">
+    <% if reply.user.photo %>
+      <%= image_tag(reply.user.photo(:thumb)) %>
+    <% end %>
+  </div>
+  <div class="large-10 columns">
+    <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
+    <h6 class="timestamp"><i> Replied <%= time_ago_in_words(reply.created_at) %> ago. </i></h6>
+    <p><%= reply.content %></p>
   </div>
 </div>

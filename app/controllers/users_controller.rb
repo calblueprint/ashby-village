@@ -15,11 +15,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]).decorate
-    @header = "My Profile"
-
-    if @user != current_user
-      @header = @user.first_name + "'s Profile"
-    end
   end
 
   def edit
@@ -48,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end
