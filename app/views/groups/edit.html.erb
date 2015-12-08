@@ -12,6 +12,12 @@
   </div>
 
   <div class="field">
+    <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
+    <%= f.file_field :photo, required: true, class: "uploadFile" %>
+    <img class="groupPhotoPreview" src="<%= @group.photo %>"> </img>
+  </div></br>
+
+  <div class="field">
     <%= f.label :kind %>
     <%= f.text_field :kind, autofocus: true, value: @group.kind %>
   </div>

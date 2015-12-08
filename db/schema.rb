@@ -132,4 +132,7 @@ ActiveRecord::Schema.define(version: 20151202055310) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "posts", "users"
+  add_foreign_key "replies", "groups"
+  add_foreign_key "replies", "posts"
+  add_foreign_key "replies", "users"
 end
