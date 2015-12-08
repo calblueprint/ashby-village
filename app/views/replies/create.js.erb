@@ -1,1 +1,1 @@
-$('#replies').html("<%= escape_javascript(render 'replies/index', replies: @post.replies.order_by_created_at) %>")
+$('#<%= @post.id%>-replies').html("<%= escape_javascript(render 'replies/index', replies: @post.replies.order_by_created_at, post_id: @post.id) %>")
