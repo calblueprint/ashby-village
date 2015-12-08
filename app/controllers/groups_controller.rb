@@ -45,6 +45,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
+      # access leaders through ajax and convert from json to rails
       @leaders.each do |leader|
         @group.add_user(leader, true)
       end
