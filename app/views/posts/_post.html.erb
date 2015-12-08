@@ -1,7 +1,6 @@
 <div class="post row collapse" id="post-<%= post.id %>">
   <!-- TODO (Shimmy): Picture link -->
   <div class="post-user row collapse">
-  <h2><%= post.id %>
     <div class="post-display-member large-2 columns">
       <% if post.user.photo %>
         <%= image_tag(post.user.photo(:thumb)) %>
