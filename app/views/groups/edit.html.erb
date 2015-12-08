@@ -4,12 +4,12 @@
     <div class="edit-group-form row">
       <%= form_for @group do |f| %>
         <div class="field">
-          <%= f.label :name %>
+          <%= f.label 'Group Name' %>
           <%= f.text_field :name, autofocus: true, value: @group.name %>
         </div>
 
         <div class="field">
-          <%= f.label :description %>
+          <%= f.label 'Group Description' %>
           <%= f.text_area :description, autofocus: true, value: @group.description %>
         </div>
 
@@ -20,12 +20,12 @@
         </div>
 
         <div class="field">
-          <%= f.label :kind %>
+          <%= f.label 'Kind of Group' %>
           <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, autofocus: true, value: @group.kind) %>
         </div>
 
         <div class="field">
-          <%= f.label :neighborhood_id %>
+          <%= f.label 'Neighborhood of Group' %>
           <%= f.select(:neighborhood_id, @neighborhoods, autofocus: true, value: @group.neighborhood_id) %>
         </div>
 
