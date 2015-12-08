@@ -1,0 +1,21 @@
+<div class="row">
+
+  <div class="user-info large-7 column">
+    <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
+    <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
+    <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
+
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_path %>
+    <% end %>
+  </div>
+
+  <div class="create-group large-5 column">
+    <h6>CREATE A GROUP</h6>
+    <%= link_to new_group_path do %>
+      <button> Create New Group </button>
+    <% end %>
+    <p>Click the button above to make a new group!</p>
+  </div>
+
+</div>
