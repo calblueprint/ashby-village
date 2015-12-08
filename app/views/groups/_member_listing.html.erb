@@ -1,0 +1,18 @@
+<div class="listing-member large-7 columns">
+  <h6>MEMBERS (<%= @group.user_groups.count %>)</h6>
+    <% @group.users.each do |user| %>
+        <div class="listing-member-tile large-6 columns">
+          <div class="row collapse">
+            <div class="listing-member-display large-4 columns">
+              <% if user.photo %>
+                <%= image_tag(user.photo(:thumb)) %>
+              <% end %>
+            </div>
+            <div class="large-8 columns">
+              <h5><%= link_to user.decorate.full_name, user %></h5>
+              <h6><%= user.phone %></h6>
+            </div>
+          </div>
+        </div>
+    <% end %>
+</div>

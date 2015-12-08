@@ -15,11 +15,10 @@
     <h4><strong><%= post.title %></strong></h4>
     <p><%= post.content %></p>
   </div>
-</div>
-
-<div class="row">
+  <div class="row collapse">
     <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
-</div>
-<div class="row">
+  </div>
+  <div class="row collapse">
     <%= render 'replies/new', post: post, reply: reply %>
+  </div>
 </div>
