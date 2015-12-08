@@ -14,6 +14,10 @@
   margin-bottom: 8px !important; // To override foundation's row class
   padding: 8px;
   @include ease-transition(0.5s);
+
+  h5 {
+    margin-bottom: 0px; 
+  }
 }
 
 .listing-member-display img {
