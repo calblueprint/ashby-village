@@ -22,7 +22,7 @@
 </div>
 
 <% @groups.each do |group| %>
-  <div class="group-tile row <%= group.neighborhood.id %> <%= group.kind %>
+  <div class="group-tile row <%= group.neighborhood.id %> group_id<%= group.id %> <%= group.state %> <%= group.kind %>
     <% if group.users.exists?(current_user)%>
       <%= "my" %>
     <% end %>
@@ -52,7 +52,7 @@
       </div>
 
       <% if group.users.include?(current_user) %>
-          <button class="large-3 right is-member" value="<%= group.id %>">You Have Joined</button>
+          <button class="large-3 right is-member <%= current_user.is_leader(group) %>" value="<%= group.id %>">You Have Joined</button>
       <% else %>
           <button class="large-3 right" value="<%= group.id %>">Join Group</button>
       <% end %>

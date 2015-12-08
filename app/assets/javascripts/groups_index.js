@@ -1,8 +1,11 @@
 var ready = function() {
+
+
 // TODO: Fix this condition so that it uses rails paths
 if (!top.location.pathname.includes("users")) {
   updateGroupCount();
   updateListing();
+  $(".inactive").hide();
 }
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
@@ -37,6 +40,26 @@ if (!top.location.pathname.includes("users")) {
     }
   }
 
+  function leave_group(group_id) {
+    $button.removeClass("is-member");
+    $button.removeClass("remove-member");
+    $button.text("Join Group");
+    $.ajax({
+      type: "PUT",
+      url: "/groups/" + $button.attr("value") + "/leave",
+      success: function(data) {
+        $(".group_id" + group_id).removeClass("active");
+        $(".group_id" + group_id).removeClass("inactive");
+        $(".group_id" + group_id).addClass("" + data.state);
+        console.log(data.state);
+        $(".inactive").hide();
+      },
+      dataType: 'json'
+    });
+  }
+        //
+        // Upon making the group inactive, we want to make the div reflect that state
+
   // Group tile logic
   $(".group-tile").click(function() {
       $tile = $(this);
@@ -49,16 +72,14 @@ if (!top.location.pathname.includes("users")) {
     event.preventDefault();
     event.stopPropagation();
     $button = $(this);
-    if ($button.hasClass("is-member")) {
-      $button.removeClass("is-member");
-      $button.removeClass("remove-member");
-      $button.text("Join Group");
-
-      $.ajax({
-        type: "PUT",
-        url: "/groups/" + $button.attr("value") + "/leave"
-      });
-
+    if ($button.hasClass("is-member") && $button.hasClass("true")) {
+      var confirmLeave = confirm("You are a leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?");
+      console.log(confirmLeave);
+      if (confirmLeave === true) {
+        leave_group($button.attr("value"));
+      }
+    } else if ($button.hasClass("is-member")) {
+      leave_group($button.attr("value"));
     } else {
       $button.addClass("is-member");
       $button.text("You Have Joined");
