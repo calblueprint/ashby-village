@@ -9,8 +9,6 @@ var ready = (function() {
       $('.photoPreview').attr("src",img.src);
     }
     reader.readAsDataURL(image);
-    console.log("files",files);
-    console.log("image", image);
   });
 });
 
