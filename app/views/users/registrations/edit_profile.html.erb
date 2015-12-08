@@ -28,9 +28,7 @@
 
         <div class="field">
           <%= f.label 'Upload an image of yourself so that others can recognize you:' %>
-          <div class="">
-            <img class="photoPreview" src="<%= @user.photo %>"> </img>
-          </div>
+          <img class="photoPreview" src="<%= @user.photo %>"> </img>
           <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
         </div>
 
