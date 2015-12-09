@@ -6,6 +6,14 @@
   <div class="create-section row">
     Group Name <%= f.text_field :name, required: true, :placeholder => 'Example: Kensington Knitting Club' %>
     Group Description <%= f.text_area :description, required: true, :placeholder => 'What is your group about?' %>
+
+    <div class="users-search">
+      Additional Group Leaders
+        <div class="form-group">
+          <%= text_field_tag :query, params[:query], class: 'form-control typeahead', id: "user_search", autocomplete: "off"%>
+        </div>
+    </div>
+
     Group Cover Photo
     <div class="field">
       <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>

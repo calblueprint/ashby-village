@@ -30,6 +30,11 @@ class GroupsController < ApplicationController
       @group = Group.new
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
+      if params[:query].present?
+        @search_users = User.search(params[:query])
+      else
+        @search_users = []
+      end
     else
       redirect_to new_user_session_path, notice: "You are not logged in."
     end
@@ -40,6 +45,14 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
+      # access leaders through ajax and convert from json to rails
+
+      @leaders =  ActiveSupport::JSON::decode(params[:data])
+      puts @leaders
+      @leaders.each do |leader|
+        puts leader
+        # @group.add_user(leader, true)
+      end
       redirect_to @group, notice: "Group was successfully created."
     else
       @kinds = Group.kinds.keys

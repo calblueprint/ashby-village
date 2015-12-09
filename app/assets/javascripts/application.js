@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require typeahead.bundle.min
+//= requre users
 //= require react
 //= require react_ujs
 //= require components

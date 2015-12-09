@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all.decorate
+
+    if params[:query].present?
+      @search_users = User.search(params[:query])
+    else
+      @search_users = []
+    end
   end
 
   def show
@@ -26,6 +32,13 @@ class UsersController < ApplicationController
       render action: "edit"
       # TODO(Shannon): Verification for edit profiles?
       flash[:alert] = "Error!"
+    end
+  end
+
+  def autocomplete
+    render json: User.search(params[:query], { fields: [{"full_name" => :text_middle, boost_by: [:first_name]}]}).map do |user|
+
+      { full_name: user.full_name, value: user.id }
     end
   end
 
