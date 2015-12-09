@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
+      @users = User.all.decorate.map{ |u| [u.full_name, u.id]}
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
@@ -40,6 +41,10 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
+      @users = User.find(params[:leader])
+      @users.each do |user|
+        @group.add_user(@user, make_leader = true)
+      end
       redirect_to @group, notice: "Group was successfully created."
     else
       @kinds = Group.kinds.keys
