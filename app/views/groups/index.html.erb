@@ -45,15 +45,13 @@
 
         <div class="member-display">
           <% group.users.last(3).each do |user| %>
-            <% if user.is_leader(@group) %>
-            <div class="imageWrapper">
-              <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
-              <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= user.decorate.full_name %>"><%= image_tag(user.photo(:thumb), class: "group-leader-photo") %></span>
-            </div>
+            <% if user.is_leader(group) %>
+              <div class="imageWrapper">
+                <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+                <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= user.decorate.full_name %>"><%= image_tag(user.photo(:thumb), class: "group-leader-photo") %></span>
+              </div>
             <% else %>
               <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= user.decorate.full_name %>"><%= image_tag(user.photo(:thumb), class: "group-leader-photo") %></span>
-            <% else %>
-              <%= image_tag(user.photo(:thumb)) %>
             <% end %>
           <% end %>
         </div>
