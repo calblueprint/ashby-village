@@ -41,9 +41,11 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
-      @users = User.find(params[:leaders])
-      @users.each do |user|
-        @group.add_user(user, make_leader = true)
+      if (params[:leaders] != nil)
+        @users = User.find(params[:leaders]) #don't do this if there are no additional leaders added
+        @users.each do |user|
+          @group.add_user(user, make_leader = true)
+        end
       end
       redirect_to @group, notice: "Group was successfully created."
     else
@@ -81,9 +83,11 @@ class GroupsController < ApplicationController
   def update
     @group = Group.friendly.find(params[:id])
     if @group.update_attributes(group_params)
-      @users = User.find(params[:leaders])
-      @users.each do |user|
-        @group.add_user(user, make_leader = true)
+      if (params[:leaders] != nil)
+        @users = User.find(params[:leaders]) #don't do this if there are no additional leaders added
+        @users.each do |user|
+          @group.add_user(user, make_leader = true)
+        end
       end
       flash[:notice] = "Group updated!"
       redirect_to group_path
