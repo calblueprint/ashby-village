@@ -25,6 +25,13 @@
   h2 {
     margin-bottom: 24px;
   }
+
+  button {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    box-shadow: none;
+  }
 }
 
 .image-shadow {
@@ -69,6 +76,9 @@
   border-radius: 8px;
   height: 48px;
   margin-top: 16px;
+  span {
+    color: $ashby-gray;
+  }
 }
 
 .group-menu p {

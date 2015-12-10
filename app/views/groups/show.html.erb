@@ -11,31 +11,21 @@
   <div class="image-shadow">
     <h2><%= @group.name %></h2>
     <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
-  </div>
-</div>
-
-
-<div class="row group-menu">
-  <div class="click-new-post small-3 large-3 large-uncentered column">
-    <p><%= image_tag("groups_bulletin.png") + "Bulletin Board" %></p>
-  </div>
-  <div class="click-member-listing small-3 large-3 large-uncentered column">
-    <p><%= image_tag("groups_members.png") + "Members" %> (<%= @group.user_groups.count %>)</p>
-  </div>
-  <div class="click-group-settings <%= @group.users.include?(current_user)%> small-3 large-3 large-uncentered column">
-    <p><%= image_tag("groups_settings.png") + "Settings" %></p>
-  </div>
-  <% if @group.users.include?(current_user) %>
+    <% if @group.users.include?(current_user) %>
       <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
-  <% else %>
+    <% else %>
       <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
+<div id="menu-bar">
+  <%= render 'groups/menu', group: @group %>
+</div>
 
 <div class="row">
   <div class="group-new-post"><%= render 'posts/new' %></div>
-  <div class="group-member-listing"><%= render 'groups/member_listing'%></div>
+  <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
   <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
   <div> <%= render 'groups/info_box' %></div>
 </div>

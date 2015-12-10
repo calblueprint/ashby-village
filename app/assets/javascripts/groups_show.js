@@ -2,7 +2,11 @@ var ready = function() {
   $(".group-join").click(function(){
     $.ajax({
       type: "PUT",
-      url: "/groups/" + $(this).attr("value") + "/join"
+      url: "/groups/" + $(this).attr("value") + "/join",
+      success: function() {
+        var members = $(".listing-member").attr("value");
+        $(".member").text("Members " + members);
+      }
     });
     $(this).removeClass("group-join");
     $(this).addClass("group-joined");
@@ -20,7 +24,7 @@ var ready = function() {
 
   $(".click-new-post").click(function() {
     $(".click-member-listing").removeClass("selected");
-    $(".click-group-settings-true").removeClass("selected");
+    $(".click-group-settings").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").show();
     $(".group-posts").show();
@@ -30,7 +34,7 @@ var ready = function() {
 
   $(".click-member-listing").click(function() {
     $(".click-new-post").removeClass("selected");
-    $(".click-group-settings-true").removeClass("selected");
+    $(".click-group-settings").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-member-listing").show();
