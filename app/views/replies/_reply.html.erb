@@ -1,8 +1,13 @@
-<div class="reply row" id="reply-<%= reply.id %>">
+<div class="reply row collapse" id="reply-<%= reply.id %>">
   <!-- TODO (Shimmy): Picture link -->
   <div class="reply-user row collapse">
     <div class="reply-display-member large-2 columns">
-      <% if reply.user.photo %>
+      <% if reply.user.is_leader(@group) %>
+        <div class="image-wrapper">
+          <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+          <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
+        </div>
+      <% else %>
         <%= image_tag(reply.user.photo(:thumb)) %>
       <% end %>
     </div>

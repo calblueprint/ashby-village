@@ -5,20 +5,28 @@
   </div>
 </div>
 
-<div class="row">
+<div class = "row">
   <div class="row menu">
-    <div class="click-info small-6 small-uncentered medium-3 column">
-      <p><%= image_tag("your_info_icon.png") + "Your Information" %></p>
+      <% if @user == current_user %>
+        <div class="click-info small-12 small-uncentered medium-3 column">
+          <p><%= image_tag("your_info_icon.png") %>Your Information</p>
+        </div>
+        <div class="click-groups small-12 small-uncentered medium-3 column">
+          <p><%= image_tag("groups_you_lead_icon.png") %>Groups You Lead</p>
+      </div>
+      <% else %>
+        <div class="click-info small-12 small-uncentered medium-3 column">
+          <p><%= image_tag("your_info_icon.png") %><%= @user.first_name %>'s Information</p>
+        </div>
+        <div class="click-groups small-12 small-uncentered medium-3 column">
+          <p><%= image_tag("groups_you_lead_icon.png") %>Groups <%= @user.first_name %> Leads</p>
+        </div>
+      <% end %>
     </div>
-    <div class="click-groups small-6 small-uncentered medium-3 column">
-      <p><%= image_tag("groups_you_lead_icon.png") + "Groups You Lead" %></p>
-    </div>
-  </div>
   <div class="info">
     <%= render "users/info" %>
   </div>
   <div class="groups-leading">
     <%= render "users/groups_leading" %>
   </div>
-</div>
 </div>
