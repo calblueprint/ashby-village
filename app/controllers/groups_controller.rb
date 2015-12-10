@@ -75,7 +75,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.friendly.find(params[:id])
-    @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
+    @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
     @kinds = Group.kinds.keys
     @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
   end
