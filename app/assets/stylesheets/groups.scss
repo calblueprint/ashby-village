@@ -25,6 +25,13 @@
   h2 {
     margin-bottom: 24px;
   }
+
+  button {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    box-shadow: none;
+  }
 }
 
 .image-shadow {
@@ -42,10 +49,11 @@
 
 .info-box {
   background-color: white;
-  border: 2px solid transparent;
+  float: right;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
+  margin-left: 16px !important;
   padding: 12px;
 
   // TEMP TEMP TEMP
@@ -62,6 +70,85 @@
   width: 39.66667% !important;
 }
 
+// MENU
+.group-menu {
+  background-color: white;
+  border-radius: 8px;
+  height: 48px;
+  margin-top: 16px;
+  span {
+    color: $ashby-gray;
+  }
+}
+
+.group-menu p {
+  color: $ashby-gray;
+}
+.click-new-post {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-new-post img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-new-post:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-member-listing {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-member-listing img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-member-listing:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.click-group-settings {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-group-settings img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-group-settings:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.group-posts {
+  padding: 0px !important;
+}
+
+.group-join {
+  height: 44px;
+  padding: 10px;
+  margin: 0px;
+}
+
+.group-joined {
+  background: #4A90E2 !important;
+  height: 48px;
+  padding: 10px;
+  margin: 0px;
+}
+
 .create-section {
   background-color: white;
   border: 2px solid transparent;
@@ -74,8 +161,4 @@
 
 .create-title {
     text-align: center;
-}
-
-.group-posts {
-  padding: 0px !important;
 }

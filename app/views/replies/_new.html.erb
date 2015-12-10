@@ -1,10 +1,16 @@
-<div class="new-reply large-12 columns">
-  <%= form_for [post, reply], remote: true do |f| %>
-    <div class="field">
-      <%= f.text_area :content, placeholder: "Write your response here", required: true, class: "reply-content" %>
-
+<div class="row collapse">
+  <div class="reply-display-member large-2 columns">
+    <% if current_user.photo %>
+      <%= image_tag(current_user.photo(:thumb)) %>
+    <% end %>
+  </div>
+  <div class="large-10 columns">
+    <%= form_for [post, @reply], remote: true do |f| %>
+      <div class="reply-content field">
+        <%= f.text_area :content, placeholder: "Write your response here", required: true %>
+      </div>
       <%= f.hidden_field :post, value: post, required: true %>
       <%= f.submit "Post Reply Here", class: "reply-button button right" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

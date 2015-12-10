@@ -32,7 +32,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  scope :is_admin, -> { where(role: 1) }
+  scope :admins, -> { where(role: 1) }
 
   # TODO (Shannon): add phone number validation, length and integers
 
@@ -65,6 +65,6 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
-  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, default_url: "default.png"
+  has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("default.png")
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
 end

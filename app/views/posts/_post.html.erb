@@ -7,6 +7,9 @@
       <% end %>
     </div>
     <div class="post-display-header large-10 columns">
+      <% if current_user.id == post.user.id or current_user.admin? or current_user.is_leader(@group) %>
+        <%= link_to "Delete", post_path(post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
+      <% end %>
       <p><%= link_to post.user.decorate.full_name, post.user %></p>
       <h6 class="timestamp"><i>Posted <%= time_ago_in_words(post.created_at) %> ago.</i></h6>
     </div>

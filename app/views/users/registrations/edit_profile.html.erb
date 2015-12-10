@@ -1,9 +1,6 @@
 <div class="edit-profile row">
 <h2>Edit Profile</h2>
 
-<%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
   <div class="small-12 small-centered medium-10 large-10 column">
     <div class="edit-profile-form row">
       <%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
@@ -30,8 +27,9 @@
         </div>
 
         <div class="field">
-          <%= f.label :photo %>
-          <%= f.file_field :photo %>
+          <%= f.label 'Upload an image of yourself so that others can recognize you:' %>
+          <%= image_tag((@user.photo), class: "photoPreview") %>
+          <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
         </div>
 
         <div class="actions">
@@ -41,5 +39,4 @@
       <% end %>
     </div>
   </div>
-  <% end %>
 </div>

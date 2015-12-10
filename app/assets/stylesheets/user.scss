@@ -18,6 +18,7 @@
   margin-bottom: 16px !important; // To override foundation's row class
   padding: 20px;
   height: 100%;
+  width: 100%;
   background-color: white;
   border-radius: 8px;
 }
@@ -110,3 +111,18 @@
 .no-account {
   float: left;
 }
+
+.photoPreview {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid $ashby-dark-blue;
+  display: inline-block;
+  object-fit: cover;
+}
+
+@media (max-width: 64em) {
+  .info .columns {
+      min-width: 100%;
+    }
+  }

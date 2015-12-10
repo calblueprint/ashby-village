@@ -7,6 +7,7 @@ if (!top.location.pathname.includes("users")) {
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
+    updateGroupCount();
   });
 
   function updateListing() {
@@ -18,12 +19,11 @@ if (!top.location.pathname.includes("users")) {
       $(".group-tile").not("." + kind).hide();
     }
     if (neighborhood != "all") {
-      $(".group-tile").not("." + neighborhood).fadeOut("fast");
+      $(".group-tile").not("." + neighborhood).hide();
       $(".dropdowns-tile span").fadeOut("fast");
     } else {
       $(".dropdowns-tile span").fadeIn("fast");
     }
-    updateGroupCount();
   }
 
   function updateGroupCount() {
