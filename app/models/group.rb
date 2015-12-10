@@ -52,7 +52,7 @@ class Group < ActiveRecord::Base
 
   def remove_user(current_user)
     # If the current user is the only leader, make the group inactive
-    if has_one_leader && current_user.is_leader(self)
+    if current_user.is_only_leader(self)
       self.update_attribute :state, 0
     end
     self.users.delete(current_user)

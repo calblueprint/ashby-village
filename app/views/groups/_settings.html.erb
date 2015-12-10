@@ -3,13 +3,15 @@
     <% if current_user.is_member(group) %>
       <% if current_user.is_only_leader(group) %>
         <p> Since you are the only leader of this group, removing your membership will mark this group inactive and villagers will be unable to view or join it. Please add another group leader before removing yourself if you would like this group to stay active. </p>
+        <%= link_to leave_group_path(group), method: :put, data: {confirm: "You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?"} do %>
+          <button class="remove-membership">Remove Membership</button>
+        <% end %>
       <% else %>
         <p>Click the button below to remove yourself from this group. This means you will no longer receive email notifications from this group. You may still join this group later.</p>
         <p>The email notification system is a work in progress and is not currently supported.</p>
-      <% end %>
-
-      <%= link_to leave_group_path(group), method: :put, :data => {:confirm => "You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?"} do %>
-        <button class="remove-membership">Remove Membership</button>
+        <%= link_to leave_group_path(group), method: :put do %>
+          <button class="remove-membership">Remove Membership</button>
+        <% end %>
       <% end %>
     <% end %>
   </div>
