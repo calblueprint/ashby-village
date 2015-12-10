@@ -48,10 +48,10 @@ if (!top.location.pathname.includes("users")) {
       type: "PUT",
       url: "/groups/" + $button.attr("value") + "/leave",
       success: function(data) {
-        $(".group_id" + group_id).removeClass("active");
-        $(".group_id" + group_id).removeClass("inactive");
-        $(".group_id" + group_id).addClass("" + data.state);
-        console.log(data.state);
+        var group = $(".group_id" + group_id);
+        group.removeClass("active");
+        group.removeClass("inactive");
+        group.addClass("" + data.state);
         $(".inactive").hide();
       },
       dataType: 'json'
@@ -74,7 +74,6 @@ if (!top.location.pathname.includes("users")) {
     $button = $(this);
     if ($button.hasClass("is-member") && $button.hasClass("true")) {
       var confirmLeave = confirm("You are a leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?");
-      console.log(confirmLeave);
       if (confirmLeave === true) {
         leave_group($button.attr("value"));
       }
