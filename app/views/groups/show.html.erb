@@ -1,37 +1,35 @@
-  <!-- <h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p> -->
-<% provide(:title, @group.name) %>
+<div class="row">
+  <% provide(:title, @group.name) %>
 
-  <!-- TODO (Shimmy): Add photo functionality -->
-
-<div class="row group-header">
-  <% if @group.photo %>
-    <%= image_tag(@group.photo(:medium)) %>
-  <% end %>
-  <div class="image-shadow">
-    <h2><%= @group.name %></h2>
-    <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
-    <% if @group.users.include?(current_user) %>
-      <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
-    <% else %>
-      <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
+  <div class="row group-header">
+    <% if @group.photo %>
+      <%= image_tag(@group.photo(:medium)) %>
     <% end %>
+    <div class="image-shadow">
+      <h2><%= @group.name %></h2>
+      <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
+      <% if @group.users.include?(current_user) %>
+        <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
+      <% else %>
+        <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div id="menu-bar">
-  <%= render 'groups/menu', group: @group %>
-</div>
+  <div id="menu-bar">
+    <%= render 'groups/menu', group: @group %>
+  </div>
 
-<div class="row">
-  <div class="group-new-post"><%= render 'posts/new' %></div>
-  <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
-  <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
-  <div> <%= render 'groups/info_box' %></div>
-</div>
+  <div class="row">
+    <div class="group-new-post"><%= render 'posts/new' %></div>
+    <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
+    <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
+    <div> <%= render 'groups/info_box' %></div>
+  </div>
 
-<div class="row">
-  <div class="group-posts large-7 column">
-    <%= render 'posts/index', posts: @posts, reply: @reply%>
+  <div class="row">
+    <div class="group-posts large-7 column">
+      <%= render 'posts/index', posts: @posts, reply: @reply%>
+    </div>
   </div>
 </div>
