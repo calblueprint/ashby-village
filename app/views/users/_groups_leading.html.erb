@@ -2,7 +2,7 @@
   <h6>You are not a leader of any groups.</h6>
 <% else %>
   <% @user.groups.leader_of.each do |group| %>
-    <div class="group-tile row">
+    <div class="group-tile row <%= group.state %> group_id<%= group.id %>">
 
       <div class="group-photo-container small-10 large-3">
           <%= image_tag group.photo, :class => "group-photo large-3 columns" %>
@@ -33,5 +33,6 @@
           <button class="large-3 right" value="<%= group.id %>">Join Group</button>
       <% end %>
     </div>
+    <h6 class="user-no-groups"></h6>
   <% end %>
 <% end %>

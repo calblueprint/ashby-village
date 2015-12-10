@@ -3,14 +3,15 @@ var ready = function() {
 
 // TODO: Fix this condition so that it uses rails paths
 if (!top.location.pathname.includes("users")) {
-  updateGroupCount();
   updateListing();
+  updateGroupCount();
   $(".inactive").hide();
 }
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
     updateGroupCount();
+    $(".inactive").hide();
   });
 
   function updateListing() {
@@ -57,6 +58,9 @@ if (!top.location.pathname.includes("users")) {
         }
         group.addClass("" + data.state);
         $(".inactive").hide();
+        updateGroupCount();
+        $(".user-no-groups").text("You are not a leader of any groups.");
+
       },
       dataType: 'json'
     });
@@ -76,7 +80,7 @@ if (!top.location.pathname.includes("users")) {
     event.preventDefault();
     event.stopPropagation();
     $button = $(this);
-    if ($button.hasClass("is-member") && $button.hasClass("true")) {
+    if ($button.hasClass("is-member") && $button.hasClass("leader-true")) {
       var confirmLeave = confirm("You are a leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?");
       if (confirmLeave === true) {
         leave_group($button.attr("value"));
@@ -93,7 +97,6 @@ if (!top.location.pathname.includes("users")) {
         success: function() {
           var group_id = $button.attr("value");
           $(".group_id" + group_id).addClass("my");
-          console.log(group_id);
         }
       });
 
