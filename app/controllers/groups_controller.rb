@@ -73,6 +73,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.friendly.find(params[:id])
+    @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
     @kinds = Group.kinds.keys
     @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
   end
@@ -80,6 +81,10 @@ class GroupsController < ApplicationController
   def update
     @group = Group.friendly.find(params[:id])
     if @group.update_attributes(group_params)
+      @users = User.find(params[:leaders])
+      @users.each do |user|
+        @group.add_user(user, make_leader = true)
+      end
       flash[:notice] = "Group updated!"
       redirect_to group_path
     else

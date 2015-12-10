@@ -12,7 +12,7 @@
       <%= f.file_field :photo, required: true, class: "uploadFile" %>
       <%= image_tag(("empty_group.png"), class: "groupPhotoPreview") %>
     </div></br>
-    Select Additional Group Leaders:
+    Select Additional Group Leaders
     <div class="field">
       <p><i>Hold down the Ctrl (windows) / Command (Mac) button to select multiple people</i></p>
       <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
