@@ -101,6 +101,6 @@ end
 
 make_groups
 make_users
-make_user_groups
+# make_user_groups
 make_neighborhood
 make_posts
