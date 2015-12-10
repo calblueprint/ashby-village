@@ -16,9 +16,15 @@
         <div class="field">
           <%= f.label 'Upload a new group photo' %>
           <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
-          <%= f.file_field :photo, required: true, class: "uploadFile" %>
+          <%= f.file_field :photo, class: "uploadFile" %>
           <%= image_tag((@group.photo), class: "groupPhotoPreview") %>
         </div></br>
+
+        <div class="field">
+          <%= f.label 'Select Additional Group Leaders' %>
+          <p><i>Hold down the Ctrl (windows) / Command (Mac) button to select multiple people</i></p>
+          <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
+        </div>
 
         <div class="field">
           <%= f.label 'Kind of Group' %>

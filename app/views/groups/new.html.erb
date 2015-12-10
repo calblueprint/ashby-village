@@ -1,6 +1,6 @@
 <div class="create-title">
-<h2>Create New Group</h2>
-<h4>Fill in the blanks below to create your new group. All fields are required.</h4>
+  <h2>Create New Group</h2>
+  <h4>Fill in the blanks below to create your new group. All fields are required.</h4>
 </div>
   <%= form_for @group do |f| %>
   <div class="create-section row">
@@ -12,7 +12,12 @@
       <%= f.file_field :photo, required: true, class: "uploadFile" %>
       <%= image_tag(("empty_group.png"), class: "groupPhotoPreview") %>
     </div></br>
-    Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'neighborhood' }, required: true) %>
+    Select Additional Group Leaders
+    <div class="field">
+      <p><i>Hold down the Ctrl (windows) / Command (Mac) button to select multiple people</i></p>
+      <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
+    </div>
+    Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, required: true) %>
     Neighborhood of Group <%= f.select(:neighborhood_id, @neighborhoods, required: true) %>
     <%= f.submit %>
     </div>

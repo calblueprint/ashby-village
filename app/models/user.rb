@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
     def leader_of
       where("user_groups.is_leader = ?", true)
     end
+
   end
 
   def is_leader(group)
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
 
   def is_member(group)
     group.users.exists?(id: id)
+  end
+
+  def is_only_leader(group)
+    self.is_leader(group) && group.users.leaders.count == 1
   end
 
   has_many :posts, dependent: :destroy
