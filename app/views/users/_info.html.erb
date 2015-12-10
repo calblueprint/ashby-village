@@ -1,6 +1,9 @@
 <div class="row">
-
+<% if @user == current_user %>
   <div class="user-info small-12 large-7 columns">
+<% else %>
+  <div class="user-info small-12 columns">
+<% end %>
     <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
     <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
     <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
@@ -10,6 +13,7 @@
     <% end %>
   </div>
 
+<% if @user == current_user %>
   <div class="create-group small-12 large-5 columns">
     <h6>CREATE A GROUP</h6>
     <%= link_to new_group_path do %>
@@ -17,5 +21,5 @@
     <% end %>
     <p>Click the button above to make a new group!</p>
   </div>
-
+<% end %>
 </div>
