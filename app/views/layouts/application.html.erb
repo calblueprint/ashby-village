@@ -12,8 +12,12 @@
   </head>
 
   <body>
-    <%= render 'layouts/messages' %>
     <%= render 'layouts/navbar' %>
+    <div id="flash">
+      <% if notice.present? %>
+        <%= render partial: "layouts/flashes" %>
+      <% end %>
+    </div>
     <div id=''>
       <%= yield %>
     </div>
