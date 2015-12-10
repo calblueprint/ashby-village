@@ -16,7 +16,7 @@
         <div class="field">
           <%= f.label 'Upload a new group photo' %>
           <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
-          <%= f.file_field :photo, required: true, class: "uploadFile" %>
+          <%= f.file_field :photo, class: "uploadFile" %>
           <%= image_tag((@group.photo), class: "groupPhotoPreview") %>
         </div></br>
 
