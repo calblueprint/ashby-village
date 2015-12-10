@@ -1,4 +1,4 @@
-<div class="new-post large-7 columns">
+<div class="new-post columns">
   <h3><strong>Write a Post</strong></h3>
   <%= form_for [@group,@post], remote: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
