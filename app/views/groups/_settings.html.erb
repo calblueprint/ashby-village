@@ -1,5 +1,5 @@
-<div class="settings-group large-7 columns">
-  <div class="settings-remove-membership row">
+<div class="settings-group">
+  <div class="settings-remove-membership">
     <% if current_user.is_member(group) %>
       <% if current_user.is_only_leader(group) %>
         <p> Since you are the only leader of this group, removing your membership will mark this group inactive and villagers will be unable to view or join it. Please add another group leader before removing yourself if you would like this group to stay active. </p>
