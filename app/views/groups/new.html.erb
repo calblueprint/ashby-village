@@ -11,7 +11,7 @@
       <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
       <%= f.file_field :photo, required: true %>
     </div>
-    Group Leaders <%= f.select(:name, @users, { multiple: true, size: 2 }) %>
+    Group Leaders <%= select_tag(:leaders, options_for_select(@users)) %>
     Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, required: true) %>
     Neighborhood of Group <%= f.select(:neighborhood_id, @neighborhoods, required: true) %>
     <%= f.submit %>

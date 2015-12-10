@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
-      @users = User.find(params[:users])
+      @users = User.find(params[:leaders])
       @users.each do |user|
         @group.add_user(@user, make_leader = true)
       end
