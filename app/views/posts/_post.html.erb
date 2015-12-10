@@ -6,9 +6,9 @@
         <%= image_tag(post.user.photo(:thumb)) %>
       <% end %>
     </div>
-    <div class="large-10 columns">
+    <div class="post-display-header large-10 columns">
       <p><%= link_to post.user.decorate.full_name, post.user %></p>
-      <h6 class="timestamp"><i> Posted <%= time_ago_in_words(post.created_at) %> ago. </i></h6>
+      <h6 class="timestamp"><i>Posted <%= time_ago_in_words(post.created_at) %> ago.</i></h6>
     </div>
   </div>
   <div class="row collapse">
