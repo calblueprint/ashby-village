@@ -28,7 +28,7 @@
       </div>
 
       <% if group.users.include?(current_user) %>
-          <button class="large-3 right is-member" value="<%= group.id %>">You Have Joined</button>
+          <button class="large-3 right is-member leader-<%= current_user.is_leader(group) %>" value="<%= group.id %>">You Have Joined</button>
       <% else %>
           <button class="large-3 right" value="<%= group.id %>">Join Group</button>
       <% end %>

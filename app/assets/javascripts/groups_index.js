@@ -3,15 +3,17 @@ var ready = function() {
 
 // TODO: Fix this condition so that it uses rails paths
 if (!top.location.pathname.includes("users")) {
+
   updateListing();
-  updateGroupCount();
   $(".inactive").hide();
+  updateGroupCount();
 }
 
   $(".group-dropdown, .neighborhood-dropdown").change(function() {
     updateListing();
-    updateGroupCount();
     $(".inactive").hide();
+    updateGroupCount();
+
   });
 
   function updateListing() {
