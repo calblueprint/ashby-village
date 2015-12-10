@@ -70,7 +70,15 @@ class GroupsController < ApplicationController
   def leave
     @group = Group.friendly.find(params[:id])
     @group.remove_user(current_user)
-    redirect_to groups_path, notice: "You have successfully left the group"
+    hash = {state: "active"}
+    if @group.inactive?
+      hash = {state: "inactive"}
+    end
+    respond_to do |format|
+      format.html { redirect_to groups_path, flash: {notice: "Successfully removed your membership from #{@group.name}"}}
+      format.json { render json: hash }
+    end
+    # redirect_to groups_path, notice: "You have successfully left the group"
   end
 
   def edit
