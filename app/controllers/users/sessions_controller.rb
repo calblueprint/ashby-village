@@ -8,20 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   #
   # # POST /resource/sign_in
   # def create
-  #   byebug
-  #   self.resource = warden.authenticate!(auth_options)
-  #   set_flash_message(:notice, :signed_in) if is_flashing_format?
-  #   byebug
-  #   if sign_in(resource_name, resource)
-  #     respond_to do |format|
-  #       format.js { flash[:notice] = "haah yee!" }
-  #     end
-  #     redirect_to groups_path
-  #   else
-  #     respond_to do |format|
-  #       format.js { flash[:notice] = "nahhhh try again doe!" }
-  #     end
-  #   end
+  #   super
   # end
   #
   # # DELETE /resource/sign_out
