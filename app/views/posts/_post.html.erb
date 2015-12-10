@@ -2,10 +2,10 @@
   <!-- TODO (Shimmy): Picture link -->
   <div class="post-user row collapse">
     <div class="post-display-member large-2 columns">
-      <% if current_user.is_leader(@group) %>
+      <% if post.user.is_leader(@group) %>
       <div class="imageWrapper">
         <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
-        <%= image_tag(current_user.photo(:thumb), class: "group-leader-photo") %>
+        <%= image_tag(post.user.photo(:thumb), class: "group-leader-photo") %>
       </div>
       <% else %>
         <%= image_tag(post.user.photo(:thumb)) %>
