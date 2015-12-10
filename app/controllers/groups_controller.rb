@@ -75,6 +75,8 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.friendly.find(params[:id])
+    @kinds = Group.kinds.keys
+    @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
   end
 
   def update

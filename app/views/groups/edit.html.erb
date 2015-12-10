@@ -1,30 +1,40 @@
+<div class="edit-group row">
 <h2>Edit Group</h2>
+  <div class="small-12 small-centered medium-10 large-10 column">
+    <div class="edit-group-form row">
+      <%= form_for @group do |f| %>
+        <div class="field">
+          <%= f.label 'Group Name' %>
+          <%= f.text_field :name, autofocus: true, value: @group.name %>
+        </div>
 
-<%= form_for @group do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, value: @group.name %>
+        <div class="field">
+          <%= f.label 'Group Description' %>
+          <%= f.text_area :description, autofocus: true, value: @group.description %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Upload a new group photo' %>
+          <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
+          <%= f.file_field :photo, required: true, class: "uploadFile" %>
+          <%= image_tag((@group.photo), class: "groupPhotoPreview") %>
+        </div></br>
+
+        <div class="field">
+          <%= f.label 'Kind of Group' %>
+          <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, autofocus: true, value: @group.kind) %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Neighborhood of Group' %>
+          <%= f.select(:neighborhood_id, @neighborhoods, autofocus: true, value: @group.neighborhood_id) %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Update", class: 'button success radius small' %>
+        </div>
+
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description, autofocus: true, value: @group.description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :kind %>
-    <%= f.text_field :kind, autofocus: true, value: @group.kind %>
-  </div>
-
-  <div class="field">
-    <%= f.label :neighborhood_id %>
-    <%= f.text_field :neighborhood_id, autofocus: true, value: @group.neighborhood_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update", class: 'button success radius small' %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back', :back %>
+</div>

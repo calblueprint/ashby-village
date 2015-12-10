@@ -1,4 +1,21 @@
 var ready = function() {
+  $(".group-join").click(function(){
+    $.ajax({
+      type: "PUT",
+      url: "/groups/" + $(this).attr("value") + "/join",
+      success: function() {
+        var members = $(".listing-member").attr("value");
+        $(".member").text("Members " + members);
+      }
+    });
+    $(this).removeClass("group-join");
+    $(this).addClass("group-joined");
+    $(this).prop("disabled", true);
+    $(this).text("You Have Joined");
+    $(".false").show();
+  });
+
+  $(".false").hide();
   $(".group-new-post").show();
   $(".group-posts").show();
   $(".click-new-post").addClass("selected");
