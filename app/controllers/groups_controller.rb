@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
+      @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
@@ -40,6 +41,12 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
+      if (params[:leaders] != nil)
+        @users = User.find(params[:leaders]) #don't do this if there are no additional leaders added
+        @users.each do |user|
+          @group.add_user(user, make_leader = true)
+        end
+      end
       redirect_to @group, notice: "Group was successfully created."
     else
       @kinds = Group.kinds.keys
@@ -68,6 +75,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.friendly.find(params[:id])
+    @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
     @kinds = Group.kinds.keys
     @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
   end
@@ -75,6 +83,12 @@ class GroupsController < ApplicationController
   def update
     @group = Group.friendly.find(params[:id])
     if @group.update_attributes(group_params)
+      if (params[:leaders] != nil)
+        @users = User.find(params[:leaders])
+        @users.each do |user|
+          @group.add_user(user, make_leader = true)
+        end
+      end
       flash[:notice] = "Group updated!"
       redirect_to group_path
     else

@@ -50,33 +50,33 @@ def make_users
 end
 
 def make_user_groups
-  UserGroup.create! user_id: 1, group_id: 1, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 2, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 3, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 4, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 5, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 6, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 7, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 8, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 9, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 10, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 11, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 12, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 13, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 14, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 15, is_leader: true
-  UserGroup.create! user_id: 1, group_id: 16, is_leader: true
+  UserGroup.create! user_id: 1, group_id: 1, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 2, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 3, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 4, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 5, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 6, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 7, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 8, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 9, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 10, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 11, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 12, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 13, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 14, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 15, is_leader: false
+  UserGroup.create! user_id: 1, group_id: 16, is_leader: false
   UserGroup.create! user_id: 1, group_id: 4, is_leader: false
   UserGroup.create! user_id: 1, group_id: 5, is_leader: false
   UserGroup.create! user_id: 1, group_id: 6, is_leader: false
   UserGroup.create! user_id: 2, group_id: 1, is_leader: false
   UserGroup.create! user_id: 3, group_id: 1, is_leader: false
-  UserGroup.create! user_id: 4, group_id: 1, is_leader: true
-  UserGroup.create! user_id: 5, group_id: 1, is_leader: true
+  UserGroup.create! user_id: 4, group_id: 1, is_leader: false
+  UserGroup.create! user_id: 5, group_id: 1, is_leader: false
   UserGroup.create! user_id: 6, group_id: 1, is_leader: false
-  UserGroup.create! user_id: 7, group_id: 1, is_leader: true
+  UserGroup.create! user_id: 7, group_id: 1, is_leader: false
   UserGroup.create! user_id: 8, group_id: 1, is_leader: false
-  UserGroup.create! user_id: 9, group_id: 1, is_leader: true
+  UserGroup.create! user_id: 9, group_id: 1, is_leader: false
 end
 
 def make_neighborhood
@@ -101,6 +101,6 @@ end
 
 make_groups
 make_users
-make_user_groups
+# make_user_groups
 make_neighborhood
 make_posts
