@@ -45,7 +45,7 @@ class GroupsController < ApplicationController
       puts 'just do it', @users
       @users.each do |user|
         puts 'another', user.first_name
-        @group.add_user(@user, make_leader = true)
+        @group.add_user(user, make_leader = true)
       end
       redirect_to @group, notice: "Group was successfully created."
     else
