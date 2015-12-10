@@ -22,6 +22,13 @@ var ready = function() {
       }
     });
   }
+
+  $(".reply-button").click(function() {
+    // Refresh page for each reply until this gets more AJAX-y
+    if ($(this).siblings(".reply-content").val().length > 0) {
+      location.reload();
+    }
+  });
 }
 
 $(document).ready(ready);
