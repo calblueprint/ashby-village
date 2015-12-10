@@ -51,6 +51,10 @@ if (!top.location.pathname.includes("users")) {
         var group = $(".group_id" + group_id);
         group.removeClass("active");
         group.removeClass("inactive");
+        group.removeClass("my");
+        if ($(".group-dropdown").val() === "my") {
+          group.hide();
+        }
         group.addClass("" + data.state);
         $(".inactive").hide();
       },
@@ -85,7 +89,12 @@ if (!top.location.pathname.includes("users")) {
 
       $.ajax({
         type: "PUT",
-        url: "/groups/" + $button.attr("value") + "/join"
+        url: "/groups/" + $button.attr("value") + "/join",
+        success: function() {
+          var group_id = $button.attr("value");
+          $(".group_id" + group_id).addClass("my");
+          console.log(group_id);
+        }
       });
 
     }
