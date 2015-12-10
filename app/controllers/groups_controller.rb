@@ -28,7 +28,8 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
-      @users = User.all.decorate.map{ |u| [u.full_name, u.id]}
+      @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
+      # @users = User.all.decorate.map{ |u| [u.full_name, u.id]}
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
