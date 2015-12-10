@@ -10,7 +10,7 @@ var ready = function() {
   });
 
   $(".reply-content").focusout(function() {
-  	$(this).siblings(".reply-button").fadeOut("fast");
+  	$(this).siblings(".reply-button").fadeOut("slow");
   });
 
   function hideReplyContainer(container) {

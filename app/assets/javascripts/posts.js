@@ -6,6 +6,13 @@ var ready = function() {
 	$("#posts").bind("DOMSubtreeModified", function() {
 		$(".reply-button").hide();
 	});
+
+	// Until posts becomes more AJAX-y, refresh the page
+	$("#new_post input[type='submit']").click(function() {
+		if ($("#post_content").val().length > 0) {
+			location.reload();
+		}
+	});
 }
 
 $(document).ready(ready);
