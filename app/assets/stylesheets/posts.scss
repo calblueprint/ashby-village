@@ -46,6 +46,11 @@
   left: -24px;
 }
 
+.post-body {
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+}
+
 .text-area {
   background-color: white !important;
   border-radius:8px !important;
