@@ -4,6 +4,11 @@
 
 @import "ashby_settings.scss";
 
+.row .row {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
 .menu {
   background-color: white;
   border-radius: 8px;
@@ -18,17 +23,13 @@
   margin-bottom: 16px !important; // To override foundation's row class
   padding: 20px;
   height: 100%;
-  width: 100%;
+  // width: 100%;
   background-color: white;
   border-radius: 8px;
 }
 
 .create-group h6 {
   color: $ashby-black;
-}
-
-.user-info h4 {
-  color: #2D3339;
 }
 
 .user-info {
@@ -38,7 +39,10 @@
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
   padding: 20px;
-  // margin-right: 20px;
+
+  h4 {
+    color: #2D3339;
+  }
 }
 
 .header img {
@@ -70,7 +74,6 @@
 .click-info {
   padding: 10px;
   height: 48px;
-  width: 195px;
 }
 
 .click-info img {
@@ -86,7 +89,6 @@
 .click-groups {
   padding: 10px;
   height: 48px;
-  width: 195px;
 }
 
 .click-groups img {
@@ -123,6 +125,6 @@
 
 @media (max-width: 64em) {
   .info .columns {
-      min-width: 100%;
-    }
+    min-width: 100%;
   }
+}
