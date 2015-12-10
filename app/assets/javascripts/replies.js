@@ -4,9 +4,7 @@ var ready = function() {
   $(".reply-button").hide();
 
   $(".reply-content").focus(function() {
-    // TODO: Use next function instead?
     $(this).siblings(".reply-button").fadeIn("fast");
-    // console.log($(this).siblings(".reply-button"));
     var container = $(this);
     hideReplyContainer(container);
   });

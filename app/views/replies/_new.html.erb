@@ -6,9 +6,7 @@
   </div>
   <div class="large-10 columns">
     <%= form_for [post, @reply], remote: true do |f| %>
-      <div class="reply-content field">
-        <%= f.text_area :content, placeholder: "Write your response here", required: true %>
-      </div>
+      <%= f.text_area :content, placeholder: "Write your response here", required: true, class: "reply-content" %>
       <%= f.hidden_field :post, value: post, required: true %>
       <%= f.submit "Post Reply Here", class: "reply-button button right" %>
     <% end %>

@@ -1,7 +1,5 @@
   <div class="" id="<%= post_id %>-replies">
     <% replies.each do |reply| %>
-      <div class="reply row collapse">
-        <%= render 'replies/reply', reply: reply %>
-      </div>
+    	<%= render 'replies/reply', reply: reply %>
     <% end %>
   </div>
