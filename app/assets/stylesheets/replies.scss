@@ -37,6 +37,14 @@
   }
 }
 
+.reply-body {
+  margin-top: 16px !important; // To override foundation's row class
+}
+
+.reply-content {
+  margin-left: -24px;
+}
+
 .reply-display-member img {
   object-fit: cover;
   height: 48px;

@@ -21,7 +21,7 @@
   <div class="row collapse">
     <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
   </div>
-  <div class="row collapse">
+  <div class="reply-body row collapse">
     <%= render 'replies/new', post: post, reply: reply %>
   </div>
 </div>
