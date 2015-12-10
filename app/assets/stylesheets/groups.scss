@@ -68,7 +68,7 @@
   background-color: white;
   border-radius: 8px;
   height: 48px;
-  margin-top: 16px; 
+  margin-top: 16px;
 }
 
 .group-menu p {
@@ -124,4 +124,17 @@
 
 .group-posts {
   padding: 0px !important;
+}
+
+.group-join {
+  height: 44px;
+  padding: 10px;
+  margin: 0px;
+}
+
+.group-joined {
+  background: #4A90E2 !important;
+  height: 48px;
+  padding: 10px;
+  margin: 0px;
 }

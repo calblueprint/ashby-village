@@ -22,10 +22,13 @@
   <div class="click-member-listing small-3 large-3 large-uncentered column">
     <p><%= image_tag("groups_members.png") + "Members" %> (<%= @group.user_groups.count %>)</p>
   </div>
+  <div class="click-group-settings <%= @group.users.include?(current_user)%> small-3 large-3 large-uncentered column">
+    <p><%= image_tag("groups_settings.png") + "Settings" %></p>
+  </div>
   <% if @group.users.include?(current_user) %>
-    <div class="click-group-settings small-3 large-3 large-uncentered column">
-      <p><%= image_tag("groups_settings.png") + "Settings" %></p>
-    </div>
+      <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
+  <% else %>
+      <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
   <% end %>
 </div>
 
@@ -33,7 +36,7 @@
 <div class="row">
   <div class="group-new-post"><%= render 'posts/new' %></div>
   <div class="group-member-listing"><%= render 'groups/member_listing'%></div>
-  <div class="group-settings"><%= render 'groups/settings' %></div>
+  <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
   <div> <%= render 'groups/info_box' %></div>
 </div>
 
