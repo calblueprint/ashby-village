@@ -4,7 +4,12 @@
         <div class="listing-member-tile large-6 columns">
           <div class=" row collapse">
             <div class="listing-member-display large-4 columns">
-              <% if user.photo %>
+              <% if user.is_leader(@group) %>
+              <div class="imageWrapper">
+                <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+                <%= image_tag(user.photo(:thumb), class: "group-leader-photo") %>
+              </div>
+              <% else %>
                 <%= image_tag(user.photo(:thumb)) %>
               <% end %>
             </div>
