@@ -1,0 +1,11 @@
+<div class="row group-menu">
+  <div class="click-new-post small-3 large-3 large-uncentered column">
+    <p><%= image_tag("groups_bulletin.png") + "Bulletin Board" %></p>
+  </div>
+  <div class="click-member-listing small-3 large-3 large-uncentered column">
+    <span><%= image_tag("groups_members.png")%> </span> <span class="member"> Members (<%= group.user_groups.count %>) </span>
+  </div>
+  <div class="click-group-settings <%= @group.users.include?(current_user)%> small-3 large-3 large-uncentered column">
+    <p><%= image_tag("groups_settings.png") + "Settings" %></p>
+  </div>
+</div>

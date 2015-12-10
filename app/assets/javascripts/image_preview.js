@@ -8,7 +8,7 @@ var ready = (function() {
       img.src = file.target.result;
       $('.photoPreview').attr("src",img.src);
       $('.groupPhotoPreview').attr("src",img.src);
-    }
+    };
     reader.readAsDataURL(image);
   });
 });
