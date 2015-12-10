@@ -39,7 +39,7 @@ class Group < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :replies, dependent: :destroy
 
-  has_attached_file :photo, :styles => { :medium => "500x500>", :thumb => "150x150#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("empty_group.png")
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def add_user(current_user, make_leader = false)
@@ -52,7 +52,7 @@ class Group < ActiveRecord::Base
 
   def remove_user(current_user)
     # If the current user is the only leader, make the group inactive
-    if has_one_leader && current_user.is_leader(self)
+    if current_user.is_only_leader(self)
       self.update_attribute :state, 0
     end
     self.users.delete(current_user)

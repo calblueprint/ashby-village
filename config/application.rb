@@ -24,5 +24,6 @@ module AshbyVillage
     config.logger = Logger.new(STDOUT)
     config.active_record.raise_in_transactional_callbacks = true
     config.secret_key_base = ENV["secret_key_base"]
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
