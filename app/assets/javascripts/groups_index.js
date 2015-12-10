@@ -83,7 +83,7 @@ if (!top.location.pathname.includes("users")) {
     event.stopPropagation();
     $button = $(this);
     if ($button.hasClass("is-member") && $button.hasClass("leader-true")) {
-      var confirmLeave = confirm("You are a leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?");
+      var confirmLeave = confirm("You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?");
       if (confirmLeave === true) {
         leave_group($button.attr("value"));
       }
