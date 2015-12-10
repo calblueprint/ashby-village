@@ -1,5 +1,10 @@
-  <div class="" id="<%= post_id %>-replies">
-    <% replies.each do |reply| %>
-    	<%= render 'replies/reply', reply: reply %>
-    <% end %>
-  </div>
+<% if replies.count == 1 %>
+	<h6><%= replies.count %> RESPONSE</h6>
+<% elsif replies.count > 1 %>
+	<h6><%= replies.count %> RESPONSES</h6>
+<% end %>
+<div class="" id="<%= post_id %>-replies">
+  <% replies.each do |reply| %>
+  	<%= render 'replies/reply', reply: reply %>
+  <% end %>
+</div>

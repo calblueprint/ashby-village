@@ -13,7 +13,8 @@
 
   }
   .delete {
-    float: right
+    float: right;
+    color: $ashby-red;
   }
   .post-user {
     margin-bottom: 8px !important; // To override foundation's row class
