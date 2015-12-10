@@ -6,7 +6,7 @@
         <%= image_tag(reply.user.photo(:thumb)) %>
       <% end %>
     </div>
-    <div class="large-10 columns">
+    <div class="reply-display-content large-10 columns">
       <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
       <h6 class="timestamp">Posted <%= time_ago_in_words(reply.created_at) %> ago.</h6>
       <p><%= reply.content %></p>
