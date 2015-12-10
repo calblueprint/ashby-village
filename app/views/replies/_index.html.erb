@@ -1,7 +1,7 @@
 <% if replies.count == 1 %>
-	<h6><%= replies.count %> REPLY</h6>
+	<h6 class="reply-header"><%= replies.count %> REPLY</h6>
 <% elsif replies.count > 1 %>
-	<h6><%= replies.count %> REPLIES</h6>
+	<h6 class="reply-header"><%= replies.count %> REPLIES</h6>
 <% end %>
 <div class="" id="<%= post_id %>-replies">
   <% replies.each do |reply| %>
