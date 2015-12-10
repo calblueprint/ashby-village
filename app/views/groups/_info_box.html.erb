@@ -3,7 +3,6 @@
 	<p><%= @group.description %></p>
 	<h6>Leader(s)</h6>
 	<div class="listing-member-display">
-
   <% @group.users.leaders.each do |user| %>
       <% if user.photo %>
         <%= image_tag(user.photo(:thumb)) %>
@@ -11,6 +10,5 @@
     	<%= link_to user.decorate.full_name, user %>
     	<h6><%= user.phone %></h6><br>
   <% end %>
-
 	</div>
 </div>
