@@ -11,6 +11,7 @@ var ready = (function() {
     }
     reader.readAsDataURL(image);
   });
+});
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
