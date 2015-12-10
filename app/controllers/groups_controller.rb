@@ -84,7 +84,7 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
     if @group.update_attributes(group_params)
       if (params[:leaders] != nil)
-        @users = User.find(params[:leaders]) #don't do this if there are no additional leaders added
+        @users = User.find(params[:leaders])
         @users.each do |user|
           @group.add_user(user, make_leader = true)
         end
