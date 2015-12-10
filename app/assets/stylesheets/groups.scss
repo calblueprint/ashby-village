@@ -163,3 +163,17 @@
     text-align: center;
 }
 
+@media (max-width: 34em) {
+  .click-group-settings, .click-member-listing, .click-new-post, .info-box {
+    min-width: 100%;
+  }
+  .group-join, .group-joined {
+    margin-bottom: 45px;
+    height: 15%;
+  }
+  .group-header {
+    h2 {
+      margin-bottom: 40px;
+    }
+  }
+}

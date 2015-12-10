@@ -1,5 +1,5 @@
 <div class="row">
-  <% provide(:title, @group.name) %>
+  <div class="group-name"><% provide(:title, @group.name) %></div>
 
   <div class="row group-header">
     <% if @group.photo %>
@@ -9,9 +9,9 @@
       <h2><%= @group.name %></h2>
       <h6><%= @group.kind %> GROUP IN <%= @neighborhood.name%></h6>
       <% if @group.users.include?(current_user) %>
-        <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
+        <button class="small-5 medium-3 large-3 right group-joined" disabled>You Have Joined</button>
       <% else %>
-        <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
+        <button class="small-5 medium-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
       <% end %>
     </div>
   </div>
