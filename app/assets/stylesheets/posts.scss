@@ -1,6 +1,6 @@
 @import "ashby_settings.scss";
 
-.post{
+.post {
   background-color: white;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
@@ -13,13 +13,15 @@
 
   }
   .delete {
-    float: right
+    float: right;
+    color: $ashby-red;
   }
   .post-user {
     margin-bottom: 8px !important; // To override foundation's row class
 
     .timestamp {
       text-transform: lowercase;
+      font-style: italic;
     }
   }
 }
@@ -39,6 +41,16 @@
   width: 48px;
   border-radius: 50%;
 }
+
+.post-display-header {
+  left: -24px;
+}
+
+.post-body {
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+}
+
 .text-area {
   background-color: white !important;
   border-radius:8px !important;

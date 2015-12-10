@@ -2,7 +2,7 @@
   <h6>MEMBERS (<%= group.user_groups.count %>)</h6>
     <% group.users.each do |user| %>
         <div class="listing-member-tile large-6 columns">
-          <div class=" row collapse">
+          <div class="row collapse">
             <div class="listing-member-display large-4 columns">
               <% if user.is_leader(@group) %>
               <div class="image-wrapper">

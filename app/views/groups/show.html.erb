@@ -24,14 +24,13 @@
 </div>
 
 <div class="row">
-  <div class="group-new-post"><%= render 'posts/new' %></div>
-  <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
-  <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
-  <div> <%= render 'groups/info_box' %></div>
-</div>
-
-<div class="row">
-  <div class="group-posts large-7 column">
-    <%= render 'posts/index', posts: @posts, reply: @reply%>
+  <div class="large-7 left">
+    <div class="group-new-post"><%= render 'posts/new' %></div>
+    <div class="group-posts column">
+      <%= render 'posts/index', posts: @posts, reply: @reply %>
+    </div>
+    <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
+      <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
   </div>
+  <%= render 'groups/info_box' %>
 </div>

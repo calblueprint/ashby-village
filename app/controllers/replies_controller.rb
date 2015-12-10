@@ -1,8 +1,10 @@
 class RepliesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
+    @group = @post.group
     @reply = @post.replies.build(reply_params)
     @reply.save
+    @new_reply = Reply.new
   # TODO (Shimmy): Flash success notification on send
   end
 

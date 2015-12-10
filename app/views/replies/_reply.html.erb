@@ -1,17 +1,20 @@
-<div class="reply-user row collapse" id="reply-<%= reply.id %>">
-  <div class="reply-display-member large-2 columns">
-    <% if reply.user.is_leader(@group) %>
-    <div class="image-wrapper">
-      <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
-      <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
+<div class="reply row collapse" id="reply-<%= reply.id %>">
+  <!-- TODO (Shimmy): Picture link -->
+  <div class="reply-user row collapse">
+    <div class="reply-display-member large-2 columns">
+      <% if reply.user.is_leader(@group) %>
+        <div class="image-wrapper">
+          <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+          <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
+        </div>
+      <% else %>
+        <%= image_tag(reply.user.photo(:thumb)) %>
+      <% end %>
     </div>
-    <% else %>
-      <%= image_tag(reply.user.photo(:thumb)) %>
-    <% end %>
-  </div>
-  <div class="large-10 columns">
-    <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
-    <h6 class="timestamp"><i> Replied <%= time_ago_in_words(reply.created_at) %> ago. </i></h6>
-    <p><%= reply.content %></p>
+    <div class="reply-display-content large-10 columns">
+      <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
+      <h6 class="timestamp">Posted <%= time_ago_in_words(reply.created_at) %> ago.</h6>
+      <p><%= reply.content %></p>
+    </div>
   </div>
 </div>
