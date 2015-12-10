@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   # TODO(Shimmy): Define logged_in_user
   # before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   # TODO(Shimmy): Watch out for duplicates
   def create
@@ -12,6 +13,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    flash[:info] = "Post deleted"
+    redirect_to :back
   end
 
   private
@@ -23,7 +27,7 @@ class PostsController < ApplicationController
 
   # TODO(Shimmy): Use CanCanCan instead.
   def correct_user
-    @post = current_user.post.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id]) || Post.find_by(id: params[:id])
     redirect_to root_url if @post.nil?
   end
 end

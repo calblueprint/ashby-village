@@ -6,7 +6,7 @@
   <% if @group.users.leaders.first.photo %>
     <%= image_tag(@group.users.leaders.first.photo(:thumb)) %>
   <% end %>
-	<%= @group.users.leaders.first.decorate.full_name %>
+	<%= link_to @group.users.leaders.first.decorate.full_name, @group.users.leaders.first %>
 	<h6><%= @group.users.leaders.first.phone %></h6>
 	</div>
 </div>

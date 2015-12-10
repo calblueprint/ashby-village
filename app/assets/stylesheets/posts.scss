@@ -2,16 +2,18 @@
 
 .post{
   background-color: white;
-  border: 2px solid transparent;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 16px !important; // To override foundation's row class
+  margin-bottom: 2px !important; // To override foundation's row class
   padding: 12px;
   @include ease-transition(0.5s);
   h6, h4, p {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 
+  }
+  .delete {
+    float: right
   }
   .post-user {
     margin-bottom: 8px !important; // To override foundation's row class
@@ -24,11 +26,11 @@
 
 .new-post {
   background-color: white;
-  border: 2px solid transparent;
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
   @include ease-transition(0.5s);
+  padding-top: 8px;
 }
 
 .post-display-member img {

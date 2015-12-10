@@ -32,7 +32,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  scope :is_admin, -> { where(role: 1) }
+  scope :admins, -> { where(role: 1) }
 
   # TODO (Shannon): add phone number validation, length and integers
 
