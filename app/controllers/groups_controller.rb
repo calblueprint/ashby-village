@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
-      @users = User.all.decorate.map{ |u| [u.full_name, u.id]}
+      @users = User.all.decorate.map{ |u| [u.full_name, u.id]} #where user isn't current user
       @kinds = Group.kinds.keys
       @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
     else
@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       @group.add_user(current_user, make_leader = true)
-      @users = User.find(params[:leader])
+      @users = User.find(params[:users])
       @users.each do |user|
         @group.add_user(@user, make_leader = true)
       end
