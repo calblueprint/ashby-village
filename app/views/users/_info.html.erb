@@ -5,7 +5,11 @@
   <div class="user-info small-12 columns">
 <% end %>
     <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
-    <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
+    <% if @user == current_user %>
+      <h6>EMAIL</h6> <h4> <%= @user.email%> </h4>
+    <% else %>
+      <h6>EMAIL</h6> <h4> <%= mail_to @user.email%> </h4>
+    <% end %>
     <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
 
     <% if @user == current_user %>
