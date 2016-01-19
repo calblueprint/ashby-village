@@ -81,5 +81,5 @@ Style/SingleSpaceBeforeFirstArg:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/TrailingComma:
-  EnforcedStyleForMultiline: comma
+# Style/TrailingComma:
+#   EnforcedStyleForMultiline: comma
