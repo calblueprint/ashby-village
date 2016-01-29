@@ -26,9 +26,6 @@ Helen
 
 NIKITA
 
-<<<<<<< HEAD
 Grace
 
-=======
 Shannon
->>>>>>> Added my name to readme
