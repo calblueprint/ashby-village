@@ -20,3 +20,7 @@
 
 # Ignore seed data files
 # /app/assets/images/seed/*
+
+# Ignore testing files
+.rspec
+/spec/tmp/*
