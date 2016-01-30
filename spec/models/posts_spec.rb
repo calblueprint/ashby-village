@@ -1,16 +1,14 @@
 require "rails_helper"
 
 # create anything you want to reuse that is NOT what you're testing
-post_content = "here is some post content"
-u1 = User.create! first_name: "Rosie",\
-                  last_name: "Rowe",\
-                  email: "blah@gmail.com",\
-                  phone: "917", cell_phone: "917",\
-                  date_of_birth: "date",\
-                  password: "okokokokok",\
+post_content = "rspec post content"
+u1 = User.create! first_name: "Rspec first name",\
+                  last_name: "Rspec last name",\
+                  email: "rspec@gmail.com",\
+                  password: "rspecpassword",\
                   role: 0
-g1 = Group.create! name: "Knitting",\
-                   description: "yo",\
+g1 = Group.create! name: "Rspec Group",\
+                   description: "Rspec Description",\
                    neighborhood_id: 1,\
                    kind: 0,\
                    state: 1
