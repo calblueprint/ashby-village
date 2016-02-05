@@ -6,7 +6,7 @@
 <% end %>
     <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
     <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
-    <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
+    <h6>PHONE</h6> <h4> <%= number_to_phone(@user.phone, area_code: true) %> </h4>
 
     <% if @user == current_user %>
       <%= link_to 'Edit Profile', edit_user_path %>

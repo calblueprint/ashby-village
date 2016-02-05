@@ -3,8 +3,14 @@ class UsersController < ApplicationController
   # TODO(Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
+
   def index
     @users = User.all.decorate
+  end
+
+  def new
+    @user = User.new
+    @allemails = User.all.map(&:email)
   end
 
   def show
