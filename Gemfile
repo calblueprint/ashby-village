@@ -72,5 +72,8 @@ group :development, :test do
   # Rspec for Testing
   gem 'rspec-rails', '~> 3.0'
 
+  # Rubocop for less headaches in phab
+  gem 'rubocop', '~> 0.37.0', require: false
+
 end
 

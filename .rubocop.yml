@@ -75,11 +75,9 @@ Style/PredicateName:
 Style/RedundantSelf:
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-# Style/TrailingComma:
-#   EnforcedStyleForMultiline: comma
