@@ -6,7 +6,6 @@
 #  name               :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  neighborhood_id    :integer
 #  description        :string
 #  photo_file_name    :string
 #  photo_content_type :string
@@ -14,6 +13,7 @@
 #  photo_updated_at   :datetime
 #  slug               :string
 #  kind               :integer
+#  neighborhood       :integer
 #
 
 class Group < ActiveRecord::Base
@@ -26,8 +26,9 @@ class Group < ActiveRecord::Base
 
   enum kind: [:social, :committee, :announcement]
   enum state: [:inactive, :active]
-
-  belongs_to :neighborhood
+  enum neighborhood: [:'Kensington Kaleidoscope', :'Ashby Village',
+                      :Outlandish, :'Thousand Oaks Hamlet', :Emeryville, :Midlandish,
+                      :'North Berkeley Hills', :'Claremont-Elmwood']
 
   has_many :user_groups
   has_many :users, through: :user_groups do

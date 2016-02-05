@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
     announcements = Group.alphabetized.where(kind:2)
     others = Group.alphabetized.where.not(kind:2)
     @groups = announcements + others
-    @neighborhoods = Neighborhood.all
+    @neighborhoods = Group.neighborhoods.keys
     my = params[:format]
     if my.nil?
       @all = "selected = \"selected\"".html_safe
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     @reply = Reply.new
     @group = Group.friendly.find(params[:id])
     @posts = @group.posts.order_by_created_at
-    @neighborhood = Neighborhood.find(@group.neighborhood_id)
+    @neighborhood = @group.neighborhood
   end
 
   def new
@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
       @group = Group.new
       @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
       @kinds = Group.kinds.keys
-      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
+      @neighborhoods = Group.neighborhoods.keys
     else
       redirect_to new_user_session_path, notice: "You are not logged in."
     end
@@ -50,7 +50,7 @@ class GroupsController < ApplicationController
       redirect_to @group, notice: "Group was successfully created."
     else
       @kinds = Group.kinds.keys
-      @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
+      @neighborhoods = Group.neighborhoods.keys
       flash[:notice] = "Name has already been taken!"
       render :new
     end
@@ -85,7 +85,7 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
     @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
     @kinds = Group.kinds.keys
-    @neighborhoods = Neighborhood.all.map { |u| [u.name, u.id] }
+    neighborhoods = Group.neighborhoods.keys
   end
 
   def update
@@ -109,7 +109,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood_id, :kind, :photo)
+    params.require(:group).permit(:name, :description, :neighborhood, :kind, :photo)
   end
 
 end

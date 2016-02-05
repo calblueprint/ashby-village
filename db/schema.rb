@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202055310) do
+ActiveRecord::Schema.define(version: 20160205054014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20151202055310) do
     t.string   "name"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "neighborhood_id"
     t.string   "description"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -42,20 +41,8 @@ ActiveRecord::Schema.define(version: 20151202055310) do
     t.string   "slug"
     t.integer  "kind"
     t.integer  "state",              default: 1
+    t.integer  "neighborhood"
   end
-
-  add_index "groups", ["neighborhood_id"], name: "index_groups_on_neighborhood_id", using: :btree
-
-  create_table "neighborhoods", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "location"
-    t.integer  "group_id"
-  end
-
-  add_index "neighborhoods", ["group_id"], name: "index_neighborhoods_on_group_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
@@ -95,13 +82,6 @@ ActiveRecord::Schema.define(version: 20151202055310) do
   add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
 
-  create_table "user_neighborhoods", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "neighborhood_id"
-    t.integer  "user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -124,7 +104,6 @@ ActiveRecord::Schema.define(version: 20151202055310) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "neighborhood"
     t.integer  "role",                   default: 0
   end
 

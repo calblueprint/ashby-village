@@ -24,7 +24,6 @@
 #  photo_content_type     :string
 #  photo_file_size        :integer
 #  photo_updated_at       :datetime
-#  neighborhood           :string
 #
 
 
@@ -41,10 +40,7 @@ class User < ActiveRecord::Base
 
   enum role: [:member, :admin]
 
-  # TODO: Remove neighborhood model
-  has_many :user_neighborhoods
   has_many :posts, dependent: :destroy
-  has_many :neighborhoods, through: :user_neighborhoods
   has_many :user_groups
   has_many :groups, through: :user_groups do
     def leader_of
