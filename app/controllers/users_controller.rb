@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     else
       render action: "edit"
       # TODO(Shannon): Verification for edit profiles?
-      flash[:alert] = "Error!"
+      flash[:alert] = "Unable to edit profile."
     end
   end
 

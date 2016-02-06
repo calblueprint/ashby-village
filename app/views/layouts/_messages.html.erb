@@ -1,5 +1,14 @@
+
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    <%= content_tag :div, msg, :class => "flash_#{name}" %>
+  	<div class = "flash_<%= name %>" >
+    	<%= msg %>
+    	<% if name=="notice" %>
+    		<i class="fa fa-check"></i>
+    	<% elsif name=="error" %>
+    	 	<i class="fa fa-exclamation-triangle"></i>
+    	 <% end %>
+   	</div>
   <% end %>
+
 <% end %>

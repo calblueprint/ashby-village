@@ -6,6 +6,7 @@
       <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
       <%= stylesheet_link_tag "application" %>
       <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Lato:400,400italic,900", media: "all" %>
+      <%= stylesheet_link_tag "application", "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" %>
       <%= javascript_include_tag "vendor/modernizr" %>
       <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>

@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:info] = "Post deleted"
+    flash[:notice] = "Post deleted"
     redirect_to :back
   end
 
