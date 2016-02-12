@@ -273,34 +273,31 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
-  aws-sdk-v1
-  better_errors
-  binding_of_caller
-  byebug
-  capybara
+  annotate (~> 2.6.10)
+  aws-sdk-v1 (~> 1.66.0)
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
+  byebug (~> 6.0.2)
+  capybara (~> 2.6.2)
   database_cleaner (~> 1.5.1)
-  devise
-  draper
+  devise (~> 3.5.2)
+  draper (~> 2.1.0)
   factory_girl (~> 4.5.0)
-  figaro
-  foundation-rails
+  figaro (~> 1.1.1)
+  foundation-rails (~> 5.5.3.2)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (~> 4.0.5)
   paperclip (~> 4.3)
-  pg
-  rails (= 4.2.1)
-  rails_admin
+  pg (~> 0.18.3)
+  rails (~> 4.2.1)
+  rails_admin (~> 0.7.0)
   react-rails (~> 1.4.0)
   rspec-rails (~> 3.0)
   rubocop (~> 0.37.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spring
-  turbolinks
+  spring (~> 1.4.0)
+  turbolinks (~> 2.5.3)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-BUNDLED WITH
-   1.10.6
