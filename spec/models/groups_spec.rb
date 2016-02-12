@@ -67,7 +67,7 @@ RSpec.describe Group, type: :model do
   end
 
   it "has one leader after deleting leader" do
-    g1 = Group.new(name: group_name, kind: group_kind, state: group_state)
+    g1 = Group.new(name: group_name, description: group_desc, kind: group_kind, state: group_state)
     g1.add_user(leader1, make_leader = true)
     g1.add_user(leader2, make_leader = true)
     g1.remove_user(leader2)

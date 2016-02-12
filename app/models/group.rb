@@ -21,6 +21,9 @@ class Group < ActiveRecord::Base
   friendly_id :name, use: :slugged
   # validates :name, uniqueness: true, on: :create
   validates_uniqueness_of :name
+  validates :name, presence: true
+  validates :kind, presence: true
+  validates :description, presence: true
 
   scope :alphabetized, -> { order(name: :asc) }
 
