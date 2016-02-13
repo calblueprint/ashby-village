@@ -46,7 +46,6 @@ class User < ActiveRecord::Base
     def leader_of
       where("user_groups.is_leader = ?", true)
     end
-
   end
 
   def is_leader(group)
@@ -65,6 +64,10 @@ class User < ActiveRecord::Base
   has_many :replies, dependent: :destroy
 
   validates :email, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("default.png")
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
