@@ -17,26 +17,44 @@
 
 .group-tile .group-photo {
   object-fit: cover;
-  width: 240px;
-  @include ease-transition(0.5s);
+  width: 197px;
+  height: 150px;
+  padding: 0 !important;
+  margin: 0 15px 0 15px;
 }
 
-.group-tile:hover .group-photo {
-   -webkit-filter: brightness(0.25);
-   filter: brightness(0.25);
+.group-tile .black-cover {
+  background-color: black;
+  position: absolute;
+  width: 197px;
+  height: 150px;
+  left: 0;
+  box-sizing: border-box;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  margin: 0 15px 0 15px;
+}
+
+.group-tile:hover .black-cover {
+  opacity: 0.75;
 }
 
 .group-tile .group-photo + p {
   position: absolute;
   color: white;
   font-weight: 900;
+  line-height: 150px;
   left: 64px;
-  top: 64px;
-  visibility: hidden;
+  vertical-align: middle;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  z-index: 1;
 }
 
 .group-tile:hover .group-photo + p {
-  visibility: visible;
+  opacity: 1;
 }
 
 .group-tile .group-photo-container {
