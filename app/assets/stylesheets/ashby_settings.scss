@@ -40,6 +40,10 @@ h6 {
   color: $ashby-gray;
 }
 
+i {
+  color: $ashby-gray;
+}
+
 // GLOBAL FONT
 * {
   font-family: 'Lato', sans-serif;
@@ -56,9 +60,15 @@ button, input[type="submit"] {
   height: 48px;
   background-color: $ashby-green;
   border-radius: 8px;
+  color: white;
+  border: 0 !important;
+  padding: 16px 32px 17px 32px;
+  font-size: $body-font-size;
+  cursor: pointer;
   -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
   -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
   box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  transition: all 0.5s;
 }
 
 button:hover, button:focus, input[type="submit"]:hover, input[type="submit"]:focus {
@@ -71,6 +81,10 @@ button:active, input[type="submit"]:active {
   -webkit-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
   -moz-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
   box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+}
+
+input.uploadFile {
+  font-size: 16px;
 }
 
 // DROPDOWNS

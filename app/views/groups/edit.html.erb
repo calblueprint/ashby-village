@@ -22,7 +22,7 @@
 
         <div class="field">
           <%= f.label 'Select Additional Group Leaders' %>
-          <p><i>Hold down the Ctrl (windows) / Command (Mac) button to select multiple people</i></p>
+          <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people</i></p>
           <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
         </div>
 

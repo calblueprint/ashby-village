@@ -1,6 +1,6 @@
 <div class="create-title">
-  <h2>Create New Group</h2>
-  <h4>Fill in the blanks below to create your new group. All fields are required.</h4>
+  <h2>Create A New Group</h2>
+  <h4 class="create-subtitle">Fill in the blanks below to create your new group. All fields are required.</h4>
 </div>
   <%= form_for @group do |f| %>
   <div class="create-section row">
@@ -14,7 +14,7 @@
     </div></br>
     Select Additional Group Leaders
     <div class="field">
-      <p><i>Hold down the Ctrl (windows) / Command (Mac) button to select multiple people</i></p>
+      <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people</i></p>
       <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
     </div>
     Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, required: true) %>
