@@ -1,5 +1,13 @@
 <% if @user.groups.leader_of.count == 0 %>
-  <h6>You are not a leader of any groups.</h6>
+    <% if @user == current_user %>
+      <div class="not-leading">
+        <h4>You are not a leader of any groups.</h4>
+      </div>
+    <% else %>
+      <div class="not-leading">
+        <h4><%= @user.first_name %> is not a leader of any groups.</h4>
+      </div>
+    <% end %>
 <% else %>
   <% @user.groups.leader_of.each do |group| %>
     <div class="group-tile row <%= group.state %> group_id<%= group.id %>">
