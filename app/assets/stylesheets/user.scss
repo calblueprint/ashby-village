@@ -32,6 +32,19 @@
   color: $ashby-black;
 }
 
+.not-leading {
+  height: 100%;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 20px;
+
+  h4 {
+    color: #2D3339;
+  }
+}
+
 .user-info {
   height: 100%;
   border-radius: 8px;
