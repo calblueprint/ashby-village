@@ -27,6 +27,8 @@
     <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
   </div>
   <div class="reply-body row collapse">
-    <%= render 'replies/new', post: post, reply: reply %>
+    <%= if @group.users.include? current_user
+         render 'replies/new', post: post, reply: reply
+        end %>
   </div>
 </div>

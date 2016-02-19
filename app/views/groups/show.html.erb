@@ -14,7 +14,9 @@
     <% if @group.users.include?(current_user) %>
       <button class="small-3 large-3 right group-joined" disabled>You Have Joined</button>
     <% else %>
-      <button class="small-3 large-3 right group-join" value="<%= @group.id %>">Join Group</button>
+      <%= link_to join_group_path(@group), :controller => 'groups', :action => 'join', method: :put do %>
+        <button class="small-3 large-3 right group-join">Join Group </button>
+        <% end %>
     <% end %>
   </div>
 </div>
@@ -25,7 +27,12 @@
 
 <div class="row">
   <div class="large-7 left">
-    <div class="group-new-post"><%= render 'posts/new' %></div>
+    <div class="group-new-post"><%=
+      if @group.users.include?(current_user)
+        render 'posts/new'
+      else
+        render 'posts/non_member'
+      end %></div>
     <div class="group-posts column">
       <%= render 'posts/index', posts: @posts, reply: @reply %>
     </div>

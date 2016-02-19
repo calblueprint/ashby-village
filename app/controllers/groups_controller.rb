@@ -64,6 +64,7 @@ class GroupsController < ApplicationController
     @group = Group.friendly.find(params[:id])
     if not @group.users.include?(current_user)
       @group.add_user(current_user)
+      redirect_to @group
     end
   end
 
