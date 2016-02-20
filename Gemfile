@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.1"
 
 gem 'rails_admin', '~> 0.7.0'
 gem 'binding_of_caller', '~> 0.7.2'
