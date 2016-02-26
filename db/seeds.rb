@@ -38,15 +38,15 @@ def make_groups
 end
 
 def make_users
-  User.create! first_name: 'Rosie', last_name: 'Rowe', email: 'blah@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("nikita.jpg"), role: 0
-  User.create! first_name: 'Johnny', last_name: 'Rowe', email: 'blah1@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
-  User.create! first_name: 'Susie', last_name: 'Rowe', email: 'blah2@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("shannon.jpg"), role: 0
-  User.create! first_name: 'Susan', last_name: 'Rowe', email: 'blah3@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("helen.jpg"), role: 0
-  User.create! first_name: 'Maria', last_name: 'Rowe', email: 'blah4@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
-  User.create! first_name: 'Eric', last_name: 'Rowe', email: 'blah5@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("daniel.jpg"), role: 0
-  User.create! first_name: 'Dennis', last_name: 'Rowe', email: 'blah6@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
-  User.create! first_name: 'Ajay', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', password: 'okokokokok', photo: seed_image("daniel.jpg"), role: 0
-  User.create! first_name: 'Walter', last_name: 'Park', email: 'admin@gmail.com', phone: '501-555-1234', password:'123', photo: seed_image("daniel.jpg"), role: 1
+  User.create! first_name: 'Rosie', last_name: 'Rowe', email: 'blah@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("nikita.jpg"), role: 0
+  User.create! first_name: 'Johnny', last_name: 'Rowe', email: 'blah1@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
+  User.create! first_name: 'Susie', last_name: 'Rowe', email: 'blah2@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("shannon.jpg"), role: 0
+  User.create! first_name: 'Susan', last_name: 'Rowe', email: 'blah3@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("helen.jpg"), role: 0
+  User.create! first_name: 'Maria', last_name: 'Rowe', email: 'blah4@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
+  User.create! first_name: 'Eric', last_name: 'Rowe', email: 'blah5@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("daniel.jpg"), role: 0
+  User.create! first_name: 'Dennis', last_name: 'Rowe', email: 'blah6@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("andy.jpg"), role: 0
+  User.create! first_name: 'Ajay', last_name: 'Rowe', email: 'blah7@gmail.com', phone: '917', password: 'okokokokok', password_confirmation: 'okokokokok', photo: seed_image("daniel.jpg"), role: 0
+  User.create! first_name: 'Walter', last_name: 'Park', email: 'admin@gmail.com', phone: '501-555-1234', password:'123', password_confirmation: '123', photo: seed_image("daniel.jpg"), role: 1
 end
 
 def make_user_groups
