@@ -6,10 +6,10 @@ user_email = "jennifromtheblock@gmail.com"
 user_password = "block"
 user_password_confirmation = "block"
 
-g = Group.create! name: "Eating food",\
-                  description: "Do things together",\
-                  kind: "social",\
-                  state: "active"
+g = Group.create name: "Eating food",\
+                 description: "Do things together",\
+                 kind: "social",\
+                 state: "active"
 
 RSpec.describe User, type: :model do
   it "is valid" do

@@ -5,16 +5,18 @@ group_name = "Knitting Group"
 group_desc = "Knit with friends!"
 group_kind = "social"
 group_state = "active"
-leader1 = User.create! first_name: "Rosie",\
-                       last_name: "Rowe",\
-                       email: "jump2@gmail.com",\
-                       password: "okokokokok",\
-                       role: 0
-leader2 = User.create! first_name: "Mark",\
-                       last_name: "Rowe",\
-                       email: "hi2@gmail.com",\
-                       password: "okokokokok",\
-                       role: 0
+leader1 = User.create first_name: "Rosie",\
+                      last_name: "Rowe",\
+                      email: "jump2@gmail.com",\
+                      password: "okokokokok",\
+                      password_confirmation: "okokokokok",\
+                      role: 0
+leader2 = User.create first_name: "Mark",\
+                      last_name: "Rowe",\
+                      email: "hi2@gmail.com",\
+                      password: "okokokokok",\
+                      password_confirmation: "okokokokok",\
+                      role: 0
 
 RSpec.describe Group, type: :model do
   it "is valid" do

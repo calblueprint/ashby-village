@@ -2,16 +2,17 @@ require "rails_helper"
 
 # create anything you want to reuse that is NOT what you're testing
 post_content = "rspec post content"
-u1 = User.create! first_name: "Rspec first name",\
-                  last_name: "Rspec last name",\
-                  email: "rspec@gmail.com",\
-                  password: "rspecpassword",\
-                  role: 0
-g1 = Group.create! name: "Rspec Group",\
-                   description: "Rspec Description",\
-                   neighborhood_id: 1,\
-                   kind: 0,\
-                   state: 1
+u1 = User.create first_name: "Rspec first name",\
+                 last_name: "Rspec last name",\
+                 email: "rspec@gmail.com",\
+                 password: "rspecpassword",\
+                 password_confirmation: "rspecpassword",\
+                 role: 0
+g1 = Group.create name: "Rspec Group",\
+                  description: "Rspec Description",\
+                  neighborhood: 1,\
+                  kind: 0,\
+                  state: 1
 
 RSpec.describe Post, type: :model do
   it "is valid" do

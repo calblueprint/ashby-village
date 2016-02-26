@@ -3,16 +3,15 @@ require "rails_helper"
 # create anything you want to reuse that is NOT what you're testing
 post_content = "here is some post content"
 
-u1 = User.create! first_name: "Rosie",\
-                  last_name: "Rowe",\
-                  email: "spec@gmail.com",\
-                  phone: "917", cell_phone: "917",\
-                  date_of_birth: "date",\
-                  password: "okokokokok",\
-                  role: 0
-p1 = Post.create! user_id: u1.id,\
-                  content: post_content,\
-                  group_id: 1
+u1 = User.create first_name: "Rosie",\
+                 last_name: "Rowe",\
+                 email: "spec@gmail.com",\
+                 password: "okokokokok",\
+                 password_confirmation: "okokokokok",\
+                 role: 0
+p1 = Post.create user_id: u1.id,\
+                 content: post_content,\
+                 group_id: 1
 
 RSpec.describe Reply, type: :model do
   it "is valid" do
