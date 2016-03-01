@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/calblueprint/ashby-village/badges/gpa.svg)](https://codeclimate.com/github/calblueprint/ashby-village)
+
 # Ashby Village
 
 New Engineer?
