@@ -17,15 +17,13 @@
 #  updated_at             :datetime         not null
 #  first_name             :string
 #  last_name              :string
-#  date_of_birth          :date
 #  phone                  :string
-#  cell_phone             :string
 #  photo_file_name        :string
 #  photo_content_type     :string
 #  photo_file_size        :integer
 #  photo_updated_at       :datetime
+#  role                   :integer          default(0)
 #
-
 
 # TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
 class User < ActiveRecord::Base

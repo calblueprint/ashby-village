@@ -13,6 +13,7 @@
 #  photo_updated_at   :datetime
 #  slug               :string
 #  kind               :integer
+#  state              :integer          default(1)
 #  neighborhood       :integer
 #
 
