@@ -2,10 +2,10 @@
   <h3><strong>Write a Post</strong></h3>
   <%= form_for [@group,@post], remote: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="field">
+    <div class="field" id="post_title">
       <%= f.text_field :title, placeholder: "What's your post about? (optional)" %>
     </div>
-    <div class="field">
+    <div class="field" id="post_content">
       <%= f.text_area :content, required: true, placeholder: "Compose new post..." %>
     </div>
     <%= f.submit "Post New Topic", class: "button right" %>

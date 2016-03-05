@@ -61,8 +61,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 6.0.2'
+  # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -77,7 +77,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.37.0', require: false
 
   #Factorygirl for factories
-  gem 'factory_girl', '~> 4.5.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
 
   #Database cleaner
   gem 'database_cleaner', '~> 1.5.1'

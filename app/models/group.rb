@@ -15,6 +15,7 @@
 #  kind               :integer
 #  state              :integer          default(1)
 #  neighborhood       :integer
+#  state              :integer          default(1)
 #
 
 class Group < ActiveRecord::Base
