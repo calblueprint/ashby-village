@@ -4,11 +4,21 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   # TODO(Shimmy): Watch out for duplicates
+  # Doing the posts using old fashioned forms
+  def new
+    @post = Post.new
+    @group = Group.friendly.find(params[:group_id])
+  end
+
   def create
     @reply = Reply.new
     @group = Group.friendly.find(params[:group_id])
     @post = @group.posts.build(post_params)
-    @post.save
+
+    if @post.save
+      flash[:notice] = "Post successful"
+      redirect_to @group
+    end
     # TODO(Shimmy): Flash success notification on send
   end
 
