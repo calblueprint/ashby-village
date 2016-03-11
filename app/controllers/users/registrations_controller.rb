@@ -30,12 +30,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
     @user = current_user
     if update_resource(@user,account_update_params)
-      sign_in(current_user, :bypass => true) #keeps user signed in after changing password
+      sign_in(current_user, bypass: true) # keeps user signed in after changing password
       flash[:notice] = "Password updated!"
       redirect_to user_path(@user)
     else
       flash[:alert] = "Unable to edit password. Please make sure current password is correct and new passwords match."
-      render :template => "users/registrations/edit"
+      render template: "users/registrations/edit"
     end
   end
 

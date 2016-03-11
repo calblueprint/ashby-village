@@ -94,7 +94,7 @@ Rails.application.routes.draw do
   end
 
   ##################################################
-  # Posts
+  # Events
   ##################################################
-
+  resources :events
 end
