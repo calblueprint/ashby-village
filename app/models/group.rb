@@ -42,6 +42,7 @@ class Group < ActiveRecord::Base
     end
   end
 
+  has_many :events, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :replies, dependent: :destroy
 

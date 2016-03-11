@@ -45,6 +45,12 @@ class User < ActiveRecord::Base
       where("user_groups.is_leader = ?", true)
     end
   end
+  has_many :invites
+  has_many :events, through: :invites do
+    def rsvped_to
+      where("invites.rsvp = ?", true)
+    end
+  end
 
   def is_leader(group)
     group.users.leaders.exists?(id: id)

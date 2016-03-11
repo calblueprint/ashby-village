@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205064545) do
+ActiveRecord::Schema.define(version: 20160305231731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.time     "starttime"
+    t.time     "endtime"
+    t.date     "startdate"
+    t.date     "enddate"
+    t.integer  "group_id"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+  end
+
+  add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -43,6 +58,17 @@ ActiveRecord::Schema.define(version: 20160205064545) do
     t.integer  "state",              default: 1
     t.integer  "neighborhood"
   end
+
+  create_table "invites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.boolean  "rsvp",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
+  add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
@@ -108,6 +134,9 @@ ActiveRecord::Schema.define(version: 20160205064545) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "events", "groups"
+  add_foreign_key "invites", "events"
+  add_foreign_key "invites", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "replies", "groups"
   add_foreign_key "replies", "posts"
