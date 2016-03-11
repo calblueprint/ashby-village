@@ -79,10 +79,12 @@ group :development, :test do
   #Factorygirl for factories
   gem 'factory_girl_rails', '~> 4.5.0'
 
-  #Database cleaner
+  # Database cleaner
   gem 'database_cleaner', '~> 1.5.1'
 
   gem 'capybara', '~> 2.6.2'
 
+  # Cucumber for view tests
+  gem 'cucumber-rails', '~> 1.4.3'
+  gem 'cucumber-rails-training-wheels', '~> 1.0.0'
 end
-

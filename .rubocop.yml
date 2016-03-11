@@ -4,6 +4,7 @@ AllCops:
     - /bin/*
     - /db/schema.rb
     - /db/migrate/**/*devise*.rb
+    - /lib/*.rake
 
 Lint/UnusedMethodArgument:
   Enabled: false
