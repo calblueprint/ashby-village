@@ -1,11 +1,10 @@
-<%= render "users/registrations/new" %>
 <div class='landing'>
   <div class="hero">
     <%= image_tag("bg_main.jpg", :class => "bg") %>
     <div class='banner-text'>
       <h1>Know what's happening.</h1>
       <h4>Ashby Village Square powers group communication</h4><br/>
-      <%= link_to 'Create an Account', "#",  data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"register"}, class: 'button success radius large' %>
+      <%= link_to 'Create an Account', new_user_registration_path, class: 'button success radius large' %>
     </div>
   </div>
 

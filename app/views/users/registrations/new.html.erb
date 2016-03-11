@@ -1,19 +1,14 @@
-<div id="register" class="reveal-modal full-modal register-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="close-reveal-modal" aria-label="Close">&#215; <h3 class='cancel'>Cancel Registration</h3></a>
-        <div class='row'>
+<%= link_to "Cancel Registration", root_path, :class => 'cancel'%>
+<div class='row'>
           <h2 class="modal-title small-12 small-centered medium-10 large-8 column" id="myModalLabel">Create an Account</h2>
         </div>
-      </div>
-      <div class="modal-body">
-         <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name),
-             html: { multipart: true }) do |f| %>
-            <%= devise_error_messages! %>
-              <div class='row'>
+
+<%= form_for(resource, as: resource_name, url: user_registration_path(resource_name),
+   html: { multipart: true }) do |f| %>
+  <%= devise_error_messages! %>
+<div class='row'>
                 <div class='instructions small-12 small-centered medium-10 large-8 column'>
-                  <h5>Type in the blanks to complete your registration for Ashby Village Square. </br>
+                  <h5>Fill in the blanks to complete your registration for Ashby Village Square. </br>
                   No information will be shared without your consent.</h5>
                 </div>
               </div></br>
@@ -66,8 +61,4 @@
             <%= f.submit "Complete Registration", class: 'button success radius large' %>
           </div>
         </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<% end %>
