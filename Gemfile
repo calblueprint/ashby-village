@@ -85,6 +85,6 @@ group :development, :test do
   gem 'capybara', '~> 2.6.2'
 
   # Cucumber for view tests
-  gem 'cucumber-rails', '~> 1.4.3'
+  gem 'cucumber-rails', '~> 1.4.3', require: false
   gem 'cucumber-rails-training-wheels', '~> 1.0.0'
 end
