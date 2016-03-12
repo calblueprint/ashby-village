@@ -1,14 +1,20 @@
 <div class="row">
-<% if @user == current_user %>
-  <div class="user-info small-12 large-7 columns">
-<% else %>
-  <div class="user-info small-12 columns">
-<% end %>
+  <% if @user == current_user %>
+    <div class="user-info small-12 large-7 columns">
+  <% else %>
+    <div class="user-info small-12 large-5 columns">
+  <% end %>
     <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
     <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
     <h6>PHONE</h6> <h4> <%= @user.phone %> </h4>
 
     <% if @user == current_user %>
+      <h6>ABOUT YOU</h6>
+      <% if @user.bio %>
+        <h4> <%= @user.bio %> </h4>
+      <% else %>
+        <h5><em> Tell others about yourself.   Add a bio by editing your profile. </em></h5>
+      <% end %>
       <%= link_to 'Edit Profile', edit_user_path %>
     <% end %>
   </div>
@@ -20,6 +26,15 @@
       <button> Create New Group </button>
     <% end %>
     <p>Click the button above to make a new group!</p>
+  </div>
+  <% else %>
+  <div class="user-bio small-12 large-7 columns">
+    <h6>ABOUT <%= @user.first_name %> </h6>
+    <% if @user.bio %>
+      <h5> <%= @user.bio %> </h5>
+    <% else %>
+      <h5><em> <%= @user.first_name %> has not written a bio yet. </em></h5>
+    <% end %>
   </div>
 <% end %>
 </div>
