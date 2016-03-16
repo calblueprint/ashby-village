@@ -68,8 +68,8 @@ class User < ActiveRecord::Base
   has_many :replies, dependent: :destroy
 
   validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
   validates :first_name, presence: true
   validates :last_name, presence: true
 
