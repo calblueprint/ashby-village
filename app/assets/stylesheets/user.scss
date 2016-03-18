@@ -123,6 +123,15 @@
   object-fit: cover;
 }
 
+.form-error {
+  background-color: #ffcdcd!important;
+}
+
+.form-error-msg {
+  color: #e54d4d;
+  display: none;
+}
+
 @media (max-width: 64em) {
   .info .columns {
     min-width: 100%;

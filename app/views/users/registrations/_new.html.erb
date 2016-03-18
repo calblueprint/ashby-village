@@ -1,0 +1,87 @@
+<div id="register" class="reveal-modal full-modal register-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close-reveal-modal" aria-label="Close">&#215; <h3 class='cancel'>Cancel Registration</h3></a>
+        <div class='row'>
+          <h2 class="modal-title small-12 small-centered medium-10 large-8 column" id="myModalLabel">Create an Account</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+         <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f| %>
+
+            <%= devise_error_messages! %>
+            <%= content_tag :div, class: "temp_emails", data: {temp: @allemails} do %>
+            <% end %>
+
+              <div class='row'>
+                <div class='instructions small-12 small-centered medium-10 large-8 column'>
+                  <h5>Type in the blanks to complete your registration for Ashby Village Square. </br>
+                  No information will be shared without your consent.</h5>
+                </div>
+              </div></br>
+
+              <div class='row'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
+                  <h5 class='question'>My name is </h5>
+                  <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, autofocus: true, required: true, placeholder: 'First Name', class: 'input', id: 'first_name', onBlur: "validateUser('first_name');" %> </div>
+
+                  <div class='input-form'> <%= f.text_field :last_name, autofocus: true, required: true, placeholder: 'Last Name', class: 'input', id: 'last_name', onBlur: "validateUser('last_name');" %> </div>
+                </div>
+              <span class='nameErrors form-error-msg'>No special characters!</span>
+              </div>
+
+              <div class='row'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
+                  <h5 class='question'>and my email address is </h5>
+                  <div class='input-form'> <%= f.email_field :email, autofocus: true, required: true, placeholder: 'email@address.com', class: 'input', id: 'email', onBlur: "validateEmail('email'); isEmailUnique('email');" %> </div>
+                </div>
+                <span class='emailError form-error-msg'>
+                  You have entered an invalid email address.
+                </span>
+                <span class='email-taken form-error-msg'>
+                  There is already an account with this email address.
+                </span>
+              </div>
+
+              <div class='row'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                  <h5 class='question'>I would like my password to be</h5>
+                  <div class='input-form'> <%= f.password_field :password, autocomplete: "off", required: true, placeholder: 'something memorable', class: 'input', id: 'pass', onBlur: "validatePassword('pass');" %> </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
+                  <h5 class='question'>Just to be sure, my password once again is</h5>
+                  <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", required: true, placeholder: 'something memorable', class: 'input', id: 'pass_confirmation', onkeyup: 'passwordMatching();', onBlur: "validatePassword('pass_confirmation');" %> </div>
+                </div>
+                <div class='password_mismatch form-error-msg'>
+                  Password and password confirmation don't match!
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='field small-12 small-centered medium-10 large-8 column'>
+                  <h5 class='question'>and my phone number is</h5>
+                  <div class='input-form'>
+                    <%= f.text_field :phone, autofocus: true, placeholder: 'ex. (510) 123 - 4567', class: 'input phone', id: 'phone', onBlur: "validatePhone('phone');"  %> </div>
+                </div>
+                <span class='phoneErrors form-error-msg'>Invalid phone number.</span>
+              </div>
+            </br>
+      </div>
+      <div class="row modal-footer">
+        <div class="form-actions small-10 small-centered medium-8 large-6 column">
+          <div class="actions">
+            <%= f.submit "Complete Registration", class: 'button register-button success radius large', disabled: 'disabled', id: 'register-button'%>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

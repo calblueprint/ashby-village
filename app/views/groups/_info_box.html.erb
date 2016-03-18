@@ -11,7 +11,7 @@
         </div>
       <% end %>
     <%= link_to user.decorate.full_name, user %>
-    <h6><%= user.phone %></h6><br>
+    <h6><%= number_to_phone(user.phone, area_code: true) %></h6><br>
     <% end %>
   </div>
 </div>

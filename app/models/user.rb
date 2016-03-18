@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :registerable
 
   enum role: [:member, :admin]
-
   has_many :posts, dependent: :destroy
+  has_many :replies, dependent: :destroy
   has_many :user_groups
   has_many :groups, through: :user_groups do
     def leader_of
@@ -64,8 +64,7 @@ class User < ActiveRecord::Base
     self.is_leader(group) && group.users.leaders.count == 1
   end
 
-  has_many :posts, dependent: :destroy
-  has_many :replies, dependent: :destroy
+  before_validation :strip_phone_number
 
   validates :email, presence: true
   validates :password, presence: true, on: :create
@@ -73,6 +72,18 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("default.png")
-  validates_attachment_content_type :photo, content_type: /^image\/(png|gif|jpeg|jpg)/
+  protected
+
+  # strips phone number of masked input so that it is saved with only numbers
+  # and so that we can validate that there are 10 numbers in the phone number (but doesn't validate that its real)
+  def strip_phone_number
+    self.phone.gsub!(/[^0-9]/, "")
+  end
+
+  validates_length_of :phone, is: 10, message: "Invalid phone number. Don't forget to include your area code!"
+
+  validates :email, presence: true
+  has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" },
+                            default_url: ActionController::Base.helpers.asset_path("default.png")
+  validates_attachment_content_type :photo, content_type: %r{^image\/(png|gif|jpeg|jpg)}
 end

@@ -25,6 +25,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def new
+    @user = User.new
+    @allemails = User.all.map(&:email)
+  end
+
 #   PUT /resource
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
