@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # TODO (Shannon): add phone number validation, length and integers
 
   devise :database_authenticatable, :recoverable,
-         :rememberable, :trackable, :validatable, :registerable
+         :rememberable, :trackable, :validatable, :registerable, :confirmable
 
   enum role: [:member, :admin]
   has_many :posts, dependent: :destroy

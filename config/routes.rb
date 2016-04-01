@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   }, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
+    # confirm: "confirmations#show",
   }
   devise_scope :users do
     get "users/:id/account_settings" => "users/registrations#edit", as: "account_settings"
