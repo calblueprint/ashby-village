@@ -17,7 +17,7 @@
       <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people</i></p>
       <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
     </div>
-    Kind of Group <%= f.select(:kind, @kinds.reject {|i|  i == 'announcement' }, required: true) %>
+    Kind of Group <%= f.select(:kind, @kinds, required: true) %>
     Neighborhood of Group <%= f.select(:neighborhood, @neighborhoods, required: true) %>
     <%= f.submit %>
     </div>

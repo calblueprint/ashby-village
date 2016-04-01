@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
     if current_user
       @group = Group.new
       @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
-      @kinds = Group.kinds.keys
+      @kinds = Group.kinds.keys.reject { |i| i == "announcement" }
       @neighborhoods = Group.neighborhoods.keys
     else
       redirect_to new_user_session_path, notice: "You are not logged in."
@@ -85,8 +85,8 @@ class GroupsController < ApplicationController
   def edit
     @group = Group.friendly.find(params[:id])
     @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
-    @kinds = Group.kinds.keys
-    neighborhoods = Group.neighborhoods.keys
+    @kinds = Group.kinds.keys.reject { |i| i == "announcement" }
+    @neighborhoods = Group.neighborhoods.keys
   end
 
   def update
