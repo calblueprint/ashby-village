@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params) 
+    @event = Event.new(event_params)
     if(not params[:gmap].nil?)
       @event.gmap = true
     end
@@ -42,11 +42,19 @@ class EventsController < ApplicationController
       (@event.group.users).each do |user|
         Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
       end
-      redirect_to @event, notice: "Event was successfully created." 
-    else 
-      flash[:error] = "Group Could not be created" 
-      render :new 
-    end 
+      redirect_to @event, notice: "Event was successfully created."
+
+      #Invite all users in this group using ashby_mailer
+      group = Group.find(@event.group_id) #get event's group
+      @users = @group.users #get all users in that group
+      # users.each do |user|
+      #   @user_emails += user.email
+      #email all these users through ashby_mailer
+      AshbyMailer.email_invites(@users).deliver
+    else
+      flash[:error] = "Group Could not be created"
+      render :new
+    end
   end
 
   # PATCH/PUT /events/1
