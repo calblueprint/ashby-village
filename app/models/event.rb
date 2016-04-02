@@ -44,6 +44,10 @@ class Event < ActiveRecord::Base
         Invite.create(user: user, event: self, organizer: false)
       end
     end
+    #Invite all users in this group using ashby_mailer
+    @group = Group.find(self.group_id) #get event's group
+    @users = @group.users #get all users in that group
+    AshbyMailer.email_invites(@users).deliver
   end
 
 end
