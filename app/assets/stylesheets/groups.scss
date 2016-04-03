@@ -132,6 +132,22 @@
   background-color: #f2f2f2;
 }
 
+.click-events {
+  padding: 10px;
+  height: 48px;
+  width: 195px;
+}
+
+.click-events img {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.click-events:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
 .group-posts {
   padding: 0px !important;
 }
@@ -184,4 +200,29 @@
     max-height: 27px;
     border: 3px solid white;
   }
+}
+
+.group-event-tile {
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 24px;
+  @include ease-transition(0.5s);
+}
+
+.group-event-tile:hover {
+  border: 2px solid $ashby-light-blue;
+  cursor: pointer;
+  background-color: #ECF1F7;
+}
+
+.event-tile-icon {
+  padding: 0;
+}
+
+.event-tile-icon img {
+  height: 25px;
+  margin-right: 7px;
 }

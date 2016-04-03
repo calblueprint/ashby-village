@@ -97,5 +97,9 @@ Rails.application.routes.draw do
   ##################################################
   # Events
   ##################################################
-  resources :events
+  resources :events do
+    get "attendance"
+    patch "rsvp"
+    patch "cancel"
+  end
 end

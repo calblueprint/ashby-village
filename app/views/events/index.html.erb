@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="my-events row">
+  <h3>My Events</h3>
+</div>
 
-<h1>Listing Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @events.each do |event| %>
+  <a class="tile-link" href="<%= event_path(event) %>">
+  <div class="event-tile row">
+    <div class="large-8 columns">
+      <h3 class="event-tile-title"><%= event.title %></h3>
+      <h6 class="event-tile-group">Nature Walks</h6>
+      <div class="tile-date small-7 large-7 large-uncentered column">
+        <p><%= image_tag("events_date.png") %> <%= event.startdate.strftime("%B %e, %Y") %> - <%= event.enddate.strftime("%B %e, %Y") %></p>
+      </div>
+      <div class="tile-time small-5 large-5 large-uncentered column">
+        <p><%= image_tag("events_time.png") %> <%= event.starttime.strftime("%l:%M %p") %> - <%= event.endtime.strftime("%l:%M %p") %></p>
+      </div>
+      <div class="tile-location small-6 large-6 large-uncentered">
+        <p><%= image_tag("events_location.png") %> <%= event.location %></p>
+      </div>
+    </div>
+    <% if event.users.rsvps.include?(current_user) %>
+        <%= link_to event_cancel_path(event), method: :patch do %>
+          <button class="tile-is-attending large-4"><span>You're Attending</span></button>
+        <% end %>
+    <% else %>
+        <%= link_to event_rsvp_path(event), method: :patch do %>
+          <button class="tile-event-joined large-4">Click to RSVP</button>
+        <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+    <h6 class="columns">Organizer(s)</h6>
+  </div>
+  </a>
+<% end %>

@@ -1,5 +1,29 @@
-<h1>New Event</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', events_path %>
+<div class="create-title">
+  <h2>Create A New Event for <%= link_to @group.name, group_path(@group) %></h2>
+  <h4 class="create-subtitle">Fill in the blanks below to create your new event. All fields are required.</h4>
+</div>
+  <%= form_for @event do |f| %>
+  <div class="create-section row">
+    Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
+    Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
+    Event Date and Time<br>
+      <div class="start"><p><i>Start</i></p>
+      <%= f.date_field :startdate, required: true, :placeholder => '03/25/16' %>
+      <%= f.time_field :starttime, required: true, :placeholder => '10:00AM' %>
+      </div>
+      <div class="end"><p><i>End</i></p>
+      <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
+      <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
+      </div><br>
+    Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
+    Select Additional Event Organizers
+    <div class="field">
+      <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people.</i></p>
+      <%= #TODO: Organizers not functional yet, add back when working
+      # select_tag(:organizers, options_for_select(@users), multiple:true, size:3) 
+      %>
+    </div>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.submit %>
+    </div>
+  <% end %>

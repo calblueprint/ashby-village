@@ -7,6 +7,13 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def attendance
+    @event = Event.find(params[:event_id])
+    @events = Event.all
+    @group = @event.group
+    @rsvps = @event.invites.where(rsvp: true)
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
@@ -15,6 +22,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @group = Group.find(params[:format])
+    @users = @group.users.where.not(id: current_user.id).decorate.map { |u| [u.full_name, u.id] }
   end
 
   # GET /events/1/edit
@@ -61,6 +70,24 @@ class EventsController < ApplicationController
     end
   end
 
+  # PATCH/PUT Set RSVP to True
+  def rsvp
+    invite = Invite.where(user_id: current_user.id, event_id: params[:event_id]).first
+    # TODO: check valid invite
+    invite.update_attribute(:rsvp, "true")
+    flash[:notice] = "You Have RSVPed!"
+    redirect_to :back
+  end
+
+  # PATCH/PUT Set RSVP to False
+  def cancel
+    invite = Invite.where(user_id: current_user.id, event_id: params[:event_id]).first
+    # TODO: check valid invite
+    invite.update_attribute(:rsvp, "false")
+    flash[:notice] = "Cancelled Attendance"
+    redirect_to :back
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +97,7 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params[:event]
+    params.require(:event).permit(:title, :description, :starttime, :startdate,
+                                  :endtime, :enddate, :location, :group_id)
   end
 end

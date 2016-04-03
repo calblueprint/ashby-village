@@ -1,0 +1,156 @@
+@import "ashby_settings.scss";
+
+.event-header {
+	margin-top: 20px;
+}
+
+.event-details {
+	background-color: white;
+	padding: 12px;
+	border-radius: 8px;
+}
+
+.event-joined {
+	float: right;
+  width: 100%;
+  margin: 0;
+}
+
+.event-icon {
+  padding: 0;
+}
+
+.event-icon img {
+  height: 25px;
+  margin-right: 7px;
+}
+
+.event-description {
+	background-color: white;
+	border-radius: 8px;
+}
+
+.event-organizers {
+	background-color: white;
+	padding: 12px;
+	border-radius: 8px;
+	margin-top: 16px;
+}
+
+.attendance-list {
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 16px 0 16px 0;
+}
+
+.attendance-button {
+  background-color: $ashby-light-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.attendance-button:hover {
+  background-color: $ashby-light-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.attendance-button:active {
+  background-color: $ashby-light-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.attendance-button:focus {
+  background-color: $ashby-light-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.image-wrapper {
+  position: relative;
+
+  .event-organizer-photo img {
+    z-index: 1;
+  }
+  .event-organizer-icon {
+    position: absolute;
+    z-index: 2;
+    left: -5px;
+    top: -5px;
+    max-width: 27px;
+    max-height: 27px;
+    border: 3px solid white;
+  }
+}
+
+.event-organizers img {
+    object-fit: cover;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    margin-right: 16px;
+    float: left;
+}
+
+.start {
+  display: inline-block;
+
+  p {
+    margin: 0;
+  }
+}
+
+.end {
+  display: inline-block;
+
+  p {
+    margin: 0;
+  }
+}
+
+input[type="date"] {
+  border-radius: 8px;
+}
+
+::-webkit-inner-spin-button { display: none; }
+
+input[type="time"] {
+  border-radius: 8px;
+}
+
+.is-attending {
+  float: right;
+  width: 100%;
+  margin: 0;
+  background: $ashby-light-blue;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.is-attending:hover span {
+  display: none;
+}
+
+.is-attending:hover:after{
+  content: 'Cancel Attendance';
+}
+
+.is-attending:hover {
+  background: $ashby-red;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+}
+
+.tile-link {
+  text-decoration: none;
+  color: black;
+}
+
+.tile-link:hover {
+  color: black;
+}
+
+.edit-title {
+    text-align: center;
+    margin: 40px 0 40px 0;
+}

@@ -1,4 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="row event-header">
+	<h3><%= link_to @event.group.name, group_path(@event.group) %> invites you to...</h3>
+	<h2><%= @event.title %></h2>
+</div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="row">
+	<div class="small-8 large-8 left columns event-details">
+		<div class="row">
+			<div class="event-icon small-4 large-4 columns">
+			<p><%= image_tag("events_date.png") %> <%= @event.startdate.strftime("%B %e, %Y") %> - <%= @event.enddate.strftime("%B %e, %Y") %></p>
+			</div>
+			<div class="event-icon small-4 large-4 columns">
+			<p><%= image_tag("events_time.png") %> <%= @event.starttime.strftime("%l:%M %p") %> - <%= @event.endtime.strftime("%l:%M %p") %></p>
+			</div>
+			<div class="event-icon small-4 large-4 columns">
+			<p><%= image_tag("events_location.png") %> <%= @event.location %></p>
+			</div>
+		</div>
+
+		<div class="row event-description">
+			<h6>Description</h6>
+			<p><%= @event.description %></p>
+		</div>
+	</div>
+
+	<div class="large-4 right columns">
+		<div class="row">
+		  <% if @event.users.rsvps.include?(current_user) %>
+		      <%= link_to event_cancel_path(@event), method: :patch do %>
+		      	<button class="is-attending"><span>You're Attending</span></button>
+		      <% end %>
+		  <% else %>
+		      <%= link_to event_rsvp_path(@event), method: :patch do %>
+		      	<button class="event-joined">Click to RSVP</button>
+		      <% end %>
+		  <% end %>
+		</div>
+
+		 <div class="row">
+			 <div class="event-organizers">
+				<h6>Event Organizer(s)</h6>
+				<% @event.group.users.leaders.each do |user| %>
+			      <% if user.photo %>
+			        <div class="image-wrapper">
+			          <%= image_tag("organizer-icon.png", class: "event-organizer-icon") %>
+			          <%= image_tag(user.photo(:thumb), class: "event-organizer-photo") %>
+			        </div>
+			      <% end %>
+			    <%= link_to user.decorate.full_name, user %><br>
+			    <h7><%= user.email %></h7><br>
+			    <h7><%= user.phone %></h7><br>
+			    <% end %>
+			</div>
+		 </div>
+
+		 <div class="row">
+		 	<div class="attendance-list">
+		 	<h6>Who is Attending?</h6>
+		 		<%= link_to event_attendance_path(@event), method: :get do %>
+		 			<button class="attendance-button is-member">See Who's Attending</button>
+		 		<% end %>
+		 	</div>
+		 </div>
+	</div>
+</div>

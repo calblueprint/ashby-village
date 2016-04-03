@@ -1,0 +1,9 @@
+<div class="attendance-title">
+	<h3><%= link_to @event.title, event_path(@event) %> by <%= link_to @group.name, group_path(@group) %></h3>
+	<h2>Who Is Attending?</h2>
+	<div class="row attendance-tile">
+		<h6>ATTENDING (<%= @event.users.rsvps.count %>)</h6>
+		<br><br>
+		<h6>INVITED (<%= @event.users.count %>)</h6>
+	</div>
+</div>
