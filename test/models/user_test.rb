@@ -23,6 +23,11 @@
 #  photo_file_size        :integer
 #  photo_updated_at       :datetime
 #  role                   :integer          default(0)
+#  bio                    :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 
 require 'test_helper'

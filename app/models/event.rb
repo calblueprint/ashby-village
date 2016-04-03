@@ -24,6 +24,9 @@ class Event < ActiveRecord::Base
     def rsvps
       where("invites.rsvp = ?", true)
     end
+    def organizers
+      where("invites.organizer = ?", true)
+    end
   end
 
 end

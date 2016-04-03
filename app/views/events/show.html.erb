@@ -39,7 +39,7 @@
 		 <div class="row">
 			 <div class="event-organizers">
 				<h6>Event Organizer(s)</h6>
-				<% @event.group.users.leaders.each do |user| %>
+				<% @event.users.organizers.each do |user| %>
 			      <% if user.photo %>
 			        <div class="image-wrapper">
 			          <%= image_tag("organizer-icon.png", class: "event-organizer-icon") %>

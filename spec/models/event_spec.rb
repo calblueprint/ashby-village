@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  starttime   :time
+#  endtime     :time
+#  startdate   :date
+#  enddate     :date
+#  group_id    :integer
+#  location    :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
 require "rails_helper"
 
 RSpec.describe Event, type: :model do

@@ -33,17 +33,17 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    @event = Event.new(event_params) 
+    params[:organizers].concat([current_user.id.to_s])
+    if @event.save
+      (@event.group.users).each do |user|
+        Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
       end
-    end
+      redirect_to @event, notice: "Event was successfully created." 
+    else 
+      flash[:error] = "Group Could not be created" 
+      render :new 
+    end 
   end
 
   # PATCH/PUT /events/1

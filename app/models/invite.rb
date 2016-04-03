@@ -8,6 +8,7 @@
 #  rsvp       :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  organizer  :boolean          default(FALSE)
 #
 
 class Invite < ActiveRecord::Base
