@@ -16,6 +16,7 @@
       <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
       </div><br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
+    Include Maps Link <%= check_box_tag :gmap, "0" %> <br>
     Select Additional Event Organizers
     <div class="field">
       <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people.</i></p>

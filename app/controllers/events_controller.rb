@@ -34,6 +34,9 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params) 
+    if(not params[:gmap].nil?)
+      @event.gmap = true
+    end
     params[:organizers].concat([current_user.id.to_s])
     if @event.save
       (@event.group.users).each do |user|
