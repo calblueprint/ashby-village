@@ -17,10 +17,10 @@
       </div><br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
     Include Maps Link <%= check_box_tag :gmap, "0" %> <br>
-    Select Additional Event Organizers
+    Select Event Organizers
     <div class="field">
       <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people.</i></p>
-      <%= select_tag(:organizers, options_for_select(@users), multiple:true, size:3) 
+      <%= select_tag(:organizers, options_for_select(@users), multiple:true, size:3)
       %>
     </div>
     <%= f.hidden_field :group_id, value: @group.id %>
