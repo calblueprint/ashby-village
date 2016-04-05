@@ -1,0 +1,126 @@
+// Global styles for Ashby Village Square
+
+// COLOR PALETTE
+$ashby-faint-blue: #ECF1F7;
+$ashby-light-blue: #4A90E2;
+$ashby-dark-blue: #34495E;
+$ashby-black: #2D3339;
+$ashby-gray: #7F8C8D;
+$ashby-green: #27AE60;
+$ashby-dark-green: #417500;
+$ashby-red: #DE6868;
+$ashby-dark-red: #90091A;
+$ashby-tan: #F7F5F2;
+
+// FONT SIZES
+$h1-heading-size: 64px;
+$h2-heading-size: 48px;
+$h3-heading-size: 24px;
+$body-font-size: 16px;
+$subtext-font-size: 14px;
+
+h1 {
+  font-size: $h1-heading-size;
+}
+
+h2 {
+  font-size: $h2-heading-size;
+}
+
+h3 {
+  font-size: $h3-heading-size;
+}
+
+p {
+  font-size: $body-font-size;
+}
+
+h4, h5 {
+  color: #2D3339;
+}
+
+h6 {
+  text-transform: uppercase;
+  font-size: $subtext-font-size;
+  color: $ashby-gray;
+}
+
+h7 {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: $ashby-gray;
+}
+
+i {
+  color: $ashby-gray;
+}
+
+// GLOBAL FONT
+* {
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
+
+// BACKGROUND COLOR
+body {
+  background-color: $ashby-tan;
+}
+
+// BUTTONS
+button, input[type="submit"] {
+  height: 48px;
+  background-color: $ashby-green;
+  border-radius: 8px;
+  color: white;
+  border: 0 !important;
+  padding: 16px 32px 17px 32px;
+  font-size: $body-font-size;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-green;
+  transition: all 0.5s;
+}
+
+button:hover, button:focus, input[type="submit"]:hover, input[type="submit"]:focus {
+  background-color: $ashby-green;
+}
+
+button:active, input[type="submit"]:active {
+  background-color: $ashby-dark-green;
+  margin-top: 4px;
+  -webkit-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+  -moz-box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+  box-shadow: 0px 0px 0px 0px $ashby-dark-green;
+}
+
+input.uploadFile {
+  font-size: 16px;
+}
+
+// DROPDOWNS
+select {
+  height: $h2-heading-size;
+  font-size: $h3-heading-size;
+  border-radius: 4px;
+}
+
+// TRANSITIONS
+@mixin ease-transition($duration) {
+  -webkit-transition: all $duration ease;
+  -moz-transition: all $duration ease;
+  -ms-transition: all $duration ease;
+  transition: all $duration ease;
+}
+
+// TEXT INPUTS
+input[type="text"] {
+  border-radius: 8px;
+}
+
+textarea {
+  resize: none;
+  height: 64px;
+  border-radius: 8px;
+}
+
