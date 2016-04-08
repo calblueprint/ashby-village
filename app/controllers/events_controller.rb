@@ -36,9 +36,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if !params[:organizers].nil?
-     params[:organizers].concat([current_user.id.to_s])
+      params[:organizers].concat([current_user.id.to_s])
     else
-     params[:organizers] = [current_user.id.to_s]
+      params[:organizers] = [current_user.id.to_s]
     end
 
     if @event.save
@@ -47,13 +47,12 @@ class EventsController < ApplicationController
       end
       redirect_to @event, notice: "Event was successfully created."
 
-      #Invite all users in this group using ashby_mailer
-      @group = Group.find(@event.group_id) #get event's group
-      @users = @group.users #get all users in that group
-      # users.each do |user|
-      #   @user_emails += user.email
-      #email all these users through ashby_mailer
-      AshbyMailer.email_invites(@users).deliver
+      # Invite all users in this group to the event using ashby_mailer
+      @group = Group.find(@event.group_id)
+      @users = @group.users
+      @users.each do |user|
+        AshbyMailer.email_invites(user).deliver
+      end
     else
       flash[:error] = "Group Could not be created"
       render :new
