@@ -20,12 +20,13 @@
           <%= image_tag((@group.photo), class: "groupPhotoPreview") %>
         </div></br>
 
-        <div class="field">
-          <%= f.label 'Select Additional Group Leaders' %>
-          <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people</i></p>
-          <%= select_tag(:leaders, options_for_select(@users), multiple:true, size:3) %>
+        <div class="field" id="selected-group-leaders">
+          <%= f.label 'Group Leaders' %>
+          <p><i>Start typing the names of your fellow group leaders to select</i></p>
+          <%= autocomplete_field_tag :group_leaders, '', autocomplete_user_full_name_groups_path %>
+          <%= hidden_field_tag 'selected_leaders' %>
         </div>
-
+ 
         <div class="field">
           <%= f.label 'Kind of Group' %>
           <%= f.select(:kind, @kinds, autofocus: true, value: @group.kind) %>
@@ -44,3 +45,38 @@
     </div>
   </div>
 </div>
+<script>
+var group_leader_ids = [<%= raw ('"' + @group.users.leaders.map(&:id).join('","') + '"') %>];
+// Function to remove selected leader
+function remove_selected_leader(button) {
+  var id = button.parentElement.id;
+  button.parentElement.remove();
+  index = group_leader_ids.indexOf(id);
+  if(index > -1) {
+    group_leader_ids.splice(index, 1);
+  }
+  $("#selected_leaders")[0].value = group_leader_ids;
+};
+// Function to add a selected leader
+function add_selected_leader(name, id) {
+  var div = document.createElement('div');
+  div.innerHTML = name + '<button type="button" onclick="remove_selected_leader(this)"> x </button>';
+  div.id = id;
+  return div;
+}
+// Function called when autocomplete has been selected
+$("#group_leaders").bind('railsAutocomplete.select', function(event, data){
+  // Add id's to array to pass to rails (hidden_field_tag?)
+  group_leader_ids.push(data.item.id);
+  // Set hidden field
+  $("#selected_leaders")[0].value = group_leader_ids;
+  // Blank autocomplete field
+  $("#group_leaders")[0].value = "";
+  // Add Selected Name to new visible field
+  $("#selected-group-leaders")[0].appendChild(add_selected_leader(data.item.value, data.item.id));
+});
+var initial_group_leader_names = <%= raw @group.users.leaders.map(&:full_name) %>;
+for (i = 0; i < group_leader_ids.length; i++) { 
+  $("#selected-group-leaders")[0].appendChild(add_selected_leader(initial_group_leader_names[i], group_leader_ids[i]));
+}
+</script>

@@ -7,6 +7,9 @@ gem 'better_errors', '~> 2.1.1'
 gem 'aws-sdk-v1', '~> 1.66.0' # If using paperclip <= v4.3.1
 gem 'annotate', '~> 2.6.10'
 
+# Add Autocomplete
+gem 'rails-jquery-autocomplete'
+
 # Allows for human-friendly strings
 gem 'friendly_id', '~> 5.1.0'
 

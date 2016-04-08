@@ -18,7 +18,8 @@
 //= require react_ujs
 //= require components
 //= require_tree .
-
+//= require jquery-ui/autocomplete
+//= require autocomplete-rails
 
 var ready = (function(){ $(document).foundation(); });
 

@@ -84,6 +84,7 @@ Rails.application.routes.draw do
   # Groups
   ##################################################
   resources :groups do
+    get :autocomplete_user_full_name, on: :collection
     member do
       get "member_listing"
       put "join"

@@ -49,7 +49,11 @@ class Group < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def add_user(current_user, make_leader = false)
-    UserGroup.create(user: current_user, group: self, is_leader: make_leader)
+    if UserGroup.where(user: current_user, group: self).blank?
+      UserGroup.create(user: current_user, group: self, is_leader: make_leader)
+    else
+      UserGroup.where(user: current_user, group: self).first.update_attribute :is_leader, make_leader
+    end
   end
 
   def has_one_leader

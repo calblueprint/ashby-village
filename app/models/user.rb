@@ -28,6 +28,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  full_name              :string
 #
 
 # TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
@@ -40,6 +41,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable, :registerable
+
+  before_save :set_full_name
 
   enum role: [:member, :admin]
   has_many :posts, dependent: :destroy
@@ -56,7 +59,6 @@ class User < ActiveRecord::Base
       where("invites.rsvp = ?", true)
     end
   end
-
   def is_leader(group)
     group.users.leaders.exists?(id: id)
   end
@@ -91,4 +93,10 @@ class User < ActiveRecord::Base
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" },
                             default_url: ActionController::Base.helpers.asset_path("default.png")
   validates_attachment_content_type :photo, content_type: %r{^image\/(png|gif|jpeg|jpg)}
+
+  private
+
+  def set_full_name
+    self.full_name = "#{self.first_name} #{self.last_name}".strip
+  end
 end

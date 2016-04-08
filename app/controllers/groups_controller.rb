@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  autocomplete :user, :full_name, full: true
 
   # TODO(Shimmy): Only display this page if the user is logged in
   def index
@@ -40,12 +41,16 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      @group.add_user(current_user, make_leader = true)
-      if (params[:leaders] != nil)
-        @users = User.find(params[:leaders]) #don't do this if there are no additional leaders added
+      if !params[:selected_leaders].blank?
+        @users = User.find(params[:selected_leaders].split(","))
+        if !@users.include?(current_user)
+          @group.add_user(current_user, make_leader = true)
+        end
         @users.each do |user|
           @group.add_user(user, make_leader = true)
         end
+      else # remember to always add current user as leader
+        @group.add_user(current_user, make_leader = true)
       end
       redirect_to @group, notice: "Group was successfully created."
     else
@@ -92,11 +97,14 @@ class GroupsController < ApplicationController
   def update
     @group = Group.friendly.find(params[:id])
     if @group.update_attributes(group_params)
-      if (params[:leaders] != nil)
-        @users = User.find(params[:leaders])
-        @users.each do |user|
-          @group.add_user(user, make_leader = true)
+      @group.users.leaders.each do |user|
+        @group.remove_user(user)
+      end
+      if !params[:selected_leaders].blank?
+        params[:selected_leaders].split(",").each do |slid|
+          @group.add_user(User.find(slid.to_i), make_leader = true)
         end
+        @group.update_attribute(:state, Group.states["active"])
       end
       flash[:notice] = "Group updated!"
       redirect_to group_path
