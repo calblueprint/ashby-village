@@ -8,17 +8,17 @@
 <div class = "row">
   <div class="row menu">
       <% if @user == current_user %>
-        <div class="click-info small-12 small-uncentered medium-3 column">
+        <div class="click-info small-12 small-uncentered medium-6 column">
           <p><%= image_tag("your_info_icon.png") %>Your Information</p>
         </div>
-        <div class="click-groups small-12 small-uncentered medium-3 column">
+        <div class="click-groups small-12 small-uncentered medium-6 column">
           <p><%= image_tag("groups_you_lead_icon.png") %>Groups You Lead</p>
       </div>
       <% else %>
-        <div class="click-info small-12 small-uncentered medium-3 column">
+        <div class="click-info small-12 small-uncentered medium-6 column">
           <p><%= image_tag("your_info_icon.png") %><%= @user.first_name %>'s Information</p>
         </div>
-        <div class="click-groups small-12 small-uncentered medium-3 column">
+        <div class="click-groups small-12 small-uncentered medium-6 column">
           <p><%= image_tag("groups_you_lead_icon.png") %>Groups <%= @user.first_name %> Leads</p>
         </div>
       <% end %>
