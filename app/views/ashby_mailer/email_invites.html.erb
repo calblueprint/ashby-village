@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @each_user.decorate.full_name %></h1>
+    <h1>Dear <%= @user.decorate.full_name %></h1>
     <p>
-      Sample mail sent using smtp.
+      You are invited to <b><%= @event.title %> on <%= @event.startdate %> and join others in <%= @group.name %></b>. To join us, RSVP here: <%= link_to @event.title, 'http://ashby-staging.herokuapp.com' + event_path(@event) %>.
     </p>
   </body>
 </html>
