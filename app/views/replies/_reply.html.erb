@@ -1,20 +1,31 @@
-<div class="reply row collapse" id="reply-<%= reply.id %>">
-  <!-- TODO (Shimmy): Picture link -->
-  <div class="reply-user row collapse">
-    <div class="reply-display-member large-2 columns">
-      <% if reply.user.is_leader(@group) %>
-        <div class="image-wrapper">
-          <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
-          <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
-        </div>
-      <% else %>
-        <%= image_tag(reply.user.photo(:thumb)) %>
-      <% end %>
+<div class="row" id="post_id<%= reply.id %>" >
+  <div class="small-1 large-1 columns">
+  </div>
+    <div class="reply small-11 large-11 columns">
+      <div class="reply-user row collapse">
+      <div class="reply-display-member">
+        <% if reply.user.is_leader(@group) %>
+          <div class="image-wrapper">
+            <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+            <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
+          </div>
+        <% else %>
+          <%= image_tag(reply.user.photo(:thumb)) %>
+        <% end %>
+      </div>
+      <div class="reply-display-header">
+        <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
+        <h6 class="timestamp"><i>Posted <%= time_ago_in_words(reply.created_at) %> ago.</i></h6>
+      </div>
     </div>
-    <div class="reply-display-content large-10 columns">
-      <p><%= link_to reply.user.decorate.full_name, reply.user %></p>
-      <h6 class="timestamp">Posted <%= time_ago_in_words(reply.created_at) %> ago.</h6>
+    <div class="reply-body row">
       <p><%= reply.content %></p>
+    </div>
+    <div class="reply-delete">
+    <% if current_user.id == reply.user.id or current_user.admin? or current_user.is_leader(@group) %>
+      <%= link_to "Delete", group_post_reply_path(@group.id, reply.id, post_id), method: :delete, data: { confirm: 'Are you sure you want to delete your reply?' }, class: "delete" %>
+    <% end %>
     </div>
   </div>
 </div>
+

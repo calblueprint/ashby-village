@@ -23,6 +23,7 @@ var ready = function() {
   $(".group-settings").hide();
 
   $(".click-new-post").click(function() {
+    $(".click-group-events").removeClass("selected");
     $(".click-member-listing").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
     $(this).addClass("selected");
@@ -32,9 +33,21 @@ var ready = function() {
     $(".group-settings").hide();
   });
 
+  $(".click-group-events").click(function() {
+    $(".click-member-listing").removeClass("selected");
+    $(".click-group-settings").removeClass("selected");
+    $(".click-new-post").removeClass("selected");
+    $(this).addClass("selected");
+    $(".group-new-post").hide();
+    $(".group-posts").hide();
+    $(".group-member-listing").hide();
+    $(".group-settings").hide();
+  });
+
   $(".click-member-listing").click(function() {
     $(".click-new-post").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
+    $(".click-group-events").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-member-listing").show();
@@ -45,6 +58,7 @@ var ready = function() {
   $(".click-group-settings").click(function() {
     $(".click-new-post").removeClass("selected");
     $(".click-member-listing").removeClass("selected");
+    $(".click-group-events").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-settings").show();

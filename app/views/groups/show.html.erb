@@ -1,9 +1,6 @@
-  <!-- <h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p> -->
-<% provide(:title, @group.name) %>
-
-  <!-- TODO (Shimmy): Add photo functionality -->
-
+<div class="row">
+  <div class="group-name"><% provide(:title, @group.name) %>
+  </div>
 <div class="row group-header">
   <% if @group.photo %>
     <%= image_tag(@group.photo(:medium)) %>
@@ -20,28 +17,38 @@
     <% else %>
       <%= link_to join_group_path(@group), :controller => 'groups', :action => 'join', method: :put do %>
         <button id="join_group" value="join_group" class="small-3 large-3 right group-join">Join Group </button>
-        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
 
-<div id="menu-bar">
+<div id="menu-bar" \>
   <%= render 'groups/menu', group: @group %>
 </div>
 
 <div class="row">
-  <div class="large-7 left">
-    <div class="group-new-post"><%=
+  <div class="large-5 small-12 right">
+    <div class="row info-box">
+      <%= render 'groups/info_box' %>
+    </div>
+  </div>
+  <div class="large-7 small-12 left">
+    <div class="group-new-post row new-post"><%=
       if @group.users.include?(current_user)
         render 'posts/new'
       else
         render 'posts/non_member'
-      end %></div>
-    <div class="group-posts column">
+      end %>
+    </div>
+    <div class="group-posts">
       <%= render 'posts/index', posts: @posts, reply: @reply %>
     </div>
-    <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
-      <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
+    <div class="group-member-listing row" id="member-listing">
+      <%= render 'groups/member_listing', group: @group%>
+    </div>
+    <div class="group-settings row" id="settings-group">
+      <%= render 'groups/settings', group: @group %>
+    </div>
   </div>
-  <%= render 'groups/info_box' %>
+
 </div>

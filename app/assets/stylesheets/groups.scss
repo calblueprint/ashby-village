@@ -49,33 +49,18 @@
 
 .info-box {
   background-color: white;
-  float: right;
+
   border-radius: 8px;
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
   margin-left: 16px !important;
   padding: 12px;
-
-  // TEMP TEMP TEMP
-  .listing-member-display {
-    img {
-      float: left;
-      margin-right: 16px;
-    }
-  }
 }
 
-// TEMP TEMP TEMP
-.large-5 {
-  width: 39.66667% !important;
-}
-
-// MENU
 .group-menu {
   background-color: white;
   border-radius: 8px;
   height: 48px;
-  margin-top: 16px;
   span {
     color: $ashby-gray;
   }
@@ -87,7 +72,7 @@
 .click-new-post {
   padding: 10px;
   height: 48px;
-  width: 195px;
+  // width: 195px;
 }
 
 .click-new-post img {
@@ -103,7 +88,7 @@
 .click-member-listing {
   padding: 10px;
   height: 48px;
-  width: 195px;
+  // width: 195px;
 }
 
 .click-member-listing img {
@@ -119,8 +104,10 @@
 .click-group-settings {
   padding: 10px;
   height: 48px;
-  width: 195px;
+  // width: 195px;
 }
+
+
 
 .click-group-settings img {
   height: 25px;
@@ -132,6 +119,15 @@
   background-color: #f2f2f2;
 }
 
+<<<<<<< HEAD
+.click-group-events {
+  padding: 10px;
+  height: 48px;
+  // width: 195px;
+}
+
+.click-group-events:hover {
+=======
 .click-events {
   padding: 10px;
   height: 48px;
@@ -144,6 +140,7 @@
 }
 
 .click-events:hover {
+>>>>>>> master
   cursor: pointer;
   background-color: #f2f2f2;
 }
@@ -153,16 +150,16 @@
 }
 
 .group-join {
-  height: 44px;
+  // height: 44px;
   padding: 10px;
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .group-joined {
   background: #4A90E2 !important;
-  height: 48px;
+  // height: 48px;
   padding: 10px;
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .create-section {
@@ -199,6 +196,47 @@
     max-width: 27px;
     max-height: 27px;
     border: 3px solid white;
+  }
+}
+
+<<<<<<< HEAD
+.mobile-group-join {
+    display: none
+}
+
+@media (max-width: 64em) and (min-width: 42em) {
+  .group-join, .group-joined {
+    margin-bottom: 45px;
+    height: 15%;
+  }
+  .group-header {
+    h2 {
+      margin-bottom: 40px;
+    }
+  }
+
+  .mobile-group-join {
+    display: none;
+  }
+
+}
+@media (max-width: 41em) {
+  #hide_group_menu, .group-joined {
+    display: none;
+  }
+  .click-group-settings, .click-member-listing, .click-new-post {
+    width: 50px !important;
+  }
+  .post, .group-new-post {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+  .group-join {
+    display: none;
+  }
+
+  .mobile-group-join {
+    display: block;
   }
 }
 

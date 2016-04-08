@@ -1,10 +1,15 @@
 @import "ashby_settings.scss";
-
+.most-recent-post {
+  h6 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+}
 .post {
   background-color: white;
   border-radius: 8px;
-  margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 2px !important; // To override foundation's row class
+  // margin-top: 16px !important; // To override foundation's row class
+  // margin-bottom: 2px !important; // To override foundation's row class
   padding: 12px;
   @include ease-transition(0.5s);
   h6, h4, p {
@@ -12,18 +17,30 @@
     margin-bottom: 0px !important;
 
   }
-  .delete {
-    float: right;
-    color: $ashby-red;
-  }
-  .post-user {
-    margin-bottom: 8px !important; // To override foundation's row class
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
 
-    .timestamp {
-      text-transform: lowercase;
-      font-style: italic;
-    }
-  }
+.post-delete {
+  float: right !important;
+  display: inline-block;
+}
+
+.delete {
+  color: $ashby-red;
+}
+
+.post-user {
+  margin: 0px !important;
+  // margin-left: 0 !important;
+  // margin-right: 0 !important;
+  // margin-bottom: 8px !important; // To override foundation's row class
+}
+
+.timestamp {
+  text-transform: lowercase;
+  font-style: italic;
+  // display: inline-block;
 }
 
 .new-post {
@@ -32,7 +49,7 @@
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
   @include ease-transition(0.5s);
-  padding-top: 8px;
+  padding: 12px;
 }
 
 .post-display-member img {
@@ -42,16 +59,32 @@
   border-radius: 50%;
 }
 
-.post-display-header {
-  left: -24px;
+.post-display-member {
+  display: inline-block !important;
+  float: left !important;
+  margin-right: 8px;
 }
 
 .post-body {
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
+  // padding: 16px !important;
 }
 
 .text-area {
   background-color: white !important;
   border-radius:8px !important;
+}
+
+@media (max-width: 64em) and (min-width: 42em) {
+  .post-display-header {
+    display: inline-block !important;
+    margin-left: 16px !important;
+  }
+}
+@media (max-width: 41em) {
+  .post-display-header {
+    display: inline-block !important;
+    margin-left: 8px !important;
+  }
 }

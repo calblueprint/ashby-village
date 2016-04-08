@@ -1,10 +1,11 @@
-  <div class="" id="posts">
+<div class="most-recent-post row">
   <h6>
     <% if posts.count > 0 %>
       <%= "Most Recent Posts"%>
     <% end %>
   </h6>
+</div>
     <% posts.each do |post| %>
       <%= render 'posts/post', post: post, reply: reply %>
     <% end %>
-  </div>
+

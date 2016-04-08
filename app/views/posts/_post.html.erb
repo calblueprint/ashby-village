@@ -1,34 +1,35 @@
-<div class="post collapse" id="post-<%= post.id %>">
+<div class="post row">
   <!-- TODO (Shimmy): Picture link -->
   <div class="post-user row collapse">
-    <div class="post-display-member large-2 columns">
+    <div class="post-display-member">
       <% if post.user.is_leader(@group) %>
-      <div class="image-wrapper">
-        <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
-        <%= image_tag(post.user.photo(:thumb), class: "group-leader-photo") %>
-      </div>
+        <div class="image-wrapper">
+          <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
+          <%= image_tag(post.user.photo(:thumb), class: "group-leader-photo") %>
+        </div>
       <% else %>
         <%= image_tag(post.user.photo(:thumb)) %>
       <% end %>
     </div>
-    <div class="post-display-header large-10 columns">
-      <% if current_user.id == post.user.id or current_user.admin? or current_user.is_leader(@group) %>
-        <%= link_to "Delete", group_post_path(@group.id, post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
-      <% end %>
+    <div class="post-display-header">
       <p><%= link_to post.user.decorate.full_name, post.user %></p>
       <h6 class="timestamp"><i>Posted <%= time_ago_in_words(post.created_at) %> ago.</i></h6>
     </div>
   </div>
-  <div class="post-body row collapse">
+  <div class="post-body row">
     <h4><strong><%= post.title %></strong></h4>
     <p><%= post.content %></p>
   </div>
-  <div class="row collapse">
-    <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
-  </div>
-  <div class="reply-body row collapse">
-    <%= if @group.users.include? current_user
-         render 'replies/new', post: post, reply: reply
-        end %>
+
+  <div class="post-delete">
+    <% if current_user.id == post.user.id or current_user.admin? or current_user.is_leader(@group) %>
+      <%= link_to "Delete", group_post_path(@group.id, post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
+    <% end %>
   </div>
 </div>
+<%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
+
+  <%= if @group.users.include? current_user
+       render 'replies/new', post: post, reply: reply, group: @group
+      end %>
+

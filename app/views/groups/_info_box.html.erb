@@ -1,9 +1,9 @@
-<div class="info-box large-5 columns">
-  <h6>Description</h6>
-  <p><%= @group.description %></p>
-  <h6>Leader(s)</h6>
-  <div class="listing-member-display">
-    <% @group.users.leaders.each do |user| %>
+
+	<h6>Description</h6>
+	<p><%= @group.description %></p>
+	<h6>Leader(s)</h6>
+	<div class="listing-member-display">
+  <% @group.users.leaders.each do |user| %>
       <% if user.photo %>
         <div class="image-wrapper">
           <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
@@ -14,4 +14,4 @@
     <h6><%= number_to_phone(user.phone, area_code: true) %></h6><br>
     <% end %>
   </div>
-</div>
+

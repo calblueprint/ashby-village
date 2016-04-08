@@ -9,19 +9,19 @@
 	background: #7F8C8D;
 	padding: 20px 50px;
 	box-shadow: 0 2px 6px #999999;
-    
+
      animation:flash-fade 1s 1;
     -webkit-animation:flash-fade 1s 1;
     -moz-animation:flash-fade 1s 1;
     animation-fill-mode: forwards;
-    
+
     animation-delay:5s;
     -webkit-animation-delay:5s; /* Safari and Chrome */
     -moz-animation-delay: 5s;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
-    
-} 
+
+}
 
 @keyframes flash-fade{
     from {opacity :1;}
@@ -49,10 +49,16 @@
     -webkit-animation:flash-fade 1s 1;
     -moz-animation:flash-fade 1s 1;
     animation-fill-mode: forwards;
-    
+
     animation-delay:5s;
     -webkit-animation-delay:5s; /* Safari and Chrome */
     -moz-animation-delay:5s;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
+}
+
+@media (max-width: 41em) {
+  .flash_notice, .flash_error {
+    padding: 8px, 20px;
+  }
 }

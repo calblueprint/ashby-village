@@ -1,14 +1,20 @@
-<div class="row collapse">
-  <div class="reply-display-member large-2 columns">
-    <% if current_user.photo %>
-      <%= image_tag(current_user.photo(:thumb)) %>
-    <% end %>
+<div class="row">
+  <div class="small-1 large-1 columns">
   </div>
-  <div class="large-10 columns">
-    <%= form_for [post.group, post, @reply] do |f| %>
-      <%= f.text_area :content, placeholder: "Write your reply here...", required: true, class: "reply-content" %>
-      <%= f.hidden_field :post, value: post, required: true %>
-      <%= f.submit "Post Reply Here", class: "reply-button button right" %>
+  <div class="new-reply small-11 large-11 columns">
+    <div class="reply-user row collapse">
+      <div class="new-reply-display-member">
+        <% if current_user.photo %>
+          <%= image_tag(current_user.photo(:thumb)) %>
+        <% end %>
+      </div>
+      <div class="reply-form">
+        <%= form_for [group,post,@reply] do |f| %>
+          <%= f.text_area :content, placeholder: "Write your reply here...", required: true, class: "reply-content" %>
+          <!-- <%= f.hidden_field :post, value: post, required: true %> -->
+      </div>
+    </div>
+    <%= f.submit "Post Reply Here", class: "reply-button button right" %>
     <% end %>
   </div>
 </div>

@@ -2,61 +2,133 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "ashby_settings.scss";
+@import "ashby_settings.scss";
 
 .reply {
-  background-color: #E3E3E3;
-  border: 1px solid $ashby-gray;
+  background-color: white;
   border-radius: 8px;
-  margin-top: 2px !important; // To override foundation's row class
-  margin-bottom: 2px !important; // To override foundation's row class
+  border-left: 8px;
+  border-right: 0px !important;
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+  border-style: solid;
+  border-color: $ashby-light-blue;
+
+  // margin-top: 16px !important; // To override foundation's row class
+  // margin-bottom: 2px !important; // To override foundation's row class
   padding: 12px;
+  @include ease-transition(0.5s);
   h6, h4, p {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
-  }
-  .reply-user {
-    margin-bottom: 8px !important; // To override foundation's row class
 
-    .timestamp {
-      text-transform: lowercase;
-      font-style: italic;
-    }
   }
+  margin-bottom: 16px !important;
+}
+
+.reply-delete {
+  float: right !important;
+  display: inline-block !important;
+}
+
+.delete {
+  color: $ashby-red;
+}
+
+.reply-user {
+  margin: 0px !important;
+  // margin-left: 0 !important;
+  // margin-right: 0 !important;
+  // margin-bottom: 8px !important; // To override foundation's row class
+}
+
+.timestamp {
+  text-transform: lowercase;
+  font-style: italic;
+  // display: inline-block;
 }
 
 .new-reply {
-  background-color: #E3E3E3;
-  border: 1px solid $ashby-gray;
+  background-color: white;
   border-radius: 8px;
-  margin-top: 2px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
+  @include ease-transition(0.5s);
   padding: 12px;
-  h6, h4, p {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-  }
-}
-
-.reply-header {
-  margin-left: 8px;
-}
-
-.reply-body {
-  margin-top: 16px !important; // To override foundation's row class
-}
-
-.reply-content {
-  margin-left: -16px;
+  position: relative;
 }
 
 .reply-display-member img {
   object-fit: cover;
-  height: 48px;
-  width: 48px;
+  height: 48px !important;
+  width: 48px !important;
   border-radius: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+
+.reply-display-member {
+  display: inline-block !important;
+  float: left !important;
+}
+
+.new-reply-display-member img {
+  object-fit: cover;
+  height: 48px !important;
+  width: 48px !important;
+  border-radius: 50%;
+  box-sizing: border-box;
+  float: left;
+  position: absolute;
+}
+
+.new-reply-display-member {
+  height: 48px !important;
+  width: 48px !important;
+  display: inline-block !important;
+  float: left !important;
+  position: absolute;
+}
+
+.reply-body {
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  // padding: 16px !important;
+}
+
+// TO OFFSET THE ANCHOR //
+:target:before {
+  content:"";
+  display:block;
+  height:90px; /* fixed header height*/
+  margin:-90px 0 0; /* negative fixed header height */
 }
 
 .text-area {
   background-color: white !important;
   border-radius:8px !important;
+}
+
+.reply-form {
+  box-sizing: border-box;
+  display: inline-block !important;
+  width: 100%;
+  padding-left: 64px;
+}
+
+.reply-button {
+  margin: 4px !important;
+  border-left: 4px;
+}
+
+@media (max-width: 64em) and (min-width: 42em) {
+  .reply-display-header {
+    display: inline-block !important;
+    margin-left: 16px !important;
+  }
+}
+@media (max-width: 41em) {
+  .reply-display-header {
+    display: inline-block !important;
+    margin-left: 8px !important;
+  }
 }

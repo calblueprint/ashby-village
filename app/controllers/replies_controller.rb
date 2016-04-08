@@ -5,10 +5,8 @@ class RepliesController < ApplicationController
     @reply = post.replies.build(reply_params)
     if @reply.save
       flash[:notice] = "Reply successful"
-      redirect_to @group
+      redirect_to group_path(@group, {}, anchor: "post_id#{@reply.id}")
     end
-
-  # TODO (Shimmy): Flash success notification on send
   end
 
   def destroy
