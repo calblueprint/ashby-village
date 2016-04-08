@@ -37,7 +37,11 @@ class EventsController < ApplicationController
     if(not params[:gmap].nil?)
       @event.gmap = true
     end
-    params[:organizers].concat([current_user.id.to_s])
+    if !params[:organizers].blank?
+      params[:organizers].concat([current_user.id.to_s])
+    else
+      params[:organizers] = [current_user.id.to_s]
+    end
     if @event.save
       (@event.group.users).each do |user|
         Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
