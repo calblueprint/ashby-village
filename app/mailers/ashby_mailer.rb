@@ -5,6 +5,7 @@ class AshbyMailer < ApplicationMailer
     @users = users
     @users.each do |user|
       @each_user = user
-      mail(to: user.email, subject: "You're invited!")
+      mail(to: @each_user.email, subject: "You're invited!")
+  end
   end
 end

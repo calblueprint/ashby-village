@@ -34,10 +34,13 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    if(not params[:gmap].nil?)
-      @event.gmap = true
+
+    if !params[:organizers].nil?
+     params[:organizers].concat([current_user.id.to_s])
+    else
+     params[:organizers] = [current_user.id.to_s]
     end
-    params[:organizers].concat([current_user.id.to_s])
+
     if @event.save
       (@event.group.users).each do |user|
         Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
@@ -45,7 +48,7 @@ class EventsController < ApplicationController
       redirect_to @event, notice: "Event was successfully created."
 
       #Invite all users in this group using ashby_mailer
-      group = Group.find(@event.group_id) #get event's group
+      @group = Group.find(@event.group_id) #get event's group
       @users = @group.users #get all users in that group
       # users.each do |user|
       #   @user_emails += user.email
