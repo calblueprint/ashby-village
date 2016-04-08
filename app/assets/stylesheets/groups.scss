@@ -88,7 +88,6 @@
 .click-member-listing {
   padding: 10px;
   height: 48px;
-  // width: 195px;
 }
 
 .click-member-listing img {
@@ -104,7 +103,6 @@
 .click-group-settings {
   padding: 10px;
   height: 48px;
-  // width: 195px;
 }
 
 
@@ -119,7 +117,6 @@
   background-color: #f2f2f2;
 }
 
-<<<<<<< HEAD
 .click-group-events {
   padding: 10px;
   height: 48px;
@@ -127,20 +124,6 @@
 }
 
 .click-group-events:hover {
-=======
-.click-events {
-  padding: 10px;
-  height: 48px;
-  width: 195px;
-}
-
-.click-events img {
-  height: 25px;
-  margin-right: 10px;
-}
-
-.click-events:hover {
->>>>>>> master
   cursor: pointer;
   background-color: #f2f2f2;
 }
@@ -199,7 +182,6 @@
   }
 }
 
-<<<<<<< HEAD
 .mobile-group-join {
     display: none
 }
@@ -218,7 +200,6 @@
   .mobile-group-join {
     display: none;
   }
-
 }
 @media (max-width: 41em) {
   #hide_group_menu, .group-joined {
