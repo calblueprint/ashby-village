@@ -5,7 +5,7 @@
   margin: 8px;
 }
 
-.top-bar .my-groups img {
+.top-bar .my-tab img {
   height: 24px;
   margin-right: 16px;
 }
@@ -21,4 +21,20 @@
 
 .top-bar .my-profile li {
   border-top: 1px solid white;
+}
+
+.top-bar .menu-icon a {
+  margin-top: 30px;
+}
+
+.my-tab i {
+  color: white;
+  margin-right: 8px;
+}
+
+@media (max-width: 41em) {
+  .top-bar .my-profile img {
+    height: 28px;
+    width: 28px;
+  }
 }
