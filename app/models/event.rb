@@ -52,7 +52,21 @@ class Event < ActiveRecord::Base
   end
 
   def self.repeat_events
-
+    self.where(repeat_weekly: true).each do |e|
+      if e.enddate < DateTime.now.to_date
+        e.startdate += 7.days
+        e.enddate += 7.days
+        e.save
+        puts e.errors
+      end
+    end
+    self.where(repeat_monthly: true).each do |e|
+      if e.enddate < DateTime.now.to_date
+        e.startdate += 4.weeks
+        e.enddate += 4.weeks
+        e.save
+      end
+    end
   end
 
   def self.send_invites
@@ -71,13 +85,13 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def event_endtime_later_than_starttime
-    if enddate.present? && endtime.present?
-      if enddate < startdate
-        errors.add(:enddate, "Your event cannot end before it starts!")
-      elsif endtime.to_s(:time) < starttime.to_s(:time) && enddate == startdate
-        errors.add(:endtime, "Your event cannot end before it starts!")
+    def event_endtime_later_than_starttime
+      if enddate.present? && endtime.present?
+        if enddate < startdate
+          errors.add(:enddate, "Your event cannot end before it starts!")
+        elsif endtime.to_s(:time) < starttime.to_s(:time) && enddate == startdate
+          errors.add(:endtime, "Your event cannot end before it starts!")
+        end
       end
     end
-  end
 end
