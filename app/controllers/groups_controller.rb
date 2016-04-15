@@ -29,9 +29,10 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
-      @users = User.where.not(id: current_user.id).decorate.map{ |u| [u.full_name, u.id]}
       @kinds = Group.kinds.keys.reject { |i| i == "announcement" }
       @neighborhoods = Group.neighborhoods.keys
+      @allnames = Group.all.map(&:name)
+      render action: "new", notice: "Sample notice"
     else
       redirect_to new_user_session_path, notice: "You are not logged in."
     end
