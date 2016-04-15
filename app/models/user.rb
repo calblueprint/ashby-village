@@ -59,6 +59,11 @@ class User < ActiveRecord::Base
       where("invites.rsvp = ?", true)
     end
   end
+
+  def is_attendee(event)
+    event.users.exists?(id: id)
+  end
+
   def is_leader(group)
     group.users.leaders.exists?(id: id)
   end

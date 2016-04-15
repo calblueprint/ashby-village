@@ -25,8 +25,24 @@ class Event < ActiveRecord::Base
     def rsvps
       where("invites.rsvp = ?", true)
     end
+
     def organizers
       where("invites.organizer = ?", true)
+    end
+  end
+
+  def add_users(current_user, organizers)
+    @event_organizers = [current_user]
+    if organizers
+      @event_organizers.concat(User.find(organizers))
+    end
+    @event_organizers.each do |user|
+      Invite.create(user: user, event: self, organizer: true)
+    end
+    self.group.users.each do |user|
+      unless self.users.include?(user)
+        Invite.create(user: user, event: self, organizer: false)
+      end
     end
   end
 
