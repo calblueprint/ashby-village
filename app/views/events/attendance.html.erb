@@ -1,5 +1,5 @@
 <div class="attendance-title row">
-	<h3><%= link_to @event.title, event_path(@event) %> by <%= link_to @group.name, group_path(@group) %></h3>
+	<h3><%= link_to @event.title, group_event_path(@group, @event) %> by <%= link_to @group.name, group_path(@group) %></h3>
 	<h2>Who's Attending?</h2>
 </div>
 

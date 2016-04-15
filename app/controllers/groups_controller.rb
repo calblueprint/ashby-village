@@ -22,7 +22,9 @@ class GroupsController < ApplicationController
     @post = Post.new
     @reply = Reply.new
     @group = Group.friendly.find(params[:id])
-    @posts = @group.posts.order_by_created_at
+    @posts = @group.posts.where(event_id: nil).order_by_created_at
+    @event_id = nil
+    @group_id = @group.id
     @neighborhood = @group.neighborhood
   end
 

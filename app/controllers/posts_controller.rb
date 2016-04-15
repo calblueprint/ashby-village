@@ -8,16 +8,25 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @group = Group.friendly.find(params[:group_id])
+    @group = Event.find(params[:event_id])
   end
 
   def create
     @reply = Reply.new
-    @group = Group.friendly.find(params[:group_id])
-    @post = @group.posts.build(post_params)
+    if post_params[:group_id].blank?
+      @event = Event.find(post_params[:event_id])
+      @post = @event.posts.build(post_params)
+      group = @event.group
+      page = group_event_path(group, @event)
+    else
+      @group = Group.friendly.find(post_params[:group_id])
+      @post = @group.posts.build(post_params)
+      page = group_path(@group)
+    end
 
     if @post.save
       flash[:notice] = "Post successful"
-      redirect_to @group
+      redirect_to page
     end
     # TODO(Shimmy): Flash success notification on send
   end
@@ -32,7 +41,7 @@ class PostsController < ApplicationController
 
   # TODO(Shimmy): Add picture support
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :group_id).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :user_id, :group_id, :event_id).merge(user_id: current_user.id)
   end
 
   # TODO(Shimmy): Use CanCanCan instead.

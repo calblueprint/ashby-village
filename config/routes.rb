@@ -90,17 +90,21 @@ Rails.application.routes.draw do
       put "join"
       put "leave"
     end
-    resources :posts do
-      resources :replies
+    resources :events do
+      get "attendance"
+      patch "rsvp"
+      patch "cancel"
     end
+  end
+###################################################
+# Posts
+###################################################
+  resources :posts do
+      resources :replies
   end
 
   ##################################################
   # Events
   ##################################################
-  resources :events do
-    get "attendance"
-    patch "rsvp"
-    patch "cancel"
-  end
+
 end

@@ -9,7 +9,7 @@
     <h2><%= @group.name %></h2>
     <h6><%= @group.kind %> GROUP IN <%= @neighborhood %></h6>
     <% if @group.users.leaders.include?(current_user) %>
-      <%= link_to new_event_path(@group.id) do %>
+      <%= link_to new_group_event_path(@group) do %>
         <button class="small-3 large-3 right create-event">Create New Event</button>
       <% end %>
     <% elsif @group.users.include?(current_user) %>

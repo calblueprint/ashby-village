@@ -9,9 +9,8 @@
         <% end %>
       </div>
       <div class="reply-form">
-        <%= form_for [group,post,@reply] do |f| %>
+        <%= form_for [post, @reply] do |f| %>
           <%= f.text_area :content, placeholder: "Write your reply here...", required: true, class: "reply-content" %>
-          <!-- <%= f.hidden_field :post, value: post, required: true %> -->
       </div>
     </div>
     <%= f.submit "Post Reply Here", class: "reply-button button right" %>

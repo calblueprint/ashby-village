@@ -21,16 +21,19 @@
 			<h6>Description</h6>
 			<p><%= @event.description %></p>
 		</div>
+
+	<%= render 'posts/new'%>
+  <%= render 'posts/index', posts: @posts, reply: @reply %>
 	</div>
 
 	<div class="large-4 right columns">
 		<div class="row">
 		  <% if @event.users.rsvps.include?(current_user) %>
-		      <%= link_to event_cancel_path(@event), method: :patch do %>
+		      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>
 		      	<button class="is-attending"><span>You're Attending</span></button>
 		      <% end %>
 		  <% else %>
-		      <%= link_to event_rsvp_path(@event), method: :patch do %>
+		      <%= link_to group_event_rsvp_path(@group, @event), method: :patch do %>
 		      	<button class="event-joined">Click to RSVP</button>
 		      <% end %>
 		  <% end %>
@@ -58,7 +61,7 @@
 		 <div class="row">
 		 	<div class="attendance-list">
 		 	<h6>Who is Attending?</h6>
-		 		<%= link_to event_attendance_path(@event), method: :get do %>
+		 		<%= link_to group_event_attendance_path(@group, @event), method: :get do %>
 		 			<button class="attendance-button is-member">See Who's Attending</button>
 		 		<% end %>
 		 	</div>

@@ -2,7 +2,7 @@
   <h2>Create A New Event for <%= link_to @group.name, group_path(@group) %></h2>
   <h4 class="create-subtitle">Fill in the blanks below to create your new event. All fields are required.</h4>
 </div>
-  <%= form_for @event do |f| %>
+  <%= form_for [@group, @event] do |f| %>
   <div class="create-section row">
     Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
     Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
@@ -23,7 +23,6 @@
       <%= select_tag(:organizers, options_for_select(@users), multiple:true, size:3)
       %>
     </div>
-    <%= f.hidden_field :group_id, value: @group.id %>
     <%= f.submit %>
     </div>
   <% end %>

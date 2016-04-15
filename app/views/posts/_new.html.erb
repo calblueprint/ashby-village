@@ -1,6 +1,6 @@
 <div class="row">
   <h3><strong>Write a Post</strong></h3>
-  <%= form_for [@group,@post] do |f| %>
+  <%= form_for [@post] do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field" id="post_title">
       <%= f.text_field :title, placeholder: "What's your post about? (optional)" %>
@@ -8,6 +8,8 @@
     <div class="field" id="post_content">
       <%= f.text_area :content, required: true, placeholder: "Compose new post..." %>
     </div>
+    <%= f.hidden_field :event_id, value: @event_id%>
+    <%= f.hidden_field :group_id, value: @group_id%>
     <%= f.submit "Post New Topic", class: "button right" %>
   <% end %>
 </div>

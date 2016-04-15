@@ -2,10 +2,15 @@ class RepliesController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     @group = post.group
+    @event = post.event
     @reply = post.replies.build(reply_params)
     if @reply.save
       flash[:notice] = "Reply successful"
-      redirect_to group_path(@group, {}, anchor: "post_id#{@reply.id}")
+      if @group.nil?
+        redirect_to group_event_path(@event.group, @event)
+      else
+        redirect_to group_path(@group, {}, anchor: "post_id#{@reply.id}")
+      end
     end
   end
 

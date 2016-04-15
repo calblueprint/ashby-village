@@ -17,12 +17,24 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @post = Post.new
+    @reply = Reply.new
+    @event = Event.find(params[:id])
+    @event_id = @event.id
+    @group = @event.group
+    @posts = @event.posts.where(group_id: nil)
+    @group_id = nil
   end
 
   # GET /events/new
   def new
-    @event = Event.new
-    @group = Group.find(params[:format])
+    if params.key?(:event_param)
+      @event = Event.new(params[:event_param].permit(:title, :description, :starttime,
+                                                     :startdate, :endtime, :enddate, :location))
+    else
+      @event = Event.new
+    end
+    @group = Group.friendly.find(params[:group_id])
     @users = @group.users.where.not(id: current_user.id).decorate.map { |u| [u.full_name, u.id] }
   end
 
@@ -33,14 +45,26 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-    @group = Group.find(event_params[:group_id])
-    if @event.save
-      @event.add_users(current_user, organizers = params[:organizers])
-      redirect_to @event, notice: "Event was successfully created."
+    group = Group.friendly.find(params[:group_id])
+    @event = group.events.build(event_params)
+    if(not params[:gmap].nil?)
+      @event.gmap = true
+    end
+    if !params[:organizers].blank?
+      params[:organizers].concat([current_user.id.to_s])
+
     else
       flash[:error] = "Group Could not be created"
       render :new
+    end
+    if @event.save
+      (@event.group.users).each do |user|
+        Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
+      end
+      redirect_to group_event_path(group, @event), notice: "Event was successfully created."
+    else
+      flash[:error] = @event.errors.values.first.first
+      redirect_to controller: "events", action: "new", event_param: event_params
     end
   end
 
@@ -96,6 +120,6 @@ class EventsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:title, :description, :starttime, :startdate,
-                                  :endtime, :enddate, :location, :group_id)
+                                  :endtime, :enddate, :location)
   end
 end

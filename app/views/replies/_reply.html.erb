@@ -4,7 +4,7 @@
     <div class="reply small-11 large-11 columns">
       <div class="reply-user row collapse">
       <div class="reply-display-member">
-        <% if reply.user.is_leader(@group) %>
+        <% if @group and reply.user.is_leader(@group) %>
           <div class="image-wrapper">
             <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
             <%= image_tag(reply.user.photo(:thumb), class: "group-leader-photo") %>
@@ -23,7 +23,7 @@
     </div>
     <div class="reply-delete">
     <% if current_user.id == reply.user.id or current_user.admin? or current_user.is_leader(@group) %>
-      <%= link_to "Delete", group_post_reply_path(@group.id, reply.id, post_id), method: :delete, data: { confirm: 'Are you sure you want to delete your reply?' }, class: "delete" %>
+      <%= link_to "Delete", post_reply_path(reply.id, post_id), method: :delete, data: { confirm: 'Are you sure you want to delete your reply?' }, class: "delete" %>
     <% end %>
     </div>
   </div>

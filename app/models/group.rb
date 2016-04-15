@@ -42,7 +42,11 @@ class Group < ActiveRecord::Base
   end
 
   has_many :events, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :posts, dependent: :destroy do
+    def group_posts
+      where("groups.")
+    end
+  end
   has_many :replies, dependent: :destroy
 
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("empty_group.png")

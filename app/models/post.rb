@@ -20,4 +20,5 @@ class Post < ActiveRecord::Base
   has_many :replies, dependent: :destroy
   belongs_to :user
   belongs_to :group
+  belongs_to :event
 end

@@ -16,7 +16,7 @@
         <% if user_signed_in? %>
           <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-tab">
-            <a href="<%= events_path(current_user.id) %>">
+            <a href="<%= group_events_path(current_user.id) %>">
               <i class="fa fa-calendar fa-lg"></i>
               My Events
             </a>

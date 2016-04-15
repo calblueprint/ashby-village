@@ -3,7 +3,7 @@
 </div>
 
 <% @events.each do |event| %>
-  <a class="tile-link" href="<%= event_path(event) %>">
+  <a class="tile-link" href="<%= group_event_path(event.group, event) %>">
   <div class="event-tile row">
     <div class="large-8 columns">
       <h3 class="event-tile-title"><%= event.title %></h3>
@@ -19,11 +19,11 @@
       </div>
     </div>
     <% if event.users.rsvps.include?(current_user) %>
-        <%= link_to event_cancel_path(event), method: :patch do %>
+        <%= link_to group_event_cancel_path(event.group, event), method: :patch do %>
           <button class="tile-is-attending large-4"><span>You're Attending</span></button>
         <% end %>
     <% else %>
-        <%= link_to event_rsvp_path(event), method: :patch do %>
+        <%= link_to group_event_rsvp_path(event.group, event), method: :patch do %>
           <button class="tile-event-joined large-4">Click to RSVP</button>
         <% end %>
     <% end %>

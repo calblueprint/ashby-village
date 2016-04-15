@@ -19,8 +19,8 @@
 class Event < ActiveRecord::Base
 
   belongs_to :group
-
-  has_many :invites
+  has_many :posts
+  has_many :invites, dependent: :destroy
   has_many :users, through: :invites do
     def rsvps
       where("invites.rsvp = ?", true)
@@ -56,5 +56,27 @@ class Event < ActiveRecord::Base
 
   def self.send_invites
 
+  end
+
+  validate :event_starttime_later_than_now, :event_endtime_later_than_starttime
+
+  def event_starttime_later_than_now
+    if starttime.present? && startdate.present?
+      if startdate < DateTime.now.to_date
+        errors.add(:startdate, "Your event cannot start in the past!")
+      elsif starttime.to_s(:time) < Time.now.to_s(:time)
+        errors.add(:Starttime, "Your event cannot start in the past!")
+      end
+    end
+  end
+
+  def event_endtime_later_than_starttime
+    if enddate.present? && endtime.present?
+      if enddate < startdate
+        errors.add(:enddate, "Your event cannot end before it starts!")
+      elsif endtime.to_s(:time) < starttime.to_s(:time) && enddate == startdate
+        errors.add(:endtime, "Your event cannot end before it starts!")
+      end
+    end
   end
 end

@@ -2,7 +2,7 @@
   <!-- TODO (Shimmy): Picture link -->
   <div class="post-user row collapse">
     <div class="post-display-member">
-      <% if post.user.is_leader(@group) %>
+      <% if @group and post.user.is_leader(@group) %>
         <div class="image-wrapper">
           <%= image_tag("leader-icon.png", class: "group-leader-icon") %>
           <%= image_tag(post.user.photo(:thumb), class: "group-leader-photo") %>
@@ -20,16 +20,14 @@
     <h4><strong><%= post.title %></strong></h4>
     <p><%= post.content %></p>
   </div>
-
   <div class="post-delete">
     <% if current_user.id == post.user.id or current_user.admin? or current_user.is_leader(@group) %>
-      <%= link_to "Delete", group_post_path(@group.id, post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
+      <%= link_to "Delete", post_path(post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
     <% end %>
   </div>
 </div>
 <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
-
-  <%= if @group.users.include? current_user
-       render 'replies/new', post: post, reply: reply, group: @group
+  <%= if (@group && @group.users.include?(current_user)) || (@event.users.include? (current_user))
+       render 'replies/new', post: post, reply: reply
       end %>
 
