@@ -46,4 +46,15 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.send_reminders
+
+  end
+
+  def self.repeat_events
+
+  end
+
+  def self.send_invites
+
+  end
 end
