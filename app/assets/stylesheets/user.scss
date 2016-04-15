@@ -138,6 +138,12 @@
   }
 }
 
+@media (min-width: 41em) {
+  .selected:nth-last-child(2) {
+    border-bottom-right-radius: 8px;
+}
+}
+
 .no-groups-leading {
   margin-top: 16px !important;
 }

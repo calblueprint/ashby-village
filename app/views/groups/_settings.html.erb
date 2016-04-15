@@ -1,5 +1,6 @@
 <div class="settings-group">
   <div class="settings-remove-membership">
+    <h6>Settings</h6>
     <% if group.users.exists?(id: current_user.id) %>
       <% if current_user.is_only_leader(group) %>
         <p> Since you are the only leader of this group, removing your membership will mark this group inactive and villagers will be unable to view or join it. Please add another group leader before removing yourself if you would like this group to stay active. </p>
@@ -16,16 +17,12 @@
     <% end %>
   </div>
 
-  <!-- TODO: add conditional for is leader of group for this chunk -->
-
   <% if current_user.is_leader(@group) %>
-  <div class="settings-edit row">
+  <div class="settings-edit">
     <p>Since you are a leader of <%= group.name %>, you can edit the details of this group.</p>
     <%= link_to edit_group_path(group.id), class: 'success radius small' do %>
       <button class="edit-group">Edit Group</button> <!-- Change button color to blue -->
     <% end %>
   </div>
   <% end %>
-
-
 </div>

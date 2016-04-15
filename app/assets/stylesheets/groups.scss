@@ -47,87 +47,6 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 1) 100%);
 }
 
-.info-box {
-  background-color: white;
-
-  border-radius: 8px;
-  margin-top: 16px !important; // To override foundation's row class
-  margin-bottom: 16px !important; // To override foundation's row class
-  margin-left: 16px !important;
-  padding: 12px;
-}
-
-.group-menu {
-  background-color: white;
-  border-radius: 8px;
-  height: 48px;
-  span {
-    color: $ashby-gray;
-  }
-}
-
-.group-menu p {
-  color: $ashby-gray;
-}
-.click-new-post {
-  padding: 10px;
-  height: 48px;
-  // width: 195px;
-}
-
-.click-new-post img {
-  height: 25px;
-  margin-right: 10px;
-}
-
-.click-new-post:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
-}
-
-.click-member-listing {
-  padding: 10px;
-  height: 48px;
-}
-
-.click-member-listing img {
-  height: 25px;
-  margin-right: 10px;
-}
-
-.click-member-listing:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
-}
-
-.click-group-settings {
-  padding: 10px;
-  height: 48px;
-}
-
-
-
-.click-group-settings img {
-  height: 25px;
-  margin-right: 10px;
-}
-
-.click-group-settings:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
-}
-
-.click-group-events {
-  padding: 10px;
-  height: 48px;
-  // width: 195px;
-}
-
-.click-group-events:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
-}
-
 .group-posts {
   padding: 0px !important;
 }
@@ -166,6 +85,7 @@
 
 .image-wrapper {
   position: relative;
+  float: left;
 
   .group-leader-photo img {
     position: relative;
@@ -186,6 +106,14 @@
     display: none
 }
 
+.remove-membership {
+  margin-bottom: 0;
+}
+
+.edit-group {
+  margin-bottom: 0;
+}
+
 @media (max-width: 64em) and (min-width: 42em) {
   .group-join, .group-joined {
     margin-bottom: 45px;
@@ -201,17 +129,12 @@
     display: none;
   }
 }
+
 @media (max-width: 41em) {
   #hide_group_menu, .group-joined {
     display: none;
   }
-  .click-group-settings, .click-member-listing, .click-new-post {
-    width: 50px !important;
-  }
-  .post, .group-new-post {
-    margin-left: 10px !important;
-    margin-right: 10px !important;
-  }
+  
   .group-join {
     display: none;
   }
@@ -283,11 +206,9 @@
     line-height: 18px;
     color: #555555;
     white-space: nowrap;
- 
-  
-
   }
 }
+
 .ui-widget-content .ui-state-focus {
   color: #ffffff;
   text-decoration: none;

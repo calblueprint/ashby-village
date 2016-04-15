@@ -18,25 +18,30 @@ var ready = function() {
   $(".false").hide();
   $(".group-new-post").show();
   $(".group-posts").show();
-  $(".click-new-post").addClass("selected");
+  $(".click-bulletin").addClass("selected");
   $(".group-member-listing").hide();
   $(".group-settings").hide();
+  $(".group-events").hide();
 
-  $(".click-new-post").click(function() {
+  $(".click-bulletin").click(function() {
     $(".click-group-events").removeClass("selected");
     $(".click-member-listing").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
+    $(".click-group-events").removeClass("selected");
+    $(".click-description").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").show();
     $(".group-posts").show();
     $(".group-member-listing").hide();
     $(".group-settings").hide();
+    $(".group-events").hide();
   });
 
   $(".click-group-events").click(function() {
     $(".click-member-listing").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
-    $(".click-new-post").removeClass("selected");
+    $(".click-bulletin").removeClass("selected");
+    $(".click-description").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-posts").hide();
@@ -45,25 +50,55 @@ var ready = function() {
   });
 
   $(".click-member-listing").click(function() {
-    $(".click-new-post").removeClass("selected");
+    $(".click-bulletin").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
     $(".click-group-events").removeClass("selected");
+    $(".click-description").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-member-listing").show();
     $(".group-settings").hide();
     $(".group-posts").hide();
+    $(".group-events").hide();
   });
 
   $(".click-group-settings").click(function() {
-    $(".click-new-post").removeClass("selected");
+    $(".click-bulletin").removeClass("selected");
     $(".click-member-listing").removeClass("selected");
     $(".click-group-events").removeClass("selected");
+    $(".click-description").removeClass("selected");
     $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-settings").show();
     $(".group-member-listing").hide();
     $(".group-posts").hide();
+    $(".group-events").hide();
+  });
+
+  $(".click-group-events").click(function() {
+    $(".click-bulletin").removeClass("selected");
+    $(".click-member-listing").removeClass("selected");
+    $(".click-group-settings").removeClass("selected");
+    $(".click-description").removeClass("selected");
+    $(this).addClass("selected");
+    $(".group-new-post").hide();
+    $(".group-settings").hide();
+    $(".group-member-listing").hide();
+    $(".group-posts").hide();
+    $(".group-events").show();
+  });
+
+  $(".click-description").click(function() {
+    $(".click-bulletin").removeClass("selected");
+    $(".click-member-listing").removeClass("selected");
+    $(".click-group-events").removeClass("selected");
+    $(".click-group-settings").removeClass("selected");
+    $(this).addClass("selected");
+    $(".group-new-post").hide();
+    $(".group-settings").hide();
+    $(".group-member-listing").hide();
+    $(".group-posts").hide();
+    $(".group-events").hide();
   });
 };
 

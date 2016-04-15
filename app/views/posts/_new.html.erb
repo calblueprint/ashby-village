@@ -1,4 +1,4 @@
-
+<div class="row">
   <h3><strong>Write a Post</strong></h3>
   <%= form_for [@group,@post] do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -10,4 +10,4 @@
     </div>
     <%= f.submit "Post New Topic", class: "button right" %>
   <% end %>
-
+</div>

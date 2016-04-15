@@ -46,9 +46,11 @@
 			          <%= image_tag(user.photo(:thumb), class: "event-organizer-photo") %>
 			        </div>
 			      <% end %>
-			    <%= link_to user.decorate.full_name, user %><br>
-			    <h7><%= user.email %></h7><br>
-			    <h7><%= user.phone %></h7><br>
+              <div class="organizer-bio">
+		            <%= link_to user.decorate.full_name, user %><br>
+		            <p><%= user.email %></p>
+		            <p><%= user.phone %></p><br>
+	            </div>
 			    <% end %>
 			</div>
 		 </div>

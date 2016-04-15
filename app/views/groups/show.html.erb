@@ -27,13 +27,8 @@
 </div>
 
 <div class="row">
-  <div class="large-5 small-12 right">
-    <div class="row info-box">
-      <%= render 'groups/info_box' %>
-    </div>
-  </div>
-  <div class="large-7 small-12 left">
-    <div class="group-new-post row new-post"><%=
+  <div class="large-7 small-12 medium-8 left">
+    <div class="group-new-post columns new-post"><%=
       if @group.users.include?(current_user)
         render 'posts/new'
       else
@@ -43,11 +38,13 @@
     <div class="group-posts">
       <%= render 'posts/index', posts: @posts, reply: @reply %>
     </div>
-    <div class="group-member-listing row" id="member-listing">
-      <%= render 'groups/member_listing', group: @group%>
-    </div>
-    <div class="group-settings row" id="settings-group">
-      <%= render 'groups/settings', group: @group %>
+    <div class="group-member-listing" id="member-listing"><%= render 'groups/member_listing', group: @group%></div>
+      <div class="group-settings" id="settings-group"><%= render 'groups/settings', group: @group %></div>
+      <div class="group-events" id="events-group"><%= render 'groups/events', group: @group %></div>
+  </div>
+  <div class="large-5 small-12 medium-4 right">
+    <div class="info-box">
+      <%= render 'groups/info_box' %>
     </div>
   </div>
 

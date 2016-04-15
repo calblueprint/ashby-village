@@ -42,3 +42,21 @@
   -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
   box-shadow: 0px 4px 0px 0px $ashby-dark-red;
 }
+
+.event-tile-organizers img {
+    object-fit: cover;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    margin-right: 16px;
+    float: left;
+}
+
+.event-tile-icon {
+  padding: 0;
+}
+
+.event-tile-icon img {
+  height: 25px;
+  margin-right: 7px;
+}

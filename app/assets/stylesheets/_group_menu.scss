@@ -1,0 +1,68 @@
+@import "ashby_settings.scss";
+
+.info-box {
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 16px; // To override foundation's row class
+  margin-bottom: 16px ; // To override foundation's row class
+  margin-left: 16px;
+  padding: 24px;
+}
+
+.group-menu {
+  background-color: white;
+  border-radius: 8px;
+  height: 48px;
+  margin-top: 16px !important;
+  span {
+    color: $ashby-gray;
+  }
+}
+
+.group-menu p {
+  color: $ashby-gray;
+}
+
+.click-bulletin, .click-member-listing, .click-group-settings,
+.click-group-events, .click-description {
+  padding: 10px;
+  height: 48px;
+}
+
+.click-bulletin i, .click-member-listing i, .click-group-settings i,
+.click-group-events i, .click-description i {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.click-bulletin:hover, .click-member-listing:hover, .click-group-settings:hover,
+.click-group-events:hover, .click-description:hover {
+  cursor: pointer;
+  background-color: $ashby-light-gray;
+}
+
+@media (max-width: 41em) {
+  .menu-text { 
+    display: none;
+  }
+
+  .click-bulletin p, .click-member-listing p, .click-group-events p,
+  .click-group-settings p, .click-description p {
+    text-align: center;
+  }
+
+  .click-bulletin i, .click-member-listing i, .click-group-events i,
+  .click-group-settings i, .click-description i {
+    margin-right: 0;
+  }
+
+  .info-box {
+    margin: 16px 0 16px 0;
+  }
+}
+
+@media (min-width: 41em) {
+  .click-description {
+    display: none;
+  }
+}
