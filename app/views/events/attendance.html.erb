@@ -1,9 +1,44 @@
-<div class="attendance-title">
+<div class="attendance-title row">
 	<h3><%= link_to @event.title, event_path(@event) %> by <%= link_to @group.name, group_path(@group) %></h3>
-	<h2>Who Is Attending?</h2>
-	<div class="row attendance-tile">
+	<h2>Who's Attending?</h2>
+</div>
+
+<div class="row">
+	<div class="attendance-tile">
 		<h6>ATTENDING (<%= @event.users.rsvps.count %>)</h6>
-		<br><br>
+		<% @event.invites.each do |invite| %>
+			<% if invite.rsvp %>
+				<% if @event.users.organizers.include?(invite.user) %>
+				    <div class="attendance-organizers columns">
+					<div class="image-wrapper">
+						<%= image_tag("organizer-icon.png", class: "event-organizer-icon") %>
+				    <%= image_tag(invite.user.photo(:thumb), class: "event-organizer-photo") %>
+				    </div>
+				    <div class="attendance-bio">
+					    <%= link_to invite.user.decorate.full_name, invite.user %>
+					  	<h6><%= invite.user.email %></h6>
+					  	<h6><%= invite.user.phone %></h6>
+						</div>
+				  </div>
+				<% else %>
+		   		<%= image_tag(invite.user.photo(:thumb), class: "rsvp-photo") %>
+				  <%= link_to invite.user.decorate.full_name, invite.user %>
+					<h6>is attending</h6>
+					<br>
+			  <% end %>
+		  <% end %>
+		<% end %>
+		<br>
 		<h6>INVITED (<%= @event.invites.count %>)</h6>
+		<% @event.invites.each do |invite| %>
+			<% if !invite.rsvp %>
+				<div class="invited">
+					<%= image_tag(invite.user.photo(:thumb), class: "invited-photo") %>
+					<%= link_to invite.user.decorate.full_name, invite.user %>
+					<h6 class="invited-text">is invited</h6>
+					<br>
+				</div>
+			<% end %>
+		<% end %>
 	</div>
 </div>
