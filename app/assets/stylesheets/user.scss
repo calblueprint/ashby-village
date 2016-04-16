@@ -5,8 +5,8 @@
 @import "ashby_settings.scss";
 
 .row .row {
-  margin-left: 10px !important;
-  margin-right: 10px !important;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .menu {
@@ -21,7 +21,8 @@
 .create-group, .user-bio {
   margin-top: 16px !important; // To override foundation's row class
   margin-bottom: 16px !important; // To override foundation's row class
-  padding: 20px;
+  margin-left: 16px;
+  padding: 24px;
   height: 100%;
   // width: 100%;
   background-color: white;
@@ -71,34 +72,24 @@
   border-bottom-left-radius: 8px;
 }
 
-.click-info {
+.click-info, .click-groups {
   padding: 10px;
   height: 48px;
+
+  i {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
 }
 
-.click-info img {
-  height: 25px;
-  margin-right: 10px;
-}
-
-.click-info:hover {
+.click-info:hover, .click-groups:hover {
   cursor: pointer;
-  background-color: #f2f2f2;
-}
-
-.click-groups {
-  padding: 10px;
-  height: 48px;
+  background-color: $ashby-light-gray;
 }
 
 .click-groups img {
   height: 25px;
   margin-right: 10px;
-}
-
-.click-groups:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
 }
 
 .click-register:hover {
@@ -141,9 +132,27 @@
 @media (min-width: 41em) {
   .selected:nth-last-child(2) {
     border-bottom-right-radius: 8px;
-}
+  }
+
+  .menu .selected:nth-last-child(2) {
+    border-bottom-right-radius: 0;
+  }
 }
 
 .no-groups-leading {
   margin-top: 16px !important;
+}
+
+@media (max-width: 41em) {
+  .create-group, .user-bio {
+    margin: 0 0 16px 0 !important;
+  }
+
+  .click-info p, .click-groups p {
+    text-align: center;
+  }
+
+  .header h2 {
+    font-size: $h4-heading-size;
+  }
 }

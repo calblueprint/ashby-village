@@ -1,14 +1,11 @@
 <div class="row">
-  <% if @user == current_user %>
-    <div class="user-info small-12 large-7 columns">
-  <% else %>
-    <div class="user-info small-12 large-5 columns">
-  <% end %>
-    <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
-    <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
-    <h6>PHONE</h6> <h4> <%= number_to_phone(@user.phone, area_code: true) %> </h4>
 
-    <% if @user == current_user %>
+  <% if @user == current_user %>
+    <div class="user-info small-12 medium-7 large-7 left">
+      <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
+      <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
+      <h6>PHONE</h6> <h4> <%= number_to_phone(@user.phone, area_code: true) %> </h4>
+      
       <h6>ABOUT YOU</h6>
       <% if @user.bio %>
         <h4> <%= @user.bio %> </h4>
@@ -16,25 +13,38 @@
         <h5><em> Tell others about yourself.   Add a bio by editing your profile. </em></h5>
       <% end %>
       <%= link_to 'Edit Profile', edit_user_path %>
-    <% end %>
-  </div>
+    </div>
 
-<% if @user == current_user %>
-  <div class="create-group small-12 large-5 columns">
-    <h6>CREATE A GROUP</h6>
-    <%= link_to new_group_path do %>
-      <button> Create New Group </button>
-    <% end %>
-    <p>Click the button above to make a new group!</p>
-  </div>
+    <div class="bio-right">
+      <div class="small-12 large-5 medium-5 right">
+        <div class="create-group">
+          <h6>CREATE A GROUP</h6>
+          <%= link_to new_group_path do %>
+            <button> Create New Group </button>
+          <% end %>
+          <p>Click the button above to make a new group!</p>
+        </div>
+      </div>
+    </div>
+
   <% else %>
-  <div class="user-bio small-12 large-7 columns">
-    <h6>ABOUT <%= @user.first_name %> </h6>
-    <% if @user.bio %>
-      <h5> <%= @user.bio %> </h5>
-    <% else %>
-      <h5><em> <%= @user.first_name %> has not written a bio yet. </em></h5>
-    <% end %>
-  </div>
-<% end %>
+    <div class="user-info small-12 medium-5 large-5 left">
+      <h6>NAME</h6> <h4> <%= @user.full_name %> </h4>
+      <h6>EMAIL</h6> <h4> <%= @user.email %> </h4>
+      <h6>PHONE</h6> <h4> <%= number_to_phone(@user.phone, area_code: true) %> </h4>
+    </div>
+
+    <div class="small-12 large-7 medium-7 right">
+      <div class="user-bio">
+        <h6>ABOUT <%= @user.first_name %> </h6>
+        <% if @user.bio %>
+          <h5> <%= @user.bio %> </h5>
+        <% else %>
+          <h5><em> <%= @user.first_name %> has not written a bio yet. </em></h5>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+
 </div>

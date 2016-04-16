@@ -8,18 +8,18 @@
 <div class = "row">
   <div class="row menu">
       <% if @user == current_user %>
-        <div class="click-info small-12 small-uncentered medium-6 column">
-          <p><%= image_tag("your_info_icon.png") %>Your Information</p>
+        <div class="click-info small-3 small-uncentered medium-4 column">
+          <p><i class="fa fa-list-alt fa-2x"></i><span class="menu-text">Your Information</span></p>
         </div>
-        <div class="click-groups small-12 small-uncentered medium-6 column">
-          <p><%= image_tag("groups_you_lead_icon.png") %>Groups You Lead</p>
-      </div>
+        <div class="click-groups small-3 small-uncentered medium-4 column">
+          <p><%= image_tag("groups_you_lead_icon.png") %><span class="menu-text">Groups You Lead</span></p>
+        </div>
       <% else %>
-        <div class="click-info small-12 small-uncentered medium-6 column">
-          <p><%= image_tag("your_info_icon.png") %><%= @user.first_name %>'s Information</p>
+        <div class="click-info small-3 small-uncentered medium-4 column">
+          <p><i class="fa fa-list-alt fa-2x"></i><span class="menu-text"><%= @user.first_name %>'s Information</span></p>
         </div>
-        <div class="click-groups small-12 small-uncentered medium-6 column">
-          <p><%= image_tag("groups_you_lead_icon.png") %>Groups <%= @user.first_name %> Leads</p>
+        <div class="click-groups small-3 small-uncentered medium-4 column">
+          <p><%= image_tag("groups_you_lead_icon.png") %><span class="menu-text">Groups <%= @user.first_name %> Leads</span></p>
         </div>
       <% end %>
     </div>
