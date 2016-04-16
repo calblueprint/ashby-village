@@ -3,35 +3,41 @@
 	<h2><%= @event.title %></h2>
 </div>
 
-<div class="row">
-	<div class="small-8 large-8 left columns event-details">
-		<div class="row">
-			<div class="event-icon small-4 large-4 columns">
-			<p><%= image_tag("events_date.png") %> <%= @event.startdate.strftime("%B %e, %Y") %> - <%= @event.enddate.strftime("%B %e, %Y") %></p>
+<div class="row event-left">
+	<div class="small-12 medium-7 large-8 left">
+		<div class="event-details">
+			<div class="row">
+				<div class="event-icon small-12 medium-12 large-12 columns">
+				<p><%= image_tag("events_date.png") %> <%= @event.startdate.strftime("%B %e, %Y") %> - <%= @event.enddate.strftime("%B %e, %Y") %></p>
+				</div>
+				<div class="event-icon small-12 medium-6 large-6 columns">
+				<p><%= image_tag("events_time.png") %> <%= @event.starttime.strftime("%l:%M %p") %> - <%= @event.endtime.strftime("%l:%M %p") %></p>
+				</div>
+				<div class="event-icon small-12 medium-6 large-6 columns">
+				<p><%= image_tag("events_location.png") %> <%= @event.location %>
+	        <% if @event.gmap %>
+	          <br>
+	          <%= link_to "See the map", ("https://www.google.com/maps/place/" + @event.location), :target => '_blank' %>
+	        <% end %>
+	      </p>
+				</div>
 			</div>
-			<div class="event-icon small-4 large-4 columns">
-			<p><%= image_tag("events_time.png") %> <%= @event.starttime.strftime("%l:%M %p") %> - <%= @event.endtime.strftime("%l:%M %p") %></p>
-			</div>
-			<div class="event-icon small-4 large-4 columns">
-			<p><%= image_tag("events_location.png") %> <%= @event.location %>
-        <% if @event.gmap %>
-          <br>
-          <%= link_to "See the map", ("https://www.google.com/maps/place/" + @event.location), :target => '_blank' %>
-        <% end %>
-      </p>
+
+			<div class="row event-description">
+				<h6>Description</h6>
+				<p><%= @event.description %></p>
 			</div>
 		</div>
 
-		<div class="row event-description">
-			<h6>Description</h6>
-			<p><%= @event.description %></p>
-		</div>
-
-	<%= render 'posts/new'%>
-  <%= render 'posts/index', posts: @posts, reply: @reply %>
+	<div class="new-post">
+		<%= render 'posts/new'%>
+	</div>
+	<div class="group-posts">
+	  <%= render 'posts/index', posts: @posts, reply: @reply %>
+	</div>
 	</div>
 
-	<div class="large-4 right columns">
+	<div class="small-12 medium-5 large-4 right columns rsvp-button">
 		<div class="row">
 		  <% if @event.users.rsvps.include?(current_user) %>
 		      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>

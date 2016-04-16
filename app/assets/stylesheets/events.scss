@@ -32,14 +32,14 @@
 
 .event-organizers {
 	background-color: white;
-	padding: 12px;
+	padding: 16px 22px 16px 22px;
 	border-radius: 8px;
 	margin-top: 16px;
 }
 
 .attendance-list {
   background-color: white;
-  padding: 12px;
+  padding: 16px 22px 16px 22px;
   border-radius: 8px;
   margin: 16px 0 16px 0;
 }
@@ -153,4 +153,34 @@ input[type="time"] {
 .edit-title {
     text-align: center;
     margin: 40px 0 40px 0;
+}
+
+@media (max-width: 41em) {
+  .event-header {
+    padding: 16px 16px 0 16px;
+    margin-top: 0;
+
+    h2 {
+      font-size: $h4-heading-size;
+    }
+  }
+
+  .event-details {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .rsvp-button {
+    margin: 16px 0 16px 0;
+  }
+}
+
+@media (min-width: 41em) {
+  .event-header {
+    padding: 16px 16px 0 16px;
+    margin-top: 0;
+  }
+  .event-left {
+    padding-left: 16px;
+  }
 }

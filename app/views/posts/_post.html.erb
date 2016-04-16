@@ -1,4 +1,4 @@
-<div class="post row">
+<div class="post columns">
   <!-- TODO (Shimmy): Picture link -->
   <div class="post-user row collapse">
     <div class="post-display-member">
@@ -20,7 +20,7 @@
     <h4><strong><%= post.title %></strong></h4>
     <p><%= post.content %></p>
   </div>
-  <div class="post-delete">
+  <div class="post-delete row">
     <% if current_user.id == post.user.id or current_user.admin? or current_user.is_leader(@group) %>
       <%= link_to "Delete", post_path(post.id), method: :delete, data: { confirm: 'Are you sure you want to delete your post?' }, class: "delete" %>
     <% end %>
