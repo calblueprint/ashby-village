@@ -21,12 +21,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       resource.errors.full_messages.each {|x| flash[x] = x}
-      redirect_to root_path
+      redirect_to controller: "registrations", action: "new", sign_up_params: sign_up_params
     end
   end
 
   def new
-    @user = User.new
+    @user = User.new()
     @allemails = User.all.map(&:email)
   end
 

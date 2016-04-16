@@ -10,23 +10,17 @@ function validateUser(x) {
   if (str.length == 0) {
     $("#" + x).addClass("form-error");
     name_fields = false;
-    $(".register-button").attr("disabled", "disabled");
   }
   else if (/^[a-zA-Z]+$/.test(str)) {
     $("#" + x).removeClass("form-error");
     name_fields = true;
     $(".nameErrors").hide();
-
-    if (password_fields && name_fields && phone_field && email_field) {
-      $(".register-button").removeAttr("disabled", "disabled");
-    };
   }
   else {
     $("#" + x).addClass("form-error");
     $(".nameErrors").show();
     name_fields = false;
-    $(".register-button").attr("disabled", "disabled");
-  };
+  }
 };
 
 function validatePhone(x) {
@@ -37,20 +31,17 @@ function validatePhone(x) {
     phone_field = true;
 
     if (password_fields && name_fields && phone_field && email_field) {
-      $(".register-button").removeAttr("disabled", "disabled");
     };
   }
   else if (phone.length == 0) {
     $("#" + x).addClass("form-error");
     phone_field = false;
-    $(".register-button").attr("disabled", "disabled");
     $(".phoneErrors").hide();
   }
   else {
     $("#" + x).addClass("form-error");
     $(".phoneErrors").show();
     phone_field = false;
-    $(".register-button").attr("disabled", "disabled");
   };
 };
 
@@ -61,23 +52,17 @@ function validateEmail(email) {
   if (address.length == 0) {
     $("#" + email).addClass("form-error");
     email_field = false;
-    $(".register-button").attr("disabled", "disabled");
     $(".emailError").hide();
   }
   else if (bool == false) {
     $("#" + email).addClass("form-error");
     $(".emailError").show();
     email_field = false;
-    $(".register-button").attr("disabled", "disabled");
   }
   else {
     $("#" + email).removeClass("form-error");
     $(".emailError").hide();
     email_field = true;
-
-    if (password_fields && name_fields && phone_field && email_field) {
-      $(".register-button").removeAttr("disabled", "disabled");
-    };
   };
 };
 
@@ -116,16 +101,11 @@ function passwordMatching() {
     $("#pass_confirmation").removeClass("form-error");
     $(".password_mismatch").hide();
     password_fields = true;
-
-    if (password_fields && name_fields && phone_field && email_field) {
-      $(".register-button").removeAttr("disabled", "disabled");
-    };
   }
   else {
     $("#pass").addClass("form-error");
     $("#pass_confirmation").addClass("form-error");
     $(".password_mismatch").show();
     password_fields = false;
-    $(".register-button").attr("disabled", "disabled");
   };
 };
