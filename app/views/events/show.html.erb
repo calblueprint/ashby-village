@@ -13,7 +13,12 @@
 			<p><%= image_tag("events_time.png") %> <%= @event.starttime.strftime("%l:%M %p") %> - <%= @event.endtime.strftime("%l:%M %p") %></p>
 			</div>
 			<div class="event-icon small-4 large-4 columns">
-			<p><%= image_tag("events_location.png") %> <%= link_to_if @event.gmap, @event.location, ("https://www.google.com/maps/place/" + @event.location)%></p>
+			<p><%= image_tag("events_location.png") %> <%= @event.location %>
+        <% if @event.gmap %>
+          <br>
+          <%= link_to "See the map", ("https://www.google.com/maps/place/" + @event.location)%>
+        <% end %>
+      </p>
 			</div>
 		</div>
 

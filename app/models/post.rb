@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  group_id   :integer
 #  title      :text
+#  event_id   :integer
 #
 
 class Post < ActiveRecord::Base
