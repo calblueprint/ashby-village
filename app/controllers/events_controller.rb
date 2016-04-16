@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  autocomplete :user, :full_name, full: true
 
   # GET /events
   # GET /events.json
@@ -50,15 +51,14 @@ class EventsController < ApplicationController
     if(not params[:gmap].nil?)
       @event.gmap = true
     end
-    if !params[:organizers].blank?
-      params[:organizers].concat([current_user.id.to_s])
+    if !params[:selected_organizers].blank?
+      params[:selected_organizers] = params[:selected_organizers].split(",") + [current_user.id.to_s]
     else
-      params[:organizers] = [current_user.id.to_s]
-      flash[:error] = "Group Could not be created"
+      params[:selected_organizers] = [current_user.id.to_s]
     end
     if @event.save
       (@event.group.users).each do |user|
-        Invite.create(event: @event, user: user, organizer: params[:organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
+        Invite.create(event: @event, user: user, organizer: params[:selected_organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
       end
       redirect_to group_event_path(@group, @event), notice: "Event was successfully created."
     else
@@ -70,15 +70,6 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /events/1

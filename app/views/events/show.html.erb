@@ -16,7 +16,7 @@
 			<p><%= image_tag("events_location.png") %> <%= @event.location %>
         <% if @event.gmap %>
           <br>
-          <%= link_to "See the map", ("https://www.google.com/maps/place/" + @event.location)%>
+          <%= link_to "See the map", ("https://www.google.com/maps/place/" + @event.location), :target => '_blank' %>
         <% end %>
       </p>
 			</div>
