@@ -29,16 +29,16 @@
 			</div>
 		</div>
 
-	<div class="new-post">
+	<div class="new-post event-post">
 		<%= render 'posts/new'%>
 	</div>
-	<div class="group-posts">
+	<div class="group-posts event-post">
 	  <%= render 'posts/index', posts: @posts, reply: @reply %>
 	</div>
 	</div>
 
-	<div class="small-12 medium-5 large-4 right columns rsvp-button">
-		<div class="row">
+	<div class="small-12 medium-5 large-4 right rsvp-button">
+		<div class="columns">
 		  <% if @event.users.rsvps.include?(current_user) %>
 		      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>
 		      	<button class="is-attending"><span>You're Attending</span></button>
@@ -50,7 +50,7 @@
 		  <% end %>
 		</div>
 
-		 <div class="row">
+		 <div class="columns">
 			 <div class="event-organizers">
 				<h6>Event Organizer(s)</h6>
 				<% @event.users.organizers.each do |user| %>
@@ -69,7 +69,7 @@
 			</div>
 		 </div>
 
-		 <div class="row">
+		 <div class="columns">
 		 	<div class="attendance-list">
 		 	<h6>Who is Attending?</h6>
 		 		<%= link_to group_event_attendance_path(@group, @event), method: :get do %>

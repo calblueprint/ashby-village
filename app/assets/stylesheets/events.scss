@@ -173,6 +173,10 @@ input[type="time"] {
   .rsvp-button {
     margin: 16px 0 16px 0;
   }
+
+  .no-row-margin {
+    margin: 0 !important;
+  }
 }
 
 @media (min-width: 41em) {
