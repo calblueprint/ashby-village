@@ -64,7 +64,7 @@ class Event < ActiveRecord::Base
     if starttime.present? && startdate.present?
       if startdate < DateTime.now.to_date
         errors.add(:startdate, "Your event cannot start in the past!")
-      elsif starttime.to_s(:time) < Time.now.to_s(:time)
+      elsif startdate == DateTime.now.to_date && starttime.to_s(:time) < Time.now.to_s(:time)
         errors.add(:Starttime, "Your event cannot start in the past!")
       end
     end

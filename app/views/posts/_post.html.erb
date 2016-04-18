@@ -27,7 +27,7 @@
   </div>
 </div>
 <%= render 'replies/index', replies: post.replies.order_by_created_at, post_id: post.id %>
-  <%= if (@group && @group.users.include?(current_user)) || (@event.users.include? (current_user))
+  <%= if (@group and @group.users.include?(current_user)) or (@event and @event.users.include? (current_user))
        render 'replies/new', post: post, reply: reply
       end %>
 
