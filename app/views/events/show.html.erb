@@ -40,13 +40,17 @@
 	<div class="small-12 medium-5 large-4 right rsvp-button">
 		<div class="columns">
 		  <% if @event.users.rsvps.include?(current_user) %>
-		      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>
-		      	<button class="is-attending"><span>You're Attending</span></button>
-		      <% end %>
+	      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>
+	      	<button class="is-attending"><span>You're Attending</span></button>
+	      <% end %>
 		  <% else %>
+			  <% if !@event.capacity.nil? and @event.capacity <= @event.users.rsvps.count %>
+          <button class="event-full" value="<%= @event.id %>">Event has reached capacity</button>
+        <% else %>
 		      <%= link_to group_event_rsvp_path(@group, @event), method: :patch do %>
 		      	<button class="event-joined">Click to RSVP</button>
 		      <% end %>
+		    <% end %>
 		  <% end %>
 		</div>
 
@@ -74,6 +78,9 @@
 		 	<h6>Who is Attending?</h6>
 		 		<%= link_to group_event_attendance_path(@group, @event), method: :get do %>
 		 			<button class="attendance-button is-member">See Who's Attending</button>
+		 		<% end %>
+		 		<% if !@event.capacity.nil? %>
+		 			<p><%= @event.capacity - @event.users.rsvps.count %> spot(s) available.</p>
 		 		<% end %>
 		 	</div>
 		 </div>

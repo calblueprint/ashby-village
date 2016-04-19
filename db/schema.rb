@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403050956) do
+ActiveRecord::Schema.define(version: 20160416211912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,13 @@ ActiveRecord::Schema.define(version: 20160403050956) do
     t.date     "enddate"
     t.integer  "group_id"
     t.string   "location"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "description"
-    t.boolean  "gmap",        default: false
+    t.integer  "capacity"
+    t.boolean  "gmap",           default: false
+    t.boolean  "repeat_weekly",  default: false
+    t.boolean  "repeat_monthly", default: false
   end
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
@@ -72,6 +75,13 @@ ActiveRecord::Schema.define(version: 20160403050956) do
   add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -110,6 +120,11 @@ ActiveRecord::Schema.define(version: 20160403050956) do
 
   add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+
+  create_table "user_neighborhoods", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

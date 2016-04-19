@@ -141,6 +141,16 @@ input[type="time"] {
   box-shadow: 0px 4px 0px 0px $ashby-dark-red;
 }
 
+.event-full, .event-full:hover, .event-full:focus {
+  float: right;
+  width: 100%;
+  margin: 0;
+  background: $ashby-red;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+}
+
 .tile-link {
   text-decoration: none;
   color: black;

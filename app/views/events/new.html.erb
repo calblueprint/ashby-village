@@ -17,6 +17,7 @@
       </div><br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
     Include Maps Link <%= check_box_tag :gmap, "0" %> <br>
+    Event Capacity <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'Leave blank if no limit to number of attendees' %>
     Select Event Organizers
     <div class="field" id="selected-event-organizers">
       <p><i>Start typing the names of your fellow group leaders to select</i></p>
