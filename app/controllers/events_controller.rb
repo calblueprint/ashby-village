@@ -46,20 +46,14 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @group = Group.friendly.find(params[:group_id])
-    @event = @group.events.build(event_params)
+    @event = Event.new(event_params)
     if(not params[:gmap].nil?)
       @event.gmap = true
     end
-    if !params[:selected_organizers].blank?
-      params[:selected_organizers] = params[:selected_organizers].split(",") + [current_user.id.to_s]
-    else
-      params[:selected_organizers] = [current_user.id.to_s]
-    end
+    @group = Group.friendly.find(params[:group_id])
+    @event.group = @group
     if @event.save
-      (@event.group.users).each do |user|
-        Invite.create(event: @event, user: user, organizer: params[:selected_organizers].include?(user.id.to_s), rsvp: (user.id == current_user.id ? true : false))
-      end
+      @event.add_users(current_user, organizers = params[:selected_organizers].split(",").map{ |o| o.to_i })
       redirect_to group_event_path(@group, @event), notice: "Event was successfully created."
     else
       flash[:error] = @event.errors.values.first.first

@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
       @event_organizers.concat(User.find(organizers))
     end
     @event_organizers.each do |user|
-      Invite.create(user: user, event: self, organizer: true)
+      Invite.create(user: user, event: self, organizer: true, rsvp: current_user == user)
     end
     self.group.users.each do |user|
       unless self.users.include?(user)
