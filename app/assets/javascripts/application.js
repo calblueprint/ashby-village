@@ -21,7 +21,8 @@
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
 
-var ready = (function(){ $(document).foundation(); });
+var ready = (function(){ $(document).foundation();});
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+$(document).on('page:change', ready);
