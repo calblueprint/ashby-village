@@ -12,7 +12,6 @@
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
 #  slug               :string
-#  kind               :integer
 #  state              :integer          default(1)
 #  neighborhood       :integer
 #
@@ -23,12 +22,10 @@ class Group < ActiveRecord::Base
   # validates :name, uniqueness: true, on: :create
   validates_uniqueness_of :name
   validates :name, presence: true
-  validates :kind, presence: true
   validates :description, presence: true
 
   scope :alphabetized, -> { order(name: :asc) }
 
-  enum kind: [:social, :committee, :announcement]
   enum state: [:inactive, :active]
   enum neighborhood: [:'Kensington Kaleidoscope', :'Ashby Village',
                       :Outlandish, :'Thousand Oaks Hamlet', :Emeryville, :Midlandish,

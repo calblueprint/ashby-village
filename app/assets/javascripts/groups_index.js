@@ -17,13 +17,9 @@ if (!top.location.pathname.includes("users")) {
   });
 
   function updateListing() {
-    var kind = $(".group-dropdown").val();
     var neighborhood = $(".neighborhood-dropdown").val();
 
     $(".group-tile").show();
-    if (kind != "all") {
-      $(".group-tile").not("." + kind).hide();
-    }
     if (neighborhood != "all") {
       $(".group-tile").not("." + neighborhood).hide();
       $(".dropdowns-tile span").fadeOut("fast");

@@ -21,7 +21,6 @@
       <%= autocomplete_field_tag :group_leaders, '', autocomplete_user_full_name_groups_path %>
       <%= hidden_field_tag 'selected_leaders' %>
     </div>
-    Kind of Group <%= f.select(:kind, @kinds, required: true) %>
     Neighborhood of Group <%= f.select(:neighborhood, @neighborhoods, required: true) %>
     <%= f.submit %>
     </div>

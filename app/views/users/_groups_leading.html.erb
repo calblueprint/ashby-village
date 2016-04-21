@@ -16,7 +16,7 @@
 
       <div class="large-6 columns">
         <h3><%= group.name %></h3>
-        <h6><%= group.kind.upcase %> group in <%= group.neighborhood.upcase %></h6>
+        <h6>Group in <%= group.neighborhood.upcase %></h6>
         <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
 
         <% if group.users.count == 1 %>

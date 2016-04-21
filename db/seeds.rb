@@ -12,10 +12,10 @@ end
 
 def make_groups
   # Group.create! name: 'Cultural Events', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
-  Group.create! name: 'Knitting', description: 'yo', neighborhood: 1, kind: 0, photo: seed_image("gaming.jpg"), state: 1
-  Group.create! name: 'Cultural Events', description: 'Explore culture with ya homies', neighborhood: 1, kind: 1, photo: seed_image("film_fanatics.jpg"), state: 1
-  Group.create! name: 'Poker', description: 'yo', neighborhood: 1, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
-  Group.create! name: 'Nature Walks', description: 'yo', neighborhood: 1, kind: 1, photo: seed_image("jazzercise.jpg"), state: 1
+  Group.create! name: 'Knitting', description: 'yo', neighborhood: 1, photo: seed_image("gaming.jpg"), state: 1
+  Group.create! name: 'Cultural Events', description: 'Explore culture with ya homies', neighborhood: 1, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Poker', description: 'yo', neighborhood: 1, photo: seed_image("skydiving.jpg"), state: 1
+  Group.create! name: 'Nature Walks', description: 'yo', neighborhood: 1, photo: seed_image("jazzercise.jpg"), state: 1
   # Group.create! name: 'Music', description: 'yo', neighborhood_id: 1, kind: 1, photo: seed_image("gaming.jpg"), state: 1
   # Group.create! name: 'Reading', description: 'yo', neighborhood_id: 1, kind: 0, photo: seed_image("film_fanatics.jpg"), state: 1
   # Group.create! name: 'Politics', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg"), state: 1
@@ -25,7 +25,7 @@ def make_groups
   # Group.create! name: 'Checkers', description: 'yo', neighborhood_id: 2, kind: 1, photo: seed_image("skydiving.jpg"), state: 1
   # Group.create! name: 'Chess', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("jazzercise.jpg"), state: 1
   # Group.create! name: 'Frisbee', description: 'yo', neighborhood_id: 3, kind: 1, photo: seed_image("gaming.jpg"), state: 1
-  Group.create! name: 'Travel', description: 'yo', neighborhood: 3, kind: 0, photo: seed_image("film_fanatics.jpg"), state: 1
+  Group.create! name: 'Travel', description: 'yo', neighborhood: 3, photo: seed_image("film_fanatics.jpg"), state: 1
   # Group.create! name: 'Television', description: 'yo', neighborhood_id: 3, kind: 0, photo: seed_image("skydiving.jpg"), state: 1
   # Group.create! name: 'Ashby Village Announcements', description: 'yo', neighborhood_id: 2, kind: 2, photo: seed_image("jazzercise.jpg"), state: 1
   # Group.create! name: 'Emeryville  Announcements', description: 'yo', neighborhood_id: 5, kind: 2, photo: seed_image("film_fanatics.jpg"), state: 1

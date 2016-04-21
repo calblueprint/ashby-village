@@ -14,6 +14,7 @@
 #  updated_at  :datetime         not null
 #  description :text
 #  gmap        :boolean          default(FALSE)
+#  capacity    :integer
 #
 
 class Event < ActiveRecord::Base

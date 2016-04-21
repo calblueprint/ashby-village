@@ -4,9 +4,7 @@ class GroupsController < ApplicationController
   # TODO(Shimmy): Only display this page if the user is logged in
   def index
     # TODO(Shimmy):Make scopes for these
-    announcements = Group.alphabetized.where(kind:2)
-    others = Group.alphabetized.where.not(kind:2)
-    @groups = announcements + others
+    @groups = Group.all
     @neighborhoods = Group.neighborhoods.keys
     my = params[:format]
     if my.nil?
@@ -31,7 +29,6 @@ class GroupsController < ApplicationController
   def new
     if current_user
       @group = Group.new
-      @kinds = Group.kinds.keys.reject { |i| i == "announcement" }
       @neighborhoods = Group.neighborhoods.keys
       @allnames = Group.all.map(&:name)
       render action: "new", notice: "Sample notice"
@@ -57,7 +54,6 @@ class GroupsController < ApplicationController
       end
       redirect_to @group, notice: "Group was successfully created."
     else
-      @kinds = Group.kinds.keys
       @neighborhoods = Group.neighborhoods.keys
       flash[:notice] = "Name has already been taken!"
       render :new
@@ -93,7 +89,6 @@ class GroupsController < ApplicationController
   def edit
     @group = Group.friendly.find(params[:id])
     @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
-    @kinds = Group.kinds.keys.reject { |i| i == "announcement" }
     @neighborhoods = Group.neighborhoods.keys
   end
 
@@ -121,7 +116,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :neighborhood, :kind, :photo)
+    params.require(:group).permit(:name, :description, :neighborhood, :photo)
   end
 
 end

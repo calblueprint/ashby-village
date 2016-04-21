@@ -14,6 +14,7 @@
 #  updated_at  :datetime         not null
 #  description :text
 #  gmap        :boolean          default(FALSE)
+#  capacity    :integer
 #
 
 require "rails_helper"
@@ -23,7 +24,6 @@ RSpec.describe Event, type: :model do
     @g1 = Group.create name: "Rspec Group",
                        description: "Rspec Description",
                        neighborhood: 1,
-                       kind: 0,
                        state: 1
     @g1 = Group.find_by(name: "Rspec Group")
   end

@@ -9,7 +9,6 @@ RSpec.describe User, type: :model do
 
     @g = Group.create name: "Eating food",\
                       description: "Do things together",\
-                      kind: "social",\
                       state: "active"
     @g = Group.find_by(name: "Eating food")
   end

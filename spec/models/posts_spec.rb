@@ -12,7 +12,6 @@ RSpec.describe Post, type: :model do
     @g1 = Group.create name: "Rspec Group",\
                        description: "Rspec Description",\
                        neighborhood: 1,\
-                       kind: 0,\
                        state: 1
     @g1 = Group.find_by(name: "Rspec Group")
     @post_content = "rspec post content"

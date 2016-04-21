@@ -12,7 +12,6 @@
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
 #  slug               :string
-#  kind               :integer
 #  state              :integer          default(1)
 #  neighborhood       :integer
 #
@@ -21,7 +20,6 @@ FactoryGirl.define do
   factory :group do
     description "Here is a test group"
     sequence(:name) { |n| "Test group #{n}" }
-    kind 1
     # create neighborhood factory
     neighborhood 1
   end

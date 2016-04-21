@@ -3,13 +3,10 @@
     <select class="group-dropdown large-4">
       <option <%= @all %> value="all"> all groups </option>
       <option <%= @my %> value="my"> my groups </option>
-      <option value="social"> social groups </option>
-      <option value="committee"> committees </option>
-      <option value="announcement"> announcement groups</option>
     </select>
      in
     <select class="neighborhood-dropdown large-4">
-      <option selected="selected" value="all"> all neighborhoods</option>
+      <option selected="selected" value="all"> All Neighborhoods</option>
       <%= @neighborhoods.each do |neighborhood| %>
         <option value=<%= neighborhood %>><%= neighborhood %></option>
       <% end %>
@@ -19,7 +16,7 @@
 </div>
 
 <% @groups.each do |group| %>
-  <div class="group-tile row <%= group.neighborhood %> group_id<%= group.id %> <%= group.state %> <%= group.kind %>
+  <div class="group-tile row <%= group.neighborhood %> group_id<%= group.id %> <%= group.state %>
     <% if group.users.exists?(current_user)%>
       <%= "my" %>
     <% end %>
@@ -33,7 +30,7 @@
 
       <div class="large-6 columns">
         <h3><%= group.name %></h3>
-        <h6><%= group.kind.upcase %> group in <%= group.neighborhood.upcase %></h6>
+        <h6>Group in <%= group.neighborhood.upcase %></h6>
         <%= image_tag(("member_count_icon.png"), :class => "member-count-icon") %>
 
         <% if group.users.count == 1 %>
