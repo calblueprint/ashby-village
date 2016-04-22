@@ -15,8 +15,11 @@
       <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
       <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
       </div><br>
+      Repeat Event <i>(select one)</i><br>
+      <%= f.check_box :repeat_weekly %> Once a week <br>
+      <%= f.check_box :repeat_monthly %> Once a month <br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
-    Include Maps Link <%= check_box_tag :gmap, "0" %> <br>
+    <%= check_box_tag :gmap, "0" %> Include Maps Link <br>
     Event Capacity <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'Leave blank if no limit to number of attendees' %>
     Select Event Organizers
     <div class="field" id="selected-event-organizers">
