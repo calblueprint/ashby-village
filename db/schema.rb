@@ -164,6 +164,8 @@ ActiveRecord::Schema.define(version: 20160425212622) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "event_posts", "events"
+  add_foreign_key "event_posts", "users"
   add_foreign_key "events", "groups"
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users"

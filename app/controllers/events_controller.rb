@@ -51,7 +51,6 @@ class EventsController < ApplicationController
       @event.add_users(current_user, organizers = params[:selected_organizers].split(",").map{ |o| o.to_i })
       redirect_to group_event_path(@group, @event), notice: "Event was successfully created."
     else
-      flash[:error] = @event.errors.values.first.first
       redirect_to action: "new", event_param: event_params
     end
   end
