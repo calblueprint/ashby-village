@@ -79,6 +79,9 @@ class EventsController < ApplicationController
   # PATCH/PUT Set RSVP to True
   def rsvp
     invite = Invite.where(user_id: current_user.id, event_id: params[:event_id]).first
+    if invite.nil?
+      invite = Invite.create(user: current_user, event_id: params[:event_id], organizer: false, rsvp: true)
+    end
     # TODO: check valid invite
     invite.update_attribute(:rsvp, "true")
     flash[:notice] = "You Have RSVPed!"
