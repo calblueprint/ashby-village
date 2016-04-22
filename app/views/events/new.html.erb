@@ -1,20 +1,20 @@
-<div class="title">
+<div class="title" id="event_new" value="true">
   <h2>Create A New Event for <%= link_to @group.name, group_path(@group) %></h2>
   <h4 class="subtitle">Fill in the blanks below to create your new event. All fields are required.</h4>
 </div>
   <%= form_for [@group, @event] do |f| %>
     <div class="mobile-margins">
       <div class="create-section row">
-        Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
-        Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
+        Event Name <%= f.text_field :title, required: true, onBlur: "validateEventStart();", :placeholder => 'Example: Baked Goods Fundraiser' %>
+        Event Description <%= f.text_area :description, required: true, onBlur: "validateEventStart();", :placeholder => 'What is your event about?' %>
         Event Date and Time<br>
         <div class="start"><p><i>Start</i></p>
         <%= f.date_field :startdate, required: true, :placeholder => '03/25/16' %>
         <%= f.time_field :starttime, required: true, :placeholder => '10:00AM' %>
         </div>
         <div class="end"><p><i>End</i></p>
-        <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
-        <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
+        <%= f.date_field :enddate, required: true, onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
+        <%= f.time_field :endtime, required: true, onBlur: "validateEventEnd();", :placeholder => '03:00PM' %>
         </div><br>
         Repeat Event <i>(select one)</i><br>
         <%= f.check_box :repeat_weekly %> Once a week <br>

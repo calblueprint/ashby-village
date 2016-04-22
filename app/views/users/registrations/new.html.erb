@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row res' title='<%= @resubmit %>'>
   <div class="row">
     <div class="" style="float: right; padding:10px;">
       <%= link_to "Cancel Registration", root_path, :class => 'cancel'%>
@@ -38,23 +38,26 @@
         There is already an account with this email address.
       </span>
       <h1><%=%></h1>
-      <div class='input-form'> <%= f.email_field :email, required: true, placeholder: 'email@address.com', class: 'input', id: 'email', onBlur: "validateEmail('email'); isEmailUnique('email');" %> </div>
+      <div class='input-form'> <%= f.email_field :email, required: true, placeholder: 'email@address.com', class: 'input', id: 'email', onBlur: "validateEmail('email');" %> </div>
     </div>
   </div>
 
   <div class='row'>
     <div class='field small-12 small-centered medium-10 large-8 column'>
       <h5 class='question'>I would like my password to be <em>(6 characters minimum)</em> </h5>
-      <div class='input-form'> <%= f.password_field :password, required: true, autocomplete: "off", placeholder: 'something memorable', class: 'input', id: 'pass', onBlur: "validatePassword('pass');" %> </div>
+      <% if @resubmit == 1 %>
+        <span class="password_error"> Please re-enter your password and confirmation. Make sure they match! </span>
+      <% end %>
+      <div class='input-form'> <%= f.password_field :password, required: true, autocomplete: "off", placeholder: 'something memorable', class: 'input', id: 'pass', onBlur: "validatePassword('pass');", onkeyup: "passwordMatching();"%> </div>
     </div>
   </div>
 
   <div class='row'>
     <div class='field small-12 small-centered medium-10 large-8 column'>
       <h5 class='question'>Just to be sure, my password once again is</h5>
-      <div class='password_mismatch form-error-msg'>
+      <span class='password_mismatch form-error-msg'>
         Password and password confirmation don't match!
-      </div>
+      </span>
       <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'something memorable', class: 'input', required: true, id: 'pass_confirmation', onkeyup: 'passwordMatching();', onBlur: "validatePassword('pass_confirmation');" %> </div>
     </div>
   </div>
@@ -62,9 +65,15 @@
   <div class='row'>
     <div class='field small-12 small-centered medium-10 large-8 column'>
       <h5 class='question'>and my phone number is</h5>
-      <span class='phoneErrors form-error-msg'>Invalid phone number.</span>
+      <span class='phoneErrors form-error-msg'>Invalid phone number. Don't forget to include your area code!
+      </span>
       <div class='input-form'>
-        <%= f.text_field :phone, required: true, placeholder: 'ex. (510) 123 - 4567', class: 'input phone', id: 'phone', onBlur: "validatePhone('phone');"  %> </div>
+        <%if @resubmit == 0 %>
+          <%= f.text_field :phone, placeholder: 'ex. (510) 123 - 4567', class: 'input phone', id: 'phone', onBlur: "validatePhone('phone');", onclick:"maskPhone()"  %>
+        <% else %>
+          <%= f.text_field :phone, placeholder: 'ex. (510) 123 - 4567', class: 'input phone', id: 'phone', onkeyup: "validatePhone('phone');"  %>
+        <% end %>
+      </div>
     </div>
   </div></br>
   <div class="row modal-footer">

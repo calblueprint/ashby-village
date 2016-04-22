@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   }, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
+    passwords: "users/passwords"
     # confirm: "confirmations#show",
   }
   devise_scope :users do

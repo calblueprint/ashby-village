@@ -71,7 +71,6 @@ class GroupsController < ApplicationController
       redirect_to @group, notice: "Group was successfully created."
     else
       @neighborhoods = Group.neighborhoods.keys
-      flash[:notice] = "Name has already been taken!"
       render :new
     end
   end
@@ -81,7 +80,8 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:id])  
+    flash[:notice] = "Successfully joined #{@group.name}"
     if not @group.users.include?(current_user)
       @group.add_user(current_user)
       redirect_to @group

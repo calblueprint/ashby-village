@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        <a class="close-reveal-modal" aria-label="Close" >&#215;</a>
         <h2 class="modal-title" id="myModalLabel">Please log in to continue.</h2>
         <div> <h4>Don't have an account?
             <span class="click-register"> <%= link_to "Click here to register", new_user_registration_path %> </span> </h4>
@@ -10,6 +10,7 @@
       </div></br>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <span class="login-form-error-msg"> Your password or email is incorrect. Please re-enter your information! </span>
           <div class="field">
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, required: true %>
@@ -28,12 +29,13 @@
           <% end -%>
 
           <div class="actions">
-            <%= f.submit "Login", class: 'button success radius small' %>
+            <%= f.submit "Login", class: 'button success radius' %>
           </div>
 
           <!-- TODO: Forgot your password setup -->
 
         <% end %>
+        <div><%= link_to "Forget your password?", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"forgot-password"} %></div>
     </div>
   </div>
 </div>
