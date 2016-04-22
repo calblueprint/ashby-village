@@ -1,4 +1,4 @@
-<div class="create-title">
+<div class="create-title" id="event_new" value="true">
   <h2>Create A New Event for <%= link_to @group.name, group_path(@group) %></h2>
   <h4 class="create-subtitle">Fill in the blanks below to create your new event. All fields are required.</h4>
 </div>
@@ -6,16 +6,18 @@
   <div class="create-section row">
     Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
     Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
-    Event Date and Time<br>
+    Event Date and Time <br>
+    <div class="form-error-msg startdate_errors"> Your event cannot start in the past! </div>
+    <div class="form-error-msg enddate_errors"> Your event cannot end in the past or before your event starts! </div>
       <div class="start"><p><i>Start</i></p>
-      <%= f.date_field :startdate, required: true, :placeholder => '03/25/16' %>
-      <%= f.time_field :starttime, required: true, :placeholder => '10:00AM' %>
+      <%= f.date_field :startdate, id: "event_startdate", required: true, onBlur: "validateEventStart();", :placeholder => '03/25/16' %>
+      <%= f.time_field :starttime, id: "event_starttime", required: true, onBlur: "validateEventStart();", :placeholder => '10:00AM' %>
       </div>
       <div class="end"><p><i>End</i></p>
-      <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
-      <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
+      <%= f.date_field :enddate, id: "event_enddate", required: true, onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
+      <%= f.time_field :endtime, id: "event_endtime", required: true, onBlur: "validateEventEnd();", :placeholder => '03:00PM' %>
       </div><br>
-      Repeat Event <i>(select one)</i><br>
+      Repeat Event <i>Optional (select one)</i><br>
       <%= f.check_box :repeat_weekly %> Once a week <br>
       <%= f.check_box :repeat_monthly %> Once a month <br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>

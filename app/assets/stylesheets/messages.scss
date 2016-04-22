@@ -17,7 +17,16 @@
 	}
 }
 
-.flash_error {
+.form-error {
+  background-color: #ffcdcd!important;
+}
+
+.form-error-msg, .login-form-error-msg, .pw-form-error-msg{
+  color: #e54d4d;
+  display: none;
+}
+
+/*.flash_error {
     display:none;
 	font-size: 24px;
 	color: white;
@@ -34,6 +43,8 @@
 		color: white;
 	}
 }
+}*/
+
 
 @media (max-width: 41em) {
   .flash_notice, .flash_error {

@@ -8,6 +8,7 @@ var ready_image_preview = (function() {
       img.src = file.target.result;
       $('.photoPreview').attr("src",img.src);
       $('.groupPhotoPreview').attr("src",img.src);
+      $('.groupPhotoPreview').css({"height": "256px", "width": "100%", "object-fit": "cover"})
     };
     reader.readAsDataURL(image);
   });

@@ -20,13 +20,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      resource.errors.full_messages.each {|x| flash[x] = x}
       redirect_to controller: "registrations", action: "new", sign_up_params: sign_up_params
     end
   end
 
   def new
-    @user = User.new()
+    if params[:sign_up_params]
+      @user = User.new(params[:sign_up_params].permit(:first_name, :last_name, :email, :phone))
+      @resubmit = 1
+    else
+      @user = User.new()
+      @resubmit = 0
+    end
     @allemails = User.all.map(&:email)
   end
 
