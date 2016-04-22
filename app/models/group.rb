@@ -15,7 +15,6 @@
 #  state              :integer          default(1)
 #  neighborhood       :integer
 #
-
 class Group < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged

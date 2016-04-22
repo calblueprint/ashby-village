@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <center>
+    <table border="1">
+    <tr bgcolor="#34495E">
+    <td><img src="http://ashby-prod.herokuapp.com/assets/ashby_village_icon-52a169f303c056f94dadd4635e3597c2424a5eb0d6436585f0fccb3c05492425.png" style="width:100px;height:80px;"></td>
+    </tr>
+    <tr>
+    <td><center><img src="http://www.clipartlord.com/wp-content/uploads/2015/03/envelope5.png" style="width:80px;height:80px;"><p style="font-size:200%;">You're Invited!</p></center>
+      <p style="font-size:160%;">Dear <%= @user.decorate.full_name %>,</p>
+      <p style="font-size:160%;" >You have been invited to <%= link_to @event.title, group_event_url(@group, @event)%> hosted by <%= link_to @group.name, group_url(@group)%>. Here are the event details:</p>
+      <ul style="font-size:160%;">
+        <b><%= @event.title %></b>
+        <li><%= @event.startdate.to_time.strftime('%B %e') %> - <%= @event.enddate.to_time.strftime('%B %e')%></li>
+        <li><%= @event.starttime.to_time.strftime('%l:%M %p') %> - <%= @event.endtime.to_time.strftime('%l:%M %p')%></li>
+        <li><%= @event.location %></li>
+      </ul>
+      <p style="font-size:160%;">Please RSVP at: <%= link_to @event.title, group_event_url(@group, @event)%>.</p></td>
+    </tr>
+    </table>
+  </center>
+  </body>
+</html>

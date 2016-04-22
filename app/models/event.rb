@@ -45,10 +45,19 @@ class Event < ActiveRecord::Base
         Invite.create(user: user, event: self, organizer: false)
       end
     end
+    @group = Group.find(self.group_id)
+    @group.users.each do |user|
+      AshbyMailer.email_invites(user, @group, self).deliver
+    end
   end
 
   def self.send_reminders
-
+    self.where("startdate - ? = 1", DateTime.now.to_date).find_each do |event|
+      @group = Group.find(event.group_id) # get event's group
+      event.users.rsvps.each do |user|
+        AshbyMailer.email_reminders(user, @group, event).deliver
+      end
+    end
   end
 
   def self.repeat_events
