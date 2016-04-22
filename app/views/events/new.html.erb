@@ -19,7 +19,7 @@
       <%= f.check_box :repeat_weekly %> Once a week <br>
       <%= f.check_box :repeat_monthly %> Once a month <br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
-    <%= check_box_tag :gmap, "0" %> Include Maps Link <br>
+    <%= f.check_box :gmap %> Include Maps Link <br>
     Event Capacity <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'Leave blank if no limit to number of attendees' %>
     Select Event Organizers
     <div class="field" id="selected-event-organizers">

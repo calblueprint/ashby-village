@@ -1,7 +1,7 @@
 <div class="edit-title">
-  <h2>Edit Your Event for <%= link_to @event.title, event_path(@event) %></h2>
+  <h2>Edit Your Event <%= link_to @event.title, group_event_path(id: @event.id) %></h2>
 </div>
-  <%= form_for @event do |f| %>
+  <%= form_for [@event.group, @event] do |f| %>
   <div class="create-section row">
     Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
     Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
@@ -14,12 +14,17 @@
       <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
       <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
       </div><br>
+      Repeat Event <i>(select one)</i><br>
+      <%= f.check_box :repeat_weekly %> Once a week <br>
+      <%= f.check_box :repeat_monthly %> Once a month <br>
     Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
-    Select Additional Event Organizers
-    <div class="field">
-      <p><i>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple people.</i></p>
-      <%= select_tag(:organizers, options_for_select(@users), multiple:true, size:3) 
-      %>
+    <%= f.check_box :gmap %> Include Maps Link <br>
+    Event Capacity <%= f.number_field :capacity, min: 1, required: false, placeholder: 'Leave blank if no limit to number of attendees' %>
+    Select Event Organizers
+    <div class="field" id="selected-event-organizers">
+      <p><i>Start typing the names of your fellow group leaders to select</i></p>
+      <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>
+      <%= hidden_field_tag 'selected_organizers' %>
     </div>
     <%= f.submit %>
     </div>
