@@ -9,7 +9,7 @@ if (!top.location.pathname.includes("users")) {
   updateGroupCount();
 }
 
-  $(".group-dropdown, .neighborhood-dropdown").change(function() {
+  $(".neighborhood-dropdown").change(function() {
     updateListing();
     $(".inactive").hide();
     updateGroupCount();
@@ -17,7 +17,7 @@ if (!top.location.pathname.includes("users")) {
   });
 
   function updateListing() {
-    var neighborhood = $(".neighborhood-dropdown").val();
+    var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, "-");
 
     $(".group-tile").show();
     if (neighborhood != "all") {
@@ -32,10 +32,14 @@ if (!top.location.pathname.includes("users")) {
     var groupCount = $(".group-tile").filter(function() {
       return $(this).css("display") !== "none";
     }).length;
+    var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, " ");
+    if (neighborhood == "all") {
+      neighborhood = "All Neighborhoods";
+    }
     if (groupCount === 1) {
-      $(".group-count").text("Displaying " + groupCount + " group");
+      $(".group-count").text("Displaying " + groupCount + " group in " + neighborhood);
     } else {
-      $(".group-count").text("Displaying " + groupCount + " groups");
+      $(".group-count").text("Displaying " + groupCount + " groups in " + neighborhood);
     }
   }
 

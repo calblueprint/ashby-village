@@ -57,6 +57,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def search_display
+    name + " in " + neighborhood
+  end
+
   def has_one_leader
     users.leaders.count == 1
   end
