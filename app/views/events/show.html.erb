@@ -84,5 +84,19 @@
 		 		<% end %>
 		 	</div>
 		 </div>
+
+ 		<div class="columns">
+	 		<%= link_to edit_group_event_path(@group, @event), method: :get do %>
+	 			<button class="event-joined"><span>Edit Event</span></button>
+	 		<% end %>
+ 		</div>
+
+		<div class="columns">
+			<div class="delete-event-button">
+				<%= link_to group_event_path(@group, @event), method: :delete do %>
+			 		<button class="delete-event"><span>Delete Event</span></button>
+			 	<% end %>
+		 	</div>
+ 		</div>
 	</div>
 </div>
