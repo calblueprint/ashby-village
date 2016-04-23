@@ -29,7 +29,7 @@
 		  <% end %>
 		<% end %>
 		<br>
-		<h6>INVITED (<%= @event.invites.count %>)</h6>
+		<h6>OTHERS INVITED (<%= @event.invites.count - @event.users.rsvp.count %>)</h6>
 		<% @event.invites.each do |invite| %>
 			<% if !invite.rsvp %>
 				<div class="invited">
