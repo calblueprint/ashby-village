@@ -69,6 +69,9 @@ Rails.application.routes.draw do
     get "users/:id/account_settings" => "users/registrations#edit", as: "account_settings"
     # TODO(Shannon): Refactor routes.
   end
+  resources :users do
+    get "notifications"
+  end
 
   ##################################################
   # Sessions
@@ -90,6 +93,7 @@ Rails.application.routes.draw do
       get "member_listing"
       put "join"
       put "leave"
+      get "notifications"
     end
     get "my_index", to: 'groups#my_index', on: :collection
     resources :events do
@@ -102,7 +106,7 @@ Rails.application.routes.draw do
 # Posts
 ###################################################
   resources :posts do
-      resources :replies
+    resources :replies
   end
 
   ##################################################

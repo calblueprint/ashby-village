@@ -34,6 +34,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def notifications
+    @email_notif = current_user.global_email_notifications
+    if @email_notif == true
+      if current_user.update_attribute(:global_email_notifications, false)
+        flash[:notice] = "Your email notifications are now off."
+        redirect_to user_path(current_user)
+      end
+    elsif @email_notif == false
+      if current_user.update_attribute(:global_email_notifications, true)
+        flash[:notice] = "Your email notifications are now on."
+        redirect_to user_path(current_user)
+      end
+    else
+      flash[:notice] = "Email notification preferences could not be updated."
+      redirect_to account_settings_path
+    end
+  end
+
   private
 
   def user_params

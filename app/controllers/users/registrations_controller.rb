@@ -33,11 +33,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   PUT /resource
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
-    @user = current_user
-    if update_resource(@user,account_update_params)
+    if update_resource(current_user, account_update_params)
       sign_in(current_user, bypass: true) # keeps user signed in after changing password
       flash[:notice] = "Password updated!"
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       flash[:alert] = "Unable to edit password. Please make sure current password is correct and new passwords match."
       render template: "users/registrations/edit"
@@ -58,20 +57,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #     super
 #   end
 
-
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:registration) { |u| u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:registration) do |u|
+      u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo)
+    end
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:password, :password_confirmation, :current_password, :global_email_notifications)
+    end
   end
 
 #   If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :neighborhood, :password, :password_confirmation, :phone, :photo]
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :neighborhood, :password,
+                                                 :password_confirmation, :phone, :photo]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << [:password, :password_confirmation, :current_password]
+    devise_parameter_sanitizer.for(:account_update) << [:password, :password_confirmation,
+                                                        :current_password, :global_email_notifications]
   end
 
   # The path used after sign up.
@@ -80,11 +84,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:password, :password_confirmation, :current_password)
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :global_email_notifications)
   end
 
   def registration_params
-    params.require(:user).permit( :first_name, :last_name, :email, :neighborhood, :password, :password_confirmation, :phone, :photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :neighborhood, :password,
+                                 :password_confirmation, :phone, :photo, :global_email_notifications)
   end
 
 #   The path used after sign up for inactive accounts.

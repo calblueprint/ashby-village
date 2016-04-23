@@ -2,6 +2,19 @@
   <div class="settings-remove-membership">
     <h6>Settings</h6>
     <% if group.users.exists?(id: current_user.id) %>
+      <% if current_user.user_groups.where(group_id: @group.id).first.group_email_notifications == true %>
+        <!-- check if the user's email notifications for this group are on, show option to turn off -->
+        <p> Your email notifications for this group are turned on.  If you would like to stop receiving email updates for this group, click the button below to turn email notifications off.</p>
+          <%= link_to notifications_group_path(group), method: :get do %>
+            <button class="emails-off">Turn email notifications off</button>
+          <% end %> <br/>
+      <% else %> <!-- if email notifications off, show option to turn on -->
+        <p> Your email notifications for this group are turned off.  If you would like to receive email updates for this group, click the button below to turn email notifications on.</p>
+          <%= link_to notifications_group_path(group), method: :get do %>
+            <button class="">Turn email notifications on</button>
+          <% end %> </br>
+      <% end %>
+
       <% if current_user.is_only_leader(group) %>
         <p> Since you are the only leader of this group, removing your membership will mark this group inactive and villagers will be unable to view or join it. Please add another group leader before removing yourself if you would like this group to stay active. </p>
         <%= link_to leave_group_path(group), method: :put, data: {confirm: "You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?"} do %>
@@ -12,7 +25,7 @@
         <%= link_to leave_group_path(group), method: :put do %>
           <button class="remove-membership">Remove Membership</button>
         <% end %>
-      <% end %>
+      <% end %><br/>
     <% end %>
   </div>
 
