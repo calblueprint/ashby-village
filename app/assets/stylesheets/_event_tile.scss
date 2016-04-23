@@ -20,29 +20,6 @@
 	background-color: $ashby-faint-blue;
 }
 
-.tile-is-attending {
-  margin: 0;
-  background: $ashby-light-blue;
-  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
-  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
-  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
-}
-
-.tile-is-attending:hover span {
-  display: none;
-}
-
-.tile-is-attending:hover:after{
-  content: 'Cancel Attendance';
-}
-
-.tile-is-attending:hover {
-  background: $ashby-red;
-  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
-  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
-  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
-}
-
 .event-tile-organizers img {
     object-fit: cover;
     height: 64px;
@@ -59,4 +36,20 @@
 .event-tile-icon img {
   height: 25px;
   margin-right: 7px;
+}
+
+@media (max-width: 64em) {
+  .my-events {
+    margin-left: 16px;
+  }
+
+  .event-tile-margin {
+    margin: 0 16px 0 16px;
+  }
+}
+
+@media (max-width: 41em) {
+  .event-tile {
+    padding: 12px;
+  }
 }

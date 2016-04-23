@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 20160421225429) do
     t.date     "enddate"
     t.integer  "group_id"
     t.string   "location"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.text     "description"
+    t.boolean  "gmap",        default: false
     t.integer  "capacity"
-    t.boolean  "gmap",           default: false
+    t.boolean  "is_organizer"
     t.boolean  "repeat_weekly",  default: false
     t.boolean  "repeat_monthly", default: false
   end
