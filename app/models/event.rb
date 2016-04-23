@@ -66,6 +66,7 @@ class Event < ActiveRecord::Base
         e.startdate += 7.days
         e.enddate += 7.days
         e.save
+        e.send_invites
         puts e.errors
       end
     end
@@ -74,12 +75,23 @@ class Event < ActiveRecord::Base
         e.startdate += 4.weeks
         e.enddate += 4.weeks
         e.save
+        e.send_invites
       end
     end
   end
 
-  def self.send_invites
+  def send_invites
+    @group = Group.find(self.group_id)
+    @group.users.each do |user|
+      AshbyMailer.email_invites(user, @group, self).deliver
+    end
+  end
 
+  def send_cancel
+    @group = Group.find(self.group_id)
+    self.users.rsvps.each do |user|
+      AshbyMailer.email_cancel(user, @group, self).deliver
+    end
   end
 
   validate :event_starttime_later_than_now, :event_endtime_later_than_starttime

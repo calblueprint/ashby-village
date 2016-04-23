@@ -14,4 +14,11 @@ class AshbyMailer < ApplicationMailer
     @event = event
     mail(to: @user.email, subject: "Reminder: Event Tomorrow!")
   end
+
+  def email_cancel(user, group, event)
+    @user = user
+    @group = group
+    @event = event
+    mail(to: @user.email, subject: @event.title + " Is Cancelled")
+  end
 end

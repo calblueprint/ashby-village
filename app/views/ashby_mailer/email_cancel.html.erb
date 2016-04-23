@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <center>
+    <table border="1">
+    <tr bgcolor="#34495E">
+    <td><img src="http://ashby-prod.herokuapp.com/assets/ashby_village_icon-52a169f303c056f94dadd4635e3597c2424a5eb0d6436585f0fccb3c05492425.png" style="width:100px;height:80px;"></td>
+    </tr>
+    <tr>
+    <td><center><img src="http://www.clipartlord.com/wp-content/uploads/2015/03/envelope5.png" style="width:80px;height:80px;"><p style="font-size:200%;">Event Cancelled</p></center>
+      <p style="font-size:160%;">Dear <%= @user.decorate.full_name %>,</p>
+      <p style="font-size:160%;" >The event <%= @event.title %> hosted by <%= link_to @group.name, group_url(@group)%> has been cancelled.</p> Sorry for the inconvenience.
+    </tr>
+    </table>
+  </center>
+  </body>
+</html>

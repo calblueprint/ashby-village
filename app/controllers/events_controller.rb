@@ -71,6 +71,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @group = @event.group_id
+    @event.send_cancel
     @event.destroy
     respond_to do |format|
       format.html { redirect_to group_path(@group), notice: "Event was successfully deleted." }
