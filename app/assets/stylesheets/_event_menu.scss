@@ -1,0 +1,55 @@
+@import "ashby_settings.scss";
+
+.event-menu {
+  background-color: white;
+  border-radius: 8px;
+  height: 48px;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  display: none;
+}
+
+.event-menu p {
+  color: $ashby-gray;
+}
+
+.click-posts, .click-attendance, .click-event-settings, .click-details {
+  padding: 10px;
+  height: 48px;
+
+  i {
+    vertical-align: middle;
+  }
+
+  p {
+    text-align: center;    
+  }
+}
+
+.click-posts:hover, .click-attendance:hover, .click-event-settings:hover, 
+.click-details:hover {
+  cursor: pointer;
+  background-color: $ashby-light-gray;
+}
+
+.hide-mobile {
+  display: none;
+}
+
+@media (max-width: 41em) {
+  .event-menu {
+    display: block;
+  }
+
+  .event-left .new-post {
+    margin-top: 0 !important;
+  }
+
+  .event-organizers {
+    margin-top: 0 !important;
+  }
+
+  .event-menu .selected:last-child {
+    border-bottom-right-radius: 8px;
+  }
+}

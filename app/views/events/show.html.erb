@@ -3,6 +3,10 @@
 	<h2><%= @event.title %></h2>
 </div>
 
+<div class="row">
+	<%= render 'events/menu' %>
+</div>
+
 <div class="row event-left">
 	<div class="small-12 medium-7 large-8 left">
 		<div class="event-details">
@@ -29,16 +33,16 @@
 			</div>
 		</div>
 
-	<div class="new-post event-post">
-		<%= render 'posts/new'%>
-	</div>
-	<div class="group-posts event-post">
-	  <%= render 'posts/index', posts: @posts, reply: @reply %>
-	</div>
+		<div class="new-post event-post">
+			<%= render 'posts/new'%>
+		</div>
+		<div class="group-posts event-post">
+		  <%= render 'posts/index', posts: @posts, reply: @reply %>
+		</div>
 	</div>
 
-	<div class="small-12 medium-5 large-4 right rsvp-button">
-		<div class="columns">
+	<div class="small-12 medium-5 large-4 right">
+		<div class="columns rsvp-button">
 		  <% if @event.users.rsvps.include?(current_user) %>
 	      <%= link_to group_event_cancel_path(@group, @event), method: :patch do %>
 	      	<button class="is-attending"><span>You're Attending</span></button>
