@@ -1,0 +1,7 @@
+<div class="mobile-margins">
+  <div class="dropdowns-tile row">
+    <h6> My Groups <h6>
+    <%= link_to "Look for a new group", groups_path(current_user.id) %>
+  </div>
+  <%= render "groups/group_tiles" %>
+</div>
