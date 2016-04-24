@@ -38,6 +38,18 @@
   margin-right: 7px;
 }
 
+.event-organizer {
+  img {
+    height: 16px;
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  h6 {
+    display: inline-block;
+  }
+}
+
 @media (max-width: 64em) {
   .my-events {
     margin-left: 16px;

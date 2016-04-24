@@ -152,6 +152,10 @@
   margin-bottom: 16px;
   padding: 24px;
   @include ease-transition(0.5s);
+
+  .event-organizer h6 {
+    font-size: 12px;
+  }
 }
 
 .group-event-tile:hover {

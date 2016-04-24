@@ -86,3 +86,17 @@
   width: 48px;
   border-radius: 50%;
 }
+
+.group-leader {
+  margin-bottom: 16px;
+
+  img {
+    height: 16px;
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  h6 {
+    display: inline-block;
+  }
+}

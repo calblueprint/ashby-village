@@ -5,6 +5,13 @@
     <% end %>
     ">
 
+    <% if group.users.leaders.include?(current_user) %>
+      <div class="large-12 group-leader">
+        <span><%= image_tag("groups_you_lead_icon.png") %>
+        <h6>You are a leader of this group </h6></span>
+      </div>
+    <% end %>
+    
       <div class="group-photo-container large-3">
           <%= image_tag group.photo, :class => "group-photo large-3 columns" %>
           <p>VISIT GROUP</p>

@@ -6,6 +6,13 @@
 	<% @group.events.each do |event| %>
 	  <a class="tile-link" href="<%= group_event_path(@group, event) %>">
 		<div class="group-event-tile columns">
+	    <% if event.users.organizers.include?(current_user) %>
+	      <div class="large-12 event-organizer">
+	        <span><%= image_tag("events_you_organize.png") %>
+	        <h6>You are an organizer of this event</h6></span>
+	      </div>
+	    <% end %>
+	    
 			<h3><%= event.title %></h3>
 			<h6>Nature Walks</h6>
 			<p class="event-tile-icon small-12 large-12 large-uncentered column">
