@@ -1,3 +1,5 @@
+@import "ashby_settings.scss";
+
 .flash_notice {
 	font-size: 24px;
 	color: white;
@@ -6,9 +8,13 @@
 	left: 30px;
 	z-index: 1000;
 	border-radius: 10px;
-	background: #7F8C8D;
+	background: $ashby-green;
 	padding: 20px 50px;
 	box-shadow: 0 2px 6px #999999;
+
+	i {
+		color: white;
+	}
 }
 
 .flash_error {
@@ -20,9 +26,13 @@
 	left: 30px;
 	z-index: 1000;
 	border-radius: 10px;
-	background: #DE6868;
+	background: $ashby-red;
 	padding: 20px 50px;
 	box-shadow: 0 2px 6px #999999;
+
+	i {
+		color: white;
+	}
 }
 
 @media (max-width: 41em) {
