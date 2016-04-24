@@ -3,7 +3,6 @@
 .info-box {
   background-color: white;
   border-radius: 8px;
-  margin-top: 16px; // To override foundation's row class
   margin-bottom: 16px ; // To override foundation's row class
   margin-left: 16px;
   padding: 24px;
@@ -14,6 +13,7 @@
   border-radius: 8px;
   height: 48px;
   margin-top: 16px !important;
+  margin-bottom: 16px !important;
   span {
     color: $ashby-gray;
   }
@@ -57,7 +57,7 @@
   }
 
   .info-box {
-    margin: 16px 0 16px 0;
+    margin: 0 0 16px 0;
   }
 }
 

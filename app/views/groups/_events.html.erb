@@ -27,34 +27,46 @@
 				<%= image_tag("events_location.png") %> <%= event.location %>
 			</p>
     	<div class="event-tile-organizers">
-			<h6>Organizers</h6>
-	        <% event.users.organizers.first(2).each do |user| %>
-	            <div class="event-tile-bio columns large-6 small-12 medium-12 left">
-	              <% if user.photo %>
-	                <div class="image-wrapper">
-	                  <%= image_tag("organizer-icon.png", class: "event-organizer-icon") %>
-	                  <%= image_tag(user.photo(:thumb), class: "event-organizer-photo") %>
-	                </div>
-	              <% end %>
-	              <div class="organizer-bio">
-			            <%= link_to user.decorate.full_name, user %><br>
-			            <p><%= user.email %></p>
-			            <p><%= user.phone %></p>
-		            </div>
+				<h6>Organizers</h6>
+        <% event.users.organizers.first(2).each do |user| %>
+            <div class="event-tile-bio columns large-6 small-12 medium-12 left">
+              <% if user.photo %>
+                <div class="image-wrapper">
+                  <%= image_tag("organizer-icon.png", class: "event-organizer-icon") %>
+                  <%= image_tag(user.photo(:thumb), class: "event-organizer-photo") %>
+                </div>
+              <% end %>
+              <div class="organizer-bio">
+		            <%= link_to user.decorate.full_name, user %><br>
+		            <p><%= user.email %></p>
+		            <p><%= user.phone %></p>
 	            </div>
-	        <% end %>
+            </div>
+        <% end %>
 	    </div>
+
 	    <div class="group-event-rsvp">
-			<% if event.users.rsvps.include?(current_user) %>
-				<%= link_to group_event_cancel_path(event.group, event), method: :patch do %>
-						<button class="tile-is-attending large-4"><span>You're Attending</span></button>
+				<% if event.users.rsvps.include?(current_user) %>
+					<%= link_to group_event_cancel_path(event.group, event), method: :patch do %>
+							<button class="tile-is-attending large-4"><span>You're Attending</span></button>
+					<% end %>
+				<% else %>
+					<%= link_to group_event_rsvp_path(event.group, event), method: :patch do %>
+						<button class="tile-event-joined large-4">Click to RSVP</button>
+					<% end %>
 				<% end %>
-			<% else %>
-				<%= link_to group_event_rsvp_path(event.group, event), method: :patch do %>
-					<button class="no-margin-button large-4">Click to RSVP</button>
-				<% end %>
-			<% end %>
-		</div>
+			</div>
+
+      <% if event.repeat_weekly == true %>
+        <div class="repeat small-7 medium-6 large-4 columns">
+          Weekly Event
+        </div>
+      <% elsif event.repeat_monthly == true %>
+        <div class="repeat small-7 medium-6 large-4 columns">
+          Monthly Event
+        </div>
+      <% end %>
+
 	  </div>
 	  </a>
 	<% end %>

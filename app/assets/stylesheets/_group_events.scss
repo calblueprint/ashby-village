@@ -4,7 +4,6 @@
   background-color: white;
   border: 2px solid transparent;
   border-radius: 8px;
-  margin-top: 16px;
   margin-bottom: 16px;
   padding: 24px;
   @include ease-transition(0.5s);
@@ -35,19 +34,33 @@
   margin-bottom: 16px;
 }
 
-.create-event-mobile {
-  margin-top: 32px;
-}
-
-.no-margin-button {
-  margin-bottom: 0;
-}
-
 .organizer-bio p {
   text-transform: uppercase;
   font-size: $small-font-size;
   color: $ashby-gray;
   margin: 0;
+}
+
+.tile-is-attending {
+  background: $ashby-light-blue;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
+}
+
+.tile-is-attending:hover span {
+  display: none;
+}
+
+.tile-is-attending:hover:after{
+  content: 'Cancel Attendance';
+}
+
+.tile-is-attending:hover {
+  background: $ashby-red;
+  -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  box-shadow: 0px 4px 0px 0px $ashby-dark-red;
 }
 
 @media (max-width: 41em) {
