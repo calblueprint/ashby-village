@@ -27,7 +27,7 @@ var ready_events_show = function() {
   $(".click-attendance").click({menu_item: ".event-attendance"}, menu_clicked);
   $(".click-event-settings").click({menu_item: ".event-settings"}, menu_clicked);
 
-  if($(".event-menu")[0].style.display != ""){
+  if($(".event-menu").length > 0 && $(".event-menu")[0].style.display != ""){
     $(".click-details").trigger('click');
   }
 };
