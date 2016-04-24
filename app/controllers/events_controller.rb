@@ -5,12 +5,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Invite.where(user: current_user).map(&:event) || []
   end
 
   def attendance
     @event = Event.find(params[:event_id])
-    @events = Event.all
     @group = @event.group
     @rsvps = @event.invites.where(rsvp: true)
   end
@@ -85,7 +84,6 @@ class EventsController < ApplicationController
     if invite.nil?
       invite = Invite.create(user: current_user, event_id: params[:event_id], organizer: false, rsvp: true)
     end
-    # TODO: check valid invite
     invite.update_attribute(:rsvp, "true")
     flash[:notice] = "You Have RSVPed!"
     redirect_to :back
@@ -94,8 +92,9 @@ class EventsController < ApplicationController
   # PATCH/PUT Set RSVP to False
   def cancel
     invite = Invite.where(user_id: current_user.id, event_id: params[:event_id]).first
-    # TODO: check valid invite
-    invite.update_attribute(:rsvp, "false")
+    if !invite.nil?
+      invite.update_attribute(:rsvp, "false")
+    end
     flash[:notice] = "Cancelled Attendance"
     redirect_to :back
   end
