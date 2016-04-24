@@ -67,6 +67,16 @@
         </div>
       </div>
 
+      <% if event.repeat_weekly == true %>
+        <div class="repeat columns">
+          Weekly Event
+        </div>
+      <% elsif event.repeat_monthly == true %>
+        <div class="repeat columns">
+          Monthly Event
+        </div>
+      <% end %>
+
     </div>
   </div>
   </a>
