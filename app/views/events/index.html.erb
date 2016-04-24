@@ -24,6 +24,7 @@
 
       <div class="small-12 medium-5 large-4 right rsvp-button">
         <div class="columns">
+          <div class="event-settings">
           <% if event.users.rsvps.include?(current_user) %>
               <%= link_to group_event_cancel_path(event.group, event), method: :patch do %>
                 <button class="is-attending"><span>You're Attending</span></button>
@@ -33,6 +34,7 @@
               <button class="event-joined">Click to RSVP</button>
             <% end %>
           <% end %>
+          </div>
         </div>
       </div>
 

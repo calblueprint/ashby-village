@@ -78,7 +78,7 @@
 		 </div>
 
 		 <div class="columns">
-		 	<div class="attendance-list">
+		 	<div class="event-attendance">
 		 	<h6>Who is Attending?</h6>
 		 		<%= link_to group_event_attendance_path(@group, @event), method: :get do %>
 		 			<button class="attendance-button is-member">See Who's Attending</button>
@@ -88,19 +88,20 @@
 		 		<% end %>
 		 	</div>
 		 </div>
+    <div class="event-settings">
+      <div class="columns">
+        <%= link_to edit_group_event_path(@group, @event), method: :get do %>
+          <button class="event-joined"><span>Edit Event</span></button>
+        <% end %>
+      </div>
 
- 		<div class="columns">
-	 		<%= link_to edit_group_event_path(@group, @event), method: :get do %>
-	 			<button class="event-joined"><span>Edit Event</span></button>
-	 		<% end %>
- 		</div>
-
-		<div class="columns">
-			<div class="delete-event-button">
-				<%= link_to group_event_path(@group, @event), method: :delete do %>
-			 		<button class="delete-event"><span>Delete Event</span></button>
-			 	<% end %>
-		 	</div>
- 		</div>
+      <div class="columns">
+        <div class="delete-event-button">
+          <%= link_to group_event_path(@group, @event), method: :delete do %>
+            <button class="delete-event"><span>Delete Event</span></button>
+          <% end %>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>

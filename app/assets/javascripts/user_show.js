@@ -1,4 +1,4 @@
-var ready = function() {
+var ready_user_show = function() {
   $(".info").show();
   $(".click-info").addClass("selected");
   $(".groups-leading").hide();
@@ -17,6 +17,3 @@ var ready = function() {
     $(".groups-leading").show();
   });
 };
-
-$(document).ready(ready);
-$(document).on("page:load", ready);

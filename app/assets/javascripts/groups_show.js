@@ -1,20 +1,4 @@
-var ready = function() {
-  // $(".group-join").click(function(){
-  //   $.ajax({
-  //     type: "PUT",
-  //     url: "/groups/" + $(this).attr("value") + "/join",
-  //     success: function() {
-  //       var members = $(".listing-member").attr("value");
-  //       $(".member").text("Members " + members);
-  //     }
-  //   });
-  //   $(this).removeClass("group-join");
-  //   $(this).addClass("group-joined");
-  //   $(this).prop("disabled", true);
-  //   $(this).text("You Have Joined");
-  //   $(".false").show();
-  // });
-
+var ready_groups_show = function() {
   $(".false").hide();
   $(".group-new-post").show();
   $(".group-posts").show();
@@ -101,7 +85,3 @@ var ready = function() {
     $(".group-events").hide();
   });
 };
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
-$(document).on("page:change", ready);

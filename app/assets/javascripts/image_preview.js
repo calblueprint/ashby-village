@@ -1,4 +1,4 @@
-var ready = (function() {
+var ready_image_preview = (function() {
   $('.uploadFile').on('change', function(event) {
     var files = event.target.files;
     var image = files[0];
@@ -12,6 +12,3 @@ var ready = (function() {
     reader.readAsDataURL(image);
   });
 });
-
-$(document).ready(ready);
-$(document).on('page:load', ready);

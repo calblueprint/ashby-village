@@ -1,5 +1,4 @@
-var ready = function() {
-
+var ready_groups_index = function() {
 
 // TODO: Fix this condition so that it uses rails paths
 if (!top.location.pathname.includes("users")) {
@@ -17,29 +16,33 @@ if (!top.location.pathname.includes("users")) {
   });
 
   function updateListing() {
-    var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, "-");
+    if($(".neighborhood-dropdown").length > 0) {
+      var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, "-");
 
-    $(".group-tile").show();
-    if (neighborhood != "all") {
-      $(".group-tile").not("." + neighborhood).hide();
-      $(".dropdowns-tile span").fadeOut("fast");
-    } else {
-      $(".dropdowns-tile span").fadeIn("fast");
+      $(".group-tile").show();
+      if (neighborhood != "all") {
+        $(".group-tile").not("." + neighborhood).hide();
+        $(".dropdowns-tile span").fadeOut("fast");
+      } else {
+        $(".dropdowns-tile span").fadeIn("fast");
+      }
     }
   }
 
   function updateGroupCount() {
-    var groupCount = $(".group-tile").filter(function() {
-      return $(this).css("display") !== "none";
-    }).length;
-    var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, " ");
-    if (neighborhood == "all") {
-      neighborhood = "All Neighborhoods";
-    }
-    if (groupCount === 1) {
-      $(".group-count").text("Displaying " + groupCount + " group in " + neighborhood);
-    } else {
-      $(".group-count").text("Displaying " + groupCount + " groups in " + neighborhood);
+    if($(".group-tile").length > 0) {
+      var groupCount = $(".group-tile").filter(function() {
+        return $(this).css("display") !== "none";
+      }).length;
+      var neighborhood = $(".neighborhood-dropdown").val().replace(/\^/g, " ");
+      if (neighborhood == "all") {
+        neighborhood = "All Neighborhoods";
+      }
+      if (groupCount === 1) {
+        $(".group-count").text("Displaying " + groupCount + " group in " + neighborhood);
+      } else {
+        $(".group-count").text("Displaying " + groupCount + " groups in " + neighborhood);
+      }
     }
   }
 
@@ -119,7 +122,3 @@ if (!top.location.pathname.includes("users")) {
     }
   });
 };
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
-$(document).on("page:change", ready);

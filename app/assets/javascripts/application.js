@@ -17,11 +17,22 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree .
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+//= require_tree .
 
-var ready = (function(){ $(document).foundation();});
+var ready = (function(){ 
+  $(document).foundation();
+  ready_groups_show();
+  ready_groups_index();
+  ready_events_show();
+  ready_users_registrations_new();
+  ready_image_preview();
+  ready_user_show();
+  if($('.flash_error').length > 0) {
+    ready_error_messages();
+  }
+});
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

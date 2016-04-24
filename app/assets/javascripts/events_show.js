@@ -1,57 +1,33 @@
-var ready = function() {
+var ready_events_show = function() {
 
-  $(".click-details").addClass("selected");
-  $(".click-details").trigger('click');
-
-  $(".click-details").click(function() {
+  function menu_clicked(event) { // event.data.menu_item must be present
+    // unselect others
+    $(".click-details").removeClass("selected");
     $(".click-posts").removeClass("selected");
     $(".click-attendance").removeClass("selected");
     $(".click-event-settings").removeClass("selected");
-    $(this).addClass("selected");
+
+    // hide others on mobile
+    $(".event-details").addClass("hide-mobile");
     $(".event-post").addClass("hide-mobile");
     $(".event-organizers").addClass("hide-mobile");
-    $(".attendance-list").addClass("hide-mobile");
-    $(".event-details").removeClass("hide-mobile");
-    $(".rsvp-button").removeClass("hide-mobile");
-  });
-
-  $(".click-posts").click(function() {
-    $(".click-details").removeClass("selected");
-    $(".click-attendance").removeClass("selected");
-    $(".click-event-settings").removeClass("selected");
-    $(this).addClass("selected");
-    $(".event-post").removeClass("hide-mobile");
-    $(".event-organizers").addClass("hide-mobile");
-    $(".attendance-list").addClass("hide-mobile");
-    $(".event-details").addClass("hide-mobile");
+    $(".event-attendance").addClass("hide-mobile");
+    $(".event-settings").addClass("hide-mobile");
     $(".rsvp-button").addClass("hide-mobile");
-  });
 
-  $(".click-attendance").click(function() {
-    $(".click-details").removeClass("selected");
-    $(".click-posts").removeClass("selected");
-    $(".click-event-settings").removeClass("selected");
     $(this).addClass("selected");
-    $(".event-post").addClass("hide-mobile");
-    $(".event-organizers").removeClass("hide-mobile");
-    $(".attendance-list").removeClass("hide-mobile");
-    $(".event-details").addClass("hide-mobile");
-    $(".rsvp-button").addClass("hide-mobile");
-  });
+    $(event.data.menu_item).removeClass("hide-mobile");
+    if(event.data.additional) {
+      $(event.data.additional).removeClass("hide-mobile");
+    }
+  }
 
-  $(".click-event-settings").click(function() {
-    $(".click-details").removeClass("selected");
-    $(".click-attendance").removeClass("selected");
-    $(".click-posts").removeClass("selected");
-    $(this).addClass("selected");
-    $(".event-post").addClass("hide-mobile");
-    $(".event-organizers").addClass("hide-mobile");
-    $(".attendance-list").addClass("hide-mobile");
-    $(".event-details").addClass("hide-mobile");
-    $(".rsvp-button").addClass("hide-mobile");
-  });
+  $(".click-details").click({menu_item: ".event-details", additional: ".rsvp-button"}, menu_clicked);
+  $(".click-posts").click({menu_item: ".event-post"}, menu_clicked);
+  $(".click-attendance").click({menu_item: ".event-attendance"}, menu_clicked);
+  $(".click-event-settings").click({menu_item: ".event-settings"}, menu_clicked);
 
+  if($(".event-menu")[0].style.display != ""){
+    $(".click-details").trigger('click');
+  }
 };
-
-$(document).ready(ready);
-$(document).on("page:change", ready);
