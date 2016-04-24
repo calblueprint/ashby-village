@@ -68,7 +68,6 @@ class Event < ActiveRecord::Base
         e.save
         e.clear_rsvp
         e.repeat_invite
-        puts e.errors
       end
     end
     self.where(repeat_monthly: true).each do |e|
