@@ -45,8 +45,9 @@ function remove_selected_leader(button) {
 // Function to add a selected leader
 function add_selected_leader(name, id) {
   var div = document.createElement('div');
-  div.innerHTML = name + '<button type="button" onclick="remove_selected_leader(this)"> x </button>';
+  div.innerHTML = name + '<div type="button" class="x-leader" onclick="remove_selected_leader(this)"><i class="fa fa-times fa-lg"></i></div>';
   div.id = id;
+  div.className = " selected-leader";
   return div;
 }
 // Function called when autocomplete has been selected

@@ -235,3 +235,20 @@
 .group_names {
   display:none;
 }
+
+.x-leader {
+  all: unset;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.selected-leader {
+  color: $ashby-gray;
+  border: 1px solid $ashby-gray;
+  display: inline-block;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-right: 16px;
+  background: $ashby-faint-blue;
+}
