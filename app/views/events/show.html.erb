@@ -88,20 +88,24 @@
 		 		<% end %>
 		 	</div>
 		 </div>
-    <div class="event-settings">
-      <div class="columns">
-        <%= link_to edit_group_event_path(@group, @event), method: :get do %>
-          <button class="event-joined"><span>Edit Event</span></button>
-        <% end %>
-      </div>
 
-      <div class="columns">
-        <div class="delete-event-button">
-          <%= link_to group_event_path(@group, @event), method: :delete do %>
-            <%= button_tag "Delete Event", data: { confirm: "Are you sure you want to delete this event?"}, class: "delete-event" %>         
-          <% end %>
-        </div>
-      </div>
-    </div>
+		<% if @event.users.organizers.include?(current_user) %>
+	    <div class="event-settings">
+	      <div class="columns">
+	        <%= link_to edit_group_event_path(@group, @event), method: :get do %>
+	          <button class="event-joined"><span>Edit Event</span></button>
+	        <% end %>
+	      </div>
+
+	      <div class="columns">
+	        <div class="delete-event-button">
+	          <%= link_to group_event_path(@group, @event), method: :delete do %>
+	            <%= button_tag "Delete Event", data: { confirm: "Are you sure you want to delete this event?"}, class: "delete-event" %> 
+	          <% end %>
+	        </div>
+	      </div>
+	    </div>
+	  <% end %>
+	  
 	</div>
 </div>
