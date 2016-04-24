@@ -100,3 +100,53 @@
     display: inline-block;
   }
 }
+
+.neighborhood-dropdown {
+  margin: 18px 0 0 0;
+}
+
+.search {
+  padding-right: 10px;
+}
+
+.group-count {
+  padding: 0;
+}
+
+@media (max-width: 41em) {
+  .members {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 0;
+  }
+
+  .group-tile {
+    .group-photo, .black-cover {
+      width: 100%;
+      margin: 0;
+    }
+
+    .group-photo + p {
+      left: 95px;
+    }
+  }
+  .neighborhood-dropdown {
+    margin: 0;
+  }
+
+  .search {
+    padding: 0;
+  }
+
+  .group-count {
+    margin: 16px 0 0 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 64em) {
+  .mobile-margins {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}

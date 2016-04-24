@@ -1,5 +1,7 @@
-<%= link_to new_group_event_path(@group) do %>
-<button class="small-12 create-event-mobile">Create New Event</button>
+<% if @group.users.leaders.include?(current_user) %>
+	<%= link_to new_group_event_path(@group) do %>
+		<button class="small-12 create-event-mobile">Create New Event</button>
+	<% end %>
 <% end %>
 
 <div class="events-group">
@@ -49,7 +51,7 @@
 				<% end %>
 			<% else %>
 				<%= link_to group_event_rsvp_path(event.group, event), method: :patch do %>
-					<button class="tile-event-joined large-4">Click to RSVP</button>
+					<button class="no-margin-button large-4">Click to RSVP</button>
 				<% end %>
 			<% end %>
 		</div>
