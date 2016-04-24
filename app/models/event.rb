@@ -66,7 +66,8 @@ class Event < ActiveRecord::Base
         e.startdate += 7.days
         e.enddate += 7.days
         e.save
-        e.send_invites
+        e.clear_rsvp
+        e.repeat_invite
         puts e.errors
       end
     end
@@ -75,12 +76,24 @@ class Event < ActiveRecord::Base
         e.startdate += 4.weeks
         e.enddate += 4.weeks
         e.save
-        e.send_invites
+        e.clear_rsvp
+        e.repeat_invite
       end
     end
   end
 
-  def send_invites
+  def clear_rsvp
+    self.invites.each do |i|
+      if i.organizer == false
+        i.update_attribute :rsvp, false
+      end
+    end
+  end
+
+  def self.send_invites
+  end
+
+  def repeat_invite
     @group = Group.find(self.group_id)
     @group.users.each do |user|
       AshbyMailer.email_invites(user, @group, self).deliver
