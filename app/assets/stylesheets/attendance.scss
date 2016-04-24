@@ -1,7 +1,6 @@
 @import "ashby_settings.scss";
 
 .attendance-title {
-  margin-top: 40px;
   padding: 16px;
 }
 
@@ -90,7 +89,7 @@
 }
 
 @media (max-width: 41em) {
-  .attendance-title {
-    margin-top: 0;
+  .attendance-title h2 {
+    font-size: $h4-heading-size;
   }
 }
