@@ -91,6 +91,7 @@ Rails.application.routes.draw do
       put "join"
       put "leave"
     end
+    get "my_index", to: 'groups#my_index', on: :collection
     resources :events do
       get "attendance"
       patch "rsvp"

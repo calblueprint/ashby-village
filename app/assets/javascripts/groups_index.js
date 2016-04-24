@@ -30,7 +30,7 @@ if (!top.location.pathname.includes("users")) {
   }
 
   function updateGroupCount() {
-    if($(".group-tile").length > 0) {
+    if($(".neighborhood-dropdown").length > 0) {
       var groupCount = $(".group-tile").filter(function() {
         return $(this).css("display") !== "none";
       }).length;

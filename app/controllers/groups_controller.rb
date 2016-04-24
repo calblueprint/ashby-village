@@ -28,6 +28,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def my_index
+    @groups = UserGroup.where(user: current_user).map(&:group)
+  end
+
   def show
     @post = Post.new
     @reply = Reply.new
