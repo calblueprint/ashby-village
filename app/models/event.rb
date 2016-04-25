@@ -79,6 +79,10 @@ class Event < ActiveRecord::Base
         e.repeat_invite
       end
     end
+    # remove expired events
+    self.where("repeat_weekly = ? AND repeat_monthly = ? and enddate < ?", false, false, DateTime.now).each do |e|
+      e.destroy
+    end
   end
 
   def clear_rsvp
