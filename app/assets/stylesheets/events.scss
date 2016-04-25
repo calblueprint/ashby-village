@@ -198,6 +198,11 @@
   .no-row-margin {
     margin: 0 !important;
   }
+
+  .event-post {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 @media (min-width: 41em) {
@@ -207,5 +212,8 @@
   }
   .event-left {
     padding-left: 16px;
+  }
+  .event-post {
+    margin-top: 16px;
   }
 }
