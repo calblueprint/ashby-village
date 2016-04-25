@@ -142,6 +142,12 @@
   .mobile-group-join {
     display: block;
   }
+
+  .create-title h2 {
+    font-size: $h4-heading-size;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 .group-event-tile {

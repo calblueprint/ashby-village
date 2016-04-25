@@ -3,26 +3,28 @@
   <h4 class="create-subtitle">Fill in the blanks below to create your new group. All fields are required.</h4>
 </div>
   <%= form_for @group do |f| %>
-  <div class="create-section row">
-  <%= content_tag :div, class: "group_names", data: {temp: @allnames} do %>
-  <% end %>
-    Group Name <div id="nameError" class="form-error-msg" > That group name has been taken. Please choose another name.</div>
-    <%= f.text_field :name, required: true, :placeholder => 'Example: Kensington Knitting Club', id: 'pass', onblur: "validateName('pass')" %>
-    Group Description <%= f.text_area :description, required: true, :placeholder => 'What is your group about?' %>
-    Group Cover Photo
-    <div class="field">
-      <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
-      <%= f.file_field :photo, required: true, class: "uploadFile" %>
-      <%= image_tag(("empty_group.png"), class: "groupPhotoPreview") %>
-    </div></br>
-    Select Additional Group Leaders
-    <div class="field" id="selected-group-leaders">
-      <p><i>Start typing the names of your fellow group leaders to select</i></p>
-      <%= autocomplete_field_tag :group_leaders, '', autocomplete_user_full_name_groups_path %>
-      <%= hidden_field_tag 'selected_leaders' %>
-    </div>
-    Neighborhood of Group <%= f.select(:neighborhood, @neighborhoods, required: true) %>
-    <%= f.submit %>
+    <div class="mobile-margins">
+      <div class="create-section row">
+        <%= content_tag :div, class: "group_names", data: {temp: @allnames} do %>
+        <% end %>
+        Group Name <div id="nameError" class="form-error-msg" > That group name has been taken. Please choose another name.</div>
+        <%= f.text_field :name, required: true, :placeholder => 'Example: Kensington Knitting Club', id: 'pass', onblur: "validateName('pass')" %>
+        Group Description <%= f.text_area :description, required: true, :placeholder => 'What is your group about?' %>
+        Group Cover Photo
+        <div class="field">
+          <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
+          <%= f.file_field :photo, required: true, class: "uploadFile" %>
+          <%= image_tag(("empty_group.png"), class: "groupPhotoPreview") %>
+        </div></br>
+        Select Additional Group Leaders
+        <div class="field" id="selected-group-leaders">
+          <p><i>Start typing the names of your fellow group leaders to select</i></p>
+          <%= autocomplete_field_tag :group_leaders, '', autocomplete_user_full_name_groups_path %>
+          <%= hidden_field_tag 'selected_leaders' %>
+        </div>
+        Neighborhood of Group <%= f.select(:neighborhood, @neighborhoods, required: true) %>
+        <%= f.submit %>
+      </div>
     </div>
   <% end %>
 <script>
