@@ -95,7 +95,7 @@ class Event < ActiveRecord::Base
   def repeat_invite
     @group = Group.find(self.group_id)
     @group.users.each do |user|
-      AshbyMailer.email_invites(user, @group, self).deliver
+      AshbyMailer.email_repeat(user, @group, self).deliver
     end
   end
 
