@@ -21,8 +21,6 @@
 //= require autocomplete-rails
 //= require_tree .
 
-
-
 function validateEmailReset(email) {
   var unique = isEmailUnique(email);
   var valid = isValidEmail(email);
