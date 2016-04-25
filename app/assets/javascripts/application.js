@@ -21,19 +21,13 @@
 //= require autocomplete-rails
 //= require_tree .
 
-
+//this is the most recent version
 
 function validateEmailReset(email) {
   var unique = isEmailUnique(email);
-  var valid = isValidEmail(email);
   if (unique) {
-    $("#pw_email").addClass("form-error");
     $(".email-not-exist").show();
-  } else if (!valid) {
-    $("#pw_email").addClass("form-error");
-    $(".emailError").show();
   } else {
-    $("#pw_email").removeClass("form-error");
     $(".emailError").hide();
     $(".email-not-exist").hide();
   }
@@ -68,6 +62,7 @@ var ready = (function(){
   ready_user_show();
   ready_user_new();
   event_new_ready();
+  groups_new_ready();
 
   if($('.flash_error').length > 0) {
     ready_error_messages();

@@ -5,16 +5,18 @@
   <%= form_for [@group, @event] do |f| %>
     <div class="mobile-margins">
       <div class="create-section row">
-        Event Name <%= f.text_field :title, required: true, onBlur: "validateEventStart();", :placeholder => 'Example: Baked Goods Fundraiser' %>
+        Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
         Event Description <%= f.text_area :description, required: true, onBlur: "validateEventStart();", :placeholder => 'What is your event about?' %>
         Event Date and Time<br>
+        <div class="startdate_errors"> Your event cannot start in the past! </div>
+        <div class="enddate_errors"> Your event cannot end before it begins or in the past! </div>
         <div class="start"><p><i>Start</i></p>
-        <%= f.date_field :startdate, required: true, :placeholder => '03/25/16' %>
-        <%= f.time_field :starttime, required: true, :placeholder => '10:00AM' %>
+        <%= f.date_field :startdate, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
+        <%= f.time_field :starttime, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '10:00AM' %>
         </div>
         <div class="end"><p><i>End</i></p>
-        <%= f.date_field :enddate, required: true, onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
-        <%= f.time_field :endtime, required: true, onBlur: "validateEventEnd();", :placeholder => '03:00PM' %>
+        <%= f.date_field :enddate, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
+        <%= f.time_field :endtime, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '03:00PM' %>
         </div><br>
         Repeat Event <i>(select one)</i><br>
         <%= f.check_box :repeat_weekly %> Once a week <br>

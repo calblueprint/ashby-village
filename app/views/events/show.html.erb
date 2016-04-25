@@ -71,7 +71,7 @@
               <div class="organizer-bio">
 		            <%= link_to user.decorate.full_name, user %><br>
 		            <p><%= user.email %></p>
-		            <p><%= user.phone %></p><br>
+		            <p><%= number_to_phone(user.phone, area_code: true) %></p><br>
 	            </div>
 			    <% end %>
 			</div>
@@ -100,12 +100,12 @@
 	      <div class="columns">
 	        <div class="delete-event-button">
 	          <%= link_to group_event_path(@group, @event), method: :delete, data: { confirm: "Are you sure you want to delete this event?" } do %>
-	            <button class="delete-event"><span>Delete Event</span></button> 
+	            <button class="delete-event"><span>Delete Event</span></button>
 	          <% end %>
 	        </div>
 	      </div>
 	    </div>
 	  <% end %>
-	  
+
 	</div>
 </div>

@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user = User.new(params[:sign_up_params].permit(:first_name, :last_name, :email, :phone))
       @resubmit = 1
     else
-      @user = User.new()
+      @user = User.new
       @resubmit = 0
     end
     @allemails = User.all.map(&:email)
