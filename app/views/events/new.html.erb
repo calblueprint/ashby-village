@@ -28,7 +28,7 @@
           <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>
           <%= hidden_field_tag 'selected_organizers' %>
         </div>
-        <%= f.submit %>
+        <%= f.submit 'Create Event', data: { confirm: 'Are you sure you want to create an event? (this will email everyone in the group)' } %>
         </div>
       </div>
   <% end %>
