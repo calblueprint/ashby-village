@@ -21,12 +21,12 @@
   background-color: #ffcdcd!important;
 }
 
-.form-error-msg, .login-form-error-msg, .pw-form-error-msg{
+.form-error-msg, .login-form-error-msg, .pw-form-error-msg, .password_error, .startdate_errors, .enddate_errors {
   color: #e54d4d;
   display: none;
 }
 
-/*.flash_error {
+.flash_error {
     display:none;
 	font-size: 24px;
 	color: white;
@@ -43,7 +43,6 @@
 		color: white;
 	}
 }
-}*/
 
 
 @media (max-width: 41em) {

@@ -14,13 +14,13 @@
               You have entered an invalid email address.
             </span>
             <span class='email-not-exist pw-form-error-msg'>
-              The email address entered is not registered with Ashby Village.
+              The email address entered is not registered with Ashby Village. Please re-enter your email address.
             </span>
-            <div class='input-form'> <%= f.email_field :email, label: :email, required: true, placeholder: 'email@address.com', class: 'input', id: 'pw_email', onBlur: "validateEmailReset('pw_email');" %> </div>
+            <div class='input-form'> <%= f.email_field :email, label: :email, required: true, placeholder: 'email@address.com', class: 'input', id: 'pw_email' %> </div>
           </div>
 
           <div class="actions">
-            <%= f.submit "Send me reset password instructions", id: 'pw_button' %>
+            <%= f.submit "Send me reset instructions", id: 'pw_button' %>
           </div></br>
           <div>
             <%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %>

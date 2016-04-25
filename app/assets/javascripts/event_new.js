@@ -15,7 +15,7 @@ function validateEventStart() {
   var date = document.getElementById("event_startdate").value;
   var time = document.getElementById("event_starttime").value;
   var datetime = getDateTime(date, time);
-  if (Date.parse(Date()) > Date.parse(datetime) && datetime) {
+  if (datetime && Date.parse(Date()) > Date.parse(datetime)) {
     $("#event_starttime").addClass("form-error");
     $("#event_startdate").addClass("form-error");
     $(".startdate_errors").show();
@@ -38,8 +38,9 @@ function validateEventEnd() {
   endDateTime = getDateTime(enddate, endtime);
 
   if (startDateTime
+    &&  endDateTime
     && (Date.parse(endDateTime) < Date.parse(startDateTime) || Date.parse(endDateTime) < Date.parse(Date()))
-    &&  endDateTime) {
+    ) {
     $("#event_endtime").addClass("form-error");
     $("#event_enddate").addClass("form-error");
     $(".enddate_errors").show();

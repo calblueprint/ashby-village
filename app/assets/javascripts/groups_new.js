@@ -1,5 +1,4 @@
 function validateName(x) {
-  alert("asdfhaksgdfkjadhf");
   bool = false;
   var i;
   var str = document.getElementById(x).value;
@@ -15,10 +14,20 @@ function validateName(x) {
   }
 }
 
-// var ready = function() {
-//   validateName('pass');
-// };
+function fixGroupNameError(x) {
+  var str = document.getElementById(x).value;
+  str = str.trim();
+  var arr = $('.group_names').data('temp');
+  var found = $.inArray(str, arr) > -1;
+  if (!found) {
+    $("#nameError").hide();
+    $("#" + x).removeClass("form-error");
+  }
+}
 
-// $(document).ready(ready);
-// $(document).on("page:load", ready);
+var groups_new_ready = function() {
+  if ($("#new-group-name").length > 0) {
+    validateName('new-group-name');
+  }
+}
 

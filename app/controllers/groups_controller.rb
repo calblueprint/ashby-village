@@ -44,7 +44,11 @@ class GroupsController < ApplicationController
 
   def new
     if current_user
-      @group = Group.new
+      if params.key?(:group_param)
+        @group = Group.new(params[:group_param].permit(:name, :description, :neighborhood))
+      else
+        @group = Group.new
+      end
       @neighborhoods = Group.neighborhoods.keys
       @allnames = Group.all.map(&:name)
       render action: "new", notice: "Sample notice"
@@ -71,7 +75,7 @@ class GroupsController < ApplicationController
       redirect_to @group, notice: "Group was successfully created."
     else
       @neighborhoods = Group.neighborhoods.keys
-      render :new
+      redirect_to action: "new", group_param: group_params
     end
   end
 

@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20160425212622) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "event_posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_posts", ["event_id"], name: "index_event_posts_on_event_id", using: :btree
+  add_index "event_posts", ["user_id"], name: "index_event_posts_on_user_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.time     "starttime"
@@ -90,6 +102,17 @@ ActiveRecord::Schema.define(version: 20160425212622) do
   add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "location"
+    t.integer  "group_id"
+  end
+
+  add_index "neighborhoods", ["group_id"], name: "index_neighborhoods_on_group_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -129,6 +152,13 @@ ActiveRecord::Schema.define(version: 20160425212622) do
 
   add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+
+  create_table "user_neighborhoods", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "neighborhood_id"
+    t.integer  "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                      default: "",   null: false

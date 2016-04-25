@@ -9,7 +9,7 @@ class Users::PasswordsController < Devise::PasswordsController
     self.resource = resource_class.send_reset_password_instructions(params[resource_name])
     if resource.errors.empty?
       set_flash_message(:notice, :send_instructions) if is_navigational_format?
-      respond_with resource, :location => root_path
+      respond_with resource, location: root_path
     else
 
       # Redirect to custom page instead of displaying errors
@@ -41,7 +41,9 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # The path used after sending reset password instructions
+
   protected
+
   def after_sending_reset_password_instructions_path_for(resource_name)
     return root_path
   end

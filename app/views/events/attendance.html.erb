@@ -17,7 +17,7 @@
 				    <div class="attendance-bio">
 					    <%= link_to invite.user.decorate.full_name, invite.user %>
 					  	<h6><%= invite.user.email %></h6>
-					  	<h6><%= invite.user.phone %></h6>
+					  	<h6><%= number_to_phone(invite.user.phone, area_code: true) %></h6>
 						</div>
 				  </div>
 				<% else %>

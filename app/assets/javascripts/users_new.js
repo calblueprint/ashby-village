@@ -1,34 +1,38 @@
-function validateUser(x) {
-  var str = document.getElementById(x).value;
-  if (str.length == 0) {
+function validatePhone(x) {
+  var phone = document.getElementById(x).value.replace(/\D/g,'');
+  if ( phone.length != 10 && phone.length > 0 ) {
     $("#" + x).addClass("form-error");
+    $(".phoneErrors").show();
   }
   else {
     $("#" + x).removeClass("form-error");
-    $(".nameErrors").hide();
-  }
+    $(".phoneErrors").hide();
+  };
 };
 
-function validatePhone(x) {
+function onFixedPhoneError(x) {
   var phone = document.getElementById(x).value.replace(/\D/g,'');
-  if ( phone.length == 10 ) {
+  if (phone.length == 10) {
     $("#" + x).removeClass("form-error");
     $(".phoneErrors").hide();
   }
-  else {
-    $("#" + x).addClass("form-error");
-    $(".phoneErrors").show();
-  };
-};
+}
+
+function onFixedEmailError(email) {
+  var unique = isEmailUnique(email);
+  var valid = isValidEmail(email);
+  if (unique && valid) {
+    $("#email").removeClass("form-error");
+    $(".emailError").hide();
+    $(".email-taken").hide();
+  }
+}
 
 function isValidEmail(email) {
   var address = document.getElementById(email).value;
   var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   var bool = re.test(address);
-  if (address.length == 0) {
-    return false;
-  }
-  else if (bool == false) {
+  if (bool == false && address.length > 0) {
     return false;
   }
   else {
@@ -70,41 +74,30 @@ function validateEmail(email) {
   }
 }
 
-function validatePassword(password) {
-  var pass = document.getElementById(password).value;
-  if (pass.length == 0) {
-    $("#"+ password).addClass("form-error");
-  } else {
-    $("#pass").removeClass("form-error");
-    $(".password_error").css("display", "None");
-  }
-};
-
 function passwordMatching() {
   var pass1 = document.getElementById('pass').value;
   var pass2 = document.getElementById('pass_confirmation').value;
-  if (pass1 == pass2) {
-    $("#pass").removeClass("form-error");
-    $("#pass_confirmation").removeClass("form-error");
-    $(".password_mismatch").hide();
+  if (pass2.length >= pass1.length && pass1.length > 0) {
+    if (pass1 == pass2) {
+      $("#pass").removeClass("form-error");
+      $("#pass_confirmation").removeClass("form-error");
+      $(".password_mismatch").hide();
+    }
+    else {
+      $("#pass_confirmation").addClass("form-error");
+      $("#pass").addClass("form-error");
+      $(".password_mismatch").show();
+    }
   }
-  else {
-    $("#pass_confirmation").addClass("form-error");
-    // $("#pass").addClass("form-error");
-    $(".password_mismatch").show();
-  };
 };
 
 var ready_user_new = function() {
   if($(".res").length > 0){
     var val = $('.res')[0].title
     if (val == "1") {
-      validatePassword('pass');
-      validatePassword('pass_confirmation');
-      validateEmail();
+      $(".password_error").show()
+      validateEmail('email');
       validatePhone('phone');
-      validateUser('first_name');
-      validateUser('last_name');
     }
   }
 };
