@@ -99,8 +99,8 @@
 
 	      <div class="columns">
 	        <div class="delete-event-button">
-	          <%= link_to group_event_path(@group, @event), method: :delete do %>
-	            <%= button_tag "Delete Event", data: { confirm: "Are you sure you want to delete this event?"}, class: "delete-event" %> 
+	          <%= link_to group_event_path(@group, @event), method: :delete, data: { confirm: "Are you sure you want to delete this event?" } do %>
+	            <button class="delete-event"><span>Delete Event</span></button> 
 	          <% end %>
 	        </div>
 	      </div>
