@@ -64,5 +64,6 @@ var initial_group_leader_names = <%= raw @event.users.organizers.map(&:full_name
 for (i = 0; i < group_leader_ids.length; i++) { 
   $("#selected-event-organizers")[0].appendChild(add_selected_leader(initial_group_leader_names[i], group_leader_ids[i]));
 }
+$("#selected_organizers")[0].value = group_leader_ids;
 </script>
 
