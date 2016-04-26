@@ -28,4 +28,11 @@ class AshbyMailer < ApplicationMailer
     @event = event
     mail(to: @user.email, subject: "You're Invited to " + @event.title + "!")
   end
+
+  def email_updates(user, group, event)
+    @user = user
+    @group = event.group
+    @event = event
+    mail(to: user.email, subject: event.title + " has been updated!")
+  end
 end

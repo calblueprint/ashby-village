@@ -47,7 +47,32 @@ class Event < ActiveRecord::Base
     end
     @group = Group.find(self.group_id)
     @group.users.each do |user|
-      AshbyMailer.email_invites(user, @group, self).deliver
+      AshbyMailer.delay.email_invites(user, @group, self)
+    end
+  end
+
+  def update_organizers(current_user, organizers)
+    @event_organizers = [current_user]
+    if organizers
+      @event_organizers.concat(User.find(organizers))
+    end
+    # Remove previous organizers
+    self.users.organizers.each do |org|
+      if not @event_organizers.include? org
+        Invite.where(user: org, event: self).first.update_attribute(:organizer, false)
+      end
+    end
+    @event_organizers.each do |user|
+      if self.users.organizers.include? user
+        # already organzier
+      elsif self.users.include? user # already invited but not organizer
+        Invite.where(user: user, event: self).first.update_attribute(:organizer, true)
+      else # not invited yet
+        Invite.create(user: user, event: self, organizer: true, rsvp: current_user == user)
+      end
+    end
+    self.users.each do |user|
+      AshbyMailer.delay.email_updates(user, self.group, self)
     end
   end
 
@@ -55,7 +80,7 @@ class Event < ActiveRecord::Base
     self.where("startdate - ? = 1", DateTime.now.to_date).find_each do |event|
       @group = Group.find(event.group_id) # get event's group
       event.users.rsvps.each do |user|
-        AshbyMailer.email_reminders(user, @group, event).deliver
+        AshbyMailer.delay.email_reminders(user, @group, event)
       end
     end
   end
@@ -99,14 +124,14 @@ class Event < ActiveRecord::Base
   def repeat_invite
     @group = Group.find(self.group_id)
     @group.users.each do |user|
-      AshbyMailer.email_repeat(user, @group, self).deliver
+      AshbyMailer.delay.email_repeat(user, @group, self)
     end
   end
 
   def send_cancel
     @group = Group.find(self.group_id)
     self.users.rsvps.each do |user|
-      AshbyMailer.email_cancel(user, @group, self).deliver
+      AshbyMailer.delay.email_cancel(user, @group, self)
     end
   end
 

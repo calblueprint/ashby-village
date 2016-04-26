@@ -38,10 +38,6 @@ class EventsController < ApplicationController
     @users = @group.users.where.not(id: current_user.id).decorate.map { |u| [u.full_name, u.id] }
   end
 
-  # GET /events/1/edit
-  def edit
-  end
-
   # POST /events
   # POST /events.json
   def create
@@ -60,9 +56,23 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/1/edit
+  def edit
+    @event = Event.find(params[:id])
+  end
+
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      @event.update_organizers(current_user, organizers = params[:selected_organizers].split(",").map{ |o| o.to_i })
+      flash[:notice] = "Event updated!"
+      redirect_to group_event_path
+    else
+      flash[:alert] = "unable to update event: " + e.errors 
+      redirect_to :back
+    end
   end
 
   # DELETE /events/1
