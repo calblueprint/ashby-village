@@ -27,7 +27,16 @@ var ready_events_show = function() {
   $(".click-attendance").click({menu_item: ".event-attendance"}, menu_clicked);
   $(".click-event-settings").click({menu_item: ".event-settings"}, menu_clicked);
 
-  if($(".event-menu:visible").length > 0){
-    $(".click-details").trigger('click');
-  }
+  $(window).resize(function(){
+    if($(".event-menu:visible").length > 0){ //in mobile
+      if($(".selected").length == 0 ) {
+        $(".click-details").trigger('click');
+      } else {
+        $(".selected").trigger('click');
+      }
+    } else { // not mobile
+      $(".hide-mobile").removeClass("hide-mobile");
+    }
+  });
+  $(window).trigger('resize');
 };

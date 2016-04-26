@@ -1,87 +1,38 @@
 var ready_groups_show = function() {
   $(".false").hide();
-  $(".group-new-post").show();
-  $(".group-posts").show();
-  $(".click-bulletin").addClass("selected");
-  $(".group-member-listing").hide();
-  $(".group-settings").hide();
-  $(".group-events").hide();
 
-  $(".click-bulletin").click(function() {
+  function menu_clicked(event) { 
+    // unselected others
     $(".click-group-events").removeClass("selected");
     $(".click-member-listing").removeClass("selected");
     $(".click-group-settings").removeClass("selected");
     $(".click-group-events").removeClass("selected");
     $(".click-description").removeClass("selected");
-    $(this).addClass("selected");
-    $(".group-new-post").show();
-    $(".group-posts").show();
+    $(".click-bulletin").removeClass("selected");
+    
+    // hide others
     $(".group-member-listing").hide();
     $(".group-settings").hide();
     $(".group-events").hide();
-  });
-
-  $(".click-group-events").click(function() {
-    $(".click-member-listing").removeClass("selected");
-    $(".click-group-settings").removeClass("selected");
-    $(".click-bulletin").removeClass("selected");
-    $(".click-description").removeClass("selected");
-    $(this).addClass("selected");
     $(".group-new-post").hide();
     $(".group-posts").hide();
-    $(".group-member-listing").hide();
-    $(".group-settings").hide();
-  });
+    if($(".click-description:visible").length > 0){
+      $(".info-box").hide();
+    }
 
-  $(".click-member-listing").click(function() {
-    $(".click-bulletin").removeClass("selected");
-    $(".click-group-settings").removeClass("selected");
-    $(".click-group-events").removeClass("selected");
-    $(".click-description").removeClass("selected");
     $(this).addClass("selected");
-    $(".group-new-post").hide();
-    $(".group-member-listing").show();
-    $(".group-settings").hide();
-    $(".group-posts").hide();
-    $(".group-events").hide();
-  });
+    $(event.data.menu_item).show();
+    if(event.data.additional) {
+      $(event.data.additional).show();
+    }
+  }
+  $(".click-bulletin").click({menu_item: ".group-posts", additional: ".group-new-post"}, menu_clicked);
+  $(".click-group-events").click({menu_item: ".group-events"}, menu_clicked);
+  $(".click-member-listing").click({menu_item: ".group-member-listing"}, menu_clicked);
 
-  $(".click-group-settings").click(function() {
-    $(".click-bulletin").removeClass("selected");
-    $(".click-member-listing").removeClass("selected");
-    $(".click-group-events").removeClass("selected");
-    $(".click-description").removeClass("selected");
-    $(this).addClass("selected");
-    $(".group-new-post").hide();
-    $(".group-settings").show();
-    $(".group-member-listing").hide();
-    $(".group-posts").hide();
-    $(".group-events").hide();
-  });
+  $(".click-group-settings").click({menu_item: ".group-settings"}, menu_clicked);
+  $(".click-group-events").click({menu_item: ".group-events"}, menu_clicked);
+  $(".click-description").click({menu_item: ".info-box"}, menu_clicked);
 
-  $(".click-group-events").click(function() {
-    $(".click-bulletin").removeClass("selected");
-    $(".click-member-listing").removeClass("selected");
-    $(".click-group-settings").removeClass("selected");
-    $(".click-description").removeClass("selected");
-    $(this).addClass("selected");
-    $(".group-new-post").hide();
-    $(".group-settings").hide();
-    $(".group-member-listing").hide();
-    $(".group-posts").hide();
-    $(".group-events").show();
-  });
-
-  $(".click-description").click(function() {
-    $(".click-bulletin").removeClass("selected");
-    $(".click-member-listing").removeClass("selected");
-    $(".click-group-events").removeClass("selected");
-    $(".click-group-settings").removeClass("selected");
-    $(this).addClass("selected");
-    $(".group-new-post").hide();
-    $(".group-settings").hide();
-    $(".group-member-listing").hide();
-    $(".group-posts").hide();
-    $(".group-events").hide();
-  });
+  $(".click-bulletin").trigger('click');
 };
