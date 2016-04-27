@@ -70,4 +70,10 @@
 	  </div>
 	  </a>
 	<% end %>
+
+	<% if @group.events.count == 0 %>
+		<div class="group-no-events columns">
+			<h5>There are no upcoming events for this group.</h5>
+		</div>
+	<% end %>
 </div>

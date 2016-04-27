@@ -81,3 +81,11 @@
   </div>
   </a>
 <% end %>
+
+<% if @events.count == 0 %>
+  <div class="event-tile-margin">
+    <div class="no-events row">
+      <h5>You have not been invited or have RSVPed to an event yet. Check groups for more upcoming events!</h5>
+    </div>
+  </div>
+<% end %>
