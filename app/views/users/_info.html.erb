@@ -12,7 +12,9 @@
       <% else %>
         <h5><em> Tell others about yourself.   Add a bio by editing your profile. </em></h5>
       <% end %>
-      <%= link_to 'Edit Profile', edit_user_path %>
+      <%= link_to edit_user_path do %>
+        <button> Edit Profile </button>
+      <% end %>
     </div>
 
     <div class="bio-right">
