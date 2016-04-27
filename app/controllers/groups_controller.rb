@@ -130,13 +130,15 @@ class GroupsController < ApplicationController
 
   def notifications
     @group = Group.friendly.find(params[:id])
-    @email_notif = current_user.user_groups.where(group_id: @group.id).first.group_email_notifications
-    if @email_notif == true
+    @user_group = current_user.user_groups.where(group_id: @group.id).first
+    if @user_group && @user_group.group_email_notifications == true
+      @email_notif = @user_group.group_email_notifications
       if current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, false)
         flash[:notice] = "Your email notifications for this group are now off."
         redirect_to group_path
       end
-    elsif @email_notif == false
+    elsif @user_group && @user_group.group_email_notifications == false
+      @email_notif = @user_group.group_email_notifications
       if current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, true)
         flash[:notice] = "Your email notifications for this group are now on."
         redirect_to group_path
