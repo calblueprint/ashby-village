@@ -6,6 +6,7 @@
   <% end %>
 <% else %>
   <% @user.groups.leader_of.each do |group| %>
+    <%= link_to group_path(group.id) do %>
     <div class="group-tile row <%= group.state %> group_id<%= group.id %>">
       <% if group.users.leaders.include?(current_user) %>
         <div class="large-12 group-leader">
@@ -40,10 +41,11 @@
         </div>
 
         <% if group.users.include?(current_user) %>
-            <button class="no-margin-button small-12 medium-4 large-3 right is-member leader-<%= current_user.is_only_leader(group) %>" value="<%= group.id %>">You Have Joined</button>
+            <button class="no-margin-button small-12 medium-4 large-3 right is-member leader-<%= current_user.is_only_leader(group) %>" value="<%= group.id %>" title="leave">You Have Joined</button>
         <% else %>
-            <button class="no-margin-button small-12 medium-4 large-3 right" value="<%= group.id %>">Join Group</button>
+            <button class="no-margin-button small-12 medium-4 large-3 right" value="<%= group.id %>" title="join">Join Group</button>
         <% end %>
     </div>
+    <% end %>
   <% end %>
 <% end %>

@@ -81,25 +81,24 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
     if not @group.users.include?(current_user)
       @group.add_user(current_user)
       redirect_to @group
+    else
+      redirect_to :back
     end
   end
 
   def leave
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
     @group.remove_user(current_user)
-    hash = {state: "active"}
+    flash[:notice] = "You have successfully left the group"
     if @group.inactive?
-      hash = {state: "inactive"}
+      redirect_to groups_path
+    else
+      redirect_to :back
     end
-    respond_to do |format|
-      format.html { redirect_to groups_path, flash: {notice: "Successfully removed your membership from #{@group.name}"}}
-      format.json { render json: hash }
-    end
-    # redirect_to groups_path, notice: "You have successfully left the group"
   end
 
   def edit

@@ -12,7 +12,7 @@
 		<div class="event-details">
 			<div class="row">
 				<div class="event-icon small-12 medium-12 large-12 columns">
-				<p><%= image_tag("events_date.png") %> <%= @event.startdate.strftime("%B %e, %Y") %> - <%= @event.enddate.strftime("%B %e, %Y") %></p>
+				<p><%= image_tag("events_date.png") %> <%= @event.startdate.strftime("%B %e, %Y") %> <% if @event.enddate != @event.startdate %>- <%= @event.enddate.strftime("%B %e, %Y") %> <% end %></p>
 				</div>
 				<div class="event-icon small-12 medium-6 large-6 columns">
 				<p><%= image_tag("events_time.png") %> <%= @event.starttime.strftime("%l:%M %p") %> - <%= @event.endtime.strftime("%l:%M %p") %></p>

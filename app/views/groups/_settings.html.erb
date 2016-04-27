@@ -22,7 +22,7 @@
         <% end %>
       <% else %>
         <p>Click the button below to remove yourself from this group. This means you will no longer receive email notifications from this group. You may still join this group later.</p>
-        <%= link_to leave_group_path(group), method: :put do %>
+        <%= link_to leave_group_path(group.id) do %>
           <button class="remove-membership">Remove Membership</button>
         <% end %>
       <% end %><br/>

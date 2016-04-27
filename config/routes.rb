@@ -91,8 +91,8 @@ Rails.application.routes.draw do
     get :autocomplete_group_name, on: :collection
     member do
       get "member_listing"
-      put "join"
-      put "leave"
+      get "join"
+      get "leave"
       get "notifications"
     end
     get "my_index", to: 'groups#my_index', on: :collection

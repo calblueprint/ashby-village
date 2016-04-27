@@ -17,9 +17,9 @@
       <div class="small-12 medium-7 large-8 left">
         <div class="columns">
           <h3 class="event-tile-title"><%= event.title %></h3>
-          <h6 class="event-tile-group">Nature Walks</h6>
+          <h6 class="event-tile-group"><%= event.group.name %></h6>
           <p class="event-tile-icon small-12 large-12 large-uncentered column">
-            <%= image_tag("events_date.png") %> <%= event.startdate.strftime("%B %e, %Y") %> - <%= event.enddate.strftime("%B %e, %Y") %>
+            <%= image_tag("events_date.png") %> <%= event.startdate.strftime("%B %e, %Y") %><% if event.enddate != event.startdate %> - <%= event.enddate.strftime("%B %e, %Y") %><% end %>
           </p>
           <p class="event-tile-icon small-12 large-6 large-uncentered column">
             <%= image_tag("events_time.png") %> <%= event.starttime.strftime("%l:%M %p") %> - <%= event.endtime.strftime("%l:%M %p") %>

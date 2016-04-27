@@ -15,7 +15,7 @@
     <% elsif @group.users.include?(current_user) %>
       <button class="small-3 medium-4 large-3 right group-joined" disabled>You Have Joined</button>
     <% else %>
-      <%= link_to join_group_path(@group), :controller => 'groups', :action => 'join', method: :put do %>
+      <%= link_to join_group_path(@group.id), :controller => 'groups', :action => 'join' do %>
         <button id="join_group" value="join_group" class="small-3 large-3 right group-join">Join Group </button>
       <% end %>
     <% end %>

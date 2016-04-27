@@ -44,9 +44,7 @@
 
   <div class='row'>
     <div class='field small-12 small-centered medium-10 large-8 column'>
-      <% if @minimum_password_length %>
-      <% end %>
-      <h5 class='question'>I would like my password to be <em>(<%= @minimum_password_length %> characters minimum)</em> </h5>
+      <h5 class='question'>I would like my password to be <em>(6 characters minimum)</em> </h5>
       <div class='input-form'> <%= f.password_field :password, required: true, autocomplete: "off", placeholder: 'something memorable', class: 'input', id: 'pass', onBlur: "validatePassword('pass');" %> </div>
     </div>
   </div>

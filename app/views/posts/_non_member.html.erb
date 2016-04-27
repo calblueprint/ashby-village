@@ -1,6 +1,6 @@
 <div class="new-post columns">
   <h3><strong>Please join this group to write posts!</strong></h3>
-  <%= link_to join_group_path(@group), :controller => 'groups', :action => 'join', method: :put do %>
+  <%= link_to join_group_path(@group.id), :controller => 'groups', :action => 'join' do %>
     <button class="mobile-group-join"> Join Group </button>
   <% end %>
 </div>
