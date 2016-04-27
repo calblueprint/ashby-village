@@ -32,6 +32,9 @@ var ready = (function(){
   if($('.flash_error').length > 0) {
     ready_error_messages();
   }
+  if($(".new_event").length > 0){
+    ready_events_new();
+  }
 });
 
 $(document).ready(ready);
