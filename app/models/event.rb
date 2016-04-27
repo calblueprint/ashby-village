@@ -45,9 +45,10 @@ class Event < ActiveRecord::Base
         Invite.create(user: user, event: self, organizer: false)
       end
     end
-    @group = Group.find(self.group_id)
-    @group.users.each do |user|
-      AshbyMailer.delay.email_invites(user, @group, self)
+    self.group.users.each do |user|
+      if notify?(user)
+        AshbyMailer.delay.email_invites(user, self.group, self)
+      end
     end
   end
 
@@ -72,15 +73,22 @@ class Event < ActiveRecord::Base
       end
     end
     self.users.each do |user|
-      AshbyMailer.delay.email_updates(user, self.group, self)
+      if notify?(user)
+        AshbyMailer.delay.email_updates(user, self.group, self)
+      end
     end
+  end
+
+  def notify?(user)
+    return user.global_email_notifications && UserGroup.where(user: user, group: self.group).first.group_email_notifications
   end
 
   def self.send_reminders
     self.where("startdate - ? = 1", DateTime.now.to_date).find_each do |event|
-      @group = Group.find(event.group_id) # get event's group
       event.users.rsvps.each do |user|
-        AshbyMailer.delay.email_reminders(user, @group, event)
+        if event.notify?(user)
+          AshbyMailer.delay.email_reminders(user, event.group, event)
+        end
       end
     end
   end
@@ -112,7 +120,7 @@ class Event < ActiveRecord::Base
 
   def clear_rsvp
     self.invites.each do |i|
-      if i.organizer == false
+      if !i.organizer
         i.update_attribute :rsvp, false
       end
     end
@@ -122,16 +130,18 @@ class Event < ActiveRecord::Base
   end
 
   def repeat_invite
-    @group = Group.find(self.group_id)
-    @group.users.each do |user|
-      AshbyMailer.delay.email_repeat(user, @group, self)
+    self.group.users.each do |user|
+      if notify?(user)
+        AshbyMailer.delay.email_repeat(user, self.group, self)
+      end
     end
   end
 
   def send_cancel
-    @group = Group.find(self.group_id)
     self.users.rsvps.each do |user|
-      AshbyMailer.delay.email_cancel(user, @group, self)
+      if notify?(user)
+        AshbyMailer.delay.email_cancel(user, self.group, self)
+      end
     end
   end
 

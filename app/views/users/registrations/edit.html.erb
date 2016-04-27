@@ -2,6 +2,20 @@
 <h2>Edit Account Settings</h2>
   <div class="small-12 small-centered medium-10 large-10 column">
     <div class="change-password-form row">
+      <h3>Email Notifications</h3>
+      <% if current_user.global_email_notifications == true %>
+        <!-- check if the user's email notifications for this group are on, show option to turn off -->
+        <p> Your email notifications are turned on for all of your Ashby Village groups.  If you would like to stop receiving email updates, click the button below to turn email notifications off.</p>
+          <%= link_to user_notifications_path(current_user), method: :get do %>
+            <button class="emails-off">Turn emails off</button>
+          <% end %> <br/>
+      <% else %> <!-- if email notifications off, show option to turn on -->
+        <p> Your email notifications are turned off for all of your Ashby Village groups.  If you would like to receive email updates, click the button below to turn email notifications on.</p>
+          <%= link_to user_notifications_path(current_user), method: :get do %>
+            <button class="">Turn emails on</button>
+          <% end %> </br>
+      <% end %>
+
       <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
 
@@ -20,8 +34,8 @@
             <div><%= f.label :new_password_confirmation, "Re-type your new password" %>
                 <%= f.password_field :new_password_confirmation, autocomplete: "off",  required: true %></div>
 
-            <%= f.submit "Update", class: 'button success radius small' %>
-      <% end %>
+            <%= f.submit "Update Password" %>
+      <% end %><br/>
     </div>
   </div>
 </div>
