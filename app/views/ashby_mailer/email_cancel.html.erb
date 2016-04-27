@@ -2,18 +2,44 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+    </style>
   </head>
   <body>
   <center>
-    <table border="1">
-    <tr bgcolor="#34495E">
-    <td><img src="http://ashby-prod.herokuapp.com/assets/ashby_village_icon-52a169f303c056f94dadd4635e3597c2424a5eb0d6436585f0fccb3c05492425.png" style="width:100px;height:80px;"></td>
-    </tr>
-    <tr>
-    <td><center><img src="http://www.clipartlord.com/wp-content/uploads/2015/03/envelope5.png" style="width:80px;height:80px;"><p style="font-size:200%;">Event Cancelled</p></center>
-      <p style="font-size:160%;">Dear <%= @user.decorate.full_name %>,</p>
-      <p style="font-size:160%;" >The event <%= @event.title %> hosted by <%= link_to @group.name, group_url(@group)%> has been cancelled.</p> Sorry for the inconvenience.
-    </tr>
+    <table>
+      <tr bgcolor="#34495E" style="height: 100px;">
+        <td style="border-top-left-radius: 8px; border-top-right-radius: 8px; font-family: 'Lato', sans-serif; color: white; font-size: 200%; font-weight: 700; margin-left: 30px;">
+          <div>
+            <a href="http://ashby-staging.herokuapp.com/" target="_blank">
+              <img src="http://ashby-prod.herokuapp.com/assets/ashby_village_icon-52a169f303c056f94dadd4635e3597c2424a5eb0d6436585f0fccb3c05492425.png" style="vertical-align: middle; width: 70px; margin: 0 30px 0 30px; text-decoration: none !important; text-decoration: none;"></a>Ashby Village Square
+          </div>
+        </td>
+      </tr>
+
+      <tr bgcolor="#F7F5F2" style="color: black !important;">
+        <td>
+        <center style="font-size: 230%; font-family: 'Lato', sans-serif; color: #EDC443;">
+          <img src="https://i.imgsafe.org/16e4d34.png" style="width: 90px; margin: 30px 0 10px 0;">
+          <br>Sorry to Cancel...
+        </center>
+        <div style="margin: 10px 50px 30px 50px;">
+          <p style="font-size: 160%; font-family: 'Lato', sans-serif; color: black;">
+            Dear <%= @user.decorate.full_name %>,
+          </p>
+          <p style="font-size:160%; font-family: 'Lato', sans-serif; color: black;">
+          The event <%= link_to @event.title, group_event_url(@group, @event), {:style=>'color:#4A90E2; text-decoration: none;'} %> hosted by <%= link_to @group.name, group_url(@group), {:style=>'color:#4A90E2; text-decoration: none;'} %> has been cancelled. Sorry for the inconvenience!
+          </p>
+        </div>
+      </tr>
+
+      <tr bgcolor="#34495E" style="height: 60px;">
+        <td style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-family: 'Lato', sans-serif; color: white; font-size: 200%; font-weight: 700; margin-left: 30px;">
+        </td>
+      </tr>
+
     </table>
   </center>
   </body>

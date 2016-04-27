@@ -1,4 +1,5 @@
 class AshbyMailer < ApplicationMailer
+  include Roadie::Rails::Automatic
   default from: "ashbyvillagetest@gmail.com"
 
   def email_invites(user, group, event)
