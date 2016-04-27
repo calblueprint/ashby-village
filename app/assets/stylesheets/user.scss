@@ -123,6 +123,14 @@
   display: none;
 }
 
+.edit-profile-form {
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 24px;
+}
+
 @media (max-width: 64em) {
   .info .columns {
     min-width: 100%;

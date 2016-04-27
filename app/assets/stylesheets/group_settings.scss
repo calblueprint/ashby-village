@@ -35,3 +35,11 @@
   -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
   box-shadow: 0px 4px 0px 0px $ashby-dark-red;
 }
+
+.edit-group-form {
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 16px !important; // To override foundation's row class
+  margin-bottom: 16px !important; // To override foundation's row class
+  padding: 24px;
+}

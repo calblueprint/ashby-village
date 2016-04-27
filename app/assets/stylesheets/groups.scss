@@ -74,13 +74,13 @@
   @include ease-transition(0.5s);
 }
 
-.create-title {
-    text-align: center;
-    margin: 40px 0 40px 0;
+.title {
+  text-align: center;
+  margin: 40px 0 40px 0;
 }
 
-.create-subtitle {
-    color: $ashby-gray;
+.subtitle {
+  color: $ashby-gray;
 }
 
 .image-wrapper {
@@ -143,10 +143,12 @@
     display: block;
   }
 
-  .create-title h2 {
+  .title {
+    margin: 16px;
+    
+    h2 {
     font-size: $h4-heading-size;
-    margin-left: 16px;
-    margin-right: 16px;
+    }
   }
 }
 

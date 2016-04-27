@@ -1,47 +1,50 @@
 <div class="edit-profile row">
-<h2>Edit Profile</h2>
+  <div class="title">
+    <h2>Edit Your Profile</h2>
+  </div>
 
-  <div class="small-12 small-centered medium-10 large-10 column">
     <div class="edit-profile-form row">
       <%= form_for(resource, as: resource_name, url: user_path(@user), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :first_name %>
+          First Name
           <%= f.text_field :first_name, autofocus: true, value: @user.first_name %>
         </div>
 
         <div class="field">
-          <%= f.label :last_name %>
+          Last Name
           <%= f.text_field :last_name, autofocus: true, value: @user.last_name %>
         </div>
 
         <div class="field">
-          <%= f.label :email %>
+          Email
           <%= f.email_field :email, autofocus: true, value: @user.email %>
         </div>
 
         <div class="field">
-          <%= f.label :phone %>
+          Phone Number
           <%= f.text_field :phone, autofocus: true, value: @user.phone, class: 'phone' %>
         </div>
 
         <div class="field">
-          <%= f.label 'Write a little something about yourself for others to get to know you:' %>
+          Bio
+          <p><i>Write a little something about yourself for others to get to know you:</i></p>
           <%= f.text_area :bio, autofocus: true, value: @user.bio %>
         </div>
 
         <div class="field">
-          <%= f.label 'Upload an image of yourself so that others can recognize you:' %>
+          Profile Picture
+          <p><i>Upload an image of yourself so that others can recognize you!</i></p>
           <%= image_tag((@user.photo), class: "photoPreview") %>
+          <br><br>
           <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Update", class: 'button success radius small' %>
+          <%= f.submit "Update", class: 'button' %>
         </div>
 
       <% end %>
     </div>
-  </div>
 </div>
