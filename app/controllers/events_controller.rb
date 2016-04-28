@@ -69,7 +69,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Event updated!"
       redirect_to group_event_path
     else
-      flash[:alert] = "unable to update event: " + e.errors 
+      flash[:alert] = "unable to update event: " + @event.errors 
       redirect_to :back
     end
   end
