@@ -1,6 +1,15 @@
 <div class="row text-center">
   <div class="header small-11 small-centered large column">
-    <%= image_tag(@user.photo(:thumb)) %>
+    <% if @user == current_user %>
+      <%= link_to edit_user_path, method: :get do %>
+      <div class="edit-pic">
+        <i class="fa fa-edit fa-2x"></i>
+        <%= image_tag(@user.photo(:thumb)) %>
+      </div>
+      <% end %>
+      <% else %>
+        <%= image_tag(@user.photo(:thumb)) %>  
+    <% end %>
     <h2><%= @user.full_name %></h2>
   </div>
 </div>
