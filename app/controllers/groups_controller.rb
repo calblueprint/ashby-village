@@ -44,7 +44,11 @@ class GroupsController < ApplicationController
 
   def new
     if current_user
-      @group = Group.new
+      if params.key?(:group_param)
+        @group = Group.new(params[:group_param].permit(:name, :description, :neighborhood))
+      else
+        @group = Group.new
+      end
       @neighborhoods = Group.neighborhoods.keys
       @allnames = Group.all.map(&:name)
       render action: "new", notice: "Sample notice"
@@ -71,8 +75,7 @@ class GroupsController < ApplicationController
       redirect_to @group, notice: "Group was successfully created."
     else
       @neighborhoods = Group.neighborhoods.keys
-      flash[:notice] = "Name has already been taken!"
-      render :new
+      redirect_to action: "new", group_param: group_params
     end
   end
 
@@ -81,7 +84,8 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:id])  
+    flash[:notice] = "Successfully joined #{@group.name}"
     if not @group.users.include?(current_user)
       @group.add_user(current_user)
       redirect_to @group

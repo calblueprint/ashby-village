@@ -1,0 +1,35 @@
+<div id="forgot-password" class="reveal-modal login-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close-reveal-modal" aria-label="Close" >&#215;</a>
+        <h2 class="modal-title" id="myModalLabel"> Retrieve my password </h2>
+        <h4> Fill in your email address below. You will receive an email with steps to reset your password. </h4>
+      </div></br>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= content_tag :div, class: "temp_emails", data: {temp: @allemails} do %>
+          <% end %>
+          <div class='row'>
+            <span class='emailError pw-form-error-msg'>
+              You have entered an invalid email address.
+            </span>
+            <span class='email-not-exist pw-form-error-msg'>
+              The email address entered is not registered with Ashby Village. Please re-enter your email address.
+            </span>
+            <div class='input-form'> <%= f.email_field :email, label: :email, required: true, placeholder: 'email@address.com', class: 'input', id: 'pw_email' %> </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Send me reset instructions", id: 'pw_button' %>
+          </div></br>
+          <div>
+            <%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %>
+          </div>
+          <div>
+            <%= link_to 'Create an Account', new_user_registration_path %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+

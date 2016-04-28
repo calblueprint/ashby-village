@@ -1,7 +1,6 @@
-
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-  	<div class = "flash_<%= name %>" >
+  	<div class = "flash flash_<%= name %>" id="flash_<%= name %>">
     	<%= msg %>
     	<% if name=="notice" %>
     		<i class="fa fa-check"></i>
@@ -10,5 +9,15 @@
     	 <% end %>
    	</div>
   <% end %>
-
 <% end %>
+<% if !devise_error_messages!.blank? %>
+  <div class="flash flash_error" id="flash_error">
+    <%= raw devise_error_messages!.match(/<li>.*<\/li>/).to_s[4..-6] %>
+    <i class="fa fa-exclamation-triangle"></i>
+  </div>
+<% end %>
+<script>
+  $('.flash').fadeIn(0, function() {
+    $(this).delay(2500).fadeOut('normal');
+  });
+</script>

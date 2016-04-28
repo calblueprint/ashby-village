@@ -1,7 +1,6 @@
 <div class="row">
   <h3><strong>Write a Post</strong></h3>
   <%= form_for [@post] do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
     <div class="field" id="post_title">
       <%= f.text_field :title, placeholder: "What's your post about? (optional)" %>
     </div>
