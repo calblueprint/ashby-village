@@ -122,6 +122,8 @@
 .login-modal {
   overflow: hidden;
   position: fixed;
+  border-radius: 8px;
+  top: 60px !important;
 
   .modal-header {
     text-align: center;
