@@ -40,8 +40,12 @@ var ready_groups_index = function() {
     }
   }
 
-  $(".group-tile button").click(function() { 
-    location.replace("/groups/" + $(this).val() + "/" + $(this).attr("title"));
+  $(".group-tile button").click(function() {
+    if('ontouchstart' in window || navigator.msMaxTouchPoints){ // is touch screen
+      location.replace("/groups/" + $(this).val());
+    } else {
+      location.replace("/groups/" + $(this).val() + "/" + $(this).attr("title"));
+    }
     // to prevent normal link to group
     return false;
   });
