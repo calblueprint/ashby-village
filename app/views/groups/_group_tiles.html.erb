@@ -1,10 +1,10 @@
 <% @groups.each do |group| %>
-  <%= link_to group_path(group) do %>
   <div class="group-tile row <%= group.neighborhood.gsub(" ", "-") %> group_id<%= group.id %> <%= group.state %>
     <% if group.users.exists?(current_user)%>
       <%= "my" %>
     <% end %>
     ">
+    <%= link_to group_path(group) do %>
 
     <% if group.users.leaders.include?(current_user) %>
       <div class="large-12 group-leader">
@@ -12,7 +12,7 @@
         <h6>You are a leader of this group </h6></span>
       </div>
     <% end %>
-    
+
       <div class="group-photo-container large-3">
           <%= image_tag group.photo, :class => "group-photo large-3 columns" %>
           <p>VISIT GROUP</p>
@@ -42,7 +42,7 @@
       <% else %>
           <button class="no-margin-button small-12 medium-4 large-3 right" value="<%= group.id %>" title="join">Join Group</button>
       <% end %>
+    <% end %>
   </div>
-  <% end %>
 <% end %>
 
