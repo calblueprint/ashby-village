@@ -18,7 +18,7 @@
 			<h3><%= event.title %></h3>
 			<h6><%= event.group.name %></h6>
 			<p class="event-tile-icon small-12 large-12 large-uncentered column">
-				<%= image_tag("events_date.png") %> <%= event.startdate.strftime("%B %e, %Y") %> - <%= event.enddate.strftime("%B %e, %Y") %>
+				<%= image_tag("events_date.png") %> <%= event.startdate.strftime("%B %e, %Y") %> <% if event.enddate != event.startdate %>- <%= event.enddate.strftime("%B %e, %Y") %> <% end %>
 			</p>
 			<p class="event-tile-icon small-12 large-12 large-uncentered column">
 				<%= image_tag("events_time.png") %> <%= event.starttime.strftime("%l:%M %p") %> - <%= event.endtime.strftime("%l:%M %p") %>
