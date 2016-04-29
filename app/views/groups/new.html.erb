@@ -1,5 +1,5 @@
 <div class="title">
-  <h2>Create A New Group</h2>
+  <h2>Create a New Group</h2>
   <h4 class="subtitle">Fill in the blanks below to create your new group. All fields are required.</h4>
 </div>
   <%= form_for @group do |f| %>
@@ -12,7 +12,7 @@
         Group Description <%= f.text_area :description, required: true, :placeholder => 'What is your group about?' %>
         Group Cover Photo
         <div class="field">
-          <p><i> Please upload a large image! Preferably at least 960 pixels wide. </i></p>
+          <p><i> Please upload a large image! </i></p>
           <%= f.file_field :photo, required: true, class: "uploadFile" %>
           <%= image_tag(("empty_group.png"), class: "groupPhotoPreview") %>
         </div></br>

@@ -1,5 +1,5 @@
 <div class="title" id="event_new" value="true">
-  <h2>Create A New Event for <%= link_to @group.name, group_path(@group) %></h2>
+  <h2>Create a New Event For <%= link_to @group.name, group_path(@group) %></h2>
   <h4 class="subtitle">Fill in the blanks below to create your new event. All fields are required.</h4>
 </div>
   <%= form_for [@group, @event] do |f| %>
@@ -18,13 +18,13 @@
         <%= f.date_field :enddate, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '03/25/16' %>
         <%= f.time_field :endtime, required: true, onBlur: "validateEventStart();", onBlur: "validateEventEnd();", :placeholder => '03:00PM' %>
         </div><br>
-        Repeat Event <i>(select one)</i><br>
+        Repeat Event <i>(select one if repeating)</i><br>
         <%= f.check_box :repeat_weekly %> Once a week <br>
         <%= f.check_box :repeat_monthly %> Once a month <br>
-        Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
-        <%= check_box_tag :gmap, "0" %> Include Maps Link <br>
-        Event Capacity <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'Leave blank if no limit to number of attendees' %>
-        Select Event Organizers
+        Event Location <%= f.text_field :location, required: true, :placeholder => 'Where is your event held?' %>
+        <%= check_box_tag :gmap, "0" %> Check to include Google Maps link <br>
+        Maximum Attendees (optional) <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'What is the maximum number of attendees?' %>
+        Select Additional Event Organizers
         <div class="field" id="selected-event-organizers">
           <p><i>Start typing the names of your fellow group leaders to select</i></p>
           <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>

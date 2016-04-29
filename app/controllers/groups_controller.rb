@@ -7,9 +7,9 @@ class GroupsController < ApplicationController
     term = params[:term].downcase
     neighborhood = Group.neighborhoods[params[:neighborhood].gsub("^", " ")] || "all"
     if neighborhood == "all"
-      groups = Group.where('lower(name) LIKE ?', "%#{term}%").order(:name).all
+      groups = Group.active.where('lower(name) LIKE ?', "%#{term}%").order(:name).all
     else
-      groups = Group.where('neighborhood = ? AND lower(name) LIKE ?', neighborhood, "%#{term}%").order(:name).all
+      groups = Group.active.where('neighborhood = ? AND lower(name) LIKE ?', neighborhood, "%#{term}%").order(:name).all
     end
     render json: groups.map { |g| {id: g.id, label: g.name, value: g.name} }
   end
