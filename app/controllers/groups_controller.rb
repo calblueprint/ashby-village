@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   end
 
   def my_index
-    @groups = UserGroup.where(user: current_user).map(&:group)
+    @groups = UserGroup.where(user: current_user).map(&:group).compact
   end
 
   def show
