@@ -10,7 +10,8 @@
       </div></br>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <span class="login-form-error-msg"> Your password or email is incorrect. Please re-enter your information! </span>
+          <span class="incorrect-login form-error-msg"> Your password or email is incorrect. Please re-enter your information! </span>
+          <span class="user-auth form-error-msg"> You must login first to view pages in Ashby Village! </span>
           <div class="field">
             Email
             <%= f.email_field :email, autofocus: true, required: true %>

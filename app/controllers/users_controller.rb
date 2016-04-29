@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # TODO(Shimmy): Get rid of the redundant controller for User.
 
   # GET /users
-
+  before_filter :auth_user!
   def index
     @users = User.all.decorate
   end

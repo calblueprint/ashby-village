@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_filter :auth_user!
   def create
     post = Post.find(params[:post_id])
     @group = post.group

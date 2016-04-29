@@ -45,7 +45,7 @@
     <div class='field small-12 small-centered medium-10 large-8 column'>
     <div class="password_error"> Please re-enter your password and confirmation. Make sure they match! </div>
       <h5 class='question'>I would like my password to be </h5>
-      <div class='input-form'> <%= f.password_field :password, required: true, autocomplete: "off", placeholder: 'something memorable', class: 'input', id: 'pass', onkeyup: 'passwordMatching();'%> </div>
+      <div class='input-form'> <%= f.password_field :password, required: true, autocomplete: "off", placeholder: 'something memorable', class: 'input', id: 'pass', onkeyup: "passwordMatching('pass', 'pass_confirmation');"%> </div>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
         Password and password confirmation don't match!
       </div>
       <h5 class='question'>Just to be sure, my password once again is</h5>
-      <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'something memorable', class: 'input', required: true, id: 'pass_confirmation', onkeyup: 'passwordMatching();' %> </div>
+      <div class='input-form'> <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'something memorable', class: 'input', required: true, id: 'pass_confirmation', onkeyup: "passwordMatching('pass', 'pass_confirmation');" %> </div>
     </div>
   </div>
 

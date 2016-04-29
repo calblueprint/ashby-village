@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash[:notice] = "Password updated!"
       redirect_to user_path(current_user)
     else
-      flash[:alert] = "Unable to edit password. Please make sure current password is correct and new passwords match."
+      flash[:error] = "registrations-reset-pw"
       render template: "users/registrations/edit"
     end
   end

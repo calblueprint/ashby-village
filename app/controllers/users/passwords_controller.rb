@@ -26,14 +26,6 @@ class Users::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # PUT /resource/password
-  # def update
-  #   super
-  #   if devise_error_messages
-  #     redirect_to root_path
-  #   end
-  # end
-
   # protected
 
   # def after_resetting_password_path_for(resource)

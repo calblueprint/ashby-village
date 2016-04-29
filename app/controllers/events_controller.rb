@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :auth_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   autocomplete :user, :full_name, full: true
 

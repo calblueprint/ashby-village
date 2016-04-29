@@ -74,18 +74,18 @@ function validateEmail(email) {
   }
 }
 
-function passwordMatching() {
-  var pass1 = document.getElementById('pass').value;
-  var pass2 = document.getElementById('pass_confirmation').value;
+function passwordMatching(pass, confirm) {
+  var pass1 = document.getElementById(pass).value;
+  var pass2 = document.getElementById(confirm).value;
   if (pass2.length >= pass1.length && pass1.length > 0) {
     if (pass1 == pass2) {
-      $("#pass").removeClass("form-error");
-      $("#pass_confirmation").removeClass("form-error");
+      $("#" + pass).removeClass("form-error");
+      $("#" + confirm).removeClass("form-error");
       $(".password_mismatch").hide();
     }
     else {
-      $("#pass_confirmation").addClass("form-error");
-      $("#pass").addClass("form-error");
+      $("#" + confirm).addClass("form-error");
+      $("#" + pass).addClass("form-error");
       $(".password_mismatch").show();
     }
   }

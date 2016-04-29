@@ -23,15 +23,22 @@
         <% end %>
 
             <h3>Change My Password</h3>
+            <div class='reset_password_mismatch form-error-msg'>
+              Please re-enter your current password correctly.
+            </div>
 
             <div><%= f.label :current_password %>
                 <%= f.password_field :current_password, autocomplete: "off", placeholder: "We need your current password to confirm your changes.",  required: true %></div>
 
-            <div><%= f.label :new_password %>
-                <%= f.password_field :new_password, autocomplete: "off", required: true %></div>
+            <div class='password_mismatch form-error-msg'>
+              Password and password confirmation don't match!
+            </div>
 
-            <div><%= f.label :new_password_confirmation, "Re-type your new password" %>
-                <%= f.password_field :new_password_confirmation, autocomplete: "off",  required: true %></div>
+            <div><%= f.label :password %>
+                <%= f.password_field :password, id:"reg_pass", onkeyup: "passwordMatching('reg_pass', 'reg_pass_confirmation');", autocomplete: "off", required: true %></div>
+
+            <div><%= f.label :password_confirmation, "Re-type your new password" %>
+                <%= f.password_field :password_confirmation, id:"reg_pass_confirmation", onkeyup: "passwordMatching('reg_pass', 'reg_pass_confirmation');", autocomplete: "off",  required: true %></div>
 
             <%= f.submit "Update Password" %>
       <% end %><br/>

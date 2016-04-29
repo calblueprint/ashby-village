@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :auth_user!
   autocomplete :user, :full_name, full: true
   autocomplete :group, :name, { full: true }
 
@@ -84,7 +85,7 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:id])  
+    @group = Group.find(params[:id])
     flash[:notice] = "Successfully joined #{@group.name}"
     if not @group.users.include?(current_user)
       @group.add_user(current_user)
