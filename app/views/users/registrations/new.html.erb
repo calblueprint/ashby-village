@@ -22,7 +22,7 @@
   <div class='row'>
     <div class='field small-12 small-centered medium-10 large-8 column'>
       <h5 class='question'>My name is </h5>
-      <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, required: true, placeholder: 'First Name', class: 'input', id: 'first_name' %> </div>
+      <div class='input-form' style='float: left; margin-right: 10px'> <%= f.text_field :first_name, required: true, placeholder: 'First Name', class: 'input', id: 'first_name', autofocus: true %> </div>
 
       <div class='input-form'> <%= f.text_field :last_name, required: true, placeholder: 'Last Name', class: 'input', id: 'last_name' %> </div>
     </div>
@@ -63,18 +63,40 @@
     <div class='field small-12 small-centered medium-10 large-8 column'>
       <div class='phoneErrors form-error-msg'> You have entered an invalid phone number.
       </div>
-      <h5 class='question'>and my phone number is</h5>
+      <h5 class='question'>And my phone number is</h5>
       <div class='input-form'>
           <%= f.text_field :phone, placeholder: 'ex. (510) 123 - 4567', class: 'input phone', id: 'phone', onBlur: "validatePhone('phone');", onclick:"maskPhone()", onkeyup: "onFixedPhoneError('phone');"  %>
       </div>
     </div>
-  </div></br>
+  </div>
+
+  <div class='row'>
+    <div class='field small-12 small-centered medium-10 large-8 column'>
+      <h5 class='question'>A few things I would like others to know about me are</h5>
+      <div class='input-form'>
+          <%= f.text_field :bio, placeholder: 'ex. I enjoy going to the movies.', class: 'input bio', id: 'bio' %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='field small-12 small-centered medium-10 large-8 column'>
+      <h5 class='question'>So that others can recognize me, here is a photo of me:</h5>
+      <p style='float:left;'><i>Click on the image to choose a photo from your computer.</i></p>
+      <div class="upload-pic">
+        <i class="fa fa-camera fa-2x"><h5 class="photo-upload"><b>Upload photo</b></h5></i>
+        <%= image_tag((@user.photo), class: "photoPreview") %>
+        <%= f.file_field :photo, class: 'uploadFile' %>
+      </div>
+    </div>
+  </div><br/>
+
   <div class="row modal-footer">
-    <div class="form-actions small-10 small-centered medium-8 large-8 column">
+    <div class="form-actions small-10 small-centered medium-8 large-7 column">
       <div class="actions">
         <%= f.submit "Complete Registration", class: 'button', id: 'register-button'%>
       </div>
     </div>
-  </div>
+  </div><br/>
 <% end %>
 </div>

@@ -141,11 +141,57 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  border: 3px solid $ashby-dark-blue;
   display: inline-block;
   object-fit: cover;
 }
 
+.upload-pic {
+  float: left;
+  position: relative;
+  display: inline-block;
+
+  i {
+    visibility: hidden;
+    color: white;
+    position: absolute;
+    right: 15%;
+    bottom: 15%;
+  }
+}
+
+.upload-pic:hover {
+  i {
+    display: inline-block;
+    visibility: visible;
+    z-index: 2;
+  }
+}
+
+.upload-pic:hover::after {
+  position: absolute;
+  background-color: black;
+  opacity: 0.3;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  content: '';
+}
+
+.photo-upload {
+  text-align: center;
+  color: #ffffff;
+}
+
+.uploadFile {
+  position:absolute;
+  top:0px;
+  z-index:1000;
+  width:180px;
+  height:180px;
+  opacity:0;
+}
 
 .edit-profile-form {
   background-color: white;

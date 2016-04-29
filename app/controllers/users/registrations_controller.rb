@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     if params[:sign_up_params]
-      @user = User.new(params[:sign_up_params].permit(:first_name, :last_name, :email, :phone))
+      @user = User.new(params[:sign_up_params].permit(:first_name, :last_name, :email, :phone, :photo, :bio))
       @resubmit = 1
     else
       @user = User.new
@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:registration) do |u|
-      u.permit(:first_name, :last_name, :email, :password, :phone, :neighborhood, :photo)
+      u.permit(:first_name, :last_name, :email, :password, :phone, :photo, :bio)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:password, :password_confirmation, :current_password, :global_email_notifications)
@@ -73,8 +73,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 #   If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :neighborhood, :password,
-                                                 :password_confirmation, :phone, :photo]
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :password,
+                                                 :password_confirmation, :phone, :photo, :bio]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -93,8 +93,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def registration_params
-    params.require(:user).permit(:first_name, :last_name, :email, :neighborhood, :password,
-                                 :password_confirmation, :phone, :photo, :global_email_notifications)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
+                                 :phone, :photo, :bio, :global_email_notifications)
   end
 
 #   The path used after sign up for inactive accounts.

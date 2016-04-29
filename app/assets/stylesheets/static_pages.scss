@@ -59,6 +59,22 @@
     background: transparent;
     border-radius: 8px !important;
   }
+
+  .bio {
+    font-size: 18px;
+    float: left;
+    width: 90%;
+    border-bottom: 3px $ashby-gray solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    border-radius: 8px !important;
+  }
+
+  .actions {
+    float: right;
+  }
 }
 
 //////////////////
