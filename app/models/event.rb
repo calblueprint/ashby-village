@@ -80,7 +80,7 @@ class Event < ActiveRecord::Base
   end
 
   def notify?(user)
-    return user.global_email_notifications && UserGroup.where(user: user, group: self.group).first.group_email_notifications
+    return user.global_email_notifications && !UserGroup.where(user: user, group: self.group).first.nil? && UserGroup.where(user: user, group: self.group).first.group_email_notifications
   end
 
   def self.send_reminders
