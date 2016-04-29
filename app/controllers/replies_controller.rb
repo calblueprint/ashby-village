@@ -15,6 +15,8 @@ class RepliesController < ApplicationController
   end
 
   def destroy
+    Reply.find(params[:post_id]).destroy
+    redirect_to :back
   end
 
   private
