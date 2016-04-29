@@ -50,7 +50,7 @@ var ready_groups_index = function() {
     return false;
   });
 
-  if('ontouchstart' in window || navigator.msMaxTouchPoints){ // is touch screen
+  if(!('ontouchstart' in window || navigator.msMaxTouchPoints)){ // is touch screen
     $(".group-tile button").hover(function() {
       $button = $(this);
       if ($button.hasClass("is-member")) {
