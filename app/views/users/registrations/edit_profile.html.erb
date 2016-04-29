@@ -33,7 +33,7 @@
           <%= f.text_area :bio, autofocus: true, value: @user.bio %>
         </div>
 
-        <div class="field column">
+        <div class="field row">
           Profile Picture
           <p><i>Upload an image of yourself so that others can recognize you!</i></p>
           <div class="upload-pic">
@@ -41,7 +41,7 @@
             <%= image_tag((@user.photo), class: "photoPreview") %>
             <%= f.file_field :photo, class: 'uploadFile profile-photo-upload' %>
           </div>
-        </div>
+        </div><br/>
 
         <div class="column actions">
           <%= f.submit "Update", class: 'button' %>
