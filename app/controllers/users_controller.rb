@@ -39,12 +39,12 @@ class UsersController < ApplicationController
     if @email_notif == true
       if current_user.update_attribute(:global_email_notifications, false)
         flash[:notice] = "Your email notifications are now off."
-        redirect_to user_path(current_user)
+        redirect_to :back
       end
     elsif @email_notif == false
       if current_user.update_attribute(:global_email_notifications, true)
         flash[:notice] = "Your email notifications are now on."
-        redirect_to user_path(current_user)
+        redirect_to :back
       end
     else
       flash[:notice] = "Email notification preferences could not be updated."

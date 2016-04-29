@@ -32,18 +32,6 @@ ActiveRecord::Schema.define(version: 20160425212622) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "event_posts", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.text     "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "event_posts", ["event_id"], name: "index_event_posts_on_event_id", using: :btree
-  add_index "event_posts", ["user_id"], name: "index_event_posts_on_user_id", using: :btree
-
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.time     "starttime"
@@ -55,8 +43,8 @@ ActiveRecord::Schema.define(version: 20160425212622) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.text     "description"
-    t.boolean  "gmap",           default: false
     t.integer  "capacity"
+    t.boolean  "gmap",           default: false
     t.boolean  "repeat_weekly",  default: false
     t.boolean  "repeat_monthly", default: false
   end
@@ -176,8 +164,6 @@ ActiveRecord::Schema.define(version: 20160425212622) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "event_posts", "events"
-  add_foreign_key "event_posts", "users"
   add_foreign_key "events", "groups"
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users"
