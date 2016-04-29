@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   # TODO(Shimmy): Only display this page if the user is logged in
   def index
     # TODO(Shimmy):Make scopes for these
-    @groups = Group.all
+    @groups = Group.active
     @neighborhoods = Group.neighborhoods.keys
     my = params[:format]
     if my.nil?
@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   end
 
   def my_index
-    @groups = UserGroup.where(user: current_user).map(&:group).compact
+    @groups = current_user.groups.active
   end
 
   def show
