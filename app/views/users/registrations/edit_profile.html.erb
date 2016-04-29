@@ -34,14 +34,16 @@
         </div>
 
         <div class="field">
-          Profile Picture
-          <p><i>Upload an image of yourself so that others can recognize you!</i></p>
-          <%= image_tag((@user.photo), class: "photoPreview") %>
-          <br><br>
-          <%= f.file_field :photo, autofocus: true, class: "uploadFile" %>
-        </div>
+          Profile Picture<br>
+          <p style='float:left;'><i>Upload an image of yourself so that others can recognize you!</i></p>
+          <div class="upload-pic">
+            <i class="fa fa-camera fa-2x"><h5 class="photo-upload"><b>Upload photo</b></h5></i>
+            <%= image_tag((@user.photo), class: "photoPreview") %>
+            <%= f.file_field :photo, class: 'uploadFile' %>
+          </div>
+        </div><br/>
 
-        <div class="actions">
+        <div class="column actions">
           <%= f.submit "Update", class: 'button' %>
         </div>
 

@@ -201,6 +201,10 @@
   padding: 24px;
 }
 
+.actions {
+  float:right;
+}
+
 @media (max-width: 64em) {
   .info .columns {
     min-width: 100%;
