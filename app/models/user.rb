@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" },
-                            default_url: ActionController::Base.helpers.asset_path("default.png")
+                            default_url: "https://s3-us-west-1.amazonaws.com/ashby-prod/default.png"
   validates_attachment_content_type :photo, content_type: %r{^image\/(png|gif|jpeg|jpg)}
 
   private
