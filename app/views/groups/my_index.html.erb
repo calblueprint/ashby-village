@@ -4,4 +4,11 @@
     <%= link_to "Look for a new group", groups_path(current_user.id) %>
   </div>
   <%= render "groups/group_tiles" %>
+  <% if @groups.count == 0 %>
+    <div class="event-tile-margin">
+      <div class="no-events row">
+        <h5>You have not joined any groups yet!</h5>
+      </div>
+    </div>
+  <% end %>
 </div>

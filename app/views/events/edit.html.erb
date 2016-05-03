@@ -7,13 +7,15 @@
         Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
         Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
         Event Date and Time<br>
+          <div class="startdate_errors"> Your event cannot start in the past! </div>
+        <div class="enddate_errors"> Your event cannot end before it begins or in the past! </div>
           <div class="start"><p><i>Start</i></p>
-          <%= f.date_field :startdate, required: true, :placeholder => '03/25/16' %>
-          <%= f.time_field :starttime, required: true, :placeholder => '10:00AM' %>
+          <%= f.date_field :startdate, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03/25/16' %>
+          <%= f.time_field :starttime, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '10:00AM' %>
           </div>
           <div class="end"><p><i>End</i></p>
-          <%= f.date_field :enddate, required: true, :placeholder => '03/25/16' %>
-          <%= f.time_field :endtime, required: true, :placeholder => '03:00PM' %>
+          <%= f.date_field :enddate, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03/25/16' %>
+          <%= f.time_field :endtime, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03:00PM' %>
           </div><br>
           Repeat Event <i>(select one)</i><br>
           <%= f.check_box :repeat_weekly %> Once a week <br>
@@ -42,6 +44,9 @@ function remove_selected_leader(button) {
     group_leader_ids.splice(index, 1);
   }
   $("#selected_organizers")[0].value = group_leader_ids;
+  if(group_leader_ids.length == 0){
+    confirm("Are you sure you want to remove all organizers?");
+  }
 };
 // Function to add a selected leader
 function add_selected_leader(name, id) {

@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Invite.where(user: current_user).map(&:event) || []
+    @events = Invite.where(user: current_user).map(&:event).sort_by &:startdate || []
   end
 
   def attendance
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_id = @event.id
     @group = @event.group
-    @posts = @event.posts.where(group_id: nil)
+    @posts = @event.posts.where(group_id: nil).order_by_created_at
     @group_id = nil
   end
 

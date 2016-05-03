@@ -52,6 +52,9 @@ function remove_selected_leader(button) {
     group_leader_ids.splice(index, 1);
   }
   $("#selected_leaders")[0].value = group_leader_ids;
+  if(group_leader_ids.length == 0){
+    confirm("Are you sure you want to remove all group leaders? (This group will be deleted)");
+  }
 };
 // Function to add a selected leader
 function add_selected_leader(name, id) {
