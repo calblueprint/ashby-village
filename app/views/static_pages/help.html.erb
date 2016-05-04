@@ -1,28 +1,53 @@
-<h1>Contact Us</h1>
-<%= form_tag do %>
-  <% if current_user.nil? %>
-    <%= label_tag(:email, "Please fill in your email:") %>
-    <%= text_field_tag(:email, nil, required: true, placeholder: "bob@gmail.com") %>
-  <% else %>
-    <%= hidden_field_tag :email, current_user.email %>
-  <% end %>
-  <%= label_tag(:problem, "Tell us your problem (this will email your problem to the administrators)") %>
-  <%= text_field_tag(:problem, nil, required: true, placeholder: "I'm on the homepage and I forgot my password what do I do?") %>
-  <%= submit_tag("contact") %>
-<% end %>
-<h1>FAQ (Frequently Asked Questions):</h1>
-<div class="faq" onClick="$(this).children().toggle()"> 
-  What is Ashby Village?
-  <div class="embed">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/XlQ78H1in0s" frameborder="0" allowfullscreen></iframe>
+<div class="title">
+  <h2>Contact Us</h2>
+</div>
+
+<div class="mobile-margins">
+  <div class="create-section row">
+    <%= form_tag do %>
+      <% if current_user.nil? %>
+        Please fill in your email:
+        <%= text_field_tag(:email, nil, required: true, placeholder: "bob@gmail.com") %>
+      <% else %>
+        <%= hidden_field_tag :email, current_user.email %>
+      <% end %>
+        Tell us your problem:
+        <p><i>This will email your problem to the administrators.</i></p>
+      <%= text_area_tag(:problem, nil, required: true, placeholder: "I'm on the homepage and I forgot my password. What do I do?") %>
+      <%= submit_tag("Contact") %>
+    <% end %>
+  </div>
+</div>  
+
+<div class="mobile-margins">
+  <div class="create-section row">
+    <h3 class="faq-title">
+      <strong>FAQ (Frequently Asked Questions):</strong>
+    </h3>
+
+    <div class="faq" onClick="faqtoggle(this)"> 
+      <ul>
+        <li>What is Ashby Village?</li>
+      </ul>
+      <div class="embed">
+        <iframe class="faq-iframe" src="https://www.youtube.com/embed/XlQ78H1in0s" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="faq" onClick="faqtoggle(this)"> 
+      <ul>
+        <li>How do I login?</li>
+      </ul>
+      <div class="embed">
+        <iframe class="faq-iframe" src="https://www.youtube.com/embed/94OFIVpwua0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
 </div>
-<div class="faq" onClick="$(this).children().toggle()"> 
-  How do I login?
-  <div class="embed">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/94OFIVpwua0" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+
 <script>
   $('.embed').hide();
+  var faqtoggle = function(that){
+    $(that).find(".embed").toggle();
+  };
 </script>
