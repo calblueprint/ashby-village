@@ -1,6 +1,12 @@
 class AshbyMailer < ApplicationMailer
   default from: "ashbyvillagetest@gmail.com"
 
+  def email_admin(email, problem)
+    @problem = problem
+    @email = email
+    mail(to: "joeypereira94@gmail.com; joeypereira@berkeley.edu", subject: "[Ashby Tech] user problem")
+  end
+
   def email_invites(user, group, event)
     @user = user
     @group = group

@@ -9,6 +9,12 @@ class StaticPagesController < ApplicationController
   def help
   end
 
+  def helpme
+    AshbyMailer.delay.email_admin(params[:email], params[:problem])
+    flash[:notice] = "Administrators have been notified"
+    redirect_to :back 
+  end
+
   def about
   end
 end

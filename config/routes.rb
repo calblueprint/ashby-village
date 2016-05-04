@@ -52,6 +52,9 @@ Rails.application.routes.draw do
   end
   root 'static_pages#home'
 
+  get '/help', to: 'static_pages#help'
+  post '/help', to: 'static_pages#helpme'
+
   ##################################################
   # Devise
   ##################################################
@@ -109,9 +112,4 @@ Rails.application.routes.draw do
   resources :posts do
     resources :replies
   end
-
-  ##################################################
-  # Events
-  ##################################################
-
 end
