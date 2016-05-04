@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   def index
     # TODO(Shimmy):Make scopes for these
     @groups = Group.active.order(:name)
-    @neighborhoods = Group.neighborhoods.keys
+    @neighborhoods = Group.neighborhoods.keys.compact
     my = params[:format]
     if my.nil?
       @all = "selected = \"selected\"".html_safe
