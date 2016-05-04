@@ -26,17 +26,15 @@ var ready_events_show = function() {
   $(".click-posts").click({menu_item: ".event-post"}, menu_clicked);
   $(".click-attendance").click({menu_item: ".event-attendance"}, menu_clicked);
   $(".click-event-settings").click({menu_item: ".event-settings"}, menu_clicked);
-
-  $(window).resize(function(){
-    if($(".event-menu:visible").length > 0){ //in mobile
-      if($(".selected").length == 0 ) {
-        $(".click-details").trigger('click');
-      } else {
-        $(".selected").trigger('click');
-      }
-    } else { // not mobile
-      $(".hide-mobile").removeClass("hide-mobile");
+};
+var resize_events_show = function(){
+  if($(".event-menu:visible").length > 0){ //in mobile
+    if($(".selected").length == 0 ) {
+      $(".click-details").trigger('click');
+    } else {
+      $(".selected").trigger('click');
     }
-  });
-  $(window).trigger('resize');
+  } else { // not mobile
+    $(".hide-mobile").removeClass("hide-mobile");
+  }
 };

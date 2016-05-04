@@ -75,8 +75,14 @@ var ready = (function(){
   if($(".new_event").length > 0){
     ready_events_new();
   }
+  $(window).resize(resize_ready);
+  $(window).trigger('resize');
 });
 
+var resize_ready = function() {
+  resize_events_show();
+  resize_navbar();
+};
 $(document).ready(ready);
 $(document).on('page:load', ready);
 $(document).on('page:change', ready);
