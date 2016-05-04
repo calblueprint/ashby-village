@@ -1,0 +1,29 @@
+@import "ashby_settings.scss";
+
+.faq-title {
+	color: $ashby-gray;
+	margin-bottom: 16px;
+}
+
+.faq li {
+	color: $ashby-light-blue;
+	font-size: $h3-heading-size;
+	cursor: pointer;
+}
+
+.faq-iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 35px;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
