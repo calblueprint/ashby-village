@@ -62,6 +62,7 @@ var ready = (function(){
   });
   $(document).foundation();
   ready_error();
+  ready_user_edit();
   ready_groups_show();
   ready_groups_index();
   ready_events_show();
