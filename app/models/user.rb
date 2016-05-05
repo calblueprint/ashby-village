@@ -79,6 +79,8 @@ class User < ActiveRecord::Base
 
   before_validation :strip_phone_number
 
+  before_destroy { |user| UserGroup.destroy_all "user_id = #{user.id}" }
+
   validates :email, presence: true
   validates :password, presence: true, on: :create
   validates :password_confirmation, presence: true, on: :create

@@ -24,9 +24,6 @@
     box-shadow: 0px 4px 0px 0px $ashby-dark-blue;
   }
 
-  button:hover {
-    background: $ashby-light-blue;
-  }
 }
 
 .settings-group .remove-membership {
@@ -34,6 +31,9 @@
   -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
   -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
   box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  button:hover {
+    background: $ashby-red;
+  }
 }
 
 .edit-group-form {

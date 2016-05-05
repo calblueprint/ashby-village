@@ -1,28 +1,27 @@
 <div class="settings-group">
   <div class="settings-remove-membership">
     <h6>Settings</h6>
-    <% if group.users.exists?(id: current_user.id) %>
-      <% if current_user.user_groups.where(group_id: @group.id).first.group_email_notifications == true %>
-        <!-- check if the user's email notifications for this group are on, show option to turn off -->
+    <% if @group.users.exists?(id: current_user.id) %>
+      <% if current_user.user_groups.where(group_id: @group.id).first.group_email_notifications %>
         <p> Your email notifications for this group are turned on.  If you would like to stop receiving email updates for this group, click the button below to turn email notifications off.</p>
-          <%= link_to notifications_group_path(group), method: :get do %>
+          <%= link_to notifications_group_path(@group.id), method: :get do %>
             <button class="emails-off">Turn emails off</button>
           <% end %> <br/>
-      <% else %> <!-- if email notifications off, show option to turn on -->
+      <% else %>
         <p> Your email notifications for this group are turned off.  If you would like to receive email updates for this group, click the button below to turn email notifications on.</p>
-          <%= link_to notifications_group_path(group), method: :get do %>
+          <%= link_to notifications_group_path(@group.id), method: :get do %>
             <button class="">Turn emails on</button>
           <% end %> </br>
       <% end %>
 
-      <% if current_user.is_only_leader(group) %>
+      <% if current_user.is_only_leader(@group) %>
         <p> Since you are the only leader of this group, removing your membership will mark this group inactive and villagers will be unable to view or join it. Please add another group leader before removing yourself if you would like this group to stay active. </p>
-        <%= link_to leave_group_path(group), method: :put, data: {confirm: "You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?"} do %>
+        <%= link_to leave_group_path(@group.id), data: {confirm: "You are the only leader of this group, if you remove your membership this group will become inactive. Are you sure you want to remove your membership?"} do %>
           <button class="remove-membership">Remove Membership</button>
         <% end %>
       <% else %>
         <p>Click the button below to remove yourself from this group. This means you will no longer receive email notifications from this group. You may still join this group later.</p>
-        <%= link_to leave_group_path(group.id) do %>
+        <%= link_to leave_group_path(@group.id) do %>
           <button class="remove-membership">Remove Membership</button>
         <% end %>
       <% end %><br/>
@@ -30,11 +29,14 @@
   </div>
 
   <% if current_user.is_leader(@group) %>
-  <div class="settings-edit">
-    <p>Since you are a leader of <%= group.name %>, you can edit the details of this group.</p>
-    <%= link_to edit_group_path(group.id), class: 'success radius small' do %>
-      <button class="edit-group">Edit Group</button> <!-- Change button color to blue -->
-    <% end %>
-  </div>
+    <div class="settings-edit">
+      <p>Since you are a leader of <%= @group.name %>, you can edit the details of this group or delete the group</p>
+      <%= link_to edit_group_path(@group.id), class: 'success radius small' do %>
+        <button class="edit-group">Edit Group</button>
+      <% end %>
+      <%= link_to group_path(@group.id), method: :delete, class: 'success radius small' do %>
+        <button class="remove-membership">Delete Group</button>
+      <% end %>
+    </div>
   <% end %>
 </div>

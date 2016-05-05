@@ -44,6 +44,17 @@ class Group < ActiveRecord::Base
 
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("empty_group.png")
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+  
+  before_destroy { |group| UserGroup.destroy_all "group_id = #{group.id}" }
+  before_destroy { |group| Event.destroy_all "group_id = #{group.id}" }
+  
+  def search_display
+    name + " in " + neighborhood
+  end
+
+  def has_one_leader
+    users.leaders.count == 1
+  end
 
   def add_user(user, make_leader = false)
     if UserGroup.where(user: user, group: self).first.nil?
@@ -53,24 +64,23 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def search_display
-    name + " in " + neighborhood
-  end
-
-  def has_one_leader
-    users.leaders.count == 1
-  end
-
   def remove_leader(user)
     if !UserGroup.where(user: user, group: self).first.nil?
       UserGroup.where(user: user, group: self).first.update_attribute(:is_leader, false)
     end
+    if users.leaders.count == 0
+    end
+  end
+
+  def set_inactive
+    self.update_attribute :state, 0
+    Event.destroy_all "group_id = #{self.id}"
   end
 
   def remove_user(user)
     # If the current user is the only leader, make the group inactive
     if user.is_only_leader(self)
-      self.update_attribute :state, 0
+      set_inactive
     end
     self.users.delete(user)
   end

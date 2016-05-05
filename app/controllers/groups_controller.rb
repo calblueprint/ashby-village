@@ -25,14 +25,6 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.active.order(:name) || []
     @neighborhoods = Group.neighborhoods.keys.compact
-    my = params[:format]
-    if my.nil?
-      @all = "selected = \"selected\"".html_safe
-      @my = "".html_safe
-    else
-      @my = "selected = \"selected\"".html_safe
-      @all = "".html_safe
-    end
   end
 
   def my_index
@@ -91,6 +83,16 @@ class GroupsController < ApplicationController
       @neighborhoods = Group.neighborhoods.keys
       redirect_to action: "new", group_param: group_params
     end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    if !@group.nil?
+      @group.destroy
+    else
+      flash[:alert] = "This group was already deleted"
+    end
+    redirect_to groups_path
   end
 
   def member_listing
