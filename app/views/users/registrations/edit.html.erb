@@ -3,19 +3,22 @@
   <div class="small-12 small-centered medium-10 large-10 column">
     <div class="change-password-form row">
       <h3>Email Notifications</h3>
-      <% if current_user.global_email_notifications == true %>
-        <!-- check if the user's email notifications for this group are on, show option to turn off -->
+      <% if current_user.global_email_notifications %>
         <p> Your email notifications are turned on for all of your Ashby Village groups.  If you would like to stop receiving email updates, click the button below to turn email notifications off.</p>
           <%= link_to user_notifications_path(current_user), method: :get do %>
             <button class="emails-off">Turn emails off</button>
           <% end %> <br/>
-      <% else %> <!-- if email notifications off, show option to turn on -->
+      <% else %>
         <p> Your email notifications are turned off for all of your Ashby Village groups.  If you would like to receive email updates, click the button below to turn email notifications on.</p>
           <%= link_to user_notifications_path(current_user), method: :get do %>
             <button class="">Turn emails on</button>
           <% end %> </br>
       <% end %>
-
+      <h3>Edit Profile</h3>
+        <p> If any of your profile information is incorrect, or has changed you may edit it. You can chanfge your phone number, email, bio, photo etc.</p>
+        <%= link_to edit_user_path(current_user), method: :get do %>
+          <button class="emails-off">Edit your profile</button>
+        <% end %> <br/>
       <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
