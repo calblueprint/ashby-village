@@ -80,7 +80,7 @@ class Event < ActiveRecord::Base
   end
 
   def notify?(user)
-    return user.global_email_notifications && !UserGroup.where(user: user, group: self.group).first.nil? && UserGroup.where(user: user, group: self.group).first.group_email_notifications
+    return !user.nil? && user.global_email_notifications && !UserGroup.where(user: user, group: self.group).first.nil? && UserGroup.where(user: user, group: self.group).first.group_email_notifications
   end
 
   def self.send_reminders
@@ -149,17 +149,21 @@ class Event < ActiveRecord::Base
 
   def event_starttime_later_than_now
     if starttime.present? && startdate.present?
-      if startdate < DateTime.now.to_date
+      if startdate.nil?
+        errors.add(:startdate, "You must choose a start date.")
+      elsif startdate < DateTime.now.to_date
         errors.add(:startdate, "Your event cannot start in the past!")
       elsif startdate == DateTime.now.to_date && starttime.to_s(:time) < Time.now.to_s(:time)
-        errors.add(:Starttime, "Your event cannot start in the past!")
+        errors.add(:starttime, "Your event cannot start in the past!")
       end
     end
   end
 
   def event_endtime_later_than_starttime
     if enddate.present? && endtime.present?
-      if enddate < startdate
+      if enddate.nil?
+        errors.add(:enddate, "You must choose a end date.")
+      elsif enddate < startdate
         errors.add(:enddate, "Your event cannot end before it starts!")
       elsif endtime.to_s(:time) < starttime.to_s(:time) && enddate == startdate
         errors.add(:endtime, "Your event cannot end before it starts!")

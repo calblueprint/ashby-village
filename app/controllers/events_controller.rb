@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     else
       @event = Event.new
     end
-    @group = Group.friendly.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     @users = @group.users.where.not(id: current_user.id).decorate.map { |u| [u.full_name, u.id] }
   end
 
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
     if(not params[:gmap].nil?)
       @event.gmap = true
     end
-    @group = Group.friendly.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     @event.group = @group
     if @event.save
       @event.add_users(current_user, organizers = params[:selected_organizers].split(",").map{ |o| o.to_i })

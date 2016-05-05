@@ -16,9 +16,6 @@
 #  neighborhood       :integer
 #
 class Group < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, use: :slugged
-  # validates :name, uniqueness: true, on: :create
   validates_uniqueness_of :name
   validates :name, presence: true
   validates :description, presence: true
@@ -40,7 +37,7 @@ class Group < ActiveRecord::Base
   has_many :events, dependent: :destroy
   has_many :posts, dependent: :destroy do
     def group_posts
-      where("groups.")
+      where("groups")
     end
   end
   has_many :replies, dependent: :destroy
@@ -48,11 +45,11 @@ class Group < ActiveRecord::Base
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path("empty_group.png")
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
-  def add_user(current_user, make_leader = false)
-    if UserGroup.where(user: current_user, group: self).blank?
-      UserGroup.create(user: current_user, group: self, is_leader: make_leader)
+  def add_user(user, make_leader = false)
+    if UserGroup.where(user: user, group: self).first.nil?
+      UserGroup.create(user: user, group: self, is_leader: make_leader)
     else
-      UserGroup.where(user: current_user, group: self).first.update_attribute :is_leader, make_leader
+      UserGroup.where(user: user, group: self).first.update_attribute :is_leader, make_leader
     end
   end
 
@@ -64,11 +61,17 @@ class Group < ActiveRecord::Base
     users.leaders.count == 1
   end
 
-  def remove_user(current_user)
+  def remove_leader(user)
+    if !UserGroup.where(user: user, group: self).first.nil?
+      UserGroup.where(user: user, group: self).first.update_attribute(:is_leader, false)
+    end
+  end
+
+  def remove_user(user)
     # If the current user is the only leader, make the group inactive
-    if current_user.is_only_leader(self)
+    if user.is_only_leader(self)
       self.update_attribute :state, 0
     end
-    self.users.delete(current_user)
+    self.users.delete(user)
   end
 end

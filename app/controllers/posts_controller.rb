@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   # Doing the posts using old fashioned forms
   def new
     @post = Post.new
-    @group = Group.friendly.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     @group = Event.find(params[:event_id])
   end
 
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       group = @event.group
       page = group_event_path(group, @event)
     else
-      @group = Group.friendly.find(post_params[:group_id])
+      @group = Group.find(post_params[:group_id])
       @post = @group.posts.build(post_params)
       page = group_path(@group)
     end

@@ -31,13 +31,10 @@
 #  full_name              :string
 #
 
-# TODO (Shannon): Remove cell-phone number field. Remove date of birth field?
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   scope :admins, -> { where(role: 1) }
-
-  # TODO (Shannon): add phone number validation, length and integers
 
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable, :registerable
@@ -61,15 +58,19 @@ class User < ActiveRecord::Base
   end
 
   def is_attendee(event)
-    event.users.exists?(id: id)
+    (event.nil? ? false : event.users.exists?(id: id))
+  end
+  
+  def is_organizer(event)
+    (event.nil? ? false : event.users.organizers.exists?(id: id))
   end
 
   def is_leader(group)
-    group.users.leaders.exists?(id: id)
+    (group.nil? ? false : group.users.leaders.exists?(id: id))
   end
 
   def is_member(group)
-    group.users.exists?(id: id)
+    (group.nil? ? false : group.users.exists?(id: id))
   end
 
   def is_only_leader(group)
@@ -89,12 +90,11 @@ class User < ActiveRecord::Base
   # strips phone number of masked input so that it is saved with only numbers
   # and so that we can validate that there are 10 numbers in the phone number (but doesn't validate that its real)
   def strip_phone_number
-    self.phone.gsub!(/[^0-9]/, "")
+    (self.phone.nil? ? "          " : self.phone.gsub!(/[^0-9]/, ""))
   end
 
-  validates_length_of :phone, is: 10, message: "Invalid phone number. Don't forget to include your area code!"
+  #validates_length_of :phone, is: 10, message: "Invalid phone number. Don't forget to include your area code!"
 
-  validates :email, presence: true
   has_attached_file :photo, styles: { medium: "500x500>", thumb: "150x150#" },
                             default_url: "https://s3-us-west-1.amazonaws.com/ashby-prod/default.png"
   validates_attachment_content_type :photo, content_type: %r{^image\/(png|gif|jpeg|jpg)}

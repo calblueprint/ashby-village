@@ -4,8 +4,16 @@ class GroupsController < ApplicationController
   autocomplete :group, :name, { full: true }
 
   def autocomplete_group_name
-    term = params[:term].downcase
-    neighborhood = Group.neighborhoods[params[:neighborhood].gsub("^", " ")] || "all"
+    if term.nil?
+      puts "<<< Error no term"
+    else
+      term = params[:term].downcase
+    end
+    if params[:neighborhood].nil?
+      puts "<<< Error no neighborhood"
+    else
+      neighborhood = Group.neighborhoods[params[:neighborhood].gsub("^", " ")] || "all"
+    end
     if neighborhood == "all"
       groups = Group.active.where('lower(name) LIKE ?', "%#{term}%").order(:name).all
     else
@@ -14,10 +22,8 @@ class GroupsController < ApplicationController
     render json: groups.map { |g| {id: g.id, label: g.name, value: g.name} }
   end
 
-  # TODO(Shimmy): Only display this page if the user is logged in
   def index
-    # TODO(Shimmy):Make scopes for these
-    @groups = Group.active.order(:name)
+    @groups = Group.active.order(:name) || []
     @neighborhoods = Group.neighborhoods.keys.compact
     my = params[:format]
     if my.nil?
@@ -30,17 +36,24 @@ class GroupsController < ApplicationController
   end
 
   def my_index
-    @groups = current_user.groups.active.order(:name)
+    @groups = current_user.groups.active.order(:name) || []
   end
 
   def show
     @post = Post.new
     @reply = Reply.new
-    @group = Group.friendly.find(params[:id])
-    @posts = @group.posts.where(event_id: nil).order_by_created_at
+    @group = Group.find(params[:id])
+    if !@group.nil?
+      @posts = @group.posts.where(event_id: nil).order_by_created_at || []
+      @group_id = @group.id
+      @neighborhood = @group.neighborhood
+    else
+      puts "<<< Error couldn't find group"
+      @posts = []
+      @group_id = params[:id]
+      @neighborhood = 0
+    end
     @event_id = nil
-    @group_id = @group.id
-    @neighborhood = @group.neighborhood
   end
 
   def new
@@ -52,7 +65,7 @@ class GroupsController < ApplicationController
       end
       @neighborhoods = Group.neighborhoods.keys
       @allnames = Group.all.map(&:name)
-      render action: "new", notice: "Sample notice"
+      render action: "new", notice: "You may create a group"
     else
       redirect_to new_user_session_path, notice: "You are not logged in."
     end
@@ -81,7 +94,7 @@ class GroupsController < ApplicationController
   end
 
   def member_listing
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
   def join
@@ -107,16 +120,16 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
     @users = User.where.not(id: @group.users.leaders.pluck(:id)).decorate.map{ |u| [u.full_name, u.id]}
     @neighborhoods = Group.neighborhoods.keys
   end
 
   def update
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
     if @group.update_attributes(group_params)
       @group.users.leaders.each do |user|
-        @group.remove_user(user)
+        @group.remove_leader(user)
       end
       if !params[:selected_leaders].blank?
         params[:selected_leaders].split(",").each do |slid|
@@ -133,19 +146,26 @@ class GroupsController < ApplicationController
   end
 
   def notifications
-    @group = Group.friendly.find(params[:id])
+    @group = Group.find(params[:id])
     @user_group = current_user.user_groups.where(group_id: @group.id).first
-    if @user_group && @user_group.group_email_notifications == true
+    if @user_group && @user_group.group_email_notifications
       @email_notif = @user_group.group_email_notifications
-      if current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, false)
+      if !current_user.user_groups.where(group_id: @group.id).first.nil? && current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, false)
         flash[:notice] = "Your email notifications for this group are now off."
         redirect_to group_path
+      else
+        puts "<<< Error not in group email off"
+        redirect_to :back
       end
-    elsif @user_group && @user_group.group_email_notifications == false
+    elsif @user_group && !@user_group.group_email_notifications
       @email_notif = @user_group.group_email_notifications
-      if current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, true)
+      if !current_user.user_groups.where(group_id: @group.id).first.nil? && current_user.user_groups.where(group_id: @group.id).first.update_attribute(:group_email_notifications, true)
         flash[:notice] = "Your email notifications for this group are now on."
         redirect_to group_path
+      else
+        puts "<<< Error not in group email on"
+        flash[:alert] = "You are not in the group: you must join first"
+        redirect_to :back
       end
     else
       flash[:notice] = "Email notifications for this group could not be updated."
