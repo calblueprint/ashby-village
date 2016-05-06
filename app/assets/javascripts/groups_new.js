@@ -25,7 +25,7 @@ function fixGroupNameError(x) {
   }
 }
 
-var groups_new_ready = function() {
+var ready_groups_new = function() {
   if ($("#new-group-name").length > 0) {
     validateName('new-group-name');
   }

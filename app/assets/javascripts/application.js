@@ -53,6 +53,11 @@ var ready_error = function() {
   }
 }
 
+var resize_ready = function() {
+  resize_events_show();
+  resize_navbar();
+};
+
 var ready = (function(){
   $(document).on('close.fndtn.reveal', '[data-reveal]', function(){
     $('.login-form-error-msg').hide();
@@ -62,27 +67,19 @@ var ready = (function(){
   });
   $(document).foundation();
   ready_error();
-  ready_user_edit();
-  ready_groups_show();
-  ready_groups_index();
-  ready_events_show();
-  ready_users_registrations_new();
-  ready_image_preview();
   ready_user_show();
   ready_user_new();
-  event_new_ready();
-  groups_new_ready();
-  if($(".new_event").length > 0){
-    ready_events_new();
-  }
+  ready_user_edit();
+  ready_users_registrations_new();
+  ready_groups_index();
+  ready_groups_show();
+  ready_groups_new();
+  ready_events_show();
+  ready_events_new();
+  ready_image_preview();
   $(window).resize(resize_ready);
   $(window).trigger('resize');
 });
 
-var resize_ready = function() {
-  resize_events_show();
-  resize_navbar();
-};
-$(document).ready(ready);
-$(document).on('page:load', ready);
+// Document ready for Turbolinks (will only fire once)
 $(document).on('page:change', ready);

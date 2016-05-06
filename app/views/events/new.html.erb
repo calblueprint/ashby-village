@@ -34,36 +34,3 @@
         </div>
       </div>
   <% end %>
-<script>
-var group_leader_ids = [];
-// Function to remove selected leader
-function remove_selected_leader(button) {
-  var id = button.parentElement.id;
-  button.parentElement.remove();
-  index = group_leader_ids.indexOf(id);
-  if(index > -1) {
-    group_leader_ids.splice(index, 1);
-  }
-  $("#selected_organizers")[0].value = group_leader_ids;
-};
-// Function to add a selected leader
-function add_selected_leader(name, id) {
-  var div = document.createElement('div');
-  div.innerHTML = name + '<div type="button" class="x-leader" onclick="remove_selected_leader(this)"><i class="fa fa-times fa-lg"></i></div>';
-  div.id = id;
-  div.className = " selected-leader";
-  return div;
-}
-// Function called when autocomplete has been selected
-$("#organizers").bind('railsAutocomplete.select', function(event, data){
-  // Add id's to array to pass to rails (hidden_field_tag?)
-  group_leader_ids.push(data.item.id);
-  // Set hidden field
-  $("#selected_organizers")[0].value = group_leader_ids;
-  // Blank autocomplete field
-  $("#organizers")[0].value = "";
-  // Add Selected Name to new visible field
-  $("#selected-event-organizers")[0].appendChild(add_selected_leader(data.item.value, data.item.id));
-});
-</script>
-
