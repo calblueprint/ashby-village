@@ -26,8 +26,8 @@
         Maximum Attendees (optional) <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'What is the maximum number of attendees?' %>
         Select Additional Event Organizers
         <div class="field" id="selected-event-organizers">
-          <p><i>Start typing the names of your fellow group leaders to select</i></p>
-          <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>
+          <p><i>Start typing the names of your fellow organizers and then select</i></p> <div id="organizerError" class="form-error-msg" > Could not find user. Make sure they have an account and their name is typed correctly.</div>
+          <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %> 
           <%= hidden_field_tag 'selected_organizers' %>
         </div>
         <%= f.submit %>

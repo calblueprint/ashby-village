@@ -24,7 +24,7 @@
 
         <div class="field" id="selected-group-leaders">
           Select Additional Group Leaders
-          <p><i>Start typing the names of your fellow group leaders to select</i></p>
+          <p><i>Start typing the names of your fellow group leaders and then select</i></p><div id="groupLeaderError" class="form-error-msg" > Could not find user. Make sure they have an account and their name is typed correctly.</div>
           <%= autocomplete_field_tag :group_leaders, '', autocomplete_user_full_name_groups_path %>
           <%= hidden_field_tag 'selected_leaders' %>
         </div>

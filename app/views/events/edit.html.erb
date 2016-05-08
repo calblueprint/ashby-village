@@ -25,7 +25,7 @@
         Event Capacity <%= f.number_field :capacity, min: 1, required: false, placeholder: 'Leave blank if no limit to number of attendees' %>
         Select Event Organizers
         <div class="field" id="selected-event-organizers">
-          <p><i>Start typing the names of your fellow group leaders to select</i></p>
+          <p><i>Start typing the names of your fellow organizers and then select</i></p> <div id="organizerError" class="form-error-msg" > Could not find user. Make sure they have an account and their name is typed correctly.</div>
           <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>
           <%= hidden_field_tag 'selected_organizers' %>
         </div>
@@ -34,43 +34,12 @@
     </div>
   <% end %>
 <script>
-var group_leader_ids = [<%= raw ('"' + @event.users.organizers.map(&:id).join('","') + '"') %>];
-// Function to remove selected leader
-function remove_selected_leader(button) {
-  var id = button.parentElement.id;
-  button.parentElement.remove();
-  index = group_leader_ids.indexOf(id);
-  if(index > -1) {
-    group_leader_ids.splice(index, 1);
-  }
-  $("#selected_organizers")[0].value = group_leader_ids;
-  if(group_leader_ids.length == 0){
-    confirm("Are you sure you want to remove all organizers?");
-  }
-};
-// Function to add a selected leader
-function add_selected_leader(name, id) {
-  var div = document.createElement('div');
-  div.innerHTML = name + '<div type="button" class="x-leader" onclick="remove_selected_leader(this)"><i class="fa fa-times fa-lg"></i></div>';
-  div.id = id;
-  div.className = " selected-leader";
-  return div;
+event_organizer_ids = [<%= raw ('"' + @event.users.organizers.map(&:id).join('","') + '"') %>];
+
+var initial_event_organizer_names = <%= raw @event.users.organizers.map(&:full_name) %>;
+for (i = 0; i < event_organizer_ids.length; i++) { 
+  $("#selected-event-organizers")[0].appendChild(add_selected_organizer(initial_event_organizer_names[i], event_organizer_ids[i]));
 }
-// Function called when autocomplete has been selected
-$("#organizers").bind('railsAutocomplete.select', function(event, data){
-  // Add id's to array to pass to rails (hidden_field_tag?)
-  group_leader_ids.push(data.item.id);
-  // Set hidden field
-  $("#selected_organizers")[0].value = group_leader_ids;
-  // Blank autocomplete field
-  $("#organizers")[0].value = "";
-  // Add Selected Name to new visible field
-  $("#selected-event-organizers")[0].appendChild(add_selected_leader(data.item.value, data.item.id));
-});
-var initial_group_leader_names = <%= raw @event.users.organizers.map(&:full_name) %>;
-for (i = 0; i < group_leader_ids.length; i++) { 
-  $("#selected-event-organizers")[0].appendChild(add_selected_leader(initial_group_leader_names[i], group_leader_ids[i]));
-}
-$("#selected_organizers")[0].value = group_leader_ids;
+$("#selected_organizers")[0].value = event_organizer_ids;
 </script>
 

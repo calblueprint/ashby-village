@@ -53,6 +53,9 @@ function validateEventEnd() {
 }
 
 function remove_selected_organizer(button) {
+  if($(".title").text().indexOf("Edit") > -1 && event_organizer_ids.length == 0 && confirm("Are you sure you want to remove all organizers?")){
+    return false;
+  }
   var id = button.parentElement.id;
   button.parentElement.remove();
   index = event_organizer_ids.indexOf(id);
@@ -79,10 +82,11 @@ var ready_events_new = function() {
         $("#event_enddate").val($("#event_startdate").val());
       }
     };
-  
+    event_organizer_ids = []; 
+
     // Function called when autocomplete has been selected
     $("#organizers").bind('railsAutocomplete.select', function(event, data){
-      // Add id's to array to pass to rails (hidden_field_tag?)
+      // Add id's to array to pass to rails
       event_organizer_ids.push(data.item.id);
       // Set hidden field
       $("#selected_organizers")[0].value = event_organizer_ids;
@@ -90,6 +94,13 @@ var ready_events_new = function() {
       $("#organizers")[0].value = "";
       // Add Selected Name to new visible field
       $("#selected-event-organizers")[0].appendChild(add_selected_organizer(data.item.value, data.item.id));
+    });
+    $("#organizers").keyup(function(){
+      if($(".ui-helper-hidden-accessible").find("div:last").text() == "No search results."){
+        $("#organizerError").show();
+      } else {
+        $("#organizerError").hide();
+      }
     });
   }
 };
