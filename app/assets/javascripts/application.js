@@ -14,11 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require react
-//= require react_ujs
 //= require components
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+//= require jquery.joyride-2.1
 //= require_tree .
 
 //this is the most recent version
@@ -77,6 +76,7 @@ var ready = (function(){
   ready_events_show();
   ready_events_new();
   ready_image_preview();
+  ready_help();
   $(window).resize(resize_ready);
   $(window).trigger('resize');
 });

@@ -42,7 +42,7 @@
           </li>
         <% else %>
           <!-- if user not signed in, show these links -->
-          <li><%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"} %></li>
+          <li><%= link_to "Member Login", "#", data: {toggle: "modal", target: "#myModal", :"reveal-id"=>"login"}, id: "login-button" %></li>
           <li><%= link_to "Help Page", help_path(current_user) %></li>
         <% end %>
       </ul>

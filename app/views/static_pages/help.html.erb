@@ -2,6 +2,16 @@
   <h2>Contact Us</h2>
 </div>
 
+<ol id="chooseID">
+  <li data-id="login-button" data-options="tipLocation:botton;">Click the Login Button</li>
+
+  <li>Tip content...</li>
+
+  <li data-class="parent-element-class" data-options="tipLocation:top;tipAnimation:fade" data-button="Second Button">Content...</li>
+
+  <li data-id="parentElementID" class="custom-class">Content...</li>
+</ol>
+
 <div class="mobile-margins">
   <div class="create-section row">
     <%= form_tag do %>
@@ -25,29 +35,13 @@
       <strong>FAQ (Frequently Asked Questions):</strong>
     </h3>
 
-    <div class="faq" onClick="faqtoggle(this)"> 
-      <ul>
-        <li>What is Ashby Village?</li>
-      </ul>
-      <div class="embed">
-        <iframe class="faq-iframe" src="https://www.youtube.com/embed/XlQ78H1in0s" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="faq" onClick="faqtoggle(this)"> 
+    <div class="faq"> 
       <ul>
         <li>How do I login?</li>
       </ul>
       <div class="embed">
-        <iframe class="faq-iframe" src="https://www.youtube.com/embed/94OFIVpwua0" frameborder="0" allowfullscreen></iframe>
+        <!-- <iframe class="faq-iframe" src="https://www.youtube.com/embed/94OFIVpwua0" frameborder="0" allowfullscreen></iframe> -->
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  $('.embed').hide();
-  var faqtoggle = function(that){
-    $(that).find(".embed").toggle();
-  };
-</script>

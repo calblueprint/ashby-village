@@ -10,7 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require foundation_and_overrides
- *= require_self
- *= require_tree .
  */
+@import 'ashby_settings.scss';
+@import "foundation_and_overrides.scss";
+@import "joyride-2.1.scss";
+@import "*";
