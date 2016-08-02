@@ -5,13 +5,11 @@ var resize_navbar = function() {
         $(".dropdown").parent().parent()[0].appendChild($(this)[0]);
       }
     });
-    $(".has-dropdown a:first").hide();
   } else {
     $(".dropdown").parent().parent().children().each(function(index) {
       if(index > 2){
         $(".dropdown")[0].appendChild($(this)[0]);
       }
     });
-    $(".has-dropdown a:first").show();
   }
 };
