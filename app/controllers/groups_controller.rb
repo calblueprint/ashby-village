@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   autocomplete :group, :name, { full: true }
 
   def autocomplete_group_name
-    if term.nil?
+    if params[:term].nil?
       puts "<<< Error no term"
     else
       term = params[:term].downcase
