@@ -80,7 +80,7 @@ button, input[type="submit"] {
 }
 
 button:hover, button:focus, input[type="submit"]:hover, input[type="submit"]:focus {
-  background-color: $ashby-green;
+  background-color: $ashby-dark-green;
 }
 
 button:active, input[type="submit"]:active {
@@ -111,7 +111,7 @@ select {
 }
 
 // TEXT INPUTS
-input[type="text"], input[type="number"], input[type="date"], 
+input[type="text"], input[type="number"], input[type="date"],
 input[type="time"], input[type="email"], input[type="password"] {
   border-radius: 8px;
 }

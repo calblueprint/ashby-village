@@ -81,5 +81,6 @@ var ready = (function(){
   $(window).trigger('resize');
 });
 
-// Document ready for Turbolinks (will only fire once)
+// Document ready for Turbolinks (will only fire once).
+// Without this it'll run before the page is finished loading.
 $(document).on('page:change', ready);

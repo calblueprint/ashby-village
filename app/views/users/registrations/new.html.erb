@@ -1,8 +1,10 @@
 <div class="user-registration">
-<div class='row res' title='<%= @resubmit %>'>
+<div class='row res'>
   <div class="row">
-    <div class="" style="float: right; padding:10px;">
-      <%= link_to "Cancel Registration", root_path, :class => 'cancel'%>
+    <div class="cancel-row">
+      <%= link_to root_path do %>
+      <button class="cancel">Cancel Registration</button>
+      <% end %>
     </div>
   </div>
   <h2 class="modal-title small-12 small-centered medium-10 large-8 column" id="myModalLabel">Create an Account</h2>

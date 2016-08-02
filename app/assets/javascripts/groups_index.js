@@ -52,16 +52,16 @@ var ready_groups_index = function() {
 
   if(!('ontouchstart' in window || navigator.msMaxTouchPoints)){ // is touch screen
     $(".group-tile button").hover(function() {
-      $button = $(this);
-      if ($button.hasClass("is-member")) {
-        $button.addClass("remove-member");
-        $button.text("Remove Membership");
+      button = $(this);
+      if (button.hasClass("is-member")) {
+        button.addClass("remove-member");
+        button.text("Remove Membership");
       }
     },
     function() {
-      if ($button.hasClass("is-member")) {
-        $button.removeClass("remove-member");
-        $button.text("You Have Joined");
+      if (button.hasClass("is-member")) {
+        button.removeClass("remove-member");
+        button.text("You Have Joined");
       }
     });
   }

@@ -31,8 +31,19 @@
   }
 
   .cancel {
+    background: $ashby-red;
+    -webkit-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+    -moz-box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+    box-shadow: 0px 4px 0px 0px $ashby-dark-red;
+  }
+
+  .cancel:hover {
+    background-color: $ashby-dark-red;
+  }
+
+  .cancel-row {
     float: right;
-    margin-left: 8px;
+    padding:10px;
   }
 
   .modal-header h3 {
