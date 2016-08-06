@@ -4,7 +4,7 @@
   <%= form_for [@event.group, @event] do |f| %>
     <div class="mobile-margins">
       <div class="create-section row">
-        Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
+        Event Name <%= f.text_field :title, required: true, :placeholder => 'Add a short, clear name' %>
         Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
         Event Date and Time<br>
           <div class="startdate_errors"> Your event cannot start in the past! </div>
@@ -20,8 +20,8 @@
           Repeat Event <i>(select one)</i><br>
           <%= f.check_box :repeat_weekly %> Once a week <br>
           <%= f.check_box :repeat_monthly %> Once a month <br>
-        Event Location <%= f.text_field :location, required: true, :placeholder => 'Type a place or address' %>
-        <%= f.check_box :gmap %> Include Maps Link <br>
+        Event Location <%= f.text_field :location, required: true, :placeholder => 'Include a place or address' %>
+        <%= f.check_box :gmap %> Include a Google Maps link to event location<br>
         Event Capacity <%= f.number_field :capacity, min: 1, required: false, placeholder: 'Leave blank if no limit to number of attendees' %>
         Select Event Organizers
         <div class="field" id="selected-event-organizers">
@@ -37,7 +37,7 @@
 event_organizer_ids = [<%= raw ('"' + @event.users.organizers.map(&:id).join('","') + '"') %>];
 
 var initial_event_organizer_names = <%= raw @event.users.organizers.map(&:full_name) %>;
-for (i = 0; i < event_organizer_ids.length; i++) { 
+for (i = 0; i < event_organizer_ids.length; i++) {
   $("#selected-event-organizers")[0].appendChild(add_selected_organizer(initial_event_organizer_names[i], event_organizer_ids[i]));
 }
 $("#selected_organizers")[0].value = event_organizer_ids;
