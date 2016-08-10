@@ -5,29 +5,29 @@
   <%= form_for [@group, @event] do |f| %>
     <div class="mobile-margins">
       <div class="create-section row">
-        Event Name <%= f.text_field :title, required: true, :placeholder => 'Example: Baked Goods Fundraiser' %>
+        Event Name <%= f.text_field :title, required: true, :placeholder => 'Add a short, clear name' %>
         Event Description <%= f.text_area :description, required: true, :placeholder => 'What is your event about?' %>
         Event Date and Time<br>
         <div class="startdate_errors"> Your event cannot start in the past! </div>
         <div class="enddate_errors"> Your event cannot end before it begins or in the past! </div>
         <div class="start"><p><i>Start</i></p>
-        <%= f.date_field :startdate, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03/25/16' %>
-        <%= f.time_field :starttime, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '10:00AM' %>
+        <%= f.date_field :startdate, required: true, onBlur: "validateEventStart(); validateEventEnd();", value: Time.now.strftime('%Y-%m-%d') %>
+        <%= f.time_field :starttime, required: true, onBlur: "validateEventStart(); validateEventEnd();", value: (Time.now + 1.hour).beginning_of_hour.strftime('%H:%M') %>
         </div>
         <div class="end"><p><i>End</i></p>
-        <%= f.date_field :enddate, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03/25/16' %>
-        <%= f.time_field :endtime, required: true, onBlur: "validateEventStart(); validateEventEnd();", :placeholder => '03:00PM' %>
+        <%= f.date_field :enddate, required: true, onBlur: "validateEventStart(); validateEventEnd();", value: Time.now.strftime('%Y-%m-%d') %>
+        <%= f.time_field :endtime, required: true, onBlur: "validateEventStart(); validateEventEnd();", value: (Time.now + 2.hour).beginning_of_hour.strftime('%H:%M') %>
         </div><br>
         Repeat Event <i>(select one if repeating)</i><br>
         <%= f.check_box :repeat_weekly %> Once a week <br>
         <%= f.check_box :repeat_monthly %> Once a month <br>
-        Event Location <%= f.text_field :location, required: true, :placeholder => 'Where is your event held?' %>
-        <%= check_box_tag :gmap, "0" %> Check to include Google Maps link <br>
-        Maximum Attendees (optional) <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'What is the maximum number of attendees?' %>
+        Event Location <%= f.text_field :location, required: true, :placeholder => 'Include a place or address' %>
+        <%= check_box_tag :gmap, "0" %> Include a Google Maps link to event location <br>
+        Maximum Attendees (optional) <%= f.number_field :capacity, min: 1, required: false, value: nil, placeholder: 'Leave blank if no limit to number of attendees' %>
         Select Additional Event Organizers
         <div class="field" id="selected-event-organizers">
           <p><i>Start typing the names of your fellow organizers and then select</i></p> <div id="organizerError" class="form-error-msg" > Could not find user. Make sure they have an account and their name is typed correctly.</div>
-          <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %> 
+          <%= autocomplete_field_tag :organizers, '', autocomplete_user_full_name_groups_path %>
           <%= hidden_field_tag 'selected_organizers' %>
         </div>
         <%= f.submit %>
