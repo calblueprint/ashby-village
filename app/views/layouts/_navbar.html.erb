@@ -15,7 +15,7 @@
     <ul class="right">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <!-- if user signed in, show profile, account settings, and s`ign out button -->
+          <!-- if user signed in, show profile, account settings, and sign out button -->
           <li class="my-tab">
             <a href="<%= group_events_path(current_user.id) %>">
               <i class="fa fa-calendar fa-lg"></i>
