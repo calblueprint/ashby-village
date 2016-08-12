@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+    </style>
+  </head>
+  <body>
+  <center>
+    <table>
+      <tr bgcolor="#34495E" style="height: 100px;">
+        <td style="border-top-left-radius: 8px; border-top-right-radius: 8px; font-family: 'Lato', sans-serif; color: white; font-size: 200%; font-weight: 700; margin-left: 30px;">
+          <div>
+            <a href="http://ashby-staging.herokuapp.com/" target="_blank">
+              <img src="http://ashby-prod.herokuapp.com/assets/ashby_village_icon-52a169f303c056f94dadd4635e3597c2424a5eb0d6436585f0fccb3c05492425.png" style="vertical-align: middle; width: 70px; margin: 0 30px 0 30px; text-decoration: none !important; text-decoration: none;"></a>Ashby Village Square
+          </div>
+        </td>
+      </tr>
+
+      <tr bgcolor="#F7F5F2" style="color: black !important;">
+        <td>
+          <center style="font-size: 230%; font-family: 'Lato', sans-serif; color: #EDC443;">
+            <img src="https://i.imgsafe.org/197ec3a.png" style="width: 90px; margin: 30px 0 10px 0;">
+            <br><%= @user.full_name %> replied to your post.
+          </center>
+        <div style="margin: 10px 50px 10px 50px;">
+          <p style="font-size: 160%; font-family: 'Lato', sans-serif; color: black;">
+            Dear <%= @original_user.full_name %>,
+          </p>
+          <p style="font-size:160%; font-family: 'Lato', sans-serif; color: black;">
+          You can see the reply from <%= @user.full_name %> at this <%= link_to "link", (group_url(@group) + "#post_id" + @post.id.to_s), {:style=>'color:#4A90E2; text-decoration: none;'} %> in the <%= link_to @group.name, group_url(@group), {:style=>'color:#4A90E2; text-decoration: none;'} %> group.
+          </p>
+        </div>
+     </tr> 
+    </table>
+  </center>
+  </body>
+</html>
+
